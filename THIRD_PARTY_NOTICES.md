@@ -53,3 +53,45 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## Three.js r169 shared Toon textures
+
+The ten PNG resources in `Sources/VMDViewer/Resources/SharedToon` are the
+unchanged embedded shared Toon images (indices 1 through 10) from
+https://github.com/mrdoob/three.js/blob/r169/examples/jsm/loaders/MMDLoader.js.
+PMX shared Toon indices 0 through 9 map to toon01.png through toon10.png.
+
+The MIT License
+
+Copyright © 2010-2024 three.js authors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+## Holographic / ikHolographic
+
+- 原エフェクト: ikeno（@ikeno_mmd）。使用・改変・再配布の許可は同梱の `Sources/VMDViewer/Resources/BuiltinEffects/Holographic/original_readme.txt`（CP932）を参照。配布appでは `VMDViewerForMac_VMDViewer.bundle/BuiltinEffects/Holographic/` に収容する。
+- `.fxdayo`契約・Metal移植の参照元: [opopoposiop/MMDayo_Holographic](https://github.com/opopoposiop/MMDayo_Holographic)、commit `d4b8960db2d27d49ff1b856a783231e969ceac63`。
+- `Sources/VMDViewer/Effects/IkHolographicContract.generated.swift`、Holographic関連実装・テスト素材は同repoの配布patchを基に現行Viewerへ統合・修正。原作者のREADMEを変更せず保持する。
+
+## Rhinestone
+
+- 原エフェクト・画像: ikeno（@ikeno_mmd）、Rhinestone Ver 0.02（2016-03-26）。通常版 `Rhinestone.fx` と発光用 `AL_Rhinestone.fx` を基にViewer専用のMetal実装を作成。
+- 原readmeには利用・改造・再配布自由、連絡不要との記載がある。原文（CP932）を `Sources/VMDViewer/Resources/BuiltinEffects/Rhinestone/readme.txt` に変更せず保持する。
+- source 2ファイル、PNG 20ファイル（Supplementsを含む参考素材）、原readmeを同梱。配布appでは `VMDViewerForMac_VMDViewer.bundle/BuiltinEffects/Rhinestone/` に収容し、共通の内容manifestで識別する。
+- Viewer版は座標・微分・Toon・影を既存Metal描画へ接続した近似。発光用の計算はViewerのHDR emission／Bloomへ接続し、MMEやAutoLuminous全体の互換を表明するものではない。原ファイルとViewer側の実装を区別する。
