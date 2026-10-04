@@ -21,6 +21,28 @@ subject to the following restrictions:
 2. Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
 3. This notice may not be removed or altered from any source distribution.
 
+### PMX 2.1 SoftBody subset (v0.56.0)
+
+The required BulletSoftBody subset (34 headers and 9 C++ files) is from the
+official Bullet `3.25` tag. Original file hashes are recorded in
+[the provenance manifest](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/e2d50ce739684e1c83960646ef5c0135b513603f/reports/2026-09-29-pmx21-conformance-review/BULLET_SOFTBODY_UPSTREAM.json).
+`BulletSoftBody/btSoftBody.cpp` is modified by VMD Viewer: a symmetric
+pseudoinverse handles singular planar-cloth / collinear-rope pose and cluster
+inertia matrices. The change is marked in that file; it is not an unmodified
+upstream source. No external Bullet runtime dependency is introduced.
+
+### Opt-in PMX 2.75 compatibility (v0.56.1)
+
+VMD Viewer modifies the vendored Bullet 3.25 files `btSoftBody.h/.cpp`,
+`btContactSolverInfo.h`, `btSequentialImpulseConstraintSolver.cpp`, and
+`btConeTwistConstraint.h/.cpp` to select known Bullet 2.75 aero, anchor,
+contact and motor rules per world/body. Alterations are marked in source.
+The original notices and the numerical protections above remain intact.
+The app still links only the bundled 3.25-based library; this is not a full
+Bullet 2.75 replacement. Original reference provenance and limits are in
+[the comparison](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/e2d50ce739684e1c83960646ef5c0135b513603f/reports/2026-09-30-bullet-275-325-pmx21-comparison/REVIEW.md)
+and [implementation](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/e2d50ce739684e1c83960646ef5c0135b513603f/reports/2026-09-30-bullet-mode-v0561/IMPLEMENTATION.md).
+
 ## ZIPFoundation 0.9.20
 
 VMD Viewer uses ZIPFoundation for ZIP container encoding and decoding.
