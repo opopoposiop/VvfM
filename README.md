@@ -4,7 +4,7 @@ PMXモデルとVMDモーションをMacで再生・編集し、音声付きの�
 
 **詳しい操作は [一般ユーザーマニュアル（GUIDE.md）](GUIDE.md) を参照してください。**
 
-![VvfMのメイン画面](images/01-scene3-overview.jpg)
+![VvfMのメイン画面](images/01-scene3-overview.png)
 
 ## 主な機能
 
