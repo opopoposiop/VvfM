@@ -38,6 +38,7 @@ MikuMikuDanceとの画像・物理・エフェクトの完全一致は保証し�
 ## ドキュメント・問い合わせ
 
 - [一般ユーザーマニュアル](GUIDE.md)：操作手順、ショートカット、対応範囲、困ったときの確認事項
+- [.fxdayo開発者ガイド](docs/fxdayo/FXDAYO_DEVELOPER_GUIDE.md)：エフェクトの記述、教材、対応条件、検証手順（v0.56.20作業ツリー時点）
 - [LICENSE](LICENSE)／[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)：本体と同梱ライブラリ・画像・エフェクトの利用条件
 - [Issues](https://github.com/opopoposiop/VvfM/issues)：不具合報告。アプリの版、Macの環境、操作手順、エラーを添えてください
 - [開発リポジトリ](https://github.com/opopoposiop/VMDviewer_for_Mac)：実装と変更履歴

@@ -1,0 +1,76 @@
+#include <resources_pp.hlsli>
+
+[YRZFX]
+{
+  "fx": {
+    "category": "postprocess",
+    "cereal_class_version": 0,
+    "samplers": [
+      {
+        "name": "ImageSampler",
+        "filter": "LINEAR",
+        "addressU": "CLAMP",
+        "addressV": "CLAMP"
+      }
+    ],
+    "passes": [
+      {
+        "name": "Exposure",
+        "type": "postprocess",
+        "vertexShader": "FullscreenVS",
+        "pixelShader": "ExposurePS",
+        "rasterizerDesc": {
+          "cullMode": "none"
+        },
+        "RTV": [
+          {
+            "name": "ExposureBuffer",
+            "clear": true
+          }
+        ]
+      },
+      {
+        "name": "Tint",
+        "type": "postprocess",
+        "vertexShader": "FullscreenVS",
+        "pixelShader": "TintPS",
+        "rasterizerDesc": {
+          "cullMode": "none"
+        }
+      }
+    ],
+    "textures": [
+      {
+        "name": "ExposureBuffer",
+        "format": "R16G16B16A16_FLOAT",
+        "view": "RTV"
+      }
+    ]
+  }
+}
+[HLSL]
+
+struct ScreenVertex {
+    float4 position : SV_POSITION;
+    float2 uv : TEXCOORD0;
+};
+
+ScreenVertex FullscreenVS(float4 position : POSITION, float2 uv : TEXCOORD0)
+{
+    ScreenVertex result;
+    result.position = position;
+    result.uv = uv;
+    return result;
+}
+
+float4 ExposurePS(ScreenVertex input) : SV_TARGET
+{
+    float4 color = Dayo::ScreenTexture.Sample(ImageSampler, input.uv);
+    return float4(color.rgb * 2.0, color.a);
+}
+
+float4 TintPS(ScreenVertex input) : SV_TARGET
+{
+    float4 color = ExposureBuffer.Sample(ImageSampler, input.uv);
+    return float4(color.rgb * float3(1.0, 0.85, 0.7), color.a);
+}
