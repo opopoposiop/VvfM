@@ -1,0 +1,518 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VMD Viewer evaluated fxdayo definition, schema 1",
+  "description": "Structural schema after Jsonnet evaluation. IR semantic validation additionally checks resource type/format/view combinations, aggregate counts, unique names, references, sizes, condition grammar, and scene/reflection contracts. This schema alone does not authorize execution.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "fx": {
+      "$ref": "#/$defs/fx"
+    }
+  },
+  "required": [
+    "fx"
+  ],
+  "$defs": {
+    "controller": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z_0-9]*$"
+        },
+        "controllerName": {
+          "const": "(self)"
+        },
+        "item": {
+          "type": "string"
+        },
+        "type": {
+          "const": "float"
+        }
+      },
+      "required": [
+        "name",
+        "controllerName",
+        "item",
+        "type"
+      ]
+    },
+    "sampler": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z_0-9]*$"
+        },
+        "filter": {
+          "type": "string",
+          "pattern": "^(?:[lL][iI][nN][eE][aA][rR]|[mM][iI][nN]_[mM][aA][gG]_[mM][iI][pP]_[lL][iI][nN][eE][aA][rR]|[mM][iI][nN]_[mM][aA][gG]_[lL][iI][nN][eE][aA][rR]_[mM][iI][pP]_[pP][oO][iI][nN][tT]|[pP][oO][iI][nN][tT]|[mM][iI][nN]_[mM][aA][gG]_[mM][iI][pP]_[pP][oO][iI][nN][tT])$"
+        },
+        "addressU": {
+          "type": "string",
+          "pattern": "^(?:[wW][rR][aA][pP]|[cC][lL][aA][mM][pP]|[mM][iI][rR][rR][oO][rR])$"
+        },
+        "addressV": {
+          "type": "string",
+          "pattern": "^(?:[wW][rR][aA][pP]|[cC][lL][aA][mM][pP]|[mM][iI][rR][rR][oO][rR])$"
+        },
+        "addressW": {
+          "type": "string",
+          "pattern": "^(?:[wW][rR][aA][pP]|[cC][lL][aA][mM][pP]|[mM][iI][rR][rR][oO][rR])$"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "size": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "absolute": {
+          "type": "boolean"
+        },
+        "dimension": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "depth": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "base": {
+          "type": "string"
+        },
+        "ratio": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": 0
+            },
+            "y": {
+              "type": "number",
+              "minimum": 0
+            },
+            "z": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "convX": {
+          "type": "string",
+          "pattern": "^(?:[xX]|[yY]|[zZ]|[xX][yY]|[xX][zZ]|[yY][zZ]|[xX][yY][zZ]|[oO][nN][eE])$"
+        },
+        "convY": {
+          "type": "string",
+          "pattern": "^(?:[xX]|[yY]|[zZ]|[xX][yY]|[xX][zZ]|[yY][zZ]|[xX][yY][zZ]|[oO][nN][eE])$"
+        },
+        "convZ": {
+          "type": "string",
+          "pattern": "^(?:[xX]|[yY]|[zZ]|[xX][yY]|[xX][zZ]|[yY][zZ]|[xX][yY][zZ]|[oO][nN][eE])$"
+        },
+        "rounding": {
+          "type": "string",
+          "pattern": "^(?:[tT][rR][uU][nN][cC]|[cC][eE][iI][lL]|[rR][oO][uU][nN][dD])$"
+        }
+      }
+    },
+    "resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z_0-9]*$"
+        },
+        "type": {
+          "enum": [
+            "uint",
+            "int",
+            "float",
+            "float2",
+            "float4",
+            "float4x4",
+            "uint2"
+          ]
+        },
+        "format": {
+          "type": "string",
+          "pattern": "^(?:[rR]16[gG]16[bB]16[aA]16_[fF][lL][oO][aA][tT]|[rR]32[gG]32[bB]32[aA]32_[fF][lL][oO][aA][tT]|[rR]32[gG]32_[fF][lL][oO][aA][tT]|[rR]32[gG]32_[uU][iI][nN][tT]|[rR]32_[fF][lL][oO][aA][tT])$"
+        },
+        "view": {
+          "type": "string",
+          "pattern": "^(?:[rR][tT][vV]|[sS][rR][vV]|[uU][aA][vV])$"
+        },
+        "size": {
+          "$ref": "#/$defs/size"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "rtv": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z_0-9]*$"
+        },
+        "clear": {
+          "type": "boolean"
+        },
+        "value": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "z": {
+              "type": "number"
+            },
+            "w": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "blend": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "blendEnable": {
+          "type": "boolean"
+        },
+        "srcBlend": {
+          "type": "string",
+          "pattern": "^(?:[zZ][eE][rR][oO]|[oO][nN][eE]|[sS][rR][cC]_[aA][lL][pP][hH][aA]|[iI][nN][vV]_[sS][rR][cC]_[aA][lL][pP][hH][aA]|[dD][eE][sS][tT]_[aA][lL][pP][hH][aA]|[iI][nN][vV]_[dD][eE][sS][tT]_[aA][lL][pP][hH][aA])$"
+        },
+        "destBlend": {
+          "type": "string",
+          "pattern": "^(?:[zZ][eE][rR][oO]|[oO][nN][eE]|[sS][rR][cC]_[aA][lL][pP][hH][aA]|[iI][nN][vV]_[sS][rR][cC]_[aA][lL][pP][hH][aA]|[dD][eE][sS][tT]_[aA][lL][pP][hH][aA]|[iI][nN][vV]_[dD][eE][sS][tT]_[aA][lL][pP][hH][aA])$"
+        },
+        "srcBlendAlpha": {
+          "type": "string",
+          "pattern": "^(?:[zZ][eE][rR][oO]|[oO][nN][eE]|[sS][rR][cC]_[aA][lL][pP][hH][aA]|[iI][nN][vV]_[sS][rR][cC]_[aA][lL][pP][hH][aA]|[dD][eE][sS][tT]_[aA][lL][pP][hH][aA]|[iI][nN][vV]_[dD][eE][sS][tT]_[aA][lL][pP][hH][aA])$"
+        },
+        "destBlendAlpha": {
+          "type": "string",
+          "pattern": "^(?:[zZ][eE][rR][oO]|[oO][nN][eE]|[sS][rR][cC]_[aA][lL][pP][hH][aA]|[iI][nN][vV]_[sS][rR][cC]_[aA][lL][pP][hH][aA]|[dD][eE][sS][tT]_[aA][lL][pP][hH][aA]|[iI][nN][vV]_[dD][eE][sS][tT]_[aA][lL][pP][hH][aA])$"
+        },
+        "blendOp": {
+          "type": "string",
+          "pattern": "^(?:[aA][dD][dD])$"
+        },
+        "blendOpAlpha": {
+          "type": "string",
+          "pattern": "^(?:[aA][dD][dD])$"
+        }
+      }
+    },
+    "pass": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z_0-9]*$"
+        },
+        "type": {
+          "type": "string",
+          "pattern": "^(?:[cC][oO][mM][pP][uU][tT][eE]|[pP][oO][sS][tT][pP][rR][oO][cC][eE][sS][sS]|[rR][aA][sS][tT][eE][rR][iI][zZ][eE][rR])$"
+        },
+        "vertexShader": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z_0-9]*$"
+        },
+        "pixelShader": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z_0-9]*$"
+        },
+        "computeShader": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z_0-9]*$"
+        },
+        "RTV": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/rtv"
+          },
+          "maxItems": 1
+        },
+        "UAV": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[A-Za-z_][A-Za-z_0-9]*$"
+              }
+            },
+            "required": [
+              "name"
+            ]
+          }
+        },
+        "outputSize": {
+          "$ref": "#/$defs/size"
+        },
+        "numthreads": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1024
+            },
+            "y": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1024
+            },
+            "z": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1024
+            }
+          }
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rasterizerDesc": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "cullMode": {
+              "type": "string",
+              "pattern": "^(?:[nN][oO][nN][eE]|[fF][rR][oO][nN][tT]|[bB][aA][cC][kK])$"
+            }
+          }
+        },
+        "blendDesc": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "renderTarget0": {
+              "$ref": "#/$defs/blend"
+            }
+          },
+          "required": [
+            "renderTarget0"
+          ]
+        },
+        "rasterModelTarget": {
+          "const": "buffer"
+        },
+        "rasterIB": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z_0-9]*$"
+        }
+      },
+      "required": [
+        "name",
+        "type"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "type": "string",
+                "pattern": "^(?:[cC][oO][mM][pP][uU][tT][eE])$"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "computeShader"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "vertexShader"
+                  ]
+                },
+                {
+                  "required": [
+                    "pixelShader"
+                  ]
+                },
+                {
+                  "required": [
+                    "rasterizerDesc"
+                  ]
+                },
+                {
+                  "required": [
+                    "blendDesc"
+                  ]
+                },
+                {
+                  "required": [
+                    "rasterModelTarget"
+                  ]
+                },
+                {
+                  "required": [
+                    "rasterIB"
+                  ]
+                }
+              ]
+            },
+            "properties": {
+              "RTV": {
+                "maxItems": 0
+              }
+            }
+          },
+          "else": {
+            "required": [
+              "vertexShader",
+              "pixelShader"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "computeShader"
+                  ]
+                },
+                {
+                  "required": [
+                    "numthreads"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "type": "string",
+                "pattern": "^(?:[rR][aA][sS][tT][eE][rR][iI][zZ][eE][rR])$"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "rasterModelTarget",
+              "rasterIB"
+            ]
+          },
+          "else": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "rasterModelTarget"
+                  ]
+                },
+                {
+                  "required": [
+                    "rasterIB"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "fx": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "const": "postprocess"
+        },
+        "cereal_class_version": {
+          "const": 0
+        },
+        "controllers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/controller"
+          },
+          "maxItems": 64
+        },
+        "samplers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sampler"
+          },
+          "maxItems": 16
+        },
+        "textures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/resource"
+          },
+          "maxItems": 32
+        },
+        "buffers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/resource"
+          },
+          "maxItems": 32
+        },
+        "passes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/pass"
+          },
+          "maxItems": 32,
+          "minItems": 1
+        },
+        "code": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "memos": {}
+      },
+      "required": [
+        "category",
+        "passes"
+      ]
+    }
+  }
+}

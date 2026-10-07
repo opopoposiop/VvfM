@@ -1,0 +1,57 @@
+#include <resources_pp.hlsli>
+
+[YRZFX]
+{
+  "fx": {
+    "category": "postprocess",
+    "cereal_class_version": 0,
+    "samplers": [
+      {
+        "name": "ImageSampler",
+        "filter": "LINEAR",
+        "addressU": "CLAMP",
+        "addressV": "CLAMP"
+      }
+    ],
+    "passes": [
+      {
+        "name": "Exposure",
+        "type": "postprocess",
+        "vertexShader": "FullscreenVS",
+        "pixelShader": "ExposurePS",
+        "rasterizerDesc": {
+          "cullMode": "none"
+        }
+      }
+    ],
+    "controllers": [
+      {
+        "name": "C_Exposure",
+        "controllerName": "(self)",
+        "item": "明るさ",
+        "type": "float"
+      }
+    ]
+  }
+}
+[HLSL]
+
+struct ScreenVertex {
+    float4 position : SV_POSITION;
+    float2 uv : TEXCOORD0;
+};
+
+ScreenVertex FullscreenVS(float4 position : POSITION, float2 uv : TEXCOORD0)
+{
+    ScreenVertex result;
+    result.position = position;
+    result.uv = uv;
+    return result;
+}
+
+float4 ExposurePS(ScreenVertex input) : SV_TARGET
+{
+    float4 color = Dayo::ScreenTexture.Sample(ImageSampler, input.uv);
+    float exposureEV = 2.0 * clamp(C_Exposure, -1.0, 1.0);
+    return float4(color.rgb * exp2(exposureEV), color.a);
+}

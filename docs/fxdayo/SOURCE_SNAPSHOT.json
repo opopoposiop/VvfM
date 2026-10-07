@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "inspectedOn": "2026-10-06",
+  "timezone": "Asia/Tokyo",
+  "scope": "Documentation and static source inspection only; no compiler, app, build, GPU or test execution in this task.",
+  "viewer": {
+    "head": "6c83be79a10eda0a15a2da6e5fda103d2b49e274",
+    "branch": "codex/pmxchange",
+    "version": "0.56.16",
+    "includesUncommittedChanges": true,
+    "files": [
+      {
+        "path": "Sources/VMDViewer/Effects/FxDayoEffects.swift",
+        "sha256": "e132f3e14ac8f1960b58a179c500c55fcbbdff2cdeab878ac01073b305d0294c",
+        "bytes": 102568
+      },
+      {
+        "path": "Sources/VMDViewer/Effects/FxDayoAdapterRegistry.swift",
+        "sha256": "3b04d74970500927329932fae08bde09bf659d332248f7eae99791d1a5149205",
+        "bytes": 64784
+      },
+      {
+        "path": "Sources/VMDViewer/Effects/FxDayoSourcePackage.swift",
+        "sha256": "d14471bd945b873e6d888cd3c9be372de1767211fec224de4e5f08d5d71db9e4",
+        "bytes": 16481
+      },
+      {
+        "path": "Sources/VMDViewer/Effects/FxDayoProgramIR.swift",
+        "sha256": "d766f5043b1671f63fae00c8b2236292b58a6428ccfb9d6d83bea99ea0ac5ba0",
+        "bytes": 27174
+      },
+      {
+        "path": "Sources/VMDViewer/Effects/FxDayoCompilerService.swift",
+        "sha256": "6e90787924b1520ba860df11d907f30f9dc06d4ed034a40da4bfbbad60a4c99c",
+        "bytes": 14603
+      },
+      {
+        "path": "Sources/VMDViewer/Effects/FxDayoCompiledProgram.swift",
+        "sha256": "731f93c77a3f0097bae01cc2ba30e10941dbaac6383d3f59343f71d33422a58d",
+        "bytes": 8430
+      },
+      {
+        "path": "Sources/VMDViewer/Effects/FxDayoVertexAccessContract.swift",
+        "sha256": "ac6af2750ba04c7ef2f98af7b72702beaa8a41e7f2cece8f8d48c8d249080e20",
+        "bytes": 4481
+      },
+      {
+        "path": "Sources/VMDViewer/Effects/FxDayoSceneProfile.swift",
+        "sha256": "516a55d56bb3f30affc0841aef3240923829fe5aed598d749883e839df1ea2b4",
+        "bytes": 2679
+      },
+      {
+        "path": "Sources/VMDViewer/Renderer/MetalFxDayoExecutor.swift",
+        "sha256": "77e04890293264b48cd0cafd126d78e244e3e4b4ab9edf1161fe493226e788dc",
+        "bytes": 24277
+      },
+      {
+        "path": "Sources/VMDViewer/Renderer/MetalModelView.swift",
+        "sha256": "85b7565f9bdb049ff626f7a93432967747eac633384d30a8cfaf4e29258a1e58",
+        "bytes": 1965679
+      },
+      {
+        "path": "Sources/VMDViewer/Renderer/DayoFrameHistory.swift",
+        "sha256": "f4be4b027b8abd6f207589152a6937edbd0d140fde32591c6da59f7a994aebfa",
+        "bytes": 3218
+      },
+      {
+        "path": "Sources/VMDViewer/Renderer/DayoSceneInputs.swift",
+        "sha256": "409bb9ff5f2b36609a65fadcda057532414fd3adccbf1e29a83c59b616ddc6e9",
+        "bytes": 13644
+      },
+      {
+        "path": "Sources/VMDViewer/Export/MovieExportSession.swift",
+        "sha256": "7e461853d73c7282cf4418983a9467f35ba662dd9708846079a29589ecf25502",
+        "bytes": 185186
+      },
+      {
+        "path": "Sources/VMDViewer/Project/ProjectPayloadArchiveIO.swift",
+        "sha256": "a1f55ca2b7985a4502fdb3a201908333d5288ac8469deee9ea464f60dd0b3df6",
+        "bytes": 66606
+      },
+      {
+        "path": "Sources/VMDViewer/Scene/SceneDocument.swift",
+        "sha256": "cf89aa077f5c4bbac8224cab6c718900e20f5a6f7972c9964cb1b5f88e993358",
+        "bytes": 28433
+      },
+      {
+        "path": "Sources/VMDViewer/Resources/Dayo130SDK/manifest.json",
+        "sha256": "8836c74444919b020a7fb3953a0a8246935894276511c980de0928a490c603e8",
+        "bytes": 939
+      },
+      {
+        "path": "Sources/VMDViewer/Resources/Dayo130SDK/cb.hlsli",
+        "sha256": "cd2520cb25bea3eab40f1d4e2722995a96899e807c940b519dcfb8430a0dd04b",
+        "bytes": 4023
+      },
+      {
+        "path": "Sources/VMDViewer/Resources/Dayo130SDK/resources.hlsli",
+        "sha256": "544d995ec2cdebcf88800ec99b3e76bb01b50f116191bed935a953a229b6dd74",
+        "bytes": 4407
+      },
+      {
+        "path": "Sources/VMDViewer/Resources/Dayo130SDK/resources_pp.hlsli",
+        "sha256": "e9c2275df3963bf1ab85510f2cbbe59f1b3c902a0f8907b467ee9c4689b1dc8d",
+        "bytes": 137
+      },
+      {
+        "path": "Sources/VMDViewer/Resources/Dayo130SDK/dayotypes.hlsli",
+        "sha256": "e3d89297ade1c66abe5b2f253332b98d9370a123c783cb5910648dad8fd904a3",
+        "bytes": 2994
+      },
+      {
+        "path": "Tests/VMDViewerTests/FxDayoProgramTests.swift",
+        "sha256": "f02f7eb260b16a9086418dd85bd9296568f450878ac266b1c65046e85dda8938",
+        "bytes": 8790
+      },
+      {
+        "path": "Tests/VMDViewerTests/FxDayoProgramGPUTests.swift",
+        "sha256": "7c5c1585c7034d7cf0d29bd5cfac523ed64be4047dce50dd2f07e503c3b34faa",
+        "bytes": 10486
+      },
+      {
+        "path": "reports/2026-10-06-motionblur-generic-proof-plan/IMPLEMENTATION.md",
+        "sha256": "903a8cb0007105e21af0603a7a41acf6ed59b4360b388deec58fda79c669c42c",
+        "bytes": 9975
+      },
+      {
+        "path": "reports/2026-10-06-motionblur-generic-proof-plan/RELEASE.md",
+        "sha256": "d7ebfc8b31b569248e3d5e73aca126d2086214bfa607417010a338e1b6223650",
+        "bytes": 4180
+      },
+      {
+        "path": "reports/2026-10-06-generic-fxdayo-research/RESEARCH.md",
+        "sha256": "4d45e8f85df0dd0ffbf4c6387170a63547d932015b10adc7bfffc3df4ea2893c",
+        "bytes": 26545
+      }
+    ]
+  },
+  "dayo": {
+    "distributionVersion": "1.30",
+    "upstreamCommit": null,
+    "localDistributionRoot": "/Users/minmin/Downloads/MikuMikuDayo130/MikuMikuDayo",
+    "files": [
+      {
+        "path": "src/YRZFx.ixx",
+        "sha256": "92d858328500c84f99f01283f55b9192b9ac33412ca740e1fa8a4e8018729c7d",
+        "bytes": 270920
+      },
+      {
+        "path": "postprocess/motionblur/MotionBlur.fxdayo",
+        "sha256": "56b8ba0b06a7201f74ec769ad00057e7e694871499a86b7d64547681ebe091e1",
+        "bytes": 9975
+      },
+      {
+        "path": "postprocess/AddNoise/AddNoise.fxdayo",
+        "sha256": "fa0521791d31b6b9ffde83db071151d7122a5f6fb9abaace8182664aa741e32f",
+        "bytes": 5071
+      }
+    ]
+  },
+  "sdkManifestHashesMatchLocalFiles": true,
+  "staticFindings": [
+    {
+      "id": "conditions-array-semantics",
+      "reference": "Dayo YRZFx.ixx PassCond uses all expressions (AND)",
+      "viewer": "MetalFxDayoExecutor.encode uses contains(where:) (OR)",
+      "status": "Statically confirmed difference; not fixed or runtime-tested in this task."
+    }
+  ],
+  "existingEvidence": {
+    "releaseRecord": "reports/2026-10-06-motionblur-generic-proof-plan/RELEASE.md",
+    "recordedBuild": 402,
+    "rerecordedOrReexecuted": false
+  },
+  "publicReferences": [
+    "https://github.com/pennennennennennenem/MikuMikuDayo/blob/main/tutorial/fxdayo.md",
+    "https://jsonnet.org/ref/language.html",
+    "https://github.com/microsoft/DirectXShaderCompiler/blob/main/docs/SPIR-V.rst",
+    "https://github.com/KhronosGroup/SPIRV-Cross"
+  ]
+}
