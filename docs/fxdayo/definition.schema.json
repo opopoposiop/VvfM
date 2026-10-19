@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "VMD Viewer evaluated fxdayo definition, schema 1",
-  "description": "Structural schema after Jsonnet evaluation. IR semantic validation additionally checks resource type/format/view combinations, aggregate counts, unique names, references, sizes, condition grammar, and scene/reflection contracts. This schema alone does not authorize execution.",
+  "title": "VMD Viewer evaluated fxdayo definition, schema 2",
+  "description": "Structural superset for legacy v1 and extended v2 profiles after Jsonnet evaluation. The selected profile is supplied separately; strict IR validation rejects v2 fields for v1 and checks resource type/format/view combinations, aggregate counts, unique names, references, dimensions, conditions, and scene/reflection contracts. Passing this schema does not authorize execution or imply that all parsed capabilities have live/export input producers.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -28,14 +28,46 @@
           "type": "string"
         },
         "type": {
-          "const": "float"
+          "enum": [
+            "float",
+            "bool",
+            "int",
+            "float3",
+            "float4x4"
+          ]
+        },
+        "desc": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "type": "string",
+            "maxLength": 4096
+          }
+        },
+        "slider": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            },
+            "def": {
+              "type": "number"
+            },
+            "log": {
+              "type": "boolean"
+            },
+            "int": {
+              "type": "boolean"
+            }
+          }
         }
       },
       "required": [
-        "name",
-        "controllerName",
-        "item",
-        "type"
+        "name"
       ]
     },
     "sampler": {
@@ -48,19 +80,28 @@
         },
         "filter": {
           "type": "string",
-          "pattern": "^(?:[lL][iI][nN][eE][aA][rR]|[mM][iI][nN]_[mM][aA][gG]_[mM][iI][pP]_[lL][iI][nN][eE][aA][rR]|[mM][iI][nN]_[mM][aA][gG]_[lL][iI][nN][eE][aA][rR]_[mM][iI][pP]_[pP][oO][iI][nN][tT]|[pP][oO][iI][nN][tT]|[mM][iI][nN]_[mM][aA][gG]_[mM][iI][pP]_[pP][oO][iI][nN][tT])$"
+          "pattern": "^(?:[lL][iI][nN][eE][aA][rR]|[mM][iI][nN]_[mM][aA][gG]_[mM][iI][pP]_[lL][iI][nN][eE][aA][rR]|[mM][iI][nN]_[mM][aA][gG]_[lL][iI][nN][eE][aA][rR]_[mM][iI][pP]_[pP][oO][iI][nN][tT]|[pP][oO][iI][nN][tT]|[mM][iI][nN]_[mM][aA][gG]_[mM][iI][pP]_[pP][oO][iI][nN][tT]|[aA][nN][iI][sS][oO][tT][rR][oO][pP][iI][cC])$"
         },
         "addressU": {
           "type": "string",
-          "pattern": "^(?:[wW][rR][aA][pP]|[cC][lL][aA][mM][pP]|[mM][iI][rR][rR][oO][rR])$"
+          "pattern": "^(?:[wW][rR][aA][pP]|[cC][lL][aA][mM][pP]|[mM][iI][rR][rR][oO][rR]|[bB][oO][rR][dD][eE][rR])$"
         },
         "addressV": {
           "type": "string",
-          "pattern": "^(?:[wW][rR][aA][pP]|[cC][lL][aA][mM][pP]|[mM][iI][rR][rR][oO][rR])$"
+          "pattern": "^(?:[wW][rR][aA][pP]|[cC][lL][aA][mM][pP]|[mM][iI][rR][rR][oO][rR]|[bB][oO][rR][dD][eE][rR])$"
         },
         "addressW": {
           "type": "string",
-          "pattern": "^(?:[wW][rR][aA][pP]|[cC][lL][aA][mM][pP]|[mM][iI][rR][rR][oO][rR])$"
+          "pattern": "^(?:[wW][rR][aA][pP]|[cC][lL][aA][mM][pP]|[mM][iI][rR][rR][oO][rR]|[bB][oO][rR][dD][eE][rR])$"
+        },
+        "borderColor": {
+          "type": "string",
+          "pattern": "^(?:[tT][rR][aA][nN][sS][pP][aA][rR][eE][nN][tT]_[bB][lL][aA][cC][kK]|[oO][pP][aA][qQ][uU][eE]_[bB][lL][aA][cC][kK]|[oO][pP][aA][qQ][uU][eE]_[wW][hH][iI][tT][eE])$"
+        },
+        "maxAnisotropy": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16
         }
       },
       "required": [
@@ -147,21 +188,40 @@
             "int",
             "float",
             "float2",
+            "float3",
             "float4",
             "float4x4",
-            "uint2"
+            "uint2",
+            "uint3",
+            "uint4",
+            "int2",
+            "int3",
+            "int4"
           ]
         },
         "format": {
           "type": "string",
-          "pattern": "^(?:[rR]16[gG]16[bB]16[aA]16_[fF][lL][oO][aA][tT]|[rR]32[gG]32[bB]32[aA]32_[fF][lL][oO][aA][tT]|[rR]32[gG]32_[fF][lL][oO][aA][tT]|[rR]32[gG]32_[uU][iI][nN][tT]|[rR]32_[fF][lL][oO][aA][tT])$"
+          "pattern": "^(?:[rR]16[gG]16[bB]16[aA]16_[fF][lL][oO][aA][tT]|[rR]32[gG]32[bB]32[aA]32_[fF][lL][oO][aA][tT]|[rR]32[gG]32_[fF][lL][oO][aA][tT]|[rR]32[gG]32_[uU][iI][nN][tT]|[rR]32_[fF][lL][oO][aA][tT]|[rR]8_[uU][nN][oO][rR][mM]|[rR]8[gG]8_[uU][nN][oO][rR][mM]|[rR]8[gG]8[bB]8[aA]8_[uU][nN][oO][rR][mM]|[rR]16_[fF][lL][oO][aA][tT]|[rR]16[gG]16_[fF][lL][oO][aA][tT])$"
         },
         "view": {
           "type": "string",
-          "pattern": "^(?:[rR][tT][vV]|[sS][rR][vV]|[uU][aA][vV])$"
+          "pattern": "^(?:(?:[sS][rR][vV]|[rR][tT][vV]|[uU][aA][vV])(?:[ \\t]*,[ \\t]*(?:[sS][rR][vV]|[rR][tT][vV]|[uU][aA][vV]))*)?$"
         },
         "size": {
           "$ref": "#/$defs/size"
+        },
+        "mipmap": {
+          "type": "boolean"
+        },
+        "filename": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "elemSize": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64
         }
       },
       "required": [
@@ -196,6 +256,11 @@
               "type": "number"
             }
           }
+        },
+        "mipSlice": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 30
         }
       },
       "required": [
@@ -245,7 +310,7 @@
         },
         "type": {
           "type": "string",
-          "pattern": "^(?:[cC][oO][mM][pP][uU][tT][eE]|[pP][oO][sS][tT][pP][rR][oO][cC][eE][sS][sS]|[rR][aA][sS][tT][eE][rR][iI][zZ][eE][rR])$"
+          "pattern": "^(?:[cC][oO][mM][pP][uU][tT][eE]|[pP][oO][sS][tT][pP][rR][oO][cC][eE][sS][sS]|[rR][aA][sS][tT][eE][rR][iI][zZ][eE][rR]|[cC][oO][pP][yY]|[cC][lL][eE][aA][rR][uU][aA][vV]|[cC][lL][eE][aA][rR][rR][tT][vV]|[mM][iI][pP][mM][aA][pP][gG][eE][nN])$"
         },
         "vertexShader": {
           "type": "string",
@@ -275,6 +340,11 @@
               "name": {
                 "type": "string",
                 "pattern": "^[A-Za-z_][A-Za-z_0-9]*$"
+              },
+              "mipSlice": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 30
               }
             },
             "required": [
@@ -340,6 +410,45 @@
         "rasterIB": {
           "type": "string",
           "pattern": "^[A-Za-z_][A-Za-z_0-9]*$"
+        },
+        "macros": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          }
+        },
+        "src": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z_0-9]*$"
+        },
+        "dest": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z_0-9]*$"
+        },
+        "target": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z_0-9]*$"
+        },
+        "value": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "z": {
+              "type": "number"
+            },
+            "w": {
+              "type": "number"
+            }
+          }
         }
       },
       "required": [
@@ -399,8 +508,18 @@
                 "maxItems": 0
               }
             }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "type": "string",
+                "pattern": "^(?:[pP][oO][sS][tT][pP][rR][oO][cC][eE][sS][sS]|[rR][aA][sS][tT][eE][rR][iI][zZ][eE][rR])$"
+              }
+            }
           },
-          "else": {
+          "then": {
             "required": [
               "vertexShader",
               "pixelShader"
@@ -447,6 +566,315 @@
                 {
                   "required": [
                     "rasterIB"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "type": "string",
+                "pattern": "^(?:[cC][oO][mM][pP][uU][tT][eE]|[pP][oO][sS][tT][pP][rR][oO][cC][eE][sS][sS]|[rR][aA][sS][tT][eE][rR][iI][zZ][eE][rR])$"
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "src"
+                  ]
+                },
+                {
+                  "required": [
+                    "dest"
+                  ]
+                },
+                {
+                  "required": [
+                    "target"
+                  ]
+                },
+                {
+                  "required": [
+                    "value"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "type": "string",
+                "pattern": "^(?:[cC][oO][pP][yY])$"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "src",
+              "dest"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "vertexShader"
+                  ]
+                },
+                {
+                  "required": [
+                    "pixelShader"
+                  ]
+                },
+                {
+                  "required": [
+                    "computeShader"
+                  ]
+                },
+                {
+                  "required": [
+                    "RTV"
+                  ]
+                },
+                {
+                  "required": [
+                    "UAV"
+                  ]
+                },
+                {
+                  "required": [
+                    "outputSize"
+                  ]
+                },
+                {
+                  "required": [
+                    "numthreads"
+                  ]
+                },
+                {
+                  "required": [
+                    "rasterizerDesc"
+                  ]
+                },
+                {
+                  "required": [
+                    "blendDesc"
+                  ]
+                },
+                {
+                  "required": [
+                    "rasterModelTarget"
+                  ]
+                },
+                {
+                  "required": [
+                    "rasterIB"
+                  ]
+                },
+                {
+                  "required": [
+                    "macros"
+                  ]
+                },
+                {
+                  "required": [
+                    "target"
+                  ]
+                },
+                {
+                  "required": [
+                    "value"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "type": "string",
+                "pattern": "^(?:[cC][lL][eE][aA][rR][uU][aA][vV]|[cC][lL][eE][aA][rR][rR][tT][vV])$"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "target"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "vertexShader"
+                  ]
+                },
+                {
+                  "required": [
+                    "pixelShader"
+                  ]
+                },
+                {
+                  "required": [
+                    "computeShader"
+                  ]
+                },
+                {
+                  "required": [
+                    "RTV"
+                  ]
+                },
+                {
+                  "required": [
+                    "UAV"
+                  ]
+                },
+                {
+                  "required": [
+                    "outputSize"
+                  ]
+                },
+                {
+                  "required": [
+                    "numthreads"
+                  ]
+                },
+                {
+                  "required": [
+                    "rasterizerDesc"
+                  ]
+                },
+                {
+                  "required": [
+                    "blendDesc"
+                  ]
+                },
+                {
+                  "required": [
+                    "rasterModelTarget"
+                  ]
+                },
+                {
+                  "required": [
+                    "rasterIB"
+                  ]
+                },
+                {
+                  "required": [
+                    "macros"
+                  ]
+                },
+                {
+                  "required": [
+                    "src"
+                  ]
+                },
+                {
+                  "required": [
+                    "dest"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "type": "string",
+                "pattern": "^(?:[mM][iI][pP][mM][aA][pP][gG][eE][nN])$"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "target"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "vertexShader"
+                  ]
+                },
+                {
+                  "required": [
+                    "pixelShader"
+                  ]
+                },
+                {
+                  "required": [
+                    "computeShader"
+                  ]
+                },
+                {
+                  "required": [
+                    "RTV"
+                  ]
+                },
+                {
+                  "required": [
+                    "UAV"
+                  ]
+                },
+                {
+                  "required": [
+                    "outputSize"
+                  ]
+                },
+                {
+                  "required": [
+                    "numthreads"
+                  ]
+                },
+                {
+                  "required": [
+                    "rasterizerDesc"
+                  ]
+                },
+                {
+                  "required": [
+                    "blendDesc"
+                  ]
+                },
+                {
+                  "required": [
+                    "rasterModelTarget"
+                  ]
+                },
+                {
+                  "required": [
+                    "rasterIB"
+                  ]
+                },
+                {
+                  "required": [
+                    "macros"
+                  ]
+                },
+                {
+                  "required": [
+                    "src"
+                  ]
+                },
+                {
+                  "required": [
+                    "dest"
+                  ]
+                },
+                {
+                  "required": [
+                    "value"
                   ]
                 }
               ]
@@ -507,7 +935,14 @@
             "type": "string"
           }
         },
-        "memos": {}
+        "memos": {},
+        "textures3D": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/resource"
+          },
+          "maxItems": 32
+        }
       },
       "required": [
         "category",
