@@ -4,14 +4,18 @@ PMXモデルとVMDモーションをMacで再生・編集し、音声付きの�
 
 **詳しい操作は [一般ユーザーマニュアル（GUIDE.md）](GUIDE.md) を参照してください。**
 
+操作説明は、2026年10月19日に確認した [開発側の公開main（v0.56.49／build453）](https://github.com/opopoposiop/VMDviewer_for_Mac/tree/36206626a7214ad8b8de5bba362189a38c285529) に合わせています。掲載画像は旧版の画面例です。配布アプリの公開状況はReleasesで確認してください。
+
 ![VvfMのメイン画面](images/01-scene3-overview.png)
 
 ## 主な機能
 
-- 複数のPMXモデルとVMDモーションの読み込み・再生
-- ボーン・モーフ・カメラのタイムライン編集、補間曲線、指ポーズ、モーションレイヤー
+- 複数のPMXモデルとVMDモーションの読み込み・再生、編集を引き継ぐPMXの入れ替え
+- ボーン・モーフ・カメラのタイムライン編集、補間曲線、指ポーズ、重み付きモーションレイヤー
+- 独立したカメラ1／2、停止中の自由視点、左右反転・まばたき・目線キーの生成
 - WAV／M4A音声の再生・波形表示、背景・スクリーンへの動画投影
-- Metal／ToonShader LE／ToonShader HQ、DoF、材質・エフェクトの調整
+- Metal／ToonShader LE／ToonShader HQ、DoFの設定キー・画面からの合焦、対応範囲内の`.fxdayo`
+- 背景色・環境光・平行光源のキーフレーム編集
 - 素材と設定をまとめた `.vmdviewer` 保存、VMD保存、H.264／HEVC／ProRes動画出力
 
 ## 動作環境と入手
@@ -38,7 +42,8 @@ MikuMikuDanceとの画像・物理・エフェクトの完全一致は保証し�
 ## ドキュメント・問い合わせ
 
 - [一般ユーザーマニュアル](GUIDE.md)：操作手順、ショートカット、対応範囲、困ったときの確認事項
-- [.fxdayo開発者ガイド](docs/fxdayo/FXDAYO_DEVELOPER_GUIDE.md)：エフェクトの記述、教材、対応条件、検証手順（v0.56.20作業ツリー時点）
+- [技術ガイド](VvfM_Technical_Note.md)：編集・描画・保存の仕組み、形式互換、性能の検証範囲
+- [.fxdayo資料の案内](docs/fxdayo/README.md)：開発者向け解説、教材、対応条件と現行版との差分
 - [LICENSE](LICENSE)／[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)：本体と同梱ライブラリ・画像・エフェクトの利用条件
 - [Issues](https://github.com/opopoposiop/VvfM/issues)：不具合報告。アプリの版、Macの環境、操作手順、エラーを添えてください
 - [開発リポジトリ](https://github.com/opopoposiop/VMDviewer_for_Mac)：実装と変更履歴

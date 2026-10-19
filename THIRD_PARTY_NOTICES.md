@@ -25,7 +25,7 @@ subject to the following restrictions:
 
 The required BulletSoftBody subset (34 headers and 9 C++ files) is from the
 official Bullet `3.25` tag. Original file hashes are recorded in
-[the provenance manifest](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/e2d50ce739684e1c83960646ef5c0135b513603f/reports/2026-09-29-pmx21-conformance-review/BULLET_SOFTBODY_UPSTREAM.json).
+[the provenance manifest](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-09-29-pmx21-conformance-review/BULLET_SOFTBODY_UPSTREAM.json).
 `BulletSoftBody/btSoftBody.cpp` is modified by VMD Viewer: a symmetric
 pseudoinverse handles singular planar-cloth / collinear-rope pose and cluster
 inertia matrices. The change is marked in that file; it is not an unmodified
@@ -40,8 +40,8 @@ contact and motor rules per world/body. Alterations are marked in source.
 The original notices and the numerical protections above remain intact.
 The app still links only the bundled 3.25-based library; this is not a full
 Bullet 2.75 replacement. Original reference provenance and limits are in
-[the comparison](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/e2d50ce739684e1c83960646ef5c0135b513603f/reports/2026-09-30-bullet-275-325-pmx21-comparison/REVIEW.md)
-and [implementation](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/e2d50ce739684e1c83960646ef5c0135b513603f/reports/2026-09-30-bullet-mode-v0561/IMPLEMENTATION.md).
+[the comparison](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-09-30-bullet-275-325-pmx21-comparison/REVIEW.md)
+and [implementation](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-09-30-bullet-mode-v0561/IMPLEMENTATION.md).
 
 ## ZIPFoundation 0.9.20
 
@@ -117,3 +117,34 @@ THE SOFTWARE.
 - 原readmeには利用・改造・再配布自由、連絡不要との記載がある。原文（CP932）を `Sources/VMDViewer/Resources/BuiltinEffects/Rhinestone/readme.txt` に変更せず保持する。
 - source 2ファイル、PNG 20ファイル（Supplementsを含む参考素材）、原readmeを同梱。配布appでは `VMDViewerForMac_VMDViewer.bundle/BuiltinEffects/Rhinestone/` に収容し、共通の内容manifestで識別する。
 - Viewer版は座標・微分・Toon・影を既存Metal描画へ接続した近似。発光用の計算はViewerのHDR emission／Bloomへ接続し、MMEやAutoLuminous全体の互換を表明するものではない。原ファイルとViewer側の実装を区別する。
+
+## Generic `.fxdayo` source program toolchain (v0.56.16)
+
+The app bundles project-built compiler tools in `Contents/Resources/FxDayoToolchain`.
+They do not require Homebrew on the user's Mac. Exact revisions and file hashes
+are recorded in the bundled `manifest.json`; upstream notices are preserved in
+its `licenses` directory.
+
+- [Google Jsonnet](https://github.com/google/jsonnet), v0.21.0 / `bbb38f1020be1f5aed560928fb839b2c448cefb4`: Apache-2.0, with the embedded md5, nlohmann/json, rapidyaml, c4core and fast_float notices. The amalgamated rapidyaml header is retained verbatim to preserve its embedded dependency notices.
+- [Microsoft DirectXShaderCompiler](https://github.com/microsoft/DirectXShaderCompiler), v1.9.2609 / `01b62ad47db7dee3dd33f90e7339cf9e860b3f93`: upstream LLVM NCSA license and third-party notices, including the HLSL headers under Apache-2.0 with LLVM Exceptions, including its pinned DirectX-Headers, SPIRV-Headers and SPIRV-Tools dependencies.
+- [Khronos SPIRV-Cross](https://github.com/KhronosGroup/SPIRV-Cross), `aa217aeb6c9f0ace7a0ab233b28807edf45eb165`: Apache-2.0.
+- [MikuMikuDayo](https://github.com/pennennennennennenem/MikuMikuDayo) 1.30 SDK: six original HLSL headers under `Sources/VMDViewer/Resources/Dayo130SDK`, byte-preserving copies from the 1.30 distribution. Copyright (c) 2024 pennennennennennenem, MIT. The original license is `LICENSE.txt` in that directory, with header hashes in `manifest.json`. The distribution's corresponding upstream commit is unverified.
+
+`scripts/build-fxdayo-toolchain.sh` builds the pinned tools locally with a macOS 14.0 deployment target; `scripts/stage-fxdayo-toolchain.py` stages their binaries and notices. The MikuMikuDayo application and the external MotionBlur PMX/effect test asset are not bundled with VMD Viewer.
+
+## msToonCoordinator v2.1 shadow-color equations
+
+The optional ToonShader HQ Type2 shadow-color mode adapts the HSY conversion and
+automatic shade-color equations from ShadeColor/ShadeColor_common.fxsub in
+msToonCoordinator v2.1 by ましまし (@Mashimashi_mmd).
+The reference header credits full.fx v1.4 by 舞力介入P as its base.
+
+- Author's explanation: https://note.com/mashimashi_note/n/n2c2144638054
+- Reference readme terms: 「エフェクト自体の使用・改変・再配布は自己責任で実行してください。」
+- Modified implementation: Sources/VMDViewer/Renderer/ToonShadowColorShader.swift
+- [Reference hashes and implementation scope](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-08-toon-shadow-color/IMPLEMENTATION.md)
+
+This is a modified Metal implementation of the standard automatic shadow-color
+transform, with guarded achromatic conversion and HQ color-space/HDR handling.
+It does not bundle or reproduce the complete original MME post-effect,
+ExcellentShadow, edge chroma/SSS, controllers, or normal-map workflow.
