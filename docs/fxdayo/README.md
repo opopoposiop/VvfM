@@ -28,6 +28,6 @@ MikuMikuDayo 1.30の原文と、VMD Viewerの専用adapter・限定原文runtime
 
 3組の教材の `.fxdayo`／PMXと再生成スクリプト、初稿 `SOURCE_SNAPSHOT.json` は、公開mainと同一のbytesを保持しています。snapshotは2026-10-06の初稿の調査対象を示す履歴で、今回の取込コミットへ書き換えていません。
 
-従来収録した[v0.56.20の実装・レビュー記録](../../reports/2026-10-07-fxdayo-interface-v05620/IMPLEMENTATION.md)と、そのRelease・GUI記録は当時の資料として残しています。初回取込は2026-10-07、基準HEAD `16e20241e84755c78cb180b3e1f190dc7c73bfaa` の未コミット変更を含む作業ツリー由来でした。記録中の未公開・未検証という説明や、転載していない `evidence/` の名前を、現行版の結果へ読み替えないでください。
+v0.56.20の実装・レビュー・Release・GUI記録は、[開発元の当時の資料](https://github.com/opopoposiop/VMDviewer_for_Mac/tree/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-07-fxdayo-interface-v05620)を参照してください。初回取込は2026-10-07、基準HEAD `16e20241e84755c78cb180b3e1f190dc7c73bfaa` の未コミット変更を含む作業ツリー由来でした。記録中の未公開・未検証という説明や、転載していない `evidence/` の名前を、現行版の結果へ読み替えないでください。
 
 検証件数・GUI・性能の結果は開発元の記録を参照したもので、今回の文書更新ではアプリのビルド・テスト・実機試験を再実施していません。ライセンスと同梱toolchainの通知は[第三者ライセンス](../../THIRD_PARTY_NOTICES.md)を確認してください。
