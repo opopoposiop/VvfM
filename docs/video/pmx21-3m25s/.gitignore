@@ -1,0 +1,8 @@
+assets/
+composition/assets/
+composition/.hyperframes/
+composition/snapshots/
+final-render.mp4
+*.mp4
+checks/intermediates/
+__pycache__/

@@ -1,0 +1,87 @@
+[
+  {
+    "file": "composition/assets/01-hero.png",
+    "bytes": 2678155,
+    "sha256": "ebfa70894b25621e2046bef331bc8d3e2720aed0de70b92c3c0ba02e065f2f33"
+  },
+  {
+    "file": "composition/assets/01-opening.jpg",
+    "bytes": 1142787,
+    "sha256": "1fd23d4481c674d5399743f13d51897607d3c4dfde3ed1a6e68787f86909d87f"
+  },
+  {
+    "file": "composition/assets/02-overview.png",
+    "bytes": 5038641,
+    "sha256": "cbba05367b38db82081abce84b7d3c19e40446b30edbd0869a0ac13473afeb69"
+  },
+  {
+    "file": "composition/assets/03-bone-gizmo.png",
+    "bytes": 5037016,
+    "sha256": "aca85f8be0a628730c521be632deeffd7ccad5f0e27c343ab36bcfc6661e9fc2"
+  },
+  {
+    "file": "composition/assets/04-morph-smile.png",
+    "bytes": 5013240,
+    "sha256": "fb8f90a09d37d89cce0608d1f6f23a0cf3d78f183bd1a8b8df6aeffc3af2169f"
+  },
+  {
+    "file": "composition/assets/05-camera-timeline.png",
+    "bytes": 5308845,
+    "sha256": "3766b917c9c0792f935a14bd9c46f42e1371c8c77ebc30d6555d03592b3eb9bc"
+  },
+  {
+    "file": "composition/assets/06-closeup-dof-on.png",
+    "bytes": 4065410,
+    "sha256": "7eb72f86af15d94f22c3fd1c3bf605ee7fbf717d8a8f0c445150027cecc19363"
+  },
+  {
+    "file": "composition/assets/06-morph-timeline.jpg",
+    "bytes": 1230255,
+    "sha256": "0ec596d918775078585a697b08d524f75ac01e4724543c11615ad4b4bfbcd4e0"
+  },
+  {
+    "file": "composition/assets/07-dof-settings.png",
+    "bytes": 1227857,
+    "sha256": "d0e5e8e77a60dee82b44226b957da0a821362aa39889792990df99634b8e0263"
+  },
+  {
+    "file": "composition/assets/13-ending.jpg",
+    "bytes": 1220492,
+    "sha256": "eef40cd724d1d50fcdb0e5fbd4f238e21b0d8cb9a62c53e81bd9fa58d8e28d0a"
+  },
+  {
+    "file": "composition/assets/demo01.mp4",
+    "bytes": 142968867,
+    "sha256": "9e9f2d336457783544adb54bc2e59e0c2edde70cf0e3ccee1fbd6ce06022ae50"
+  },
+  {
+    "file": "composition/assets/demo02.mp4",
+    "bytes": 135733721,
+    "sha256": "ce536334b5057bc20f2ac62c417c43c90dbdf7c2d71132499cd4fab32c35bc08"
+  },
+  {
+    "file": "composition/assets/gsap.min.js",
+    "bytes": 72925,
+    "sha256": "c3a03a345e45bc954cd48c43f11572891f5dca7a5d99348d5bc14753a728618c"
+  },
+  {
+    "file": "composition/assets/pmx21-qdef-source.mov",
+    "bytes": 6614997,
+    "sha256": "a50ceb6593f48c3dbad67f3d8ed977ebd1c304c542be750b428371cab639c747"
+  },
+  {
+    "file": "composition/assets/pmx21-softbody-source.mov",
+    "bytes": 6895483,
+    "sha256": "8889074bf9036351c61b5096d480082103efe17148b34132a8d8d00cab1a52bf"
+  },
+  {
+    "file": "assets/narration-198s-reference.wav",
+    "bytes": 19008044,
+    "sha256": "417d0711fb3814738b78c2e541485106ba77e0843c6329e2989240c079add831"
+  },
+  {
+    "file": "assets/jhenny-pmx21-original.wav",
+    "bytes": 1439530,
+    "sha256": "17e3e910393df71e9a8c4badfdd9449a2564fc49723309c3570a006e6b9ad3b3"
+  }
+]

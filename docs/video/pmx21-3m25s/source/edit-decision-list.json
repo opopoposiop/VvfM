@@ -1,0 +1,455 @@
+[
+  {
+    "scene": 1,
+    "start": 0,
+    "end": 3.8,
+    "source": "01-opening.jpg",
+    "source_start": null,
+    "crop": null,
+    "playback_rate": null
+  },
+  {
+    "scene": 1,
+    "start": 3.4,
+    "end": 12,
+    "source": "demo01.mp4",
+    "source_start": 0,
+    "crop": [
+      85,
+      24,
+      1110,
+      696
+    ],
+    "playback_rate": 1
+  },
+  {
+    "scene": 2,
+    "start": 12,
+    "end": 17.2,
+    "source": "demo01.mp4",
+    "source_start": 12,
+    "crop": [
+      85,
+      24,
+      1110,
+      696
+    ],
+    "playback_rate": 1
+  },
+  {
+    "scene": 2,
+    "start": 16.8,
+    "end": 21.7,
+    "source": "02-overview.png",
+    "source_start": null,
+    "crop": null,
+    "playback_rate": null
+  },
+  {
+    "scene": 2,
+    "start": 21.3,
+    "end": 26,
+    "source": "demo02.mp4",
+    "source_start": 10,
+    "crop": [
+      85,
+      24,
+      1110,
+      696
+    ],
+    "playback_rate": 1
+  },
+  {
+    "scene": 3,
+    "start": 26,
+    "end": 32.3,
+    "source": "03-bone-gizmo.png",
+    "source_start": null,
+    "crop": [
+      1900,
+      210,
+      850,
+      640
+    ],
+    "playback_rate": null
+  },
+  {
+    "scene": 3,
+    "start": 31.9,
+    "end": 38,
+    "source": "04-morph-smile.png",
+    "source_start": null,
+    "crop": null,
+    "playback_rate": null
+  },
+  {
+    "scene": 4,
+    "start": 38,
+    "end": 44.3,
+    "source": "02-overview.png",
+    "source_start": null,
+    "crop": null,
+    "playback_rate": null
+  },
+  {
+    "scene": 4,
+    "start": 43.9,
+    "end": 54,
+    "source": "demo01.mp4",
+    "source_start": 20,
+    "crop": [
+      85,
+      24,
+      1110,
+      696
+    ],
+    "playback_rate": 1
+  },
+  {
+    "scene": 5,
+    "start": 54,
+    "end": 60.5,
+    "source": "03-bone-gizmo.png",
+    "source_start": null,
+    "crop": [
+      1980,
+      245,
+      760,
+      570
+    ],
+    "playback_rate": null
+  },
+  {
+    "scene": 5,
+    "start": 60.1,
+    "end": 66.9,
+    "source": "03-bone-gizmo.png",
+    "source_start": null,
+    "crop": [
+      0,
+      580,
+      480,
+      800
+    ],
+    "playback_rate": null
+  },
+  {
+    "scene": 5,
+    "start": 66.5,
+    "end": 71,
+    "source": "demo02.mp4",
+    "source_start": 25,
+    "crop": [
+      85,
+      24,
+      1110,
+      696
+    ],
+    "playback_rate": 1
+  },
+  {
+    "scene": 6,
+    "start": 71,
+    "end": 76.1,
+    "source": "04-morph-smile.png",
+    "source_start": null,
+    "crop": null,
+    "playback_rate": null
+  },
+  {
+    "scene": 6,
+    "start": 75.7,
+    "end": 81.3,
+    "source": "06-morph-timeline.jpg",
+    "source_start": null,
+    "crop": [
+      1400,
+      1250,
+      1624,
+      650
+    ],
+    "playback_rate": null
+  },
+  {
+    "scene": 6,
+    "start": 80.9,
+    "end": 85.0,
+    "source": "05-camera-timeline.png",
+    "source_start": null,
+    "crop": null,
+    "playback_rate": null
+  },
+  {
+    "scene": 6,
+    "start": 84.6,
+    "end": 86,
+    "source": "demo02.mp4",
+    "source_start": 40,
+    "crop": [
+      85,
+      24,
+      1110,
+      696
+    ],
+    "playback_rate": 1
+  },
+  {
+    "scene": 7,
+    "start": 86,
+    "end": 91.4,
+    "source": "demo01.mp4",
+    "source_start": 55,
+    "crop": [
+      85,
+      24,
+      1110,
+      696
+    ],
+    "playback_rate": 1
+  },
+  {
+    "scene": 7,
+    "start": 91.0,
+    "end": 96.3,
+    "source": "02-overview.png",
+    "source_start": null,
+    "crop": null,
+    "playback_rate": null
+  },
+  {
+    "scene": 7,
+    "start": 95.9,
+    "end": 99,
+    "source": "demo02.mp4",
+    "source_start": 60,
+    "crop": [
+      379,
+      58,
+      815,
+      413
+    ],
+    "playback_rate": 1
+  },
+  {
+    "scene": 8,
+    "start": 99,
+    "end": 106.2,
+    "source": "06-closeup-dof-on.png",
+    "source_start": null,
+    "crop": null,
+    "playback_rate": null
+  },
+  {
+    "scene": 8,
+    "start": 105.8,
+    "end": 112.2,
+    "source": "demo02.mp4",
+    "source_start": 45,
+    "crop": [
+      379,
+      58,
+      815,
+      413
+    ],
+    "playback_rate": 1
+  },
+  {
+    "scene": 8,
+    "start": 111.8,
+    "end": 117,
+    "source": "demo01.mp4",
+    "source_start": 75,
+    "crop": [
+      379,
+      58,
+      815,
+      413
+    ],
+    "playback_rate": 1
+  },
+  {
+    "scene": 9,
+    "start": 117,
+    "end": 122.2,
+    "source": "06-closeup-dof-on.png",
+    "source_start": null,
+    "crop": null,
+    "playback_rate": null
+  },
+  {
+    "scene": 9,
+    "start": 121.8,
+    "end": 128.4,
+    "source": "07-dof-settings.png",
+    "source_start": null,
+    "crop": [
+      110,
+      420,
+      950,
+      600
+    ],
+    "playback_rate": null
+  },
+  {
+    "scene": 9,
+    "start": 128.0,
+    "end": 132,
+    "source": "06-closeup-dof-on.png",
+    "source_start": null,
+    "crop": null,
+    "playback_rate": null
+  },
+  {
+    "scene": 10,
+    "start": 132,
+    "end": 138.7,
+    "source": "demo01.mp4",
+    "source_start": 30,
+    "crop": [
+      85,
+      24,
+      1110,
+      696
+    ],
+    "playback_rate": 1
+  },
+  {
+    "scene": 10,
+    "start": 138.3,
+    "end": 145,
+    "source": "demo02.mp4",
+    "source_start": 65,
+    "crop": [
+      379,
+      58,
+      815,
+      413
+    ],
+    "playback_rate": 1
+  },
+  {
+    "scene": 11,
+    "start": 145,
+    "end": 150.3,
+    "source": "demo02.mp4",
+    "source_start": 10,
+    "crop": [
+      85,
+      24,
+      1110,
+      696
+    ],
+    "playback_rate": 1
+  },
+  {
+    "scene": 11,
+    "start": 149.9,
+    "end": 155.7,
+    "source": "demo02.mp4",
+    "source_start": 15,
+    "crop": [
+      85,
+      24,
+      1110,
+      696
+    ],
+    "playback_rate": 1
+  },
+  {
+    "scene": 11,
+    "start": 155.3,
+    "end": 160,
+    "source": "02-overview.png",
+    "source_start": null,
+    "crop": null,
+    "playback_rate": null
+  },
+  {
+    "scene": 12,
+    "start": 160,
+    "end": 168,
+    "source": "pmx21-qdef-source.mov",
+    "source_start": 0,
+    "crop": [
+      1160,
+      340,
+      1370,
+      880
+    ],
+    "playback_rate": 1
+  },
+  {
+    "scene": 13,
+    "start": 168,
+    "end": 178,
+    "source": "pmx21-softbody-source.mov",
+    "source_start": 0.15,
+    "crop": [
+      1100,
+      420,
+      1600,
+      850
+    ],
+    "playback_rate": 1
+  },
+  {
+    "scene": 14,
+    "start": 178,
+    "end": 183.5,
+    "source": "demo02.mp4",
+    "source_start": 80,
+    "crop": [
+      379,
+      58,
+      815,
+      413
+    ],
+    "playback_rate": 1
+  },
+  {
+    "scene": 14,
+    "start": 183.1,
+    "end": 190.9,
+    "source": "01-hero.png",
+    "source_start": null,
+    "crop": null,
+    "playback_rate": null
+  },
+  {
+    "scene": 14,
+    "start": 190.5,
+    "end": 196,
+    "source": "demo01.mp4",
+    "source_start": 85,
+    "crop": [
+      379,
+      58,
+      815,
+      413
+    ],
+    "playback_rate": 1
+  },
+  {
+    "scene": 15,
+    "start": 196,
+    "end": 200.4,
+    "source": "13-ending.jpg",
+    "source_start": null,
+    "crop": null,
+    "playback_rate": null
+  },
+  {
+    "scene": 15,
+    "start": 200.0,
+    "end": 205,
+    "source": "demo02.mp4",
+    "source_start": 88,
+    "crop": [
+      85,
+      24,
+      1110,
+      696
+    ],
+    "playback_rate": 1
+  }
+]
