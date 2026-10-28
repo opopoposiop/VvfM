@@ -1,0 +1,47 @@
+[
+  {
+    "result": "pass",
+    "file": "openai-coral-japanese.mp3",
+    "model": "gpt-4o-mini-tts-2025-12-15",
+    "voice": "coral",
+    "duration_seconds": 22.008,
+    "codec": "mp3",
+    "sample_rate": 24000,
+    "channels": 1,
+    "bytes": 352128,
+    "sha256": "cb4ae85f14a29f91b8a10adaaa51251c2d3b07ab92769ec6d2f13aa2464599b9",
+    "full_audio_decode": "pass",
+    "same_text_and_delivery_settings_as_cedar_and_marin": true,
+    "ai_generated": true
+  },
+  {
+    "result": "pass",
+    "file": "openai-nova-japanese.mp3",
+    "model": "gpt-4o-mini-tts-2025-12-15",
+    "voice": "nova",
+    "duration_seconds": 17.856,
+    "codec": "mp3",
+    "sample_rate": 24000,
+    "channels": 1,
+    "bytes": 285696,
+    "sha256": "4b19af18d090e3564a340050f630127ef46f6b78f97ad20ceb025e9cee9dab49",
+    "full_audio_decode": "pass",
+    "same_text_and_delivery_settings_as_cedar_and_marin": true,
+    "ai_generated": true
+  },
+  {
+    "result": "pass",
+    "file": "openai-shimmer-japanese.mp3",
+    "model": "gpt-4o-mini-tts-2025-12-15",
+    "voice": "shimmer",
+    "duration_seconds": 20.664,
+    "codec": "mp3",
+    "sample_rate": 24000,
+    "channels": 1,
+    "bytes": 330624,
+    "sha256": "c29d9c919c10ddea4efe337d8ac6f80cc984fcbe70a1720a6c5a8d2a6f79ecde",
+    "full_audio_decode": "pass",
+    "same_text_and_delivery_settings_as_cedar_and_marin": true,
+    "ai_generated": true
+  }
+]

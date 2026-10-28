@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "retrieved_date": "2026-10-25",
+  "files": [
+    {
+      "path": "Bullet/Discregrid/LICENSE",
+      "source_url": "https://github.com/InteractiveComputerGraphics/Discregrid/blob/f16a29afebf7a7f43139d5832bbfc7124c5d98db/LICENSE",
+      "source_git_blob_sha": "960bc4bc6995afdbc62260949f91fa48d94fcdaf",
+      "license": "MIT",
+      "encoding": "utf-8",
+      "byte_preserving": true,
+      "sha256": "dd7e4401f6af3e9f34497b97ad1e594d6ea23156b7db4ad31b2667c68c7b55a5",
+      "covered_source": [
+        "Sources/MMDBulletBridge/Bullet/BulletCollision/CollisionShapes/btMiniSDF.cpp"
+      ],
+      "distribution_choice": "Original permissive license option; source notices remain intact."
+    },
+    {
+      "path": "Bullet/ODE/LICENSE-BSD.TXT",
+      "source_url": "https://github.com/odedevs/ode/blob/81891d9080adf6b198c237993545e96df2f84c5a/LICENSE-BSD.TXT",
+      "source_git_blob_sha": "112f6a27fce365974d6841e281ce94dcadec1026",
+      "license": "BSD-3-Clause",
+      "encoding": "utf-8",
+      "byte_preserving": true,
+      "sha256": "fe012d262cf04a701cc856e2d12780261a60d7b17f4f7cb9cd589ff65b3f4f32",
+      "covered_source": [
+        "Sources/MMDBulletBridge/Bullet/BulletDynamics/MLCPSolvers/btDantzigLCP.cpp",
+        "Sources/MMDBulletBridge/Bullet/BulletDynamics/MLCPSolvers/btDantzigLCP.h"
+      ],
+      "distribution_choice": "Original permissive license option; source notices remain intact."
+    },
+    {
+      "path": "Bullet/libccd/BSD-LICENSE",
+      "source_url": "https://github.com/danfis/libccd/blob/960b3dd3cf25e45117157f49b147c97c65ab9f9b/BSD-LICENSE",
+      "source_git_blob_sha": "1cb2dc53db0a2e70017314ee88fd59eb375920c5",
+      "license": "BSD-3-Clause",
+      "encoding": "utf-8",
+      "byte_preserving": true,
+      "sha256": "b175a981bfccf7e1e6c2f6fbda3fde0827aaa51808a983b10c8c7e6183c44a11",
+      "covered_source": [
+        "Sources/MMDBulletBridge/Bullet/BulletCollision/NarrowPhaseCollision/btMprPenetration.h"
+      ],
+      "distribution_choice": "Original permissive license option; source notices remain intact."
+    },
+    {
+      "path": "Bullet/GIMPACT/GIMPACT-LICENSE-BSD.TXT",
+      "source_url": "https://github.com/odedevs/ode/blob/556fcb0693158de21c6eacac10aa8d090717ca12/GIMPACT/GIMPACT-LICENSE-BSD.TXT",
+      "source_git_blob_sha": "95545aac2c42a43f22658ab4f6cf5728d51a261b",
+      "license": "BSD-3-Clause",
+      "encoding": "windows-1252",
+      "byte_preserving": true,
+      "sha256": "4755840c39ea397d9211e766eefffd522d8b60855e3988bcae9edb5e456f2b98",
+      "covered_source": [
+        "Sources/MMDBulletBridge/Bullet/BulletCollision/Gimpact/gim_*"
+      ],
+      "distribution_choice": "Original permissive license option; source notices remain intact."
+    },
+    {
+      "path": "Bullet/Real-Time-Collision-Detection.txt",
+      "sha256": "b82a7344c9ea8f4f8e358005657f418aec5799b217ba09a20a3fbd7c1b012709",
+      "source_url": "https://github.com/bulletphysics/bullet3/blob/2c204c49e56ed15ec5fcfa71d199ab6d6570b3f5/src/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.cpp",
+      "covered_source": [
+        "Sources/MMDBulletBridge/Bullet/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.cpp"
+      ],
+      "license": "Attribution statement from vendored source",
+      "byte_preserving": false,
+      "encoding": "utf-8",
+      "transformation": "Excerpt of the Elsevier permission and required credit; leading comment indentation removed."
+    },
+    {
+      "path": "MMDayo_MobFes/LICENSE",
+      "source_url": "https://github.com/opopoposiop/MMDayo_MobFes/blob/main/LICENSE",
+      "source_git_blob_sha": "e9e0148cfa4d4e807d5188316de25b0432c3379b",
+      "retrieved_date": "2026-10-28",
+      "license": "MIT",
+      "encoding": "utf-8",
+      "byte_preserving": true,
+      "sha256": "18dd067501c47b445934f2f299217bfbb66ded1b75169b85073ec31041e34e6f",
+      "notice_scope": "Upstream license reference for MMDayo_MobFes; no PMX/effect package is newly bundled and no complete secondary-source audit is asserted.",
+      "distribution_choice": "Preserve the upstream MIT permission and copyright notice. The supplemental VMD Viewer EULA does not restrict it."
+    }
+  ]
+}
