@@ -1,0 +1,100 @@
+[
+  {
+    "file": "VvfM_紹介動画シナリオ_3分18秒.md",
+    "source_path": "docs/video/VvfM_紹介動画シナリオ_3分18秒.md",
+    "bytes": 32415,
+    "sha256": "ef51de97ed7d521a73f8501ac121545222467a97ba7414ede4b98bee2c24cea3",
+    "use": "scenario"
+  },
+  {
+    "file": "01-hero.png",
+    "source_path": "docs/video/images/crystal-hall/01-hero.png",
+    "bytes": 2678155,
+    "sha256": "ebfa70894b25621e2046bef331bc8d3e2720aed0de70b92c3c0ba02e065f2f33",
+    "use": "visual_asset"
+  },
+  {
+    "file": "02-overview.png",
+    "source_path": "docs/video/images/crystal-hall/02-overview.png",
+    "bytes": 5038641,
+    "sha256": "cbba05367b38db82081abce84b7d3c19e40446b30edbd0869a0ac13473afeb69",
+    "use": "visual_asset"
+  },
+  {
+    "file": "03-bone-gizmo.png",
+    "source_path": "docs/video/images/crystal-hall/03-bone-gizmo.png",
+    "bytes": 5037016,
+    "sha256": "aca85f8be0a628730c521be632deeffd7ccad5f0e27c343ab36bcfc6661e9fc2",
+    "use": "visual_asset"
+  },
+  {
+    "file": "04-morph-smile.png",
+    "source_path": "docs/video/images/crystal-hall/04-morph-smile.png",
+    "bytes": 5013240,
+    "sha256": "fb8f90a09d37d89cce0608d1f6f23a0cf3d78f183bd1a8b8df6aeffc3af2169f",
+    "use": "visual_asset"
+  },
+  {
+    "file": "05-camera-timeline.png",
+    "source_path": "docs/video/images/crystal-hall/05-camera-timeline.png",
+    "bytes": 5308845,
+    "sha256": "3766b917c9c0792f935a14bd9c46f42e1371c8c77ebc30d6555d03592b3eb9bc",
+    "use": "visual_asset"
+  },
+  {
+    "file": "06-closeup-dof-on.png",
+    "source_path": "docs/video/images/crystal-hall/06-closeup-dof-on.png",
+    "bytes": 4065410,
+    "sha256": "7eb72f86af15d94f22c3fd1c3bf605ee7fbf717d8a8f0c445150027cecc19363",
+    "use": "visual_asset"
+  },
+  {
+    "file": "07-dof-settings.png",
+    "source_path": "docs/video/images/crystal-hall/07-dof-settings.png",
+    "bytes": 1227857,
+    "sha256": "d0e5e8e77a60dee82b44226b957da0a821362aa39889792990df99634b8e0263",
+    "use": "visual_asset"
+  },
+  {
+    "file": "01-opening.jpg",
+    "source_path": "docs/video/images/crystal-hall/01-opening.jpg",
+    "bytes": 1142787,
+    "sha256": "1fd23d4481c674d5399743f13d51897607d3c4dfde3ed1a6e68787f86909d87f",
+    "use": "visual_asset"
+  },
+  {
+    "file": "06-morph-timeline.jpg",
+    "source_path": "docs/video/images/crystal-hall/06-morph-timeline.jpg",
+    "bytes": 1230255,
+    "sha256": "0ec596d918775078585a697b08d524f75ac01e4724543c11615ad4b4bfbcd4e0",
+    "use": "visual_asset"
+  },
+  {
+    "file": "13-ending.jpg",
+    "source_path": "docs/video/images/crystal-hall/13-ending.jpg",
+    "bytes": 1220492,
+    "sha256": "eef40cd724d1d50fcdb0e5fbd4f238e21b0d8cb9a62c53e81bd9fa58d8e28d0a",
+    "use": "visual_asset"
+  },
+  {
+    "file": "demo01.mp4",
+    "source_path": "/Users/minmin/Downloads/demo01.mp4",
+    "bytes": 142968867,
+    "sha256": "9e9f2d336457783544adb54bc2e59e0c2edde70cf0e3ccee1fbd6ce06022ae50",
+    "use": "visual_asset"
+  },
+  {
+    "file": "demo02.mp4",
+    "source_path": "/Users/minmin/Downloads/demo02.mp4",
+    "bytes": 135733721,
+    "sha256": "ce536334b5057bc20f2ac62c417c43c90dbdf7c2d71132499cd4fab32c35bc08",
+    "use": "visual_asset"
+  },
+  {
+    "file": "いつものMacで、気軽にMMD体験.mp4",
+    "source_path": "/Users/minmin/Downloads/いつものMacで、気軽にMMD体験.mp4",
+    "bytes": 40777547,
+    "sha256": "0ed676990387af164c30c34e22c38ad46390581f38d86bdb706473cc92a9768a",
+    "use": "design_reference_only"
+  }
+]

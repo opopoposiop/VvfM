@@ -1,0 +1,37 @@
+{
+  "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-Base-4bit",
+  "inference": "local",
+  "audio_uploaded": false,
+  "exact_voice_match_verified": false,
+  "generations": [
+    {
+      "scene": 5,
+      "text": "腕の角度を少し変えて、お気に入りのポーズに。",
+      "file": "assets/natural-arm-raw.wav",
+      "elapsed_seconds": 1.2767019271850586,
+      "bytes": 161324,
+      "sha256": "fb2c2537d6ed0d70506312dd797b8c367a6e55ea7957523c94b6ab6b555384fe"
+    },
+    {
+      "scene": 8,
+      "text": "トゥーンシェーダー、エイチキューでは、輪郭線や光を調整できます。",
+      "file": "assets/natural-toon-raw.wav",
+      "elapsed_seconds": 1.6636857986450195,
+      "bytes": 226604,
+      "sha256": "bb817c34b57eb679c4a76b8204562b0a5f7f7cbd2a04461b42f417ef8e920ad6"
+    },
+    {
+      "scene": 8,
+      "text": "リムライトで輪郭に光を、ブルームで輝きを。",
+      "file": "assets/natural-rim-raw.wav",
+      "elapsed_seconds": 1.4209811687469482,
+      "bytes": 192044,
+      "sha256": "dbae932e3914f2b2c1b6de05ad55255f3056a48b6d7579732cc08f3736570ff0"
+    }
+  ],
+  "package_versions": {
+    "mlx-audio": "0.6.1",
+    "mlx": "0.32.4",
+    "transformers": "5.20.2"
+  }
+}

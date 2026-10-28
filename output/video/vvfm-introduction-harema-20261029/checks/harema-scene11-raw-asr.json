@@ -1,0 +1,374 @@
+{
+  "engine": "local mlx-whisper",
+  "model": "openai/whisper-medium converted locally to MLX",
+  "audio_uploaded": false,
+  "source": "assets/harema-scene11-raw.wav",
+  "sha256": "79c8e22f22e6e2f3595c2034668abdaa7cb471373d0be6f14913ba1867dda90a",
+  "transcript": {
+    "text": "Boneや物理の計算とメタルの描画がVMDのリアルタイム再生を支えます。PMX2.1のモデルにも対応しています。",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 7.0,
+        "text": "Boneや物理の計算とメタルの描画がVMDのリアルタイム再生を支えます。",
+        "tokens": [
+          50364,
+          33,
+          546,
+          7355,
+          23516,
+          13876,
+          2972,
+          30114,
+          19497,
+          3193,
+          21647,
+          12144,
+          9405,
+          2972,
+          11673,
+          237,
+          27126,
+          5142,
+          53,
+          44,
+          35,
+          2972,
+          12376,
+          12817,
+          9405,
+          12144,
+          8040,
+          32026,
+          8623,
+          8244,
+          5998,
+          24400,
+          6474,
+          5368,
+          1543,
+          50714
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.1395883219582694,
+        "compression_ratio": 1.0518518518518518,
+        "no_speech_prob": 0.0182022787630558,
+        "words": [
+          {
+            "word": "B",
+            "start": 0.0,
+            "end": 0.62,
+            "probability": 0.37646484375
+          },
+          {
+            "word": "one",
+            "start": 0.62,
+            "end": 0.74,
+            "probability": 0.51220703125
+          },
+          {
+            "word": "や",
+            "start": 0.74,
+            "end": 0.96,
+            "probability": 0.9619140625
+          },
+          {
+            "word": "物",
+            "start": 0.96,
+            "end": 1.28,
+            "probability": 0.97607421875
+          },
+          {
+            "word": "理",
+            "start": 1.28,
+            "end": 1.42,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "の",
+            "start": 1.42,
+            "end": 1.6,
+            "probability": 0.99658203125
+          },
+          {
+            "word": "計",
+            "start": 1.6,
+            "end": 1.8,
+            "probability": 0.9931640625
+          },
+          {
+            "word": "算",
+            "start": 1.8,
+            "end": 1.9,
+            "probability": 1.0
+          },
+          {
+            "word": "と",
+            "start": 1.9,
+            "end": 2.34,
+            "probability": 0.98876953125
+          },
+          {
+            "word": "メ",
+            "start": 2.34,
+            "end": 2.6,
+            "probability": 0.6435546875
+          },
+          {
+            "word": "タ",
+            "start": 2.6,
+            "end": 2.7,
+            "probability": 0.99853515625
+          },
+          {
+            "word": "ル",
+            "start": 2.7,
+            "end": 2.8,
+            "probability": 1.0
+          },
+          {
+            "word": "の",
+            "start": 2.8,
+            "end": 2.98,
+            "probability": 0.990234375
+          },
+          {
+            "word": "描",
+            "start": 2.98,
+            "end": 3.16,
+            "probability": 0.9873046875
+          },
+          {
+            "word": "画",
+            "start": 3.16,
+            "end": 3.28,
+            "probability": 0.99755859375
+          },
+          {
+            "word": "が",
+            "start": 3.28,
+            "end": 3.86,
+            "probability": 0.958984375
+          },
+          {
+            "word": "V",
+            "start": 3.86,
+            "end": 4.24,
+            "probability": 0.626953125
+          },
+          {
+            "word": "M",
+            "start": 4.24,
+            "end": 4.48,
+            "probability": 0.9697265625
+          },
+          {
+            "word": "D",
+            "start": 4.48,
+            "end": 4.64,
+            "probability": 0.98583984375
+          },
+          {
+            "word": "の",
+            "start": 4.64,
+            "end": 4.96,
+            "probability": 0.98681640625
+          },
+          {
+            "word": "リ",
+            "start": 4.96,
+            "end": 5.14,
+            "probability": 0.544921875
+          },
+          {
+            "word": "ア",
+            "start": 5.14,
+            "end": 5.26,
+            "probability": 0.9892578125
+          },
+          {
+            "word": "ル",
+            "start": 5.26,
+            "end": 5.36,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "タ",
+            "start": 5.36,
+            "end": 5.5,
+            "probability": 0.97705078125
+          },
+          {
+            "word": "イ",
+            "start": 5.5,
+            "end": 5.52,
+            "probability": 1.0
+          },
+          {
+            "word": "ム",
+            "start": 5.52,
+            "end": 5.68,
+            "probability": 0.99462890625
+          },
+          {
+            "word": "再",
+            "start": 5.68,
+            "end": 5.96,
+            "probability": 0.9736328125
+          },
+          {
+            "word": "生",
+            "start": 5.96,
+            "end": 6.02,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "を",
+            "start": 6.02,
+            "end": 6.26,
+            "probability": 0.99560546875
+          },
+          {
+            "word": "支",
+            "start": 6.26,
+            "end": 6.52,
+            "probability": 0.9951171875
+          },
+          {
+            "word": "え",
+            "start": 6.52,
+            "end": 6.68,
+            "probability": 0.99609375
+          },
+          {
+            "word": "ます。",
+            "start": 6.68,
+            "end": 7.0,
+            "probability": 0.99169921875
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "seek": 0,
+        "start": 8.139999999999999,
+        "end": 12.06,
+        "text": "PMX2.1のモデルにも対応しています。",
+        "tokens": [
+          50714,
+          18819,
+          55,
+          17,
+          13,
+          16,
+          2972,
+          29183,
+          31327,
+          9405,
+          4108,
+          4801,
+          35252,
+          4263,
+          250,
+          8822,
+          11267,
+          1543,
+          50964
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.1395883219582694,
+        "compression_ratio": 1.0518518518518518,
+        "no_speech_prob": 0.0182022787630558,
+        "words": [
+          {
+            "word": "PM",
+            "start": 8.139999999999999,
+            "end": 8.54,
+            "probability": 0.89599609375
+          },
+          {
+            "word": "X",
+            "start": 8.54,
+            "end": 8.94,
+            "probability": 0.99267578125
+          },
+          {
+            "word": "2.",
+            "start": 8.94,
+            "end": 9.32,
+            "probability": 0.85595703125
+          },
+          {
+            "word": "1",
+            "start": 9.64,
+            "end": 9.94,
+            "probability": 0.99609375
+          },
+          {
+            "word": "の",
+            "start": 9.94,
+            "end": 10.16,
+            "probability": 0.982421875
+          },
+          {
+            "word": "モ",
+            "start": 10.16,
+            "end": 10.32,
+            "probability": 0.99560546875
+          },
+          {
+            "word": "デ",
+            "start": 10.32,
+            "end": 10.38,
+            "probability": 1.0
+          },
+          {
+            "word": "ル",
+            "start": 10.38,
+            "end": 10.46,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "に",
+            "start": 10.46,
+            "end": 10.64,
+            "probability": 0.99560546875
+          },
+          {
+            "word": "も",
+            "start": 10.64,
+            "end": 11.04,
+            "probability": 0.99609375
+          },
+          {
+            "word": "対",
+            "start": 11.04,
+            "end": 11.34,
+            "probability": 0.93896484375
+          },
+          {
+            "word": "応",
+            "start": 11.34,
+            "end": 11.48,
+            "probability": 1.0
+          },
+          {
+            "word": "して",
+            "start": 11.48,
+            "end": 11.74,
+            "probability": 0.998046875
+          },
+          {
+            "word": "います。",
+            "start": 11.74,
+            "end": 12.06,
+            "probability": 0.99658203125
+          }
+        ]
+      }
+    ],
+    "language": "ja"
+  }
+}

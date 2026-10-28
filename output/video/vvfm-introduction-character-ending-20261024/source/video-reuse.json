@@ -1,0 +1,33 @@
+{
+  "previous_production_folder": "vvfm-introduction-character-illustrations-20261024",
+  "video_reused_without_changes": false,
+  "changed_scenes": [
+    15
+  ],
+  "video_bitstream_hash": "SHA256=66c9fb99d08bfda7db826befcf8e15fc9c21acade349c10aab4a37971d78c0f6",
+  "hash_describes": "previous edition, used to verify the new visual render differs",
+  "all_scene_timing_and_display_text_unchanged": true,
+  "all_audio_unchanged": true,
+  "unchanged_files": [
+    {
+      "file": "source/captions.json",
+      "sha256": "3c602adb993e4ebc0325646e3a8de36f7202abc18d0bb63d29a1d1f93d3b1d31"
+    },
+    {
+      "file": "source/scenes.json",
+      "sha256": "1e26af233804b4687ceca55b44ee637d476f4a8e0699bd9c2c3f8e6bcb2264ed"
+    },
+    {
+      "file": "source/audio-alignment.json",
+      "sha256": "9130ec5d82bc56b61200ba4dba3a3089d82977f9fcab66ef3288de0cf4f861c1"
+    },
+    {
+      "file": "source/edit-decision-list.json",
+      "sha256": "660c13c5a48cf2c4b3b31c2d1981401c38226a46028ed1d011a9277a2c844453"
+    },
+    {
+      "file": "source/chapters.ffmeta",
+      "sha256": "b2e206fd8b2e1cfcb5a512ebfd9352d22349cae4d598c9a9310a9cc05141110e"
+    }
+  ]
+}

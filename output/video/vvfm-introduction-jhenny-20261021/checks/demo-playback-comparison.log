@@ -1,0 +1,20 @@
+Input #0, png_pipe, from 'checks/rendered-demo01-crop.png':
+  Duration: N/A, bitrate: N/A
+  Stream #0:0: Video: png, rgb24(pc, gbr/bt709/bt709), 1052x660 [SAR 1:1 DAR 263:165], 25 fps, 25 tbr, 25 tbn
+Input #1, png_pipe, from 'checks/source-demo01-crop.png':
+  Duration: N/A, bitrate: N/A
+  Stream #1:0: Video: png, rgb24(pc, gbr/bt709/bt709), 1052x660 [SAR 30525:30508 DAR 185:116], 25 fps, 25 tbr, 25 tbn
+Stream mapping:
+  Stream #0:0 (png) -> ssim
+  Stream #1:0 (png) -> ssim
+  ssim:default -> Stream #0:0 (wrapped_avframe)
+Press [q] to stop, [?] for help
+Output #0, null, to 'pipe:':
+  Metadata:
+    encoder         : Lavf62.12.102
+  Stream #0:0: Video: wrapped_avframe, gbrp(pc, gbr/bt709/bt709, progressive), 1052x660 [SAR 1:1 DAR 263:165], q=2-31, 200 kb/s, 25 fps, 25 tbn
+    Metadata:
+      encoder         : Lavc62.28.102 wrapped_avframe
+[Parsed_ssim_0 @ 0x7c91024c00] SSIM R:0.553159 (3.498471) G:0.600007 (3.979473) B:0.603541 (4.018017) All:0.585569 (3.825477)
+[out#0/null @ 0x7c91024480] video:0KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+frame=    1 fps=0.0 q=-0.0 Lsize=N/A time=00:00:00.04 bitrate=N/A speed=2.54x elapsed=0:00:00.01    

@@ -1,0 +1,10 @@
+{
+  "status": "completed_with_pronunciation_uncertainty",
+  "method": "Offline Whisper medium on full narration decoded from final AAC",
+  "audio_uploaded": false,
+  "whole_sentence_omission_identified": false,
+  "review_method": "Compared transcript against all 41 original sentences and prior unprocessed-edition transcript.",
+  "findings": "All sentence contents remain represented. Word-level ASR discrepancies remain, including ones present in the unprocessed edition; human listening is required to assess pronunciation and resynthesis quality.",
+  "human_listening_acceptance": "not asserted",
+  "transcript": "checks/final-narration-aac-asr.json"
+}

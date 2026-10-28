@@ -1,5 +1,16 @@
 # Third-party notices
 
+## この文書とライセンスの適用範囲
+
+この文書は、アプリに使用する第三者ライブラリ・画像・エフェクト等の通知を掲載するものです。VvfMの公開文書に適用する[MIT License](LICENSE)、将来の独自バイナリに適用する[補足EULA案](Licenses/VMDViewer-EULA-ja.md)、第三者部分の元の許諾は、[LICENSING.md](LICENSING.md)のとおり区別します。EULAの解析禁止条項で第三者ライセンスや既に付与されたMITの権利を制限しません。
+
+補足EULAは公開案であり、既存版の条件を変更しません。各配布版の適用条件は、そのReleaseと同梱文書を確認してください。本文に記すソースのパスは開発側・上流の参照元を表し、VvfMでアプリ本体のソースコードを公開する案内ではありません。
+
+## 追加収録した許諾原文
+
+- [MMDayo_MobFesのMIT原文](Licenses/MMDayo_MobFes/LICENSE)：Copyright (c) 2026 opopoposiop, opoposio。元の許諾を保持します。原文の収録によって外部のPMX・エフェクト一式を新たに配布するものではありません。
+- Bullet内の追加通知・出典は[ライセンス原文一覧](Licenses/README.md)と[原文の取得元・ハッシュ](Licenses/manifest.json)を参照してください。
+
 ## Bullet Continuous Collision Detection and Physics Library 3.25
 
 VMD Viewer includes the required Bullet 3.25 bridge sources under

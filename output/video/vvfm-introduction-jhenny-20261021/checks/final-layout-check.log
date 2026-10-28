@@ -1,0 +1,58 @@
+◆  Checking composition
+[INFO] [Compiler] Injected deterministic @font-face rules for 1 requested font families
+
+Lint
+  ℹ pointer_events_none: `.doodle` sets `pointer-events: none`. Elements matching this selector are harder to select in the Studio preview.
+    /Users/minmin/projects/VvfM/output/video/vvfm-introduction-jhenny-20261021/composition/index.html .doodle t=0s
+    Fix: If these elements should be selectable in the Studio, remove `pointer-events: none` or move it to a wrapper that doesn't contain editable content.
+  ℹ system_font_will_alias: Font family will be substituted at render time: 'menlo' → JetBrains Mono. The renderer maps these to bundled fonts for cross-platform consistency. Use the target font name directly for consistent preview and render results.
+    /Users/minmin/projects/VvfM/output/video/vvfm-introduction-jhenny-20261021/composition/index.html [data-composition-id] t=0s
+  0 error(s), 0 warning(s), 2 info(s)
+
+Runtime
+  ◇ 0 errors, 0 warnings
+
+Layout
+  ℹ t=3s container_overflow svg.doodle.music inside #s1 overflowed left 19.1px — Element extends outside a clipping layout container.
+        Fix: Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.
+  ℹ t=18s container_overflow svg.doodle.music inside #s2 overflowed left 19.99px — Element extends outside a clipping layout container.
+        Fix: Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.
+  ℹ t=32s container_overflow svg.doodle.music inside #s3 overflowed left 19.99px — Element extends outside a clipping layout container.
+        Fix: Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.
+  ℹ t=42s container_overflow svg.doodle.music inside #s4 overflowed left 18.25px — Element extends outside a clipping layout container.
+        Fix: Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.
+  ℹ t=67s container_overflow svg.doodle.music inside #s5 overflowed left 20.62px — Element extends outside a clipping layout container.
+        Fix: Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.
+  ℹ t=82s container_overflow svg.doodle.music inside #s6 overflowed left 18.63px — Element extends outside a clipping layout container.
+        Fix: Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.
+  ℹ t=103s container_overflow svg.doodle.music inside #s7 overflowed left 21.88px — Element extends outside a clipping layout container.
+        Fix: Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.
+  ℹ t=116s container_overflow svg.doodle.music inside #s8 overflowed left 22.22px — Element extends outside a clipping layout container.
+        Fix: Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.
+  ℹ t=136s container_overflow svg.doodle.music inside #s9 overflowed left 21.88px — Element extends outside a clipping layout container.
+        Fix: Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.
+  ℹ t=151s container_overflow svg.doodle.music inside #s10 overflowed left 22.22px — Element extends outside a clipping layout container.
+        Fix: Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.
+  ℹ t=160s container_overflow svg.doodle.music inside #s11 overflowed left 18.25px — Element extends outside a clipping layout container.
+        Fix: Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.
+  ℹ t=180s container_overflow svg.doodle.music inside #s12 overflowed left 21.88px — Element extends outside a clipping layout container.
+        Fix: Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.
+  ℹ t=194s container_overflow svg.doodle.music inside #s13 overflowed left 18.63px — Element extends outside a clipping layout container.
+        Fix: Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.
+  0 error(s), 0 warning(s), 13 info(s)
+
+Motion
+  ◇ 0 errors, 0 warnings
+
+Contrast
+  ◇ 47/47 text checks pass WCAG AA
+
+Snapshots
+  ◇ 5 PNG(s) saved
+    snapshots/frame-00-at-3.0s.png
+    snapshots/frame-01-at-42.0s.png
+    snapshots/frame-02-at-103.0s.png
+    snapshots/frame-03-at-151.0s.png
+    snapshots/frame-04-at-194.0s.png
+
+◇  Check passed

@@ -1,0 +1,62 @@
+{
+  "revision": "PMX 2.1 full recorded application windows",
+  "duration_seconds": 205,
+  "unchanged_files": [
+    {
+      "file": "source/scenes.json",
+      "sha256": "9f773db1042e151d645c5ea66f0b92ffc33687dc638532830d199e4ac2e02bb0",
+      "identical_to_previous_edition": true
+    },
+    {
+      "file": "source/captions.json",
+      "sha256": "f84e72e27cfa41419b29cfdfa60886f618941df862555eee61aff467c6e591ab",
+      "identical_to_previous_edition": true
+    },
+    {
+      "file": "source/chapters.ffmeta",
+      "sha256": "b2e206fd8b2e1cfcb5a512ebfd9352d22349cae4d598c9a9310a9cc05141110e",
+      "identical_to_previous_edition": true
+    },
+    {
+      "file": "assets/narration-only.wav",
+      "sha256": "8b2c2e566aa35048554e65bbe6083b5f635fded9e19cb47a67773f5a907998ef",
+      "identical_to_previous_edition": true
+    },
+    {
+      "file": "assets/with-bgm.wav",
+      "sha256": "ad464ecbd383d6f4ce69dc3285eb6b6a3b8618691fed269f2a9f64306de1706b",
+      "identical_to_previous_edition": true
+    },
+    {
+      "file": "composition/assets/final-mix.wav",
+      "sha256": "ad464ecbd383d6f4ce69dc3285eb6b6a3b8618691fed269f2a9f64306de1706b",
+      "identical_to_previous_edition": true
+    },
+    {
+      "file": "composition/assets/pmx21-qdef-source.mov",
+      "sha256": "a50ceb6593f48c3dbad67f3d8ed977ebd1c304c542be750b428371cab639c747",
+      "identical_to_previous_edition": true
+    },
+    {
+      "file": "composition/assets/pmx21-softbody-source.mov",
+      "sha256": "8889074bf9036351c61b5096d480082103efe17148b34132a8d8d00cab1a52bf",
+      "identical_to_previous_edition": true
+    }
+  ],
+  "unchanged_other_shots": 35,
+  "changed_shots": [
+    {
+      "scene": 12,
+      "crop": null,
+      "source": "pmx21-qdef-source.mov",
+      "playback_rate": 1
+    },
+    {
+      "scene": 13,
+      "crop": null,
+      "source": "pmx21-softbody-source.mov",
+      "playback_rate": 1
+    }
+  ],
+  "result": "pass"
+}

@@ -1,0 +1,15 @@
+{
+  "result": "pass",
+  "file": "openai-marin-japanese.mp3",
+  "model": "gpt-4o-mini-tts-2025-12-15",
+  "voice": "marin",
+  "duration_seconds": 19.104,
+  "codec": "mp3",
+  "sample_rate": 24000,
+  "channels": 1,
+  "bytes": 305664,
+  "sha256": "de9d7c4f165b5682be10f0eae161f0a870b3253f118b84098994e6d140bf4e2d",
+  "full_audio_decode": "pass",
+  "same_text_and_delivery_settings_as_cedar": true,
+  "ai_generated": true
+}

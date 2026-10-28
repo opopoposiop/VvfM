@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-29",
+  "provider": "OpenAI",
+  "model": "gpt-4o-mini-tts-2025-12-15",
+  "voice": "nova",
+  "speed": 1.0,
+  "format": "mp3",
+  "input": "いつものマックで、気軽にエムエムディーを楽しもう。腕の角度を少し変えて、お気に入りのポーズに。トゥーンシェーダーエイチキューでは、輪郭線や光を調整できます。リムライトで輪郭に光を、ブルームで輝きを。",
+  "instructions": "Voice Affect: Natural and composed Japanese narration.\nTone: Friendly and clear.\nPacing: Steady, moderate pace with short pauses between sentences.\nDelivery: Use natural Japanese pitch accent and smooth intonation; keep loudness consistent and avoid exaggerated emphasis.",
+  "purpose": "Standalone Japanese listening sample; existing video unchanged",
+  "ai_generated": true,
+  "comparison": "Same text, model, instructions and speed as cedar/marin samples."
+}

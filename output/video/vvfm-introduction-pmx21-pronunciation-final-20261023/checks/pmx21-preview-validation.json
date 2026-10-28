@@ -1,0 +1,25 @@
+{
+  "result": "pass",
+  "file": "VvfM_PMX21発音修正_23秒プレビュー.mp4",
+  "source_file": "VvfM_紹介動画_PMX21発音修正版_3分25秒_BGMなし_1080p.mp4",
+  "source_interval_seconds": [
+    145,
+    168
+  ],
+  "duration_seconds": 23.0,
+  "frames": 552,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "sha256": "16a15ee20f153479e3e87cdf4b98f94e85885408e2af7c034780112ed7a2f42a",
+  "full_video_audio_decode": "pass",
+  "narration": "user-approved local reference-voice sentences; source playback speed 1",
+  "asr_checks": "separate pmx21-final-transcripts.json",
+  "human_full_video_listening_claimed": false,
+  "final_aac_transcript_text": {
+    "11": "PMX2.1のモデルにも対応しています。",
+    "12": "PMX2.1のQDFは、ねじった時の形を保つための変形方式です。"
+  },
+  "asr_note": "ASR writes キューデフ as QDF; transcription is a text cross-check, not a proof of vowel length or voice identity. Approved source PCM is unchanged."
+}

@@ -2,9 +2,11 @@
 
 PMXモデルとVMDモーションをMacで再生・編集し、音声付きの動画を書き出せるアプリです。ボーン・表情・カメラの調整から、見た目の仕上げ、作業の保存まで行えます。
 
+このリポジトリには、配布案内・操作説明・スペックシートを掲載します。アプリ本体のソースコードは非公開とし、アプリはバイナリ形式で公開する予定です。
+
 **詳しい操作は [一般ユーザーマニュアル（GUIDE.md）](GUIDE.md) を参照してください。**
 
-操作説明は、2026年10月19日に確認した [開発側の公開main（v0.56.49／build453）](https://github.com/opopoposiop/VMDviewer_for_Mac/tree/36206626a7214ad8b8de5bba362189a38c285529) に合わせています。掲載画像は旧版の画面例です。配布アプリの公開状況はReleasesで確認してください。
+操作説明は、2026年10月19日に確認した開発側の参照版（v0.56.49／build453）に合わせています。[スペックシート](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)は2026年10月28日・保存済みv0.57.22／build495を基準とする別資料です。掲載画像は旧版の画面例です。配布アプリの公開状況はReleasesで確認してください。
 
 ![VvfMのメイン画面](images/01-scene3-overview.png)
 
@@ -26,6 +28,16 @@ macOS 14以降のMetal対応Macが必要です。配布アプリの対応チッ�
 
 モデル・モーション・音源は、利用許諾を確認したものを別途用意します。
 
+## ライセンスと公開方針
+
+公開文書とアプリのバイナリでは、ライセンスの適用対象を分けています。詳細は [ライセンス適用範囲（LICENSING.md）](LICENSING.md) を参照してください。
+
+- **公開文書・MIT対象として提供するサンプル等**：[MIT License](LICENSE)を維持します。
+- **今後EULAを明示して公開するアプリ独自バイナリ**：[補足EULA](Licenses/VMDViewer-EULA-ja.md)を適用し、逆コンパイル・逆アセンブル等のリバースエンジニアリングを禁止する予定です。適用法令、第三者ライセンス、既に付与されたMIT等の許諾による例外を保持します。
+- **第三者のライブラリ・SDK・エフェクト・素材**：各権利者の条件と通知を維持します。[第三者通知](THIRD_PARTY_NOTICES.md)と[ライセンス原文一覧](Licenses/README.md)を確認してください。
+
+補足EULAは現在 **2.0-draft（公開案）** です。対象のversion/build、全文の提示・同意方法、配布物の条件は採用するReleaseで明示します。この案内と文書の追加によって、既存版のMIT許諾や保存済みbuild495のアプリ・ZIPの条件が変わることはありません。
+
 ## 使い始める
 
 1. PMXと付属テクスチャのフォルダ構成を保ち、**⇧⌘O** でPMXを読み込みます。
@@ -43,7 +55,7 @@ MikuMikuDanceとの画像・物理・エフェクトの完全一致は保証し�
 
 - [一般ユーザーマニュアル](GUIDE.md)：操作手順、ショートカット、対応範囲、困ったときの確認事項
 - [技術ガイド](VvfM_Technical_Note.md)：編集・描画・保存の仕組み、形式互換、性能の検証範囲
+- スペックシート：[PDF](docs/spec-sheet/VMDViewer_SpecSheet_ja.pdf)／[Markdown](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)。2026年10月28日・v0.57.22／build495基準
 - [.fxdayo資料の案内](docs/fxdayo/README.md)：開発者向け解説、教材、対応条件と現行版との差分
-- [LICENSE](LICENSE)／[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)：本体と同梱ライブラリ・画像・エフェクトの利用条件
+- [ライセンス適用範囲](LICENSING.md)／[MIT原文](LICENSE)／[補足EULA](Licenses/VMDViewer-EULA-ja.md)／[第三者通知](THIRD_PARTY_NOTICES.md)
 - [Issues](https://github.com/opopoposiop/VvfM/issues)：不具合報告。アプリの版、Macの環境、操作手順、エラーを添えてください
-- [開発リポジトリ](https://github.com/opopoposiop/VMDviewer_for_Mac)：実装と変更履歴

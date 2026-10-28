@@ -1,0 +1,578 @@
+{
+  "engine": "local mlx-whisper",
+  "model": "openai/whisper-medium converted locally to MLX",
+  "audio_uploaded": false,
+  "source": "assets/harema-scene04-raw.wav",
+  "sha256": "c3ab41bf2a57d95f45239e7d98749dc751c8e4c66bfd6255c8c899fca4922140",
+  "transcript": {
+    "text": "PMXモデルとVMDモーション、ウェーブの音楽を読み込んだら、再生ボタンを押すだけ。VMDの動きをその場でリアルタイム再生。音楽に合わせて踊るキャラクターをMacで楽しめます。",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.49999999999999933,
+        "end": 7.32,
+        "text": "PMXモデルとVMDモーション、ウェーブの音楽を読み込んだら、再生ボタンを押すだけ。",
+        "tokens": [
+          50364,
+          18819,
+          55,
+          29183,
+          31327,
+          9405,
+          3193,
+          53,
+          44,
+          35,
+          29183,
+          3384,
+          43891,
+          4824,
+          1231,
+          20745,
+          28571,
+          15266,
+          244,
+          2972,
+          18034,
+          35479,
+          5998,
+          3549,
+          255,
+          11362,
+          9830,
+          120,
+          26983,
+          5154,
+          1231,
+          8623,
+          8244,
+          37626,
+          12144,
+          4824,
+          5998,
+          7235,
+          120,
+          2659,
+          36215,
+          1543,
+          50714
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.1274184323428722,
+        "compression_ratio": 1.2698412698412698,
+        "no_speech_prob": 0.013611342757940292,
+        "words": [
+          {
+            "word": "PM",
+            "start": 0.49999999999999933,
+            "end": 0.8199999999999996,
+            "probability": 0.6806640625
+          },
+          {
+            "word": "X",
+            "start": 0.8199999999999996,
+            "end": 1.14,
+            "probability": 0.98583984375
+          },
+          {
+            "word": "モ",
+            "start": 1.14,
+            "end": 1.32,
+            "probability": 0.96044921875
+          },
+          {
+            "word": "デ",
+            "start": 1.32,
+            "end": 1.36,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "ル",
+            "start": 1.36,
+            "end": 1.48,
+            "probability": 1.0
+          },
+          {
+            "word": "と",
+            "start": 1.48,
+            "end": 1.88,
+            "probability": 0.98046875
+          },
+          {
+            "word": "V",
+            "start": 1.88,
+            "end": 2.24,
+            "probability": 0.81640625
+          },
+          {
+            "word": "M",
+            "start": 2.24,
+            "end": 2.44,
+            "probability": 0.990234375
+          },
+          {
+            "word": "D",
+            "start": 2.44,
+            "end": 2.6,
+            "probability": 0.99462890625
+          },
+          {
+            "word": "モ",
+            "start": 2.6,
+            "end": 2.82,
+            "probability": 0.779296875
+          },
+          {
+            "word": "ー",
+            "start": 2.82,
+            "end": 2.92,
+            "probability": 0.9970703125
+          },
+          {
+            "word": "ショ",
+            "start": 2.92,
+            "end": 2.98,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "ン、",
+            "start": 2.98,
+            "end": 3.38,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "ウ",
+            "start": 3.42,
+            "end": 3.56,
+            "probability": 0.293701171875
+          },
+          {
+            "word": "ェ",
+            "start": 3.56,
+            "end": 3.62,
+            "probability": 0.966796875
+          },
+          {
+            "word": "ーブ",
+            "start": 3.62,
+            "end": 3.76,
+            "probability": 0.83447265625
+          },
+          {
+            "word": "の",
+            "start": 3.76,
+            "end": 3.92,
+            "probability": 0.9833984375
+          },
+          {
+            "word": "音",
+            "start": 3.92,
+            "end": 4.08,
+            "probability": 0.97314453125
+          },
+          {
+            "word": "楽",
+            "start": 4.08,
+            "end": 4.24,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "を",
+            "start": 4.24,
+            "end": 4.42,
+            "probability": 0.99609375
+          },
+          {
+            "word": "読",
+            "start": 4.42,
+            "end": 4.56,
+            "probability": 0.982421875
+          },
+          {
+            "word": "み",
+            "start": 4.56,
+            "end": 4.7,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "込",
+            "start": 4.7,
+            "end": 4.8,
+            "probability": 0.98828125
+          },
+          {
+            "word": "んだ",
+            "start": 4.8,
+            "end": 4.94,
+            "probability": 0.9873046875
+          },
+          {
+            "word": "ら、",
+            "start": 4.94,
+            "end": 5.4,
+            "probability": 0.998046875
+          },
+          {
+            "word": "再",
+            "start": 5.6,
+            "end": 5.7,
+            "probability": 0.79931640625
+          },
+          {
+            "word": "生",
+            "start": 5.7,
+            "end": 5.84,
+            "probability": 0.99853515625
+          },
+          {
+            "word": "ボ",
+            "start": 5.84,
+            "end": 6.02,
+            "probability": 0.986328125
+          },
+          {
+            "word": "タ",
+            "start": 6.02,
+            "end": 6.12,
+            "probability": 1.0
+          },
+          {
+            "word": "ン",
+            "start": 6.12,
+            "end": 6.24,
+            "probability": 1.0
+          },
+          {
+            "word": "を",
+            "start": 6.24,
+            "end": 6.4,
+            "probability": 0.998046875
+          },
+          {
+            "word": "押",
+            "start": 6.4,
+            "end": 6.56,
+            "probability": 0.9931640625
+          },
+          {
+            "word": "す",
+            "start": 6.56,
+            "end": 6.76,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "だけ。",
+            "start": 6.76,
+            "end": 7.32,
+            "probability": 0.98974609375
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "seek": 0,
+        "start": 7.66,
+        "end": 11.14,
+        "text": "VMDの動きをその場でリアルタイム再生。",
+        "tokens": [
+          50714,
+          53,
+          44,
+          35,
+          2972,
+          12572,
+          7016,
+          5998,
+          20564,
+          21446,
+          2474,
+          12376,
+          12817,
+          9405,
+          12144,
+          8040,
+          32026,
+          8623,
+          8244,
+          1543,
+          50914
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.1274184323428722,
+        "compression_ratio": 1.2698412698412698,
+        "no_speech_prob": 0.013611342757940292,
+        "words": [
+          {
+            "word": "V",
+            "start": 7.66,
+            "end": 7.9,
+            "probability": 0.9658203125
+          },
+          {
+            "word": "M",
+            "start": 7.9,
+            "end": 8.1,
+            "probability": 0.99853515625
+          },
+          {
+            "word": "D",
+            "start": 8.1,
+            "end": 8.22,
+            "probability": 0.99853515625
+          },
+          {
+            "word": "の",
+            "start": 8.22,
+            "end": 8.44,
+            "probability": 0.99267578125
+          },
+          {
+            "word": "動",
+            "start": 8.44,
+            "end": 8.62,
+            "probability": 0.99755859375
+          },
+          {
+            "word": "き",
+            "start": 8.62,
+            "end": 8.78,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "を",
+            "start": 8.78,
+            "end": 9.2,
+            "probability": 0.998046875
+          },
+          {
+            "word": "その",
+            "start": 9.2,
+            "end": 9.36,
+            "probability": 0.8466796875
+          },
+          {
+            "word": "場",
+            "start": 9.36,
+            "end": 9.5,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "で",
+            "start": 9.5,
+            "end": 9.7,
+            "probability": 0.998046875
+          },
+          {
+            "word": "リ",
+            "start": 9.7,
+            "end": 9.86,
+            "probability": 0.97265625
+          },
+          {
+            "word": "ア",
+            "start": 9.86,
+            "end": 10.04,
+            "probability": 0.99755859375
+          },
+          {
+            "word": "ル",
+            "start": 10.04,
+            "end": 10.12,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "タ",
+            "start": 10.12,
+            "end": 10.22,
+            "probability": 0.98583984375
+          },
+          {
+            "word": "イ",
+            "start": 10.22,
+            "end": 10.26,
+            "probability": 1.0
+          },
+          {
+            "word": "ム",
+            "start": 10.26,
+            "end": 10.4,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "再",
+            "start": 10.4,
+            "end": 10.66,
+            "probability": 0.99853515625
+          },
+          {
+            "word": "生。",
+            "start": 10.66,
+            "end": 11.14,
+            "probability": 0.9990234375
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "seek": 0,
+        "start": 11.94,
+        "end": 16.14,
+        "text": "音楽に合わせて踊るキャラクターをMacで楽しめます。",
+        "tokens": [
+          50914,
+          18034,
+          35479,
+          4108,
+          14245,
+          9206,
+          47745,
+          41166,
+          232,
+          4895,
+          15535,
+          17233,
+          11353,
+          10825,
+          30736,
+          5998,
+          34355,
+          2474,
+          35479,
+          2849,
+          11429,
+          5368,
+          1543,
+          51164
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.1274184323428722,
+        "compression_ratio": 1.2698412698412698,
+        "no_speech_prob": 0.013611342757940292,
+        "words": [
+          {
+            "word": "音",
+            "start": 11.94,
+            "end": 12.2,
+            "probability": 0.9833984375
+          },
+          {
+            "word": "楽",
+            "start": 12.2,
+            "end": 12.36,
+            "probability": 0.998046875
+          },
+          {
+            "word": "に",
+            "start": 12.36,
+            "end": 12.58,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "合",
+            "start": 12.58,
+            "end": 12.74,
+            "probability": 0.970703125
+          },
+          {
+            "word": "わ",
+            "start": 12.74,
+            "end": 12.84,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "せて",
+            "start": 12.84,
+            "end": 13.02,
+            "probability": 0.998046875
+          },
+          {
+            "word": "踊",
+            "start": 13.02,
+            "end": 13.24,
+            "probability": 0.99609375
+          },
+          {
+            "word": "る",
+            "start": 13.24,
+            "end": 13.46,
+            "probability": 1.0
+          },
+          {
+            "word": "キ",
+            "start": 13.46,
+            "end": 13.72,
+            "probability": 0.994140625
+          },
+          {
+            "word": "ャ",
+            "start": 13.72,
+            "end": 13.72,
+            "probability": 1.0
+          },
+          {
+            "word": "ラ",
+            "start": 13.72,
+            "end": 13.86,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "ク",
+            "start": 13.86,
+            "end": 14.0,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "ター",
+            "start": 14.0,
+            "end": 14.16,
+            "probability": 0.96728515625
+          },
+          {
+            "word": "を",
+            "start": 14.16,
+            "end": 14.72,
+            "probability": 0.998046875
+          },
+          {
+            "word": "Mac",
+            "start": 14.72,
+            "end": 15.08,
+            "probability": 0.51904296875
+          },
+          {
+            "word": "で",
+            "start": 15.08,
+            "end": 15.36,
+            "probability": 0.98486328125
+          },
+          {
+            "word": "楽",
+            "start": 15.36,
+            "end": 15.66,
+            "probability": 0.99755859375
+          },
+          {
+            "word": "し",
+            "start": 15.66,
+            "end": 15.76,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "め",
+            "start": 15.76,
+            "end": 15.88,
+            "probability": 0.9677734375
+          },
+          {
+            "word": "ます。",
+            "start": 15.88,
+            "end": 16.14,
+            "probability": 0.99365234375
+          }
+        ]
+      }
+    ],
+    "language": "ja"
+  }
+}

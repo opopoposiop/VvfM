@@ -1,0 +1,1789 @@
+{
+  "summary": {
+    "mora_rate_p10_p50_p90": [
+      6.285057781982834,
+      7.4220386664272455,
+      8.568046447830744
+    ],
+    "rate_min_max": [
+      5.225191227484506,
+      9.380440833343203
+    ],
+    "pitch_p05_p10_p50_p90_p95": [
+      134.69983603586527,
+      142.43693580220216,
+      215.01612728305204,
+      307.85027925593664,
+      324.84461342511577
+    ],
+    "cue_median_pitch_min_max": [
+      173.04457876756288,
+      266.37032382532834
+    ]
+  },
+  "cues": [
+    {
+      "cue": 1,
+      "scene": 1,
+      "sentence": 1,
+      "display": "いつものMacで、VMDをリアルタイム再生。",
+      "spoken": "いつものマックで、ブイエムディーをリアルタイム再生。",
+      "source": "assets/harema-scene01-raw.wav",
+      "trim": [
+        0.2,
+        4.13
+      ],
+      "punctuation_audio_seconds": 3.7,
+      "following_silence": [
+        4.05,
+        4.74
+      ],
+      "caption": [
+        0.65,
+        4.183333333333333
+      ],
+      "start": 0.665,
+      "target_end": 4.163333333333333,
+      "tempo": 1.1297529312377026,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue01-prepared.wav",
+      "prepared_sha256": "a8fa828723b7474e9b8c5d52c37d0ec3b9f591f7db2450f632e247ca97767d56",
+      "actual_start": 0.665,
+      "actual_end": 4.149041666666666,
+      "duration": 3.4840416666666667,
+      "gain_db": 0.28999999999999915,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "いつものまっくで、ぶいえむでぃーをりあるたいむさいせい。",
+      "mora_count": 25,
+      "mora_per_second": 7.175574344929859,
+      "pitch": {
+        "p10": 125.10824618295484,
+        "median": 212.57784380198407,
+        "p90": 290.95041716771027,
+        "p10_p90_semitones": 14.611157166387605
+      }
+    },
+    {
+      "cue": 2,
+      "scene": 1,
+      "sentence": 2,
+      "display": "好きなキャラクターが、その場で動き出す。",
+      "spoken": "好きなキャラクターが、その場で動き出す。",
+      "source": "assets/harema-scene01-raw.wav",
+      "trim": [
+        4.68,
+        7.83
+      ],
+      "punctuation_audio_seconds": 7.5,
+      "following_silence": [
+        7.75,
+        8.620000000000001
+      ],
+      "caption": [
+        4.535555555555556,
+        7.583333333333333
+      ],
+      "start": 4.5505555555555555,
+      "target_end": 7.5633333333333335,
+      "tempo": 1.0455467453439053,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue02-prepared.wav",
+      "prepared_sha256": "bdef57e45f1d2e1800af3927e912fc71fa3ac535b12632e7ed10a3bcf9483640",
+      "actual_start": 4.5505625,
+      "actual_end": 7.566270833333333,
+      "duration": 3.0157083333333334,
+      "gain_db": 0.5700000000000003,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "すきなきゃらくたーが、そのばでうごきだす。",
+      "mora_count": 18,
+      "mora_per_second": 5.968746977631016,
+      "pitch": {
+        "p10": 155.53224443760928,
+        "median": 206.15408771506122,
+        "p90": 334.030589671596,
+        "p10_p90_semitones": 13.233198250760477
+      }
+    },
+    {
+      "cue": 3,
+      "scene": 1,
+      "sentence": 3,
+      "display": "気軽にMMDを楽しもう。",
+      "spoken": "気軽にエムエムディーを楽しもう。",
+      "source": "assets/harema-scene01-raw.wav",
+      "trim": [
+        8.56,
+        11.06
+      ],
+      "punctuation_audio_seconds": 10.7,
+      "following_silence": [
+        10.98,
+        13.15
+      ],
+      "caption": [
+        7.713333333333333,
+        9.87222222222222
+      ],
+      "start": 7.728333333333333,
+      "target_end": 9.85222222222222,
+      "tempo": 1.1770860580695794,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue03-prepared.wav",
+      "prepared_sha256": "e9554e3fe7d5b521490dd49bab4ef27c73aa82b8b28e76d4ccebbf3662164cfb",
+      "actual_start": 7.7283333333333335,
+      "actual_end": 9.8535,
+      "duration": 2.125166666666667,
+      "gain_db": -0.3000000000000007,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "きがるにえむえむでぃーをたのしもう。",
+      "mora_count": 16,
+      "mora_per_second": 7.528821268920084,
+      "pitch": {
+        "p10": 179.6735652642074,
+        "median": 266.37032382532834,
+        "p90": 338.1099452500446,
+        "p10_p90_semitones": 10.945371441614073
+      }
+    },
+    {
+      "cue": 4,
+      "scene": 2,
+      "sentence": 1,
+      "display": "VMD Viewer for Mac。",
+      "spoken": "ブイエムディー・ビューアー・フォー・マック。",
+      "source": "assets/harema-scene02-raw.wav",
+      "trim": [
+        0.05,
+        2.93
+      ],
+      "punctuation_audio_seconds": 2.6,
+      "following_silence": [
+        2.85,
+        4.1
+      ],
+      "caption": [
+        12.902222222222221,
+        14.402962962962961
+      ],
+      "start": 12.637508417508416,
+      "target_end": 14.382962962962962,
+      "tempo": 1.6499999999999997,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue04-prepared.wav",
+      "prepared_sha256": "c22312452e0cd3695ce8281f9efb9e9abf3a0f03c82fad8bc189877b908ec1bc",
+      "actual_start": 12.6375,
+      "actual_end": 14.386833333333334,
+      "duration": 1.7493333333333334,
+      "gain_db": 2.5799999999999983,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "ぶいえむでぃー・びゅーあー・ふぉー・まっく。",
+      "mora_count": 15,
+      "mora_per_second": 8.574695121951219,
+      "pitch": {
+        "p10": 157.29675858461093,
+        "median": 243.32999332673953,
+        "p90": 294.56432254952176,
+        "p10_p90_semitones": 10.861125134175685
+      }
+    },
+    {
+      "cue": 5,
+      "scene": 2,
+      "sentence": 2,
+      "display": "PMXモデルとVMDモーションを読み込んで、アプリ上でリアルタイム再生。",
+      "spoken": "ピーエムエックスモデルとブイエムディーモーションを読み込んで、あぷりじょうでリアルタイム再生。",
+      "source": "assets/harema-scene02-raw.wav",
+      "trim": [
+        4.04,
+        10.42
+      ],
+      "punctuation_audio_seconds": 10.1,
+      "following_silence": [
+        10.34,
+        11.72
+      ],
+      "caption": [
+        14.44296296296296,
+        20.927777777777774
+      ],
+      "start": 14.457962962962961,
+      "target_end": 20.907777777777774,
+      "tempo": 1,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue05-prepared.wav",
+      "prepared_sha256": "2aa750f01da56b05be27fe2a911feee9876bb8f4f2e99db37740f98db508a828",
+      "actual_start": 14.457958333333334,
+      "actual_end": 20.833625,
+      "duration": 6.375666666666667,
+      "gain_db": 0.4400000000000013,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "ぴーえむえっくすもでるとぶいえむでぃーもーしょんをよみこんで、あぷりじょうでりあるたいむさいせい。",
+      "mora_count": 44,
+      "mora_per_second": 6.901239086108642,
+      "pitch": {
+        "p10": 141.95549972594227,
+        "median": 230.02863705972248,
+        "p90": 291.3086589188571,
+        "p10_p90_semitones": 12.445318094057484
+      }
+    },
+    {
+      "cue": 6,
+      "scene": 2,
+      "sentence": 3,
+      "display": "動きを楽しみながら、表情やポーズも自分好みに。",
+      "spoken": "動きを楽しみながら、表情やポーズも自分好みに。",
+      "source": "assets/harema-scene02-raw.wav",
+      "trim": [
+        11.66,
+        16.2
+      ],
+      "punctuation_audio_seconds": 15.6,
+      "following_silence": [
+        16.12,
+        18.92
+      ],
+      "caption": [
+        21.257777777777775,
+        25.194444444444443
+      ],
+      "start": 21.272777777777776,
+      "target_end": 25.174444444444443,
+      "tempo": 1.1704430312971175,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue06-prepared.wav",
+      "prepared_sha256": "c7d44b247d383503460b334d61601e14ae28e5a83555a8d9cb28f909b6f02fa1",
+      "actual_start": 21.272770833333333,
+      "actual_end": 25.154604166666665,
+      "duration": 3.8818333333333332,
+      "gain_db": -1.56,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "うごきをたのしみながら、ひょうじょうやぽーずもじぶんごのみに。",
+      "mora_count": 27,
+      "mora_per_second": 6.955476364260873,
+      "pitch": {
+        "p10": 138.6557011615912,
+        "median": 216.1518227407728,
+        "p90": 308.61521133387186,
+        "p10_p90_semitones": 13.851626822261933
+      }
+    },
+    {
+      "cue": 7,
+      "scene": 3,
+      "sentence": 1,
+      "display": "いつもWindowsで楽しんでいる方も。",
+      "spoken": "いつもウィンドウズで楽しんでいる方も。",
+      "source": "assets/harema-scene03-raw.wav",
+      "trim": [
+        0.22,
+        2.83
+      ],
+      "punctuation_audio_seconds": 2.6,
+      "following_silence": [
+        2.75,
+        3.5300000000000002
+      ],
+      "caption": [
+        27.057777777777776,
+        29.30666666666667
+      ],
+      "start": 27.072777777777777,
+      "target_end": 29.28666666666667,
+      "tempo": 1.178920953575908,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue07-prepared.wav",
+      "prepared_sha256": "549e1bed67a52c55c04473a40992e0406b27422cf439e657ee0bb7595f491ab6",
+      "actual_start": 27.072770833333333,
+      "actual_end": 29.2903125,
+      "duration": 2.2175416666666665,
+      "gain_db": 1.5,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "いつもうぃんどうずでたのしんでいるほうも。",
+      "mora_count": 19,
+      "mora_per_second": 8.568046447830744,
+      "pitch": {
+        "p10": 128.4658538798422,
+        "median": 173.04457876756288,
+        "p90": 269.5093433428346,
+        "p10_p90_semitones": 12.827404151543043
+      }
+    },
+    {
+      "cue": 8,
+      "scene": 3,
+      "sentence": 2,
+      "display": "出先で、あの表情を足したい。",
+      "spoken": "出先で、あの表情を足したい。",
+      "source": "assets/harema-scene03-raw.wav",
+      "trim": [
+        3.47,
+        6.35
+      ],
+      "punctuation_audio_seconds": 5.9,
+      "following_silence": [
+        6.2700000000000005,
+        7.26
+      ],
+      "caption": [
+        29.346666666666668,
+        32.306666666666665
+      ],
+      "start": 29.361666666666668,
+      "target_end": 32.28666666666666,
+      "tempo": 1,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue08-prepared.wav",
+      "prepared_sha256": "ea25d12b352da50eac013d5fcb2b4184357c77529caa8190af848ffeead8d440",
+      "actual_start": 29.361666666666668,
+      "actual_end": 32.232375,
+      "duration": 2.8707083333333334,
+      "gain_db": 2.9200000000000017,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "でさきで、あのひょうじょうをたしたい。",
+      "mora_count": 15,
+      "mora_per_second": 5.225191227484506,
+      "pitch": {
+        "p10": 137.0333457470715,
+        "median": 178.12230746621233,
+        "p90": 217.65026260410175,
+        "p10_p90_semitones": 8.009817107102712
+      }
+    },
+    {
+      "cue": 9,
+      "scene": 3,
+      "sentence": 3,
+      "display": "気になる姿勢を直したい。",
+      "spoken": "気になる姿勢を直したい。",
+      "source": "assets/harema-scene03-raw.wav",
+      "trim": [
+        7.2,
+        9.09
+      ],
+      "punctuation_audio_seconds": 8.7,
+      "following_silence": [
+        9.01,
+        9.88
+      ],
+      "caption": [
+        32.346666666666664,
+        34.172222222222224
+      ],
+      "start": 32.361666666666665,
+      "target_end": 34.15222222222222,
+      "tempo": 1.0555383183369524,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue09-prepared.wav",
+      "prepared_sha256": "aaa2f631a2a558f6d93f7f5b3736826e381bd98db1b75210023d37a78deb8fee",
+      "actual_start": 32.361666666666665,
+      "actual_end": 34.153708333333334,
+      "duration": 1.7920416666666668,
+      "gain_db": 0.6900000000000013,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "きになるしせいをなおしたい。",
+      "mora_count": 13,
+      "mora_per_second": 7.254295612546211,
+      "pitch": {
+        "p10": 132.2850602349649,
+        "median": 186.22278690112586,
+        "p90": 293.4262212518661,
+        "p10_p90_semitones": 13.79217193164827
+      }
+    },
+    {
+      "cue": 10,
+      "scene": 3,
+      "sentence": 4,
+      "display": "そんなときにも、手元のMacで。",
+      "spoken": "そんなときにも、手元のマックで。",
+      "source": "assets/harema-scene03-raw.wav",
+      "trim": [
+        9.82,
+        12.46
+      ],
+      "punctuation_audio_seconds": 12.0,
+      "following_silence": [
+        12.38,
+        15.1
+      ],
+      "caption": [
+        34.279999999999994,
+        36.35
+      ],
+      "start": 34.294999999999995,
+      "target_end": 36.33,
+      "tempo": 1.306860110233079,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue10-prepared.wav",
+      "prepared_sha256": "f6a40c789ea145cd738d476ee1bbff45efd3faaf2a14c4d054ab302eea4cf877",
+      "actual_start": 34.295,
+      "actual_end": 36.324958333333335,
+      "duration": 2.0299583333333335,
+      "gain_db": 1.4200000000000017,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "そんなときにも、てもとのまっくで。",
+      "mora_count": 15,
+      "mora_per_second": 7.389314230587655,
+      "pitch": {
+        "p10": 135.1508652816642,
+        "median": 213.92892093936808,
+        "p90": 298.57466941123766,
+        "p10_p90_semitones": 13.722252314892925
+      }
+    },
+    {
+      "cue": 11,
+      "scene": 4,
+      "sentence": 1,
+      "display": "PMXモデルとVMDモーション、WAVの音楽を読み込んだら、再生ボタンを押すだけ。",
+      "spoken": "ピーエムエックスモデルとブイエムディーモーション、ウェーブの音楽を読み込んだら、再生ボタンを押すだけ。",
+      "source": "assets/harema-scene04-raw.wav",
+      "trim": [
+        0.16,
+        7.12
+      ],
+      "punctuation_audio_seconds": 6.7,
+      "following_silence": [
+        7.04,
+        7.57
+      ],
+      "caption": [
+        38.65,
+        45.09444444444444
+      ],
+      "start": 38.665,
+      "target_end": 45.07444444444444,
+      "tempo": 1.0858975470226238,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue11-prepared.wav",
+      "prepared_sha256": "a82434dbdb526a5f85a4eb51e5badbcf4090702ba077c5a2eb81b9d54c77236f",
+      "actual_start": 38.665,
+      "actual_end": 45.07270833333333,
+      "duration": 6.407708333333333,
+      "gain_db": -0.05999999999999872,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "ぴーえむえっくすもでるとぶいえむでぃーもーしょん、うぇーぶのおんがくをよみこんだら、さいせいぼたんをおすだけ。",
+      "mora_count": 49,
+      "mora_per_second": 7.647039698280067,
+      "pitch": {
+        "p10": 139.41258433920328,
+        "median": 228.64341905312847,
+        "p90": 297.0767162334646,
+        "p10_p90_semitones": 13.097696902488062
+      }
+    },
+    {
+      "cue": 12,
+      "scene": 4,
+      "sentence": 2,
+      "display": "VMDの動きを、その場でリアルタイム再生。",
+      "spoken": "ブイエムディーの動きを、その場でリアルタイム再生。",
+      "source": "assets/harema-scene04-raw.wav",
+      "trim": [
+        7.51,
+        10.87
+      ],
+      "punctuation_audio_seconds": 10.5,
+      "following_silence": [
+        10.790000000000001,
+        11.9
+      ],
+      "caption": [
+        45.35777777777777,
+        48.47333333333333
+      ],
+      "start": 45.37277777777777,
+      "target_end": 48.453333333333326,
+      "tempo": 1.0974253191910437,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue12-prepared.wav",
+      "prepared_sha256": "24a4eb5e160f0574911d542ec956c5811973499660e70f79a9eb6cf4f21e9a1d",
+      "actual_start": 45.372770833333334,
+      "actual_end": 48.437729166666664,
+      "duration": 3.0649583333333332,
+      "gain_db": 1.3599999999999994,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "ぶいえむでぃーのうごきを、そのばでりあるたいむさいせい。",
+      "mora_count": 25,
+      "mora_per_second": 8.156717736782719,
+      "pitch": {
+        "p10": 147.94385449278457,
+        "median": 222.21300600462078,
+        "p90": 305.3244405944085,
+        "p10_p90_semitones": 12.543519719192016
+      }
+    },
+    {
+      "cue": 13,
+      "scene": 4,
+      "sentence": 3,
+      "display": "音楽に合わせて踊るキャラクターを、Macで楽しめます。",
+      "spoken": "音楽に合わせて踊るキャラクターを、マックで楽しめます。",
+      "source": "assets/harema-scene04-raw.wav",
+      "trim": [
+        11.84,
+        16.18
+      ],
+      "punctuation_audio_seconds": 15.7,
+      "following_silence": [
+        16.1,
+        18.68
+      ],
+      "caption": [
+        48.51333333333333,
+        52.11666666666667
+      ],
+      "start": 48.52833333333333,
+      "target_end": 52.096666666666664,
+      "tempo": 1.2162540868752914,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue13-prepared.wav",
+      "prepared_sha256": "14b06d6da8dbbf04ef2a19eaccd97fca20f9fa68561fa7b33bce82dff3b757e5",
+      "actual_start": 48.528333333333336,
+      "actual_end": 52.10104166666667,
+      "duration": 3.5727083333333334,
+      "gain_db": 2.370000000000001,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "おんがくにあわせておどるきゃらくたーを、まっくでたのしめます。",
+      "mora_count": 28,
+      "mora_per_second": 7.837191672983847,
+      "pitch": {
+        "p10": 141.3302145707282,
+        "median": 188.15221919475786,
+        "p90": 291.67582391365505,
+        "p10_p90_semitones": 12.543550591080585
+      }
+    },
+    {
+      "cue": 14,
+      "scene": 5,
+      "sentence": 1,
+      "display": "腕の角度を少し変えて、お気に入りのポーズに。",
+      "spoken": "腕の角度を少し変えて、お気に入りのポーズに。",
+      "source": "assets/harema-scene05-raw.wav",
+      "trim": [
+        0.23,
+        3.64
+      ],
+      "punctuation_audio_seconds": 3.2,
+      "following_silence": [
+        3.56,
+        4.54
+      ],
+      "caption": [
+        54.65,
+        57.7511111111111
+      ],
+      "start": 54.665,
+      "target_end": 57.7311111111111,
+      "tempo": 1.1199651513109643,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue14-prepared.wav",
+      "prepared_sha256": "7b660a0cdd2e1a7231ebf64ec13d3f7f694bf7620effc30e5e57d186ec6f9664",
+      "actual_start": 54.665,
+      "actual_end": 57.706833333333336,
+      "duration": 3.0418333333333334,
+      "gain_db": 0.14999999999999858,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "うでのかくどをすこしかえて、おきにいりのぽーずに。",
+      "mora_count": 23,
+      "mora_per_second": 7.561229521670045,
+      "pitch": {
+        "p10": 162.5883207392135,
+        "median": 263.19805762874813,
+        "p90": 343.0997591022966,
+        "p10_p90_semitones": 12.928853824864369
+      }
+    },
+    {
+      "cue": 15,
+      "scene": 5,
+      "sentence": 2,
+      "display": "ボーンを選び、3Dギズモで調整したら、キーを登録。",
+      "spoken": "ボーンを選び、スリーディーギズモで調整したら、キーを登録。",
+      "source": "assets/harema-scene05-raw.wav",
+      "trim": [
+        4.48,
+        9.15
+      ],
+      "punctuation_audio_seconds": 8.6,
+      "following_silence": [
+        9.07,
+        10.35
+      ],
+      "caption": [
+        57.7911111111111,
+        61.972222222222214
+      ],
+      "start": 57.8061111111111,
+      "target_end": 61.95222222222221,
+      "tempo": 1.1263566930188933,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue15-prepared.wav",
+      "prepared_sha256": "601e16ab3e0cfcec8a0eead5459699abb9fa89cd7f9675d9d722a14c655a802b",
+      "actual_start": 57.806104166666664,
+      "actual_end": 61.947895833333334,
+      "duration": 4.141791666666666,
+      "gain_db": 0.2699999999999996,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "ぼーんをえらび、すりーでぃーぎずもでちょうせいしたら、きーをとうろく。",
+      "mora_count": 30,
+      "mora_per_second": 7.243242155669346,
+      "pitch": {
+        "p10": 141.97462151419955,
+        "median": 208.0638401641753,
+        "p90": 315.8655871300298,
+        "p10_p90_semitones": 13.844132417068435
+      }
+    },
+    {
+      "cue": 16,
+      "scene": 5,
+      "sentence": 3,
+      "display": "タイムラインで前後を確かめながら、服への食い込みなど、気になる部分も整えられます。",
+      "spoken": "タイムラインで前後を確かめながら、服への食い込みなど、気になる部分も整えられます。",
+      "source": "assets/harema-scene05-raw.wav",
+      "trim": [
+        10.29,
+        16.51
+      ],
+      "punctuation_audio_seconds": 15.9,
+      "following_silence": [
+        16.43,
+        19.28
+      ],
+      "caption": [
+        62.346666666666664,
+        68.48333333333333
+      ],
+      "start": 62.361666666666665,
+      "target_end": 68.46333333333334,
+      "tempo": 1.0243378204497338,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue16-prepared.wav",
+      "prepared_sha256": "079ddbd94e84fa2ee72fdaf83f19863814ed697de601f8fddf51551e52c98ccc",
+      "actual_start": 62.361666666666665,
+      "actual_end": 68.442,
+      "duration": 6.080333333333333,
+      "gain_db": -0.26000000000000156,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "たいむらいんでぜんごをたしかめながら、ふくへのくいこみなど、きになるぶぶんもととのえられます。",
+      "mora_count": 44,
+      "mora_per_second": 7.23644537031961,
+      "pitch": {
+        "p10": 147.8834155570921,
+        "median": 239.79294187882147,
+        "p90": 318.49851612903,
+        "p10_p90_semitones": 13.281916573540697
+      }
+    },
+    {
+      "cue": 17,
+      "scene": 6,
+      "sentence": 1,
+      "display": "表情も、自分好みに。",
+      "spoken": "表情も、自分好みに。",
+      "source": "assets/harema-scene06-raw.wav",
+      "trim": [
+        0.35,
+        2.45
+      ],
+      "punctuation_audio_seconds": 2.2,
+      "following_silence": [
+        2.37,
+        3.15
+      ],
+      "caption": [
+        71.65,
+        74.07000000000001
+      ],
+      "start": 71.665,
+      "target_end": 74.05000000000001,
+      "tempo": 1,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue17-prepared.wav",
+      "prepared_sha256": "cf72eb9f5be0c70cc20010d48ba62189afe8b7d5a0e18f4b78d07a6d6632ab0f",
+      "actual_start": 71.665,
+      "actual_end": 73.76058333333333,
+      "duration": 2.0955833333333334,
+      "gain_db": -0.8900000000000006,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "ひょうじょうも、じぶんごのみに。",
+      "mora_count": 12,
+      "mora_per_second": 5.726329184395753,
+      "pitch": {
+        "p10": 146.50527505471877,
+        "median": 251.36223514432567,
+        "p90": 308.0862680081986,
+        "p10_p90_semitones": 12.868581228287047
+      }
+    },
+    {
+      "cue": 18,
+      "scene": 6,
+      "sentence": 2,
+      "display": "モーフの値は、タイムラインで変化を見ながら調整できます。",
+      "spoken": "モーフの値は、タイムラインで変化を見ながら調整できます。",
+      "source": "assets/harema-scene06-raw.wav",
+      "trim": [
+        3.09,
+        7.47
+      ],
+      "punctuation_audio_seconds": 7.1,
+      "following_silence": [
+        7.390000000000001,
+        8.06
+      ],
+      "caption": [
+        74.16000000000001,
+        78.37
+      ],
+      "start": 74.17500000000001,
+      "target_end": 78.35000000000001,
+      "tempo": 1.0491017964071865,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue18-prepared.wav",
+      "prepared_sha256": "ae4a84f251b9991f30add91602201607df7b52937f870d4c2d42bc3e7201d367",
+      "actual_start": 74.175,
+      "actual_end": 78.35175,
+      "duration": 4.17675,
+      "gain_db": 0.1700000000000017,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "もーふのあたいは、たいむらいんでへんかをみながらちょうせいできます。",
+      "mora_count": 31,
+      "mora_per_second": 7.4220386664272455,
+      "pitch": {
+        "p10": 151.11182992895948,
+        "median": 186.2234007463278,
+        "p90": 307.98561485917327,
+        "p10_p90_semitones": 12.326956327623083
+      }
+    },
+    {
+      "cue": 19,
+      "scene": 6,
+      "sentence": 3,
+      "display": "笑顔を作り、カメラの構図も整えて、お気に入りの瞬間へ。",
+      "spoken": "笑顔を作り、カメラの構図も整えて、お気に入りの瞬間へ。",
+      "source": "assets/harema-scene06-raw.wav",
+      "trim": [
+        8.0,
+        13.03
+      ],
+      "punctuation_audio_seconds": 12.5,
+      "following_silence": [
+        12.950000000000001,
+        15.700000000000001
+      ],
+      "caption": [
+        78.54,
+        83.51
+      ],
+      "start": 78.555,
+      "target_end": 83.49000000000001,
+      "tempo": 1.0192502532928063,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue19-prepared.wav",
+      "prepared_sha256": "f4dc7e9ce1ea3ce918aed0ea99a99fdaa79a56adb18db8a37f6257563410414a",
+      "actual_start": 78.555,
+      "actual_end": 83.48733333333334,
+      "duration": 4.932333333333333,
+      "gain_db": 1.4299999999999997,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "えがおをつくり、かめらのこうずもととのえて、おきにいりのしゅんかんへ。",
+      "mora_count": 31,
+      "mora_per_second": 6.285057781982834,
+      "pitch": {
+        "p10": 148.3289770612615,
+        "median": 215.49319996082315,
+        "p90": 305.14926970218187,
+        "p10_p90_semitones": 12.488576066438423
+      }
+    },
+    {
+      "cue": 20,
+      "scene": 7,
+      "sentence": 1,
+      "display": "リアルタイム再生で、調整した動きを確認。",
+      "spoken": "リアルタイム再生で、調整した動きを確認。",
+      "source": "assets/harema-scene07-raw.wav",
+      "trim": [
+        0.19,
+        3.3
+      ],
+      "punctuation_audio_seconds": 2.9,
+      "following_silence": [
+        3.22,
+        4.1
+      ],
+      "caption": [
+        86.65,
+        89.85000000000001
+      ],
+      "start": 86.665,
+      "target_end": 89.83000000000001,
+      "tempo": 1,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue20-prepared.wav",
+      "prepared_sha256": "d239002c95c193158c1a7f6408d2a586d6956619cfe47bc595ffaa2744116a38",
+      "actual_start": 86.665,
+      "actual_end": 89.76983333333334,
+      "duration": 3.104833333333333,
+      "gain_db": 0.7899999999999991,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "りあるたいむさいせいで、ちょうせいしたうごきをかくにん。",
+      "mora_count": 25,
+      "mora_per_second": 8.051961994739385,
+      "pitch": {
+        "p10": 165.477428672099,
+        "median": 228.63000562218326,
+        "p90": 359.2655305450635,
+        "p10_p90_semitones": 13.42099294400362
+      }
+    },
+    {
+      "cue": 21,
+      "scene": 7,
+      "sentence": 2,
+      "display": "作業はプロジェクトにまとめて保存できます。",
+      "spoken": "作業はプロジェクトにまとめて保存できます。",
+      "source": "assets/harema-scene07-raw.wav",
+      "trim": [
+        4.04,
+        6.78
+      ],
+      "punctuation_audio_seconds": 6.3,
+      "following_silence": [
+        6.7,
+        7.8500000000000005
+      ],
+      "caption": [
+        90.15777777777781,
+        92.6277777777778
+      ],
+      "start": 90.17277777777781,
+      "target_end": 92.6077777777778,
+      "tempo": 1.1344360260686233,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue21-prepared.wav",
+      "prepared_sha256": "f2b3c15d885b1bf26c70aa3a82a5d4c59174a06eac43d21bf3017c273fd88d37",
+      "actual_start": 90.17277083333333,
+      "actual_end": 92.59672916666666,
+      "duration": 2.423958333333333,
+      "gain_db": 0.5799999999999983,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "さぎょうはぷろじぇくとにまとめてほぞんできます。",
+      "mora_count": 21,
+      "mora_per_second": 8.663515255694026,
+      "pitch": {
+        "p10": 141.13460430472045,
+        "median": 199.7891939470674,
+        "p90": 335.47778499184733,
+        "p10_p90_semitones": 14.989745700464873
+      }
+    },
+    {
+      "cue": 22,
+      "scene": 7,
+      "sentence": 3,
+      "display": "気に入ったシーンは、音声付きの動画にして残しましょう。",
+      "spoken": "気に入ったシーンは、音声付きの動画にして残しましょう。",
+      "source": "assets/harema-scene07-raw.wav",
+      "trim": [
+        7.79,
+        12.02
+      ],
+      "punctuation_audio_seconds": 11.7,
+      "following_silence": [
+        11.94,
+        14.66
+      ],
+      "caption": [
+        93.0688888888889,
+        96.42777777777779
+      ],
+      "start": 93.08388888888891,
+      "target_end": 96.4077777777778,
+      "tempo": 1.2726057161958884,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue22-prepared.wav",
+      "prepared_sha256": "1ffb4a50608de196299de241e9173f593f5207b4ec4d1458e43a76662eadae66",
+      "actual_start": 93.08389583333333,
+      "actual_end": 96.40635416666667,
+      "duration": 3.3224583333333335,
+      "gain_db": 0.129999999999999,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "きにいったしーんは、おんせいつきのどうがにしてのこしましょう。",
+      "mora_count": 28,
+      "mora_per_second": 8.427494701463525,
+      "pitch": {
+        "p10": 156.71122015790823,
+        "median": 259.6754040123834,
+        "p90": 319.0286936348736,
+        "p10_p90_semitones": 12.306932515041042
+      }
+    },
+    {
+      "cue": 23,
+      "scene": 8,
+      "sentence": 1,
+      "display": "見た目も、もっと自分好みに。",
+      "spoken": "見た目も、もっと自分好みに。",
+      "source": "assets/harema-scene08-raw.wav",
+      "trim": [
+        0.28,
+        2.61
+      ],
+      "punctuation_audio_seconds": 2.1,
+      "following_silence": [
+        2.5300000000000002,
+        3.5700000000000003
+      ],
+      "caption": [
+        100.01333333333335,
+        102.1288888888889
+      ],
+      "start": 100.02833333333335,
+      "target_end": 102.1088888888889,
+      "tempo": 1.1198931909212322,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue23-prepared.wav",
+      "prepared_sha256": "1e4c24a961efc045168402f53c9394786731f555c135c13d68ab490a982da074",
+      "actual_start": 100.02833333333334,
+      "actual_end": 102.11375,
+      "duration": 2.0854166666666667,
+      "gain_db": -0.14999999999999858,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "みためも、もっとじぶんごのみに。",
+      "mora_count": 14,
+      "mora_per_second": 6.713286713286713,
+      "pitch": {
+        "p10": 145.91975716207943,
+        "median": 239.0996625688863,
+        "p90": 285.0193407459208,
+        "p10_p90_semitones": 11.590615041711601
+      }
+    },
+    {
+      "cue": 24,
+      "scene": 8,
+      "sentence": 2,
+      "display": "ToonShader HQでは、輪郭線や光を調整できます。",
+      "spoken": "トゥーンシェーダーエイチキューでは、りんかくせんやひかりをちょうせいできます。",
+      "source": "assets/harema-scene08-raw.wav",
+      "trim": [
+        3.51,
+        8.8
+      ],
+      "punctuation_audio_seconds": 8.4,
+      "following_silence": [
+        8.72,
+        9.78
+      ],
+      "caption": [
+        102.1688888888889,
+        105.72777777777779
+      ],
+      "start": 102.1838888888889,
+      "target_end": 105.70777777777779,
+      "tempo": 1.5011824058016705,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue24-prepared.wav",
+      "prepared_sha256": "08197b3697417baead0579a67377ca2bc89d10c9e75bdcf2fc0e60828fe5746d",
+      "actual_start": 102.18389583333334,
+      "actual_end": 105.70185416666666,
+      "duration": 3.5179583333333335,
+      "gain_db": 1.2300000000000004,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "とぅーんしぇーだーえいちきゅーでは、りんかくせんやひかりをちょうせいできます。",
+      "mora_count": 33,
+      "mora_per_second": 9.380440833343203,
+      "pitch": {
+        "p10": 150.71766891483276,
+        "median": 229.01724176342802,
+        "p90": 331.3576492682592,
+        "p10_p90_semitones": 13.638488006206437
+      }
+    },
+    {
+      "cue": 25,
+      "scene": 8,
+      "sentence": 3,
+      "display": "リムライトで輪郭に光を、ブルームで輝きを。",
+      "spoken": "リムライトで輪郭に光を、ブルームで輝きを。",
+      "source": "assets/harema-scene08-raw.wav",
+      "trim": [
+        9.72,
+        14.44
+      ],
+      "punctuation_audio_seconds": 13.9,
+      "following_silence": [
+        14.36,
+        15.27
+      ],
+      "caption": [
+        106.16888888888892,
+        109.50555555555556
+      ],
+      "start": 106.18388888888892,
+      "target_end": 109.48555555555556,
+      "tempo": 1.4393748403880438,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue25-prepared.wav",
+      "prepared_sha256": "bc53ed6878e991dd0aa28cb1656cbbcf262e03d3b7fc3f8bcbbfc3c4b501c774",
+      "actual_start": 106.18389583333334,
+      "actual_end": 109.47247916666667,
+      "duration": 3.2885833333333334,
+      "gain_db": 0.4499999999999993,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "りむらいとでりんかくにひかりを、ぶるーむでかがやきを。",
+      "mora_count": 25,
+      "mora_per_second": 7.602057623596787,
+      "pitch": {
+        "p10": 146.45813254474626,
+        "median": 211.78299365426784,
+        "p90": 328.75297753823213,
+        "p10_p90_semitones": 13.998187865605521
+      }
+    },
+    {
+      "cue": 26,
+      "scene": 8,
+      "sentence": 4,
+      "display": "ディフュージョンで、柔らかな雰囲気も楽しめます。",
+      "spoken": "ディフュージョンで、柔らかな雰囲気も楽しめます。",
+      "source": "assets/harema-scene08-raw.wav",
+      "trim": [
+        15.21,
+        18.88
+      ],
+      "punctuation_audio_seconds": 18.4,
+      "following_silence": [
+        18.8,
+        21.54
+      ],
+      "caption": [
+        109.54666666666668,
+        112.61666666666669
+      ],
+      "start": 109.56166666666668,
+      "target_end": 112.59666666666669,
+      "tempo": 1.216862747354442,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue26-prepared.wav",
+      "prepared_sha256": "bc01d45d029fa9cd81e0249bd5f50defabaa483a5d7c171999552bdc3b2167f7",
+      "actual_start": 109.56166666666667,
+      "actual_end": 112.582375,
+      "duration": 3.0207083333333333,
+      "gain_db": 0.5399999999999991,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "でぃふゅーじょんで、やわらかなふんいきもたのしめます。",
+      "mora_count": 22,
+      "mora_per_second": 7.283059988689187,
+      "pitch": {
+        "p10": 142.13923334214607,
+        "median": 189.10051086973644,
+        "p90": 324.924723663187,
+        "p10_p90_semitones": 14.313608402182012
+      }
+    },
+    {
+      "cue": 27,
+      "scene": 9,
+      "sentence": 1,
+      "display": "顔にピントを合わせて、背景をふんわり。",
+      "spoken": "顔にピントを合わせて、背景をふんわり。",
+      "source": "assets/harema-scene09-raw.wav",
+      "trim": [
+        0.23,
+        3.33
+      ],
+      "punctuation_audio_seconds": 2.9,
+      "following_silence": [
+        3.25,
+        4.42
+      ],
+      "caption": [
+        117.92444444444446,
+        121.15111111111112
+      ],
+      "start": 117.93944444444446,
+      "target_end": 121.13111111111112,
+      "tempo": 1,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue27-prepared.wav",
+      "prepared_sha256": "7e75a21d352d3b3e8bda68a4a9f2eec05655195d918a004efc13c7fe6060f591",
+      "actual_start": 117.9394375,
+      "actual_end": 121.03339583333333,
+      "duration": 3.093958333333333,
+      "gain_db": -0.14999999999999858,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "かおにぴんとをあわせて、はいけいをふんわり。",
+      "mora_count": 20,
+      "mora_per_second": 6.464211164231365,
+      "pitch": {
+        "p10": 132.09328130276833,
+        "median": 257.8547034917087,
+        "p90": 305.59489386893154,
+        "p10_p90_semitones": 14.520760195032686
+      }
+    },
+    {
+      "cue": 28,
+      "scene": 9,
+      "sentence": 2,
+      "display": "被写界深度、ディーオーエフで、キャラクターを引き立てられます。",
+      "spoken": "被写界深度、ディーオーエフで、キャラクターを引き立てられます。",
+      "source": "assets/harema-scene09-raw.wav",
+      "trim": [
+        4.36,
+        8.85
+      ],
+      "punctuation_audio_seconds": 8.6,
+      "following_silence": [
+        8.77,
+        9.94
+      ],
+      "caption": [
+        121.19111111111113,
+        124.94999999999999
+      ],
+      "start": 121.20611111111113,
+      "target_end": 124.92999999999999,
+      "tempo": 1.214326201758836,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue28-prepared.wav",
+      "prepared_sha256": "9d8b69fbf9e170bd30e1e67376fb78419710438c38c55eab841b4fff7d5e67e9",
+      "actual_start": 121.20610416666666,
+      "actual_end": 124.90852083333333,
+      "duration": 3.7024166666666667,
+      "gain_db": -0.6700000000000017,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "ひしゃかいしんど、でぃーおーえふで、きゃらくたーをひきたてられます。",
+      "mora_count": 28,
+      "mora_per_second": 7.562628013234599,
+      "pitch": {
+        "p10": 161.36295000385024,
+        "median": 239.65925019464677,
+        "p90": 303.36149983750306,
+        "p10_p90_semitones": 10.928743653391006
+      }
+    },
+    {
+      "cue": 29,
+      "scene": 9,
+      "sentence": 3,
+      "display": "ピントの位置もキーに記録して、見せたい表情へ視線を集めましょう。",
+      "spoken": "ピントの位置もキーに記録して、見せたい表情へ視線を集めましょう。",
+      "source": "assets/harema-scene09-raw.wav",
+      "trim": [
+        9.88,
+        15.42
+      ],
+      "punctuation_audio_seconds": 14.8,
+      "following_silence": [
+        15.34,
+        17.88
+      ],
+      "caption": [
+        125.19111111111113,
+        129.79444444444445
+      ],
+      "start": 125.20611111111113,
+      "target_end": 129.77444444444444,
+      "tempo": 1.212696096315219,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue29-prepared.wav",
+      "prepared_sha256": "a4bf9680804c64b3352c56038cf877c16532ee679ac46db81879dc7a7632f061",
+      "actual_start": 125.20610416666666,
+      "actual_end": 129.77710416666667,
+      "duration": 4.571,
+      "gain_db": -1.1400000000000006,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "ぴんとのいちもきーにきろくして、みせたいひょうじょうへしせんをあつめましょう。",
+      "mora_count": 34,
+      "mora_per_second": 7.438197330999782,
+      "pitch": {
+        "p10": 150.5536674246813,
+        "median": 233.9341092254804,
+        "p90": 320.2157211498005,
+        "p10_p90_semitones": 13.065195449769373
+      }
+    },
+    {
+      "cue": 30,
+      "scene": 10,
+      "sentence": 1,
+      "display": "対応するfxdayoで、ステージの演出も。",
+      "spoken": "対応するエフエックスダヨーで、ステージの演出も。",
+      "source": "assets/harema-scene10-raw.wav",
+      "trim": [
+        0.38,
+        3.88
+      ],
+      "punctuation_audio_seconds": 3.5,
+      "following_silence": [
+        3.8000000000000003,
+        4.93
+      ],
+      "caption": [
+        133.10222222222222,
+        136.30555555555554
+      ],
+      "start": 133.1172222222222,
+      "target_end": 136.28555555555553,
+      "tempo": 1.104681746449241,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue30-prepared.wav",
+      "prepared_sha256": "dbf23d952760ae3a79702a078edff6ac846930a800c313389d73cb1f97cba139",
+      "actual_start": 133.11722916666668,
+      "actual_end": 136.29047916666667,
+      "duration": 3.17325,
+      "gain_db": -0.3999999999999986,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "たいおうするえふえっくすだよーで、すてーじのえんしゅつも。",
+      "mora_count": 26,
+      "mora_per_second": 8.193492476167966,
+      "pitch": {
+        "p10": 137.61076203043956,
+        "median": 205.58281106693514,
+        "p90": 312.0992242970651,
+        "p10_p90_semitones": 14.176937630649448
+      }
+    },
+    {
+      "cue": 31,
+      "scene": 10,
+      "sentence": 2,
+      "display": "ペンライトや床の反射など、一部の対応エフェクトを使って、シーンの楽しみを広げられます。",
+      "spoken": "ペンライトやゆかのはんしゃなど、一部の対応エフェクトを使って、シーンの楽しみを広げられます。",
+      "source": "assets/harema-scene10-raw.wav",
+      "trim": [
+        4.87,
+        12.77
+      ],
+      "punctuation_audio_seconds": 12.2,
+      "following_silence": [
+        12.69,
+        15.44
+      ],
+      "caption": [
+        136.4,
+        142.75
+      ],
+      "start": 136.415,
+      "target_end": 142.73,
+      "tempo": 1.2509897070467146,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue31-prepared.wav",
+      "prepared_sha256": "33f766d05b3d9b64610d55f83dae8a581321a51dec80ab0f5043e9a29f8bbde4",
+      "actual_start": 136.415,
+      "actual_end": 142.73070833333333,
+      "duration": 6.315708333333333,
+      "gain_db": 0.0,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "ぺんらいとやゆかのはんしゃなど、いちぶのたいおうえふぇくとをつかって、しーんのたのしみをひろげられます。",
+      "mora_count": 47,
+      "mora_per_second": 7.441762272640308,
+      "pitch": {
+        "p10": 144.3991735324717,
+        "median": 204.82235895224636,
+        "p90": 297.9777033616283,
+        "p10_p90_semitones": 12.54170277435993
+      }
+    },
+    {
+      "cue": 32,
+      "scene": 11,
+      "sentence": 1,
+      "display": "ボーンや物理の計算と、メタルの描画が、VMDのリアルタイム再生を支えます。",
+      "spoken": "ボーンや物理の計算と、メタルの描画が、ブイエムディーのリアルタイム再生を支えます。",
+      "source": "assets/harema-scene11-raw.wav",
+      "trim": [
+        0.28,
+        6.96
+      ],
+      "punctuation_audio_seconds": 6.5,
+      "following_silence": [
+        6.88,
+        7.68
+      ],
+      "caption": [
+        146.0911111111111,
+        152.5388888888889
+      ],
+      "start": 146.1061111111111,
+      "target_end": 152.51888888888888,
+      "tempo": 1.04723225237329,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue32-prepared.wav",
+      "prepared_sha256": "80b999525f5f91a9420dfe3e2f69fd0c343c9d7aae97bf579487af0dbaa768f4",
+      "actual_start": 146.10610416666665,
+      "actual_end": 152.48477083333333,
+      "duration": 6.378666666666667,
+      "gain_db": -0.3099999999999987,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "ぼーんやぶつりのけいさんと、めたるのびょうがが、ぶいえむでぃーのりあるたいむさいせいをささえます。",
+      "mora_count": 44,
+      "mora_per_second": 6.897993311036789,
+      "pitch": {
+        "p10": 146.4188518776035,
+        "median": 223.59807105524047,
+        "p90": 303.66805088538104,
+        "p10_p90_semitones": 12.628725751120186
+      }
+    },
+    {
+      "cue": 33,
+      "scene": 11,
+      "sentence": 2,
+      "display": "PMX2.1のモデルにも対応しています。",
+      "spoken": "ぴーえむえっくす　にーてん　いちのモデルにも対応しています。",
+      "source": "assets/harema-scene11-raw.wav",
+      "trim": [
+        7.62,
+        12.15
+      ],
+      "punctuation_audio_seconds": 11.7,
+      "following_silence": [
+        12.07,
+        14.780000000000001
+      ],
+      "caption": [
+        152.98000000000002,
+        156.2277777777778
+      ],
+      "start": 152.995,
+      "target_end": 156.20777777777778,
+      "tempo": 1.4205428804378724,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue33-prepared.wav",
+      "prepared_sha256": "1a7dbaa9779512727e58284210677097f58dc9211df44090bf959adb279994e7",
+      "actual_start": 152.995,
+      "actual_end": 156.19516666666667,
+      "duration": 3.2001666666666666,
+      "gain_db": 1.2300000000000004,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "ぴーえむえっくす　にーてん　いちのもでるにもたいおうしています。",
+      "mora_count": 29,
+      "mora_per_second": 9.062028019373992,
+      "pitch": {
+        "p10": 153.1103372210459,
+        "median": 245.18023171028304,
+        "p90": 324.10032233539664,
+        "p10_p90_semitones": 12.982425192404953
+      }
+    },
+    {
+      "cue": 34,
+      "scene": 12,
+      "sentence": 1,
+      "display": "PMX 2.1のQDEFは、ねじったときの形を保つための変形方式です。",
+      "spoken": "ぴーえむえっくす　にーてん　いちのキューデフは、ねじったときの形を保つための変形方式です。",
+      "source": "assets/harema-scene12-raw.wav",
+      "trim": [
+        0.4,
+        8.88
+      ],
+      "punctuation_audio_seconds": 8.2,
+      "following_silence": [
+        8.8,
+        11.58
+      ],
+      "caption": [
+        160.55,
+        167.2763157894737
+      ],
+      "start": 160.565,
+      "target_end": 167.2563157894737,
+      "tempo": 1.267314272230305,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue34-prepared.wav",
+      "prepared_sha256": "d3ab46cf3bc156c8330016bd6ac5efd33d517be8c7dd9ecebe61ca1f168af1c5",
+      "actual_start": 160.565,
+      "actual_end": 167.228125,
+      "duration": 6.663125,
+      "gain_db": 0.6400000000000006,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "ぴーえむえっくす　にーてん　いちのきゅーでふは、ねじったときのかたちをたもつためのへんけいほうしきです。",
+      "mora_count": 47,
+      "mora_per_second": 7.0537473032548546,
+      "pitch": {
+        "p10": 147.72314688139582,
+        "median": 219.41463100845104,
+        "p90": 315.57990788117155,
+        "p10_p90_semitones": 13.141313456431014
+      }
+    },
+    {
+      "cue": 35,
+      "scene": 13,
+      "sentence": 1,
+      "display": "ソフトボディでは、布やロープの柔らかな動きも。",
+      "spoken": "ソフトボディでは、布やロープの柔らかな動きも。",
+      "source": "assets/harema-scene13-raw.wav",
+      "trim": [
+        0.29,
+        4.07
+      ],
+      "punctuation_audio_seconds": 3.7,
+      "following_silence": [
+        3.99,
+        5.33
+      ],
+      "caption": [
+        168.75368421052633,
+        172.5242105263158
+      ],
+      "start": 168.76868421052632,
+      "target_end": 172.5042105263158,
+      "tempo": 1.0119056005635756,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue35-prepared.wav",
+      "prepared_sha256": "45a69eab4df3293ac649d8ab4c510b843b5825e937592cfabb91b4e9f5a321bf",
+      "actual_start": 168.7686875,
+      "actual_end": 172.50202083333335,
+      "duration": 3.7333333333333334,
+      "gain_db": -0.7800000000000011,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "そふとぼでぃでは、ぬのやろーぷのやわらかなうごきも。",
+      "mora_count": 23,
+      "mora_per_second": 6.160714285714286,
+      "pitch": {
+        "p10": 140.3465066022528,
+        "median": 186.1970049152505,
+        "p90": 300.906408268184,
+        "p10_p90_semitones": 13.20386013104645
+      }
+    },
+    {
+      "cue": 36,
+      "scene": 13,
+      "sentence": 2,
+      "display": "固定した部分を支点に、しなやかに揺れる様子を表現できます。",
+      "spoken": "固定した部分を支点に、しなやかに揺れる様子を表現できます。",
+      "source": "assets/harema-scene13-raw.wav",
+      "trim": [
+        5.27,
+        11.16
+      ],
+      "punctuation_audio_seconds": 10.6,
+      "following_silence": [
+        11.08,
+        13.82
+      ],
+      "caption": [
+        172.5642105263158,
+        176.98157894736843
+      ],
+      "start": 172.5792105263158,
+      "target_end": 176.96157894736842,
+      "tempo": 1.3440220981204585,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue36-prepared.wav",
+      "prepared_sha256": "053c71848c2375c939b6752aaa585639fefa96933c6337d9e7e103a163f33b46",
+      "actual_start": 172.57920833333333,
+      "actual_end": 176.95945833333334,
+      "duration": 4.38025,
+      "gain_db": 0.26000000000000156,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "こていしたぶぶんをしてんに、しなやかにゆれるようすをひょうげんできます。",
+      "mora_count": 33,
+      "mora_per_second": 7.533816562981564,
+      "pitch": {
+        "p10": 143.09698367247395,
+        "median": 194.89506603642542,
+        "p90": 283.54878549125203,
+        "p10_p90_semitones": 11.839244579335915
+      }
+    },
+    {
+      "cue": 37,
+      "scene": 14,
+      "sentence": 1,
+      "display": "揺れを支える物理演算は、バレット。",
+      "spoken": "揺れを支える物理演算は、バレット。",
+      "source": "assets/harema-scene14-raw.wav",
+      "trim": [
+        0.31,
+        3.33
+      ],
+      "punctuation_audio_seconds": 2.8,
+      "following_silence": [
+        3.25,
+        3.89
+      ],
+      "caption": [
+        178.98000000000002,
+        181.54000000000002
+      ],
+      "start": 178.995,
+      "target_end": 181.52,
+      "tempo": 1.2068675123353865,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue37-prepared.wav",
+      "prepared_sha256": "821c385694938a0ba3399b0b015a148a83162d24245566658a1781ba0d46c925",
+      "actual_start": 178.995,
+      "actual_end": 181.509875,
+      "duration": 2.514875,
+      "gain_db": 0.5399999999999991,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "ゆれをささえるぶつりえんざんは、ばれっと。",
+      "mora_count": 19,
+      "mora_per_second": 7.555047467567971,
+      "pitch": {
+        "p10": 139.33614407046886,
+        "median": 204.5416982398682,
+        "p90": 315.6166759092695,
+        "p10_p90_semitones": 14.155246669375188
+      }
+    },
+    {
+      "cue": 38,
+      "scene": 14,
+      "sentence": 2,
+      "display": "3.25ネイティブと、2.75互換を選べます。",
+      "spoken": "さんてんにごネイティブと、にてんななご互換を選べます。",
+      "source": "assets/harema-scene14-raw.wav",
+      "trim": [
+        3.83,
+        8.11
+      ],
+      "punctuation_audio_seconds": 7.6,
+      "following_silence": [
+        8.03,
+        9.09
+      ],
+      "caption": [
+        181.58,
+        185.16222222222223
+      ],
+      "start": 181.595,
+      "target_end": 185.14222222222222,
+      "tempo": 1.2136050570168346,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue38-prepared.wav",
+      "prepared_sha256": "625e7e4785a0fdfcd6cd858ff4443574c904c0f894323f7c26d9a79c38725eb5",
+      "actual_start": 181.595,
+      "actual_end": 185.12804166666666,
+      "duration": 3.5330416666666666,
+      "gain_db": 1.2100000000000009,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "さんてんにごねいてぃぶと、にてんななごごかんをえらべます。",
+      "mora_count": 26,
+      "mora_per_second": 7.359098038753199,
+      "pitch": {
+        "p10": 136.3958779336384,
+        "median": 182.43027818826206,
+        "p90": 283.6728862345272,
+        "p10_p90_semitones": 12.677138615835878
+      }
+    },
+    {
+      "cue": 39,
+      "scene": 14,
+      "sentence": 3,
+      "display": "どちらも3.25を使い、互換モードでは、既知の動きの違いを調整しています。",
+      "spoken": "どちらもさんてんにごを使い、互換モードでは、既知の動きの違いを調整しています。",
+      "source": "assets/harema-scene14-raw.wav",
+      "trim": [
+        9.03,
+        15.01
+      ],
+      "punctuation_audio_seconds": 14.5,
+      "following_silence": [
+        14.93,
+        17.66
+      ],
+      "caption": [
+        185.20222222222222,
+        190.98333333333332
+      ],
+      "start": 185.2172222222222,
+      "target_end": 190.9633333333333,
+      "tempo": 1.0470133826552894,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue39-prepared.wav",
+      "prepared_sha256": "3d1072622127f667ada342329fc350a8fd5e2b7846627bd09bd4cb869ff8515d",
+      "actual_start": 185.21722916666667,
+      "actual_end": 190.9340625,
+      "duration": 5.716833333333334,
+      "gain_db": 0.8599999999999994,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "どちらもさんてんにごをつかい、ごかんもーどでは、きちのうごきのちがいをちょうせいしています。",
+      "mora_count": 42,
+      "mora_per_second": 7.346724585289058,
+      "pitch": {
+        "p10": 135.8960320118678,
+        "median": 187.67020670182353,
+        "p90": 311.9620222502404,
+        "p10_p90_semitones": 14.3864049183987
+      }
+    },
+    {
+      "cue": 40,
+      "scene": 15,
+      "sentence": 1,
+      "display": "VMD Viewer for Mac。",
+      "spoken": "ブイエムディー・ビューアー・フォー・マック。",
+      "source": "assets/harema-scene15-raw.wav",
+      "trim": [
+        0.29,
+        3.15
+      ],
+      "punctuation_audio_seconds": 2.7,
+      "following_silence": [
+        3.0700000000000003,
+        4.28
+      ],
+      "caption": [
+        196.70222222222225,
+        198.5955555555556
+      ],
+      "start": 196.71722222222223,
+      "target_end": 198.57555555555558,
+      "tempo": 1.5532418048221108,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue40-prepared.wav",
+      "prepared_sha256": "f1767448dfb6d69226d625e7291031e0e92ef6d7fe8ecffffada7e29266440a9",
+      "actual_start": 196.71722916666667,
+      "actual_end": 198.56164583333333,
+      "duration": 1.8444166666666666,
+      "gain_db": 1.7199999999999989,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "ぶいえむでぃー・びゅーあー・ふぉー・まっく。",
+      "mora_count": 15,
+      "mora_per_second": 8.132652600189763,
+      "pitch": {
+        "p10": 144.38536421529017,
+        "median": 194.24079297557785,
+        "p90": 255.61659514320596,
+        "p10_p90_semitones": 9.888683913063808
+      }
+    },
+    {
+      "cue": 41,
+      "scene": 15,
+      "sentence": 2,
+      "display": "いつものMacで、VMDをリアルタイム再生。",
+      "spoken": "いつものマックで、ブイエムディーをリアルタイム再生。",
+      "source": "assets/harema-scene15-raw.wav",
+      "trim": [
+        4.22,
+        8.02
+      ],
+      "punctuation_audio_seconds": 7.5,
+      "following_silence": [
+        7.94,
+        10.620000000000001
+      ],
+      "caption": [
+        198.63555555555558,
+        202.88333333333333
+      ],
+      "start": 198.65055555555557,
+      "target_end": 202.86333333333332,
+      "tempo": 1,
+      "pitch_shift_semitones": 0,
+      "boundary_method": "Streamed punctuation plus >=250ms measured silence; offline ASR pending",
+      "prepared": "assets/harema-cue41-prepared.wav",
+      "prepared_sha256": "9614b53eff1b6288da8b86a6c4d3579982180b1d2a33f2860ff0ae38cc0b39d0",
+      "actual_start": 198.6505625,
+      "actual_end": 202.4431875,
+      "duration": 3.792625,
+      "gain_db": 0.120000000000001,
+      "gain_method": "constant gain, target -17 stereo LUFS, at most -3.5 dBTP",
+      "boundary_ramp_seconds": 0.004,
+      "reading_for_measurement": "いつものまっくで、ぶいえむでぃーをりあるたいむさいせい。",
+      "mora_count": 25,
+      "mora_per_second": 6.591740549091988,
+      "pitch": {
+        "p10": 138.16349832068946,
+        "median": 235.6299335469546,
+        "p90": 286.9909637903124,
+        "p10_p90_semitones": 12.6555455419192
+      }
+    }
+  ]
+}

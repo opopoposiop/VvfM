@@ -1,0 +1,209 @@
+{
+  "engine": "local mlx-whisper",
+  "model": "openai/whisper-medium converted locally to MLX",
+  "audio_uploaded": false,
+  "source": "assets/harema-scene15-raw.wav",
+  "sha256": "0eb1288bdc1539509f68c4becde9b756b77de3d4c55857674c4e614b41a92453",
+  "transcript": {
+    "text": "VMD Viewer for MacいつものMacでVMDをリアルタイム再生。",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.6,
+        "text": "VMD Viewer for Mac",
+        "tokens": [
+          50364,
+          53,
+          44,
+          35,
+          13909,
+          260,
+          337,
+          5707,
+          50539
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.24384635070274616,
+        "compression_ratio": 0.8961038961038961,
+        "no_speech_prob": 0.2075110822916031,
+        "words": [
+          {
+            "word": "V",
+            "start": 0.0,
+            "end": 0.7,
+            "probability": 0.869140625
+          },
+          {
+            "word": "M",
+            "start": 0.7,
+            "end": 0.96,
+            "probability": 0.96923828125
+          },
+          {
+            "word": "D",
+            "start": 0.96,
+            "end": 1.46,
+            "probability": 0.9462890625
+          },
+          {
+            "word": " View",
+            "start": 1.46,
+            "end": 1.92,
+            "probability": 0.66796875
+          },
+          {
+            "word": "er",
+            "start": 1.92,
+            "end": 2.22,
+            "probability": 0.9970703125
+          },
+          {
+            "word": " for",
+            "start": 2.22,
+            "end": 2.68,
+            "probability": 0.9072265625
+          },
+          {
+            "word": " Mac",
+            "start": 2.68,
+            "end": 3.6,
+            "probability": 0.97412109375
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "seek": 0,
+        "start": 3.6,
+        "end": 8.0,
+        "text": "いつものMacでVMDをリアルタイム再生。",
+        "tokens": [
+          50564,
+          40162,
+          44726,
+          34355,
+          2474,
+          53,
+          44,
+          35,
+          5998,
+          12376,
+          12817,
+          9405,
+          12144,
+          8040,
+          32026,
+          8623,
+          8244,
+          1543,
+          50789
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.24384635070274616,
+        "compression_ratio": 0.8961038961038961,
+        "no_speech_prob": 0.2075110822916031,
+        "words": [
+          {
+            "word": "いつ",
+            "start": 3.6,
+            "end": 4.54,
+            "probability": 0.8623046875
+          },
+          {
+            "word": "もの",
+            "start": 4.54,
+            "end": 4.74,
+            "probability": 0.99365234375
+          },
+          {
+            "word": "Mac",
+            "start": 4.74,
+            "end": 5.04,
+            "probability": 0.873046875
+          },
+          {
+            "word": "で",
+            "start": 5.04,
+            "end": 5.66,
+            "probability": 0.97998046875
+          },
+          {
+            "word": "V",
+            "start": 5.66,
+            "end": 6.04,
+            "probability": 0.416748046875
+          },
+          {
+            "word": "M",
+            "start": 6.04,
+            "end": 6.26,
+            "probability": 0.99609375
+          },
+          {
+            "word": "D",
+            "start": 6.26,
+            "end": 6.48,
+            "probability": 0.99072265625
+          },
+          {
+            "word": "を",
+            "start": 6.48,
+            "end": 6.8,
+            "probability": 0.99755859375
+          },
+          {
+            "word": "リ",
+            "start": 6.8,
+            "end": 7.0,
+            "probability": 0.98046875
+          },
+          {
+            "word": "ア",
+            "start": 7.0,
+            "end": 7.16,
+            "probability": 0.99267578125
+          },
+          {
+            "word": "ル",
+            "start": 7.16,
+            "end": 7.26,
+            "probability": 0.99072265625
+          },
+          {
+            "word": "タ",
+            "start": 7.26,
+            "end": 7.36,
+            "probability": 0.98388671875
+          },
+          {
+            "word": "イ",
+            "start": 7.36,
+            "end": 7.38,
+            "probability": 1.0
+          },
+          {
+            "word": "ム",
+            "start": 7.38,
+            "end": 7.54,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "再",
+            "start": 7.54,
+            "end": 7.82,
+            "probability": 0.99169921875
+          },
+          {
+            "word": "生。",
+            "start": 7.82,
+            "end": 8.0,
+            "probability": 0.99853515625
+          }
+        ]
+      }
+    ],
+    "language": "ja"
+  }
+}

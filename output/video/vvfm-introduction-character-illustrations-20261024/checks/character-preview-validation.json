@@ -1,0 +1,21 @@
+{
+  "result": "pass",
+  "file": "VvfM_キャラクター配置_14秒プレビュー.mp4",
+  "source_file": "VvfM_紹介動画_キャラクターイラスト版_3分25秒_BGMあり_1080p.mp4",
+  "source_interval_seconds": [
+    12,
+    26
+  ],
+  "duration_seconds": 14.0,
+  "frames": 336,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "sha256": "7e480f4b37b48018985ee72f96ddebb338ff19bd304802788b93bdc06cc75905",
+  "full_video_audio_decode": "pass",
+  "scene": 2,
+  "illustrations": 2,
+  "audio_edition": "BGMあり",
+  "human_full_video_listening_claimed": false
+}

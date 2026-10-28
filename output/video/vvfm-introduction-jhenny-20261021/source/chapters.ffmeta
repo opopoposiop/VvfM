@@ -1,0 +1,69 @@
+;FFMETADATA1
+title=VMD Viewer for Mac 紹介動画
+artist=VMD Viewer for Mac
+comment=AI narration: HeyGen Jhenny
+[CHAPTER]
+TIMEBASE=1/1000
+START=0
+END=12000
+title=01 いつものMacで、VMDをリアルタイム再生
+[CHAPTER]
+TIMEBASE=1/1000
+START=12000
+END=26000
+title=02 VMD Viewer for Macの紹介
+[CHAPTER]
+TIMEBASE=1/1000
+START=26000
+END=38000
+title=03 Windowsユーザーにも、出先のMacで
+[CHAPTER]
+TIMEBASE=1/1000
+START=38000
+END=57000
+title=04 PMX、VMD、WAVを読み込んでリアルタイム再生
+[CHAPTER]
+TIMEBASE=1/1000
+START=57000
+END=77000
+title=05 ボーンと3Dギズモで少しアレンジ
+[CHAPTER]
+TIMEBASE=1/1000
+START=77000
+END=94000
+title=06 モーフとカメラで、お気に入りの瞬間へ
+[CHAPTER]
+TIMEBASE=1/1000
+START=94000
+END=108000
+title=07 リアルタイムで確認し、保存・動画出力へ
+[CHAPTER]
+TIMEBASE=1/1000
+START=108000
+END=127000
+title=08 ToonShader HQで見た目を仕上げる
+[CHAPTER]
+TIMEBASE=1/1000
+START=127000
+END=143000
+title=09 DoFでキャラクターを引き立てる
+[CHAPTER]
+TIMEBASE=1/1000
+START=143000
+END=156000
+title=10 対応する.fxdayoで演出を加える
+[CHAPTER]
+TIMEBASE=1/1000
+START=156000
+END=171000
+title=11 Macで動きを支える技術とPMX 2.1
+[CHAPTER]
+TIMEBASE=1/1000
+START=171000
+END=189000
+title=12 Bulletの物理演算と二つのモード
+[CHAPTER]
+TIMEBASE=1/1000
+START=189000
+END=198000
+title=13 Macで、気軽にMMDを楽しもう

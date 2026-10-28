@@ -1,0 +1,27 @@
+{
+  "previous_production_folder": "vvfm-introduction-fxdayo-voicefix-jhenny-20261022",
+  "video_bitstream_hash": "SHA256=005b2b20047d1685505f5253a56817b550768c64e1dff806c0f6b1cf57043ff1",
+  "unchanged_files": [
+    {
+      "file": "source/captions.json",
+      "sha256": "3c602adb993e4ebc0325646e3a8de36f7202abc18d0bb63d29a1d1f93d3b1d31"
+    },
+    {
+      "file": "source/edit-decision-list.json",
+      "sha256": "660c13c5a48cf2c4b3b31c2d1981401c38226a46028ed1d011a9277a2c844453"
+    },
+    {
+      "file": "source/chapters.ffmeta",
+      "sha256": "b2e206fd8b2e1cfcb5a512ebfd9352d22349cae4d598c9a9310a9cc05141110e"
+    },
+    {
+      "file": "source/build_composition.py",
+      "sha256": "ffa55c51a35d5f168a0b7fa2f5e52d83d5e759f5acdd8a2b0330a26b19de4c72"
+    },
+    {
+      "file": "composition/index.html",
+      "sha256": "3e41086801a75ec988b68bcd1797754c9ec1a93ac95f4efb81cfde7a8a64f016"
+    }
+  ],
+  "all_scene_timing_and_display_text_unchanged": true
+}

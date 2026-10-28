@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-29",
+  "user_request": "発音のテンポを一定にする,音の高さ低さを一定の範囲にする",
+  "source_folder": "vvfm-introduction-harema-20261029",
+  "voice": "Harema",
+  "method": "Local tempo normalization and bounded pitch-contour compression of existing recordings",
+  "external_audio_uploaded": false,
+  "ai_generated_source": true,
+  "preserve": [
+    "video",
+    "captions",
+    "BGM contribution",
+    "spoken script",
+    "205 second total duration"
+  ],
+  "settings": {
+    "target_mora_per_second": 7.5,
+    "mora_count_method": "pykakasi reading, small vowels/ya/yu/yo excluded; a phrase-average pacing proxy, not phoneme alignment",
+    "minimum_inter_sentence_gap": 0.08,
+    "pitch_center_hz": 215,
+    "pitch_log_contour_scale": 0.45,
+    "pitch_soft_bound_semitones": 3,
+    "pitch_target_hz": [
+      180.7927292795486,
+      255.679529725585
+    ],
+    "pitch_mapping": "For each sentence, center on 215 Hz and compress deviations with 3*tanh(0.45*semitones/3).",
+    "maximum_subtitle_lead_seconds": 0.44111111111111256,
+    "maximum_subtitle_overrun_seconds": 0.4000000000000057
+  }
+}

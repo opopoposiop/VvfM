@@ -1,0 +1,444 @@
+{
+  "engine": "local mlx-whisper",
+  "model": "openai/whisper-medium converted locally to MLX",
+  "audio_uploaded": false,
+  "source": "assets/harema-scene06-raw.wav",
+  "sha256": "8bc8758c33bad6cea71890fb21fb1ce0f1e157ce0e7e3df52395d373ae9eb895",
+  "transcript": {
+    "text": "表情も自分好みに。毛布の値はタイムラインで変化を見ながら調整できます。笑顔を作り、カメラの構図も整えて、お気に入りの瞬間へ。",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.4000000000000006,
+        "end": 2.64,
+        "text": "表情も自分好みに。",
+        "tokens": [
+          50364,
+          17571,
+          10570,
+          4801,
+          9722,
+          6627,
+          2131,
+          11362,
+          4108,
+          1543,
+          50496
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.20762221018473306,
+        "compression_ratio": 1.1847133757961783,
+        "no_speech_prob": 0.15676802396774292,
+        "words": [
+          {
+            "word": "表",
+            "start": 0.4000000000000006,
+            "end": 0.76,
+            "probability": 0.7783203125
+          },
+          {
+            "word": "情",
+            "start": 0.76,
+            "end": 0.96,
+            "probability": 0.998046875
+          },
+          {
+            "word": "も",
+            "start": 0.96,
+            "end": 1.5,
+            "probability": 0.9892578125
+          },
+          {
+            "word": "自",
+            "start": 1.5,
+            "end": 1.78,
+            "probability": 0.89697265625
+          },
+          {
+            "word": "分",
+            "start": 1.78,
+            "end": 1.98,
+            "probability": 1.0
+          },
+          {
+            "word": "好",
+            "start": 1.98,
+            "end": 2.14,
+            "probability": 0.955078125
+          },
+          {
+            "word": "み",
+            "start": 2.14,
+            "end": 2.32,
+            "probability": 0.9970703125
+          },
+          {
+            "word": "に。",
+            "start": 2.32,
+            "end": 2.64,
+            "probability": 0.947265625
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "seek": 0,
+        "start": 3.36,
+        "end": 7.88,
+        "text": "毛布の値はタイムラインで変化を見ながら調整できます。",
+        "tokens": [
+          50496,
+          39057,
+          34688,
+          2972,
+          2122,
+          97,
+          3065,
+          12144,
+          8040,
+          32026,
+          40230,
+          4824,
+          2474,
+          40931,
+          23756,
+          5998,
+          10470,
+          3203,
+          5142,
+          5154,
+          32943,
+          27662,
+          2474,
+          22851,
+          1543,
+          50744
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.20762221018473306,
+        "compression_ratio": 1.1847133757961783,
+        "no_speech_prob": 0.15676802396774292,
+        "words": [
+          {
+            "word": "毛",
+            "start": 3.36,
+            "end": 3.46,
+            "probability": 0.51025390625
+          },
+          {
+            "word": "布",
+            "start": 3.46,
+            "end": 3.56,
+            "probability": 0.98583984375
+          },
+          {
+            "word": "の",
+            "start": 3.56,
+            "end": 3.8,
+            "probability": 0.9921875
+          },
+          {
+            "word": "値",
+            "start": 3.8,
+            "end": 3.98,
+            "probability": 0.98828125
+          },
+          {
+            "word": "は",
+            "start": 3.98,
+            "end": 4.56,
+            "probability": 0.98828125
+          },
+          {
+            "word": "タ",
+            "start": 4.56,
+            "end": 4.76,
+            "probability": 0.74462890625
+          },
+          {
+            "word": "イ",
+            "start": 4.76,
+            "end": 4.82,
+            "probability": 1.0
+          },
+          {
+            "word": "ム",
+            "start": 4.82,
+            "end": 4.96,
+            "probability": 0.99658203125
+          },
+          {
+            "word": "ライ",
+            "start": 4.96,
+            "end": 5.18,
+            "probability": 0.97998046875
+          },
+          {
+            "word": "ン",
+            "start": 5.18,
+            "end": 5.34,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "で",
+            "start": 5.34,
+            "end": 5.46,
+            "probability": 0.9814453125
+          },
+          {
+            "word": "変",
+            "start": 5.46,
+            "end": 5.7,
+            "probability": 0.98291015625
+          },
+          {
+            "word": "化",
+            "start": 5.7,
+            "end": 5.9,
+            "probability": 0.9931640625
+          },
+          {
+            "word": "を",
+            "start": 5.9,
+            "end": 6.04,
+            "probability": 0.99560546875
+          },
+          {
+            "word": "見",
+            "start": 6.04,
+            "end": 6.16,
+            "probability": 0.96533203125
+          },
+          {
+            "word": "な",
+            "start": 6.16,
+            "end": 6.28,
+            "probability": 0.984375
+          },
+          {
+            "word": "が",
+            "start": 6.28,
+            "end": 6.38,
+            "probability": 0.99755859375
+          },
+          {
+            "word": "ら",
+            "start": 6.38,
+            "end": 6.54,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "調",
+            "start": 6.54,
+            "end": 6.84,
+            "probability": 0.9658203125
+          },
+          {
+            "word": "整",
+            "start": 6.84,
+            "end": 6.96,
+            "probability": 0.998046875
+          },
+          {
+            "word": "で",
+            "start": 6.96,
+            "end": 7.16,
+            "probability": 0.9453125
+          },
+          {
+            "word": "きます。",
+            "start": 7.16,
+            "end": 7.88,
+            "probability": 0.99951171875
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "seek": 0,
+        "start": 8.26,
+        "end": 13.12,
+        "text": "笑顔を作り、カメラの構図も整えて、お気に入りの瞬間へ。",
+        "tokens": [
+          50744,
+          11600,
+          10178,
+          242,
+          5998,
+          11914,
+          5095,
+          1231,
+          10111,
+          21647,
+          11353,
+          2972,
+          43362,
+          3919,
+          111,
+          4801,
+          27662,
+          31045,
+          1231,
+          6117,
+          25870,
+          4108,
+          14028,
+          5095,
+          2972,
+          36733,
+          105,
+          11016,
+          29440,
+          1543,
+          51024
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.20762221018473306,
+        "compression_ratio": 1.1847133757961783,
+        "no_speech_prob": 0.15676802396774292,
+        "words": [
+          {
+            "word": "笑",
+            "start": 8.26,
+            "end": 8.32,
+            "probability": 0.93798828125
+          },
+          {
+            "word": "顔",
+            "start": 8.32,
+            "end": 8.54,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "を",
+            "start": 8.54,
+            "end": 8.7,
+            "probability": 0.96630859375
+          },
+          {
+            "word": "作",
+            "start": 8.7,
+            "end": 8.86,
+            "probability": 0.6875
+          },
+          {
+            "word": "り、",
+            "start": 8.86,
+            "end": 9.28,
+            "probability": 0.99658203125
+          },
+          {
+            "word": "カ",
+            "start": 9.54,
+            "end": 9.58,
+            "probability": 0.99609375
+          },
+          {
+            "word": "メ",
+            "start": 9.58,
+            "end": 9.68,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "ラ",
+            "start": 9.68,
+            "end": 9.8,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "の",
+            "start": 9.8,
+            "end": 10.0,
+            "probability": 0.99267578125
+          },
+          {
+            "word": "構",
+            "start": 10.0,
+            "end": 10.18,
+            "probability": 0.9853515625
+          },
+          {
+            "word": "図",
+            "start": 10.18,
+            "end": 10.28,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "も",
+            "start": 10.28,
+            "end": 10.5,
+            "probability": 0.96240234375
+          },
+          {
+            "word": "整",
+            "start": 10.5,
+            "end": 10.78,
+            "probability": 0.99267578125
+          },
+          {
+            "word": "えて、",
+            "start": 10.78,
+            "end": 11.34,
+            "probability": 0.99365234375
+          },
+          {
+            "word": "お",
+            "start": 11.66,
+            "end": 11.74,
+            "probability": 0.9833984375
+          },
+          {
+            "word": "気",
+            "start": 11.74,
+            "end": 11.9,
+            "probability": 0.9931640625
+          },
+          {
+            "word": "に",
+            "start": 11.9,
+            "end": 12.04,
+            "probability": 0.99462890625
+          },
+          {
+            "word": "入",
+            "start": 12.04,
+            "end": 12.12,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "り",
+            "start": 12.12,
+            "end": 12.24,
+            "probability": 0.99853515625
+          },
+          {
+            "word": "の",
+            "start": 12.24,
+            "end": 12.42,
+            "probability": 0.99560546875
+          },
+          {
+            "word": "瞬",
+            "start": 12.42,
+            "end": 12.66,
+            "probability": 0.99755859375
+          },
+          {
+            "word": "間",
+            "start": 12.66,
+            "end": 12.8,
+            "probability": 0.998046875
+          },
+          {
+            "word": "へ。",
+            "start": 12.8,
+            "end": 13.12,
+            "probability": 0.96728515625
+          }
+        ]
+      }
+    ],
+    "language": "ja"
+  }
+}

@@ -1,0 +1,40 @@
+[
+  {
+    "file": "composition/assets/pmx-character-left.png",
+    "source_filename": "exec-f0966d30-add5-4fe8-b53f-20130b20da30.png",
+    "sha256": "825cca6c285897785b2bc779a742a9bc49bace362de21f82147fea35f063b681",
+    "size": [
+      1179,
+      1334
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "alpha_bbox": [
+      252,
+      36,
+      933,
+      1305
+    ]
+  },
+  {
+    "file": "composition/assets/pmx-character-right.png",
+    "source_filename": "exec-059c8301-13cc-44e7-a8b5-63b5fba52db5.png",
+    "sha256": "4906165ac3fe259576a67abce12b5c62ea92e9148794ac516e50201b6c1b9c8a",
+    "size": [
+      1145,
+      1374
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "alpha_bbox": [
+      222,
+      88,
+      956,
+      1326
+    ]
+  }
+]

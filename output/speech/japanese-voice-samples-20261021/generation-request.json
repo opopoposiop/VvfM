@@ -1,0 +1,14 @@
+{
+  "model": "gpt-4o-mini-tts-2025-12-15",
+  "input": "いつものMacで、VMDをリアルタイム再生。好きなキャラクターが、その場で動き出す。気軽にMMDを楽しもう。",
+  "instructions": "Voice Affect: 親しみやすく、落ち着いた明るさ。\nTone: 日本語の女性ナレーション。自然な語り口で、楽しさが伝わる程度の穏やかな抑揚。\nPacing: 聞き取りやすい一定の速さ。文の区切りに短い間を入れる。\nPronunciation: Macは「マック」、VMDは「ブイエムディー」、MMDは「エムエムディー」と発音する。\nDelivery: 入力文だけを日本語で読み上げる。\nEmphasis: 「VMDをリアルタイム再生」を少しはっきりと伝える。",
+  "response_format": "mp3",
+  "speed": 1.0,
+  "voices": [
+    "marin",
+    "coral",
+    "shimmer"
+  ],
+  "source": "docs/video/VvfM_紹介動画シナリオ_3分18秒.md",
+  "source_scene": "01 いつものMacで、VMDをリアルタイム再生"
+}

@@ -1,0 +1,45 @@
+{
+  "previous_production_folder": "vvfm-introduction-character-ending-20261024",
+  "video_reused_without_changes": false,
+  "changed_visual_scenes": [
+    8
+  ],
+  "changed_audio_scenes": [
+    5,
+    8
+  ],
+  "video_bitstream_hash": "SHA256=1b355155f18301174251ec66bd50406d0cff8983abc1ca65d3ce016bdd8e2e58",
+  "hash_describes": "previous edition used to verify the two subtitle-text edits change the video",
+  "all_scene_timing_unchanged": true,
+  "all_main_scene_content_and_layout_unchanged": true,
+  "all_caption_timing_unchanged": true,
+  "changed_caption_text_count": 2,
+  "audio_outside_two_patches_unchanged_before_encoding": true,
+  "all_bgm_contribution_unchanged_before_encoding": true,
+  "unchanged_files": [
+    {
+      "file": "source/edit-decision-list.json",
+      "sha256": "660c13c5a48cf2c4b3b31c2d1981401c38226a46028ed1d011a9277a2c844453"
+    },
+    {
+      "file": "source/chapters.ffmeta",
+      "sha256": "b2e206fd8b2e1cfcb5a512ebfd9352d22349cae4d598c9a9310a9cc05141110e"
+    },
+    {
+      "file": "source/build_composition.py",
+      "sha256": "34ab73d29a514be1b823b292472205bd0adb44af78ce458414d16789a95ac895"
+    },
+    {
+      "file": "source/character-placement.json",
+      "sha256": "ccf780fe51c8a79bab578876ae5c7fb66294feb81f7d458539ffa7fe1270a677"
+    },
+    {
+      "file": "composition/assets/pmx-character-left.png",
+      "sha256": "825cca6c285897785b2bc779a742a9bc49bace362de21f82147fea35f063b681"
+    },
+    {
+      "file": "composition/assets/pmx-character-right.png",
+      "sha256": "4906165ac3fe259576a67abce12b5c62ea92e9148794ac516e50201b6c1b9c8a"
+    }
+  ]
+}

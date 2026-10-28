@@ -1,0 +1,20 @@
+[transformers] You are using a model of type `qwen3_tts` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
+  Initialized encoder codebooks
+Loaded speech tokenizer from /private/tmp/vvfm-qwen3-tts-base-4bit-20261023/speech_tokenizer
+[94mText:[0m トゥーンシェーダーエイチキューでは、りんかくせんやひかりをちょうせいできます。
+[94mVoice:[0m None
+[94mSpeed:[0m 1.0x
+[94mLanguage:[0m Japanese
+ICL generation: トゥーンシェーダーエイチキューでは、りんかくせんやひかりをちょうせいできます。...
+ICL Generation:   0%|          | 0/300 [00:00<?, ?tokens/s]ICL Generation:   1%|          | 2/300 [00:00<00:15, 19.16tokens/s]ICL Generation:   3%|▎         | 9/300 [00:00<00:06, 45.07tokens/s]ICL Generation:   5%|▌         | 16/300 [00:00<00:05, 52.55tokens/s]ICL Generation:   8%|▊         | 23/300 [00:00<00:04, 56.29tokens/s]ICL Generation:  10%|█         | 30/300 [00:00<00:04, 58.38tokens/s]ICL Generation:  12%|█▏        | 37/300 [00:00<00:04, 59.40tokens/s]ICL Generation:  15%|█▍        | 44/300 [00:00<00:04, 60.41tokens/s]ICL Generation:  17%|█▋        | 51/300 [00:00<00:04, 60.94tokens/s]                                                                    ==========
+Duration:              00:00:04.240
+Samples/sec:           67336.1
+Prompt:                53 tokens, 35.1 tokens-per-sec
+Audio:                 101760 samples, 67336.1 samples-per-sec
+Real-time factor:      2.81x
+Processing time:       1.51s
+Peak memory usage:     6.90GB
+Joining 1 audio files
+✅ Audio successfully generated and saving as: /Users/minmin/projects/VvfM/output/video/vvfm-introduction-natural-narration-20261025/assets/natural-toon-v2-raw.wav
+Saved /Users/minmin/projects/VvfM/output/video/vvfm-introduction-natural-narration-20261025/assets/natural-toon-v2-raw.wav
+Local synthesis complete. Speech and similarity validation still required.

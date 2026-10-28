@@ -1,0 +1,69 @@
+{
+  "arm_word_old": {
+    "interval_seconds": [
+      54.74,
+      55.23
+    ],
+    "voiced_frames": 23,
+    "p10_hz": 149.49496464659305,
+    "median_hz": 262.81758915276873,
+    "p90_hz": 287.4388627159189,
+    "p10_to_p90_semitones": 11.317898886116325
+  },
+  "arm_word_new": {
+    "interval_seconds": [
+      54.62,
+      54.86
+    ],
+    "voiced_frames": 42,
+    "p10_hz": 196.4844125533487,
+    "median_hz": 208.37715729443994,
+    "p90_hz": 214.6808544732878,
+    "p10_to_p90_semitones": 1.5333440389314563
+  },
+  "arm_sentence_old": {
+    "interval_seconds": [
+      54.65,
+      57.925
+    ],
+    "voiced_frames": 399,
+    "p10_hz": 167.04304245583114,
+    "median_hz": 222.28092126077215,
+    "p90_hz": 248.1877794136304,
+    "p10_to_p90_semitones": 6.854546232276532
+  },
+  "arm_sentence_new": {
+    "interval_seconds": [
+      54.2,
+      57.718125
+    ],
+    "voiced_frames": 378,
+    "p10_hz": 177.8185700842658,
+    "median_hz": 190.2946878228219,
+    "p90_hz": 206.88397496734945,
+    "p10_to_p90_semitones": 2.620990837209744
+  },
+  "rim_sentence_old": {
+    "interval_seconds": [
+      106.168889,
+      109.505556
+    ],
+    "voiced_frames": 446,
+    "p10_hz": 172.90268401908645,
+    "median_hz": 201.3902731202934,
+    "p90_hz": 236.60651822060248,
+    "p10_to_p90_semitones": 5.4303546501500435
+  },
+  "rim_sentence_new": {
+    "interval_seconds": [
+      106.06,
+      109.464958
+    ],
+    "voiced_frames": 438,
+    "p10_hz": 189.75663952878304,
+    "median_hz": 200.4005955154856,
+    "p90_hz": 216.69084596912015,
+    "p10_to_p90_semitones": 2.2978541107390518
+  },
+  "method": "Praat autocorrelation F0; word bounds use ASR plus signal onset inspection; perceptual flatness and exact speaker identity are not asserted by F0 metrics alone."
+}

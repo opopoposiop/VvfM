@@ -1,0 +1,11 @@
+{
+  "duration": 205,
+  "sample_rate": 48000,
+  "channels": 2,
+  "narration_target_lufs": -16,
+  "music_target_lufs": -25.5,
+  "music_gain_during_speech": 0.38,
+  "shared_gain": 1.0,
+  "bgm_version_peak_dbfs": -5.159383296966553,
+  "narration_version_peak_dbfs": -5.562146186828613
+}

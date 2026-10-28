@@ -370,12 +370,7 @@
     "end": 168,
     "source": "pmx21-qdef-source.mov",
     "source_start": 0,
-    "crop": [
-      1160,
-      340,
-      1370,
-      880
-    ],
+    "crop": null,
     "playback_rate": 1
   },
   {
@@ -384,12 +379,7 @@
     "end": 178,
     "source": "pmx21-softbody-source.mov",
     "source_start": 0.15,
-    "crop": [
-      1100,
-      420,
-      1600,
-      850
-    ],
+    "crop": null,
     "playback_rate": 1
   },
   {

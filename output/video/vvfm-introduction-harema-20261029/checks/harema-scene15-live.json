@@ -1,0 +1,418 @@
+{
+  "scene": 15,
+  "model": "gpt-live-1",
+  "voice_requested": "harema",
+  "input": "ブイエムディー・ビューアー・フォー・マック。いつものマックで、ブイエムディーをリアルタイム再生。",
+  "request_file": "source/harema-scene15-session.json",
+  "audio_file": "assets/harema-scene15-raw.wav",
+  "audio_seconds": 10.62,
+  "audio_sha256": "0eb1288bdc1539509f68c4becde9b756b77de3d4c55857674c4e614b41a92453",
+  "elapsed_seconds": 15.375164541997947,
+  "session_started": {
+    "event_id": "event_EeJofmqK6TueBJgLHbWB4",
+    "session": {
+      "id": "live_u7_EeJoep3oNP47CjOhefb3GC5libTx5vom",
+      "expires_at": 1793285200,
+      "model": "gpt-live-1",
+      "status": "active",
+      "audio": {
+        "format": {
+          "rate": 24000,
+          "type": "audio/pcm"
+        },
+        "output": {
+          "voice": "harema"
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "input": [
+        {
+          "content": [
+            {
+              "text": "録音を開始します。今すぐ次の原稿だけを、一度、全文読み上げてください。原稿：\nブイエムディー・ビューアー・フォー・マック。いつものマックで、ブイエムディーをリアルタイム再生。",
+              "type": "input_text"
+            }
+          ],
+          "role": "developer",
+          "type": "message"
+        }
+      ],
+      "instructions": "あなたは日本語の紹介動画のナレーターです。標準的な日本語の自然なアクセントで、落ち着いて親しみやすく、明瞭に読みます。原稿の抑揚は自然に保ち、語頭だけを強く高くしません。速さと声量を一定にし、文と文の間には短い間を入れます。仕事は原稿の朗読だけです。提供された原稿を最初から最後まで正確に、一度だけ読み上げてください。挨拶、相づち、説明、感想、質問、見出し、原稿の引用符を追加しません。原稿の語句を省略、言い換え、補足、繰り返ししません。ひらがなとカタカナで示した名称と数字の読みを、そのまま発声します。英語に置き換えません。ツールや別のエージェントを呼ばず、自分で読み上げます。読み終えた後は無言で待ってください。",
+      "store": false
+    },
+    "type": "session.started",
+    "client_event_id": "start_scene_15",
+    "received_elapsed_seconds": 1.0173,
+    "captured_audio_seconds": 0.0
+  },
+  "session_closed": {
+    "event_id": "event_EeJorEw6lwb7HRKDzftBW",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EeJoep3oNP47CjOhefb3GC5libTx5vom",
+      "expires_at": 1793285200,
+      "model": "gpt-live-1",
+      "status": "active",
+      "audio": {
+        "format": {
+          "rate": 24000,
+          "type": "audio/pcm"
+        },
+        "output": {
+          "voice": "harema"
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "input": [
+        {
+          "content": [
+            {
+              "text": "録音を開始します。今すぐ次の原稿だけを、一度、全文読み上げてください。原稿：\nブイエムディー・ビューアー・フォー・マック。いつものマックで、ブイエムディーをリアルタイム再生。",
+              "type": "input_text"
+            }
+          ],
+          "role": "developer",
+          "type": "message"
+        }
+      ],
+      "instructions": "あなたは日本語の紹介動画のナレーターです。標準的な日本語の自然なアクセントで、落ち着いて親しみやすく、明瞭に読みます。原稿の抑揚は自然に保ち、語頭だけを強く高くしません。速さと声量を一定にし、文と文の間には短い間を入れます。仕事は原稿の朗読だけです。提供された原稿を最初から最後まで正確に、一度だけ読み上げてください。挨拶、相づち、説明、感想、質問、見出し、原稿の引用符を追加しません。原稿の語句を省略、言い換え、補足、繰り返ししません。ひらがなとカタカナで示した名称と数字の読みを、そのまま発声します。英語に置き換えません。ツールや別のエージェントを呼ばず、自分で読み上げます。読み終えた後は無言で待ってください。",
+      "store": false
+    },
+    "type": "session.closed",
+    "usage": {
+      "seconds": 11.0
+    },
+    "client_event_id": "close_scene_15",
+    "received_elapsed_seconds": 13.3666,
+    "captured_audio_seconds": 10.62
+  },
+  "graceful_close_confirmed": true,
+  "stop_reason": "speech_followed_by_silence",
+  "transcript": "ブイエムディー・ビューアー・フォー・マック。いつものマックで、ブイエムディーをリアルタイム再生。",
+  "transcript_fragments": [
+    {
+      "delta": "ブイ",
+      "end_ms": 400,
+      "event_id": "event_EeJofYI6LoFBORQNbmKy8",
+      "start_ms": 200,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 1.9113,
+      "captured_audio_seconds": 0.2
+    },
+    {
+      "delta": "エム",
+      "end_ms": 600,
+      "event_id": "event_EeJogKC8sThAlbos4vkFf",
+      "start_ms": 400,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 2.1242,
+      "captured_audio_seconds": 0.4
+    },
+    {
+      "delta": "ディー",
+      "end_ms": 800,
+      "event_id": "event_EeJoga934rQnMGm45GfCw",
+      "start_ms": 600,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 2.2865,
+      "captured_audio_seconds": 0.5
+    },
+    {
+      "delta": "・",
+      "end_ms": 1200,
+      "event_id": "event_EeJogWqd25ej0SgG6K1qe",
+      "start_ms": 1000,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 2.6989,
+      "captured_audio_seconds": 0.9
+    },
+    {
+      "delta": "ビュー",
+      "end_ms": 1400,
+      "event_id": "event_EeJogU0A3KR6kNsRUoSbg",
+      "start_ms": 1200,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 2.8964,
+      "captured_audio_seconds": 1.1
+    },
+    {
+      "delta": "ア",
+      "end_ms": 1600,
+      "event_id": "event_EeJohcGppx6wCApqhpawq",
+      "start_ms": 1400,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 3.0934,
+      "captured_audio_seconds": 1.3
+    },
+    {
+      "delta": "ー",
+      "end_ms": 1800,
+      "event_id": "event_EeJohGxQZ96WMksRyAgOo",
+      "start_ms": 1600,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 3.3065,
+      "captured_audio_seconds": 1.5
+    },
+    {
+      "delta": "・フォ",
+      "end_ms": 2000,
+      "event_id": "event_EeJoh4HFbia2GTzPeP0yD",
+      "start_ms": 1800,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 3.5478,
+      "captured_audio_seconds": 1.7
+    },
+    {
+      "delta": "ー",
+      "end_ms": 2200,
+      "event_id": "event_EeJoh3VzPVYBSfMwEQEMr",
+      "start_ms": 2000,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 3.7087,
+      "captured_audio_seconds": 1.9
+    },
+    {
+      "delta": "・",
+      "end_ms": 2400,
+      "event_id": "event_EeJohbhkgCSy5THEdEwpE",
+      "start_ms": 2200,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 3.8793,
+      "captured_audio_seconds": 2.1
+    },
+    {
+      "delta": "マック",
+      "end_ms": 2600,
+      "event_id": "event_EeJoic3nYqnISZ9D7vXwK",
+      "start_ms": 2400,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 4.1834,
+      "captured_audio_seconds": 2.4
+    },
+    {
+      "delta": "。",
+      "end_ms": 3000,
+      "event_id": "event_EeJoiUj4StUZo1oRV9hhR",
+      "start_ms": 2800,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 4.5013,
+      "captured_audio_seconds": 2.7
+    },
+    {
+      "delta": "いつ",
+      "end_ms": 3200,
+      "event_id": "event_EeJoir8Zirenn0aJEzb8I",
+      "start_ms": 3000,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 4.7419,
+      "captured_audio_seconds": 3.0
+    },
+    {
+      "delta": "もの",
+      "end_ms": 4400,
+      "event_id": "event_EeJojrwhBtnWIA36EnQsc",
+      "start_ms": 4200,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 5.8973,
+      "captured_audio_seconds": 4.1
+    },
+    {
+      "delta": "マ",
+      "end_ms": 4600,
+      "event_id": "event_EeJokTg0rVoKadgzWrs9V",
+      "start_ms": 4400,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 6.1126,
+      "captured_audio_seconds": 4.3
+    },
+    {
+      "delta": "ック",
+      "end_ms": 4800,
+      "event_id": "event_EeJokYO4SJ02llBxDYQnO",
+      "start_ms": 4600,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 6.3593,
+      "captured_audio_seconds": 4.5
+    },
+    {
+      "delta": "で",
+      "end_ms": 5000,
+      "event_id": "event_EeJokKOoMUTD0pEPJaPWH",
+      "start_ms": 4800,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 6.5736,
+      "captured_audio_seconds": 4.7
+    },
+    {
+      "delta": "、",
+      "end_ms": 5200,
+      "event_id": "event_EeJokZvbpgK58dAPzS0UW",
+      "start_ms": 5000,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 6.7707,
+      "captured_audio_seconds": 4.9
+    },
+    {
+      "delta": "ブ",
+      "end_ms": 5400,
+      "event_id": "event_EeJokMQLpYkaJLnaVFHqJ",
+      "start_ms": 5200,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 6.9478,
+      "captured_audio_seconds": 5.1
+    },
+    {
+      "delta": "イ",
+      "end_ms": 5600,
+      "event_id": "event_EeJolWWXdYT2a2FRJFihR",
+      "start_ms": 5400,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 7.1896,
+      "captured_audio_seconds": 5.4
+    },
+    {
+      "delta": "エム",
+      "end_ms": 5800,
+      "event_id": "event_EeJolM5kCThiQLCDnxwWH",
+      "start_ms": 5600,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 7.2911,
+      "captured_audio_seconds": 5.5
+    },
+    {
+      "delta": "ディ",
+      "end_ms": 6000,
+      "event_id": "event_EeJolcloWJ4yH7sPqS4lL",
+      "start_ms": 5800,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 7.589,
+      "captured_audio_seconds": 5.7
+    },
+    {
+      "delta": "ー",
+      "end_ms": 6200,
+      "event_id": "event_EeJolFz5PN2HWxXdHbtm7",
+      "start_ms": 6000,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 7.6765,
+      "captured_audio_seconds": 5.9
+    },
+    {
+      "delta": "を",
+      "end_ms": 6400,
+      "event_id": "event_EeJolGsp59tSj4hapKKFI",
+      "start_ms": 6200,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 7.8772,
+      "captured_audio_seconds": 6.1
+    },
+    {
+      "delta": "リア",
+      "end_ms": 6600,
+      "event_id": "event_EeJomuIkRNWNtdsCyavI7",
+      "start_ms": 6400,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 8.1133,
+      "captured_audio_seconds": 6.3
+    },
+    {
+      "delta": "ル",
+      "end_ms": 6800,
+      "event_id": "event_EeJomd5qgPK1wmB41zx7i",
+      "start_ms": 6600,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 8.3124,
+      "captured_audio_seconds": 6.5
+    },
+    {
+      "delta": "タイ",
+      "end_ms": 7000,
+      "event_id": "event_EeJomn2rKS4UOSb2rI4jZ",
+      "start_ms": 6800,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 8.4965,
+      "captured_audio_seconds": 6.7
+    },
+    {
+      "delta": "ム",
+      "end_ms": 7200,
+      "event_id": "event_EeJomx0LNWdYs7TyRNszZ",
+      "start_ms": 7000,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 8.7206,
+      "captured_audio_seconds": 6.9
+    },
+    {
+      "delta": "再",
+      "end_ms": 7400,
+      "event_id": "event_EeJomlFmVHNrcWMCtiAIE",
+      "start_ms": 7200,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 8.949,
+      "captured_audio_seconds": 7.1
+    },
+    {
+      "delta": "生",
+      "end_ms": 7600,
+      "event_id": "event_EeJonVjZl2Vqkk4Yo5wF4",
+      "start_ms": 7400,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 9.5973,
+      "captured_audio_seconds": 7.4
+    },
+    {
+      "delta": "。",
+      "end_ms": 7800,
+      "event_id": "event_EeJon55999PfOj9AGr3Wo",
+      "start_ms": 7600,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 9.7044,
+      "captured_audio_seconds": 7.5
+    }
+  ],
+  "events": [
+    "session.started",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.commentary.appended",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.closed"
+  ],
+  "error": null,
+  "external_audio_uploaded": "synthetic silence only; no user audio",
+  "exact_script_validation": "pending",
+  "sdk_version": "3.41.0",
+  "capture_result": "pass"
+}

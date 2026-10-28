@@ -1,0 +1,28 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"audio_url\":\"https://resource2.heygen.ai/text_to_speech/52147cf6aae741c784de81c85794fccc/9530fac2d1f148f8b57b51b783b0df13/id=6f0f9534-70cb-4fd8-a7e3-b57161aa804c.wav\",\"duration\":3.2653061224489797,\"request_id\":\"c050c83af1c74f0da48fb8ae7a63de4c\",\"word_timestamps\":[{\"word\":\"<start>\",\"start\":0.0,\"end\":0.0},{\"word\":\"あ\",\"start\":0.2694736842105263,\"end\":0.44631578947368417},{\"word\":\"ぷ\",\"start\":0.44631578947368417,\"end\":0.623157894736842},{\"word\":\"り\",\"start\":0.623157894736842,\"end\":0.7999999999999999},{\"word\":\"じ\",\"start\":0.7999999999999999,\"end\":0.9768421052631578},{\"word\":\"ょ\",\"start\":0.9768421052631578,\"end\":1.1536842105263159},{\"word\":\"う\",\"start\":1.1536842105263159,\"end\":1.3305263157894736},{\"word\":\"で\",\"start\":1.3305263157894736,\"end\":1.5073684210526315},{\"word\":\"リ\",\"start\":1.5073684210526315,\"end\":1.6842105263157894},{\"word\":\"ア\",\"start\":1.6842105263157894,\"end\":1.8610526315789473},{\"word\":\"ル\",\"start\":1.8610526315789473,\"end\":2.037894736842105},{\"word\":\"タ\",\"start\":2.037894736842105,\"end\":2.214736842105263},{\"word\":\"イ\",\"start\":2.214736842105263,\"end\":2.3915789473684206},{\"word\":\"ム\",\"start\":2.3915789473684206,\"end\":2.568421052631579},{\"word\":\"再\",\"start\":2.568421052631579,\"end\":2.745263157894737},{\"word\":\"生\",\"start\":2.745263157894737,\"end\":2.9221052631578943},{\"word\":\"。\",\"start\":2.9221052631578943,\"end\":3.0989473684210522},{\"word\":\"<end>\",\"start\":3.2653061224489797,\"end\":3.2653061224489797}],\"engine\":\"orca\"}"
+    }
+  ],
+  "structuredContent": {
+    "outputType": "audio.player",
+    "audioUrl": "https://resource2.heygen.ai/text_to_speech/52147cf6aae741c784de81c85794fccc/9530fac2d1f148f8b57b51b783b0df13/id=6f0f9534-70cb-4fd8-a7e3-b57161aa804c.wav",
+    "duration": 3.2653061224489797,
+    "voiceId": "9530fac2d1f148f8b57b51b783b0df13",
+    "voiceName": "Jhenny",
+    "downloadUrl": "https://resource2.heygen.ai/text_to_speech/52147cf6aae741c784de81c85794fccc/9530fac2d1f148f8b57b51b783b0df13/id%3D6f0f9534-70cb-4fd8-a7e3-b57161aa804c.wav?response-content-disposition=attachment%3B+filename%2A%3DUTF-8%27%27heygen-speech.wav%3B",
+    "filename": "heygen-speech.wav",
+    "mimeType": "audio/wav",
+    "regenerationInput": {
+      "text": "あぷりじょうでリアルタイム再生。",
+      "voice_id": "9530fac2d1f148f8b57b51b783b0df13",
+      "input_type": "text",
+      "speed": 0.95,
+      "language": "ja",
+      "force_regenerate": false,
+      "engine": "orca"
+    }
+  },
+  "isError": false
+}

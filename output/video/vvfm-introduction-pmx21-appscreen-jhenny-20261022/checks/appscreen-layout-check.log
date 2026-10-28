@@ -1,0 +1,27 @@
+◆  Checking composition
+[INFO] [Compiler] Injected deterministic @font-face rules for 1 requested font families
+
+Lint
+  ℹ pointer_events_none: `.doodle` sets `pointer-events: none`. Elements matching this selector are harder to select in the Studio preview.
+    /Users/minmin/projects/VvfM/output/video/vvfm-introduction-pmx21-appscreen-jhenny-20261022/composition/index.html .doodle t=0s
+    Fix: If these elements should be selectable in the Studio, remove `pointer-events: none` or move it to a wrapper that doesn't contain editable content.
+  ℹ system_font_will_alias: Font family will be substituted at render time: 'menlo' → JetBrains Mono. The renderer maps these to bundled fonts for cross-platform consistency. Use the target font name directly for consistent preview and render results.
+    /Users/minmin/projects/VvfM/output/video/vvfm-introduction-pmx21-appscreen-jhenny-20261022/composition/index.html [data-composition-id] t=0s
+  0 error(s), 0 warning(s), 2 info(s)
+
+Runtime
+  ◇ 0 errors, 0 warnings
+
+Layout
+  ◇ 0 issues across 6 sample(s)
+
+Motion
+  ◇ 0 errors, 0 warnings
+
+Contrast
+  ◇ 46/46 text checks pass WCAG AA
+
+Snapshots
+  ◇ disabled
+
+◇  Check passed

@@ -1,0 +1,569 @@
+{
+  "scene": 6,
+  "model": "gpt-live-1",
+  "voice_requested": "harema",
+  "input": "表情も、自分好みに。モーフの値は、タイムラインで変化を見ながら調整できます。笑顔を作り、カメラの構図も整えて、お気に入りの瞬間へ。",
+  "request_file": "source/harema-scene06-session.json",
+  "audio_file": "assets/harema-scene06-raw.wav",
+  "audio_seconds": 15.7,
+  "audio_sha256": "8bc8758c33bad6cea71890fb21fb1ce0f1e157ce0e7e3df52395d373ae9eb895",
+  "elapsed_seconds": 20.17247008299455,
+  "session_started": {
+    "event_id": "event_EeJlgknNWY1EnwROSMXyN",
+    "session": {
+      "id": "live_u7_EeJlfp3oMTzbacE9FjyQEqSRfB0qEqMb",
+      "expires_at": 1793285016,
+      "model": "gpt-live-1",
+      "status": "active",
+      "audio": {
+        "format": {
+          "rate": 24000,
+          "type": "audio/pcm"
+        },
+        "output": {
+          "voice": "harema"
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "input": [
+        {
+          "content": [
+            {
+              "text": "録音を開始します。今すぐ次の原稿だけを、一度、全文読み上げてください。原稿：\n表情も、自分好みに。モーフの値は、タイムラインで変化を見ながら調整できます。笑顔を作り、カメラの構図も整えて、お気に入りの瞬間へ。",
+              "type": "input_text"
+            }
+          ],
+          "role": "developer",
+          "type": "message"
+        }
+      ],
+      "instructions": "あなたは日本語の紹介動画のナレーターです。標準的な日本語の自然なアクセントで、落ち着いて親しみやすく、明瞭に読みます。原稿の抑揚は自然に保ち、語頭だけを強く高くしません。速さと声量を一定にし、文と文の間には短い間を入れます。仕事は原稿の朗読だけです。提供された原稿を最初から最後まで正確に、一度だけ読み上げてください。挨拶、相づち、説明、感想、質問、見出し、原稿の引用符を追加しません。原稿の語句を省略、言い換え、補足、繰り返ししません。ひらがなとカタカナで示した名称と数字の読みを、そのまま発声します。英語に置き換えません。ツールや別のエージェントを呼ばず、自分で読み上げます。読み終えた後は無言で待ってください。",
+      "store": false
+    },
+    "type": "session.started",
+    "client_event_id": "start_scene_06",
+    "received_elapsed_seconds": 0.9629,
+    "captured_audio_seconds": 0.0
+  },
+  "session_closed": {
+    "event_id": "event_EeJlxJLC59NTTqILCSOP2",
+    "reason": "close_requested",
+    "session": {
+      "id": "live_u7_EeJlfp3oMTzbacE9FjyQEqSRfB0qEqMb",
+      "expires_at": 1793285016,
+      "model": "gpt-live-1",
+      "status": "active",
+      "audio": {
+        "format": {
+          "rate": 24000,
+          "type": "audio/pcm"
+        },
+        "output": {
+          "voice": "harema"
+        }
+      },
+      "delegation": {
+        "type": "client"
+      },
+      "input": [
+        {
+          "content": [
+            {
+              "text": "録音を開始します。今すぐ次の原稿だけを、一度、全文読み上げてください。原稿：\n表情も、自分好みに。モーフの値は、タイムラインで変化を見ながら調整できます。笑顔を作り、カメラの構図も整えて、お気に入りの瞬間へ。",
+              "type": "input_text"
+            }
+          ],
+          "role": "developer",
+          "type": "message"
+        }
+      ],
+      "instructions": "あなたは日本語の紹介動画のナレーターです。標準的な日本語の自然なアクセントで、落ち着いて親しみやすく、明瞭に読みます。原稿の抑揚は自然に保ち、語頭だけを強く高くしません。速さと声量を一定にし、文と文の間には短い間を入れます。仕事は原稿の朗読だけです。提供された原稿を最初から最後まで正確に、一度だけ読み上げてください。挨拶、相づち、説明、感想、質問、見出し、原稿の引用符を追加しません。原稿の語句を省略、言い換え、補足、繰り返ししません。ひらがなとカタカナで示した名称と数字の読みを、そのまま発声します。英語に置き換えません。ツールや別のエージェントを呼ばず、自分で読み上げます。読み終えた後は無言で待ってください。",
+      "store": false
+    },
+    "type": "session.closed",
+    "usage": {
+      "seconds": 16.0
+    },
+    "client_event_id": "close_scene_06",
+    "received_elapsed_seconds": 18.204,
+    "captured_audio_seconds": 15.7
+  },
+  "graceful_close_confirmed": true,
+  "stop_reason": "speech_followed_by_silence",
+  "transcript": "表情も、自分好みに。モーフの値は、タイムラインで変化を見ながら調整できます。笑顔を作り、カメラの構図も整えて、お気に入りの瞬間へ。",
+  "transcript_fragments": [
+    {
+      "delta": "表情",
+      "end_ms": 400,
+      "event_id": "event_EeJlhdw5yZlWtwdGqxZui",
+      "start_ms": 200,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 1.9105,
+      "captured_audio_seconds": 0.2
+    },
+    {
+      "delta": "も",
+      "end_ms": 800,
+      "event_id": "event_EeJlhp9YAfJRDP0FZnpKW",
+      "start_ms": 600,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 2.2302,
+      "captured_audio_seconds": 0.5
+    },
+    {
+      "delta": "、自",
+      "end_ms": 1000,
+      "event_id": "event_EeJlhAjqHEcy3c4GwBH2R",
+      "start_ms": 800,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 2.4573,
+      "captured_audio_seconds": 0.8
+    },
+    {
+      "delta": "分",
+      "end_ms": 1400,
+      "event_id": "event_EeJliKhOVxbC5SiOWSkC6",
+      "start_ms": 1200,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 2.8929,
+      "captured_audio_seconds": 1.2
+    },
+    {
+      "delta": "好",
+      "end_ms": 1800,
+      "event_id": "event_EeJli0S9hKd3kjgKWfiFW",
+      "start_ms": 1600,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 3.2564,
+      "captured_audio_seconds": 1.6
+    },
+    {
+      "delta": "みに",
+      "end_ms": 2000,
+      "event_id": "event_EeJli0O8H5KquSDdlTz9O",
+      "start_ms": 1800,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 3.4506,
+      "captured_audio_seconds": 1.7
+    },
+    {
+      "delta": "。",
+      "end_ms": 2400,
+      "event_id": "event_EeJljHzAwoo53lkL57Ab4",
+      "start_ms": 2200,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 3.8808,
+      "captured_audio_seconds": 2.2
+    },
+    {
+      "delta": "モ",
+      "end_ms": 2600,
+      "event_id": "event_EeJljZVMCXqkyojDajoEz",
+      "start_ms": 2400,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 4.0483,
+      "captured_audio_seconds": 2.3
+    },
+    {
+      "delta": "ーフ",
+      "end_ms": 3200,
+      "event_id": "event_EeJljcAgATfAqXVMNgG2u",
+      "start_ms": 3000,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 4.6314,
+      "captured_audio_seconds": 2.9
+    },
+    {
+      "delta": "の",
+      "end_ms": 3400,
+      "event_id": "event_EeJlk0gml3j0DrQ3Sqn9C",
+      "start_ms": 3200,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 4.8347,
+      "captured_audio_seconds": 3.1
+    },
+    {
+      "delta": "値",
+      "end_ms": 3600,
+      "event_id": "event_EeJlk6VrDrrkzfXlIM1G1",
+      "start_ms": 3400,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 5.052,
+      "captured_audio_seconds": 3.3
+    },
+    {
+      "delta": "は",
+      "end_ms": 4000,
+      "event_id": "event_EeJlkWzUr2U4ZkkqSw8sN",
+      "start_ms": 3800,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 5.5547,
+      "captured_audio_seconds": 3.7
+    },
+    {
+      "delta": "、",
+      "end_ms": 4200,
+      "event_id": "event_EeJlktnPaiHbL4CXrSgPb",
+      "start_ms": 4000,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 5.7162,
+      "captured_audio_seconds": 3.9
+    },
+    {
+      "delta": "タイ",
+      "end_ms": 4400,
+      "event_id": "event_EeJll6MFQPUohJv8XrmtY",
+      "start_ms": 4200,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 5.9257,
+      "captured_audio_seconds": 4.1
+    },
+    {
+      "delta": "ム",
+      "end_ms": 4600,
+      "event_id": "event_EeJllfWG4fwzg2780ffFv",
+      "start_ms": 4400,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 6.0847,
+      "captured_audio_seconds": 4.3
+    },
+    {
+      "delta": "ライン",
+      "end_ms": 4800,
+      "event_id": "event_EeJll2Nt7vjLNRpG8lQAc",
+      "start_ms": 4600,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 6.2415,
+      "captured_audio_seconds": 4.5
+    },
+    {
+      "delta": "で変",
+      "end_ms": 5200,
+      "event_id": "event_EeJllix9bi25GqToNxlya",
+      "start_ms": 5000,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 6.7525,
+      "captured_audio_seconds": 5.0
+    },
+    {
+      "delta": "化",
+      "end_ms": 5600,
+      "event_id": "event_EeJlmx4cwZEetbHjS0TwF",
+      "start_ms": 5400,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 7.0497,
+      "captured_audio_seconds": 5.3
+    },
+    {
+      "delta": "を見",
+      "end_ms": 5800,
+      "event_id": "event_EeJlmkveDlbO8ToZqJzXf",
+      "start_ms": 5600,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 7.4712,
+      "captured_audio_seconds": 5.5
+    },
+    {
+      "delta": "なが",
+      "end_ms": 6000,
+      "event_id": "event_EeJlmyvRbJJeD1WrqxnOy",
+      "start_ms": 5800,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 7.5617,
+      "captured_audio_seconds": 5.7
+    },
+    {
+      "delta": "ら",
+      "end_ms": 6200,
+      "event_id": "event_EeJlm0BLcTWhqxdjpEpr5",
+      "start_ms": 6000,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 7.6677,
+      "captured_audio_seconds": 5.9
+    },
+    {
+      "delta": "調",
+      "end_ms": 6400,
+      "event_id": "event_EeJlnre9iibvbVDVpqNzt",
+      "start_ms": 6200,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 8.0071,
+      "captured_audio_seconds": 6.1
+    },
+    {
+      "delta": "整",
+      "end_ms": 6600,
+      "event_id": "event_EeJln3jlZ9w1OLqtPO3Ye",
+      "start_ms": 6400,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 8.0732,
+      "captured_audio_seconds": 6.3
+    },
+    {
+      "delta": "できます",
+      "end_ms": 6800,
+      "event_id": "event_EeJlnba9NR28spvJjJxgR",
+      "start_ms": 6600,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 8.2251,
+      "captured_audio_seconds": 6.5
+    },
+    {
+      "delta": "。",
+      "end_ms": 7400,
+      "event_id": "event_EeJlo7CUTb56MJyiUGYZI",
+      "start_ms": 7200,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 8.8284,
+      "captured_audio_seconds": 7.1
+    },
+    {
+      "delta": "笑顔",
+      "end_ms": 8400,
+      "event_id": "event_EeJlpgnt0lxZ05BUhSnqL",
+      "start_ms": 8200,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 9.975,
+      "captured_audio_seconds": 8.0
+    },
+    {
+      "delta": "を作",
+      "end_ms": 8600,
+      "event_id": "event_EeJlpvCxtLEBKZ8mkqnKV",
+      "start_ms": 8400,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 10.051,
+      "captured_audio_seconds": 8.2
+    },
+    {
+      "delta": "り",
+      "end_ms": 9000,
+      "event_id": "event_EeJlp11Exw6HPjVtPg6Ge",
+      "start_ms": 8800,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 10.5084,
+      "captured_audio_seconds": 8.6
+    },
+    {
+      "delta": "、",
+      "end_ms": 9200,
+      "event_id": "event_EeJlpLW2RWXtOK69Slxve",
+      "start_ms": 9000,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 10.6743,
+      "captured_audio_seconds": 8.8
+    },
+    {
+      "delta": "カ",
+      "end_ms": 9400,
+      "event_id": "event_EeJlqHX0c0XBaK88Uk7PH",
+      "start_ms": 9200,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 10.9364,
+      "captured_audio_seconds": 9.0
+    },
+    {
+      "delta": "メラ",
+      "end_ms": 9600,
+      "event_id": "event_EeJlq5GDxslnjSyBawk7H",
+      "start_ms": 9400,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 11.0712,
+      "captured_audio_seconds": 9.2
+    },
+    {
+      "delta": "の",
+      "end_ms": 9800,
+      "event_id": "event_EeJlqICbGIGFZHYqVaSts",
+      "start_ms": 9600,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 11.2802,
+      "captured_audio_seconds": 9.4
+    },
+    {
+      "delta": "構",
+      "end_ms": 10000,
+      "event_id": "event_EeJlqhigB0D1zKz891hvz",
+      "start_ms": 9800,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 11.4778,
+      "captured_audio_seconds": 9.6
+    },
+    {
+      "delta": "図",
+      "end_ms": 10200,
+      "event_id": "event_EeJlqavXhjXMqgBbGIENe",
+      "start_ms": 10000,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 11.6903,
+      "captured_audio_seconds": 9.8
+    },
+    {
+      "delta": "も",
+      "end_ms": 10400,
+      "event_id": "event_EeJlrREOQaA7mKCgE6fkl",
+      "start_ms": 10200,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 11.8429,
+      "captured_audio_seconds": 9.9
+    },
+    {
+      "delta": "整",
+      "end_ms": 10600,
+      "event_id": "event_EeJlruhOyOsZRSLhscgu6",
+      "start_ms": 10400,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 12.1022,
+      "captured_audio_seconds": 10.2
+    },
+    {
+      "delta": "えて",
+      "end_ms": 10800,
+      "event_id": "event_EeJlrw4XVuTikElURQKAw",
+      "start_ms": 10600,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 12.3179,
+      "captured_audio_seconds": 10.4
+    },
+    {
+      "delta": "、お",
+      "end_ms": 11200,
+      "event_id": "event_EeJlrMGoj7RunQVdeq0ii",
+      "start_ms": 11000,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 12.6963,
+      "captured_audio_seconds": 10.8
+    },
+    {
+      "delta": "気",
+      "end_ms": 11600,
+      "event_id": "event_EeJlsiVgNq99730Qr3GXt",
+      "start_ms": 11400,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 13.1378,
+      "captured_audio_seconds": 11.2
+    },
+    {
+      "delta": "に",
+      "end_ms": 11800,
+      "event_id": "event_EeJlsMnoqHnbIic97kdZp",
+      "start_ms": 11600,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 13.4152,
+      "captured_audio_seconds": 11.4
+    },
+    {
+      "delta": "入り",
+      "end_ms": 12000,
+      "event_id": "event_EeJlsKviOq0u5n7xtRNbd",
+      "start_ms": 11800,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 13.5438,
+      "captured_audio_seconds": 11.5
+    },
+    {
+      "delta": "の",
+      "end_ms": 12200,
+      "event_id": "event_EeJlschM4fBJNebvils4z",
+      "start_ms": 12000,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 13.7263,
+      "captured_audio_seconds": 11.7
+    },
+    {
+      "delta": "瞬",
+      "end_ms": 12400,
+      "event_id": "event_EeJltJEX5U0AlFJOA2SJx",
+      "start_ms": 12200,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 13.8842,
+      "captured_audio_seconds": 11.9
+    },
+    {
+      "delta": "間",
+      "end_ms": 12600,
+      "event_id": "event_EeJltiwmdqLQrjqbT5vjq",
+      "start_ms": 12400,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 14.0242,
+      "captured_audio_seconds": 12.1
+    },
+    {
+      "delta": "へ",
+      "end_ms": 12800,
+      "event_id": "event_EeJlt1zeL5Z7wQnwxYdcS",
+      "start_ms": 12600,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 14.2291,
+      "captured_audio_seconds": 12.3
+    },
+    {
+      "delta": "。",
+      "end_ms": 13000,
+      "event_id": "event_EeJlt6s0WnsY468MwSUQa",
+      "start_ms": 12800,
+      "type": "session.output_transcript.delta",
+      "received_elapsed_seconds": 14.434,
+      "captured_audio_seconds": 12.5
+    }
+  ],
+  "events": [
+    "session.started",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.commentary.appended",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.output_transcript.delta",
+    "session.usage.updated",
+    "session.closed"
+  ],
+  "error": null,
+  "external_audio_uploaded": "synthetic silence only; no user audio",
+  "exact_script_validation": "pending",
+  "sdk_version": "3.41.0",
+  "capture_result": "pass"
+}

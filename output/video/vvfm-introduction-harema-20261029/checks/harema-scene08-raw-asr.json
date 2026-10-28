@@ -1,0 +1,533 @@
+{
+  "engine": "local mlx-whisper",
+  "model": "openai/whisper-medium converted locally to MLX",
+  "audio_uploaded": false,
+  "source": "assets/harema-scene08-raw.wav",
+  "sha256": "1ea6de8a6304d71a6498ab51d5d7c8ab58e342c3619f911e30f9ef161444b589",
+  "transcript": {
+    "text": "見た目ももっと自分好みに2Shader HQでは輪郭線や光を調整できますリムライトで輪郭に光をブルームで輝きをリフュージョンで柔らかな雰囲気も楽しめます",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": "見た目ももっと自分好みに",
+        "tokens": [
+          50364,
+          10470,
+          3368,
+          11386,
+          4801,
+          4801,
+          13137,
+          9722,
+          6627,
+          2131,
+          11362,
+          4108,
+          50514
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.1216230034828186,
+        "compression_ratio": 1.1818181818181819,
+        "no_speech_prob": 0.037716370075941086,
+        "words": [
+          {
+            "word": "見",
+            "start": 0.0,
+            "end": 0.58,
+            "probability": 0.96044921875
+          },
+          {
+            "word": "た",
+            "start": 0.58,
+            "end": 0.7,
+            "probability": 0.99267578125
+          },
+          {
+            "word": "目",
+            "start": 0.7,
+            "end": 0.88,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "も",
+            "start": 0.88,
+            "end": 1.26,
+            "probability": 0.9892578125
+          },
+          {
+            "word": "も",
+            "start": 1.26,
+            "end": 1.52,
+            "probability": 0.85107421875
+          },
+          {
+            "word": "っと",
+            "start": 1.52,
+            "end": 1.7,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "自",
+            "start": 1.7,
+            "end": 1.92,
+            "probability": 0.98681640625
+          },
+          {
+            "word": "分",
+            "start": 1.92,
+            "end": 2.14,
+            "probability": 1.0
+          },
+          {
+            "word": "好",
+            "start": 2.14,
+            "end": 2.3,
+            "probability": 0.94970703125
+          },
+          {
+            "word": "み",
+            "start": 2.3,
+            "end": 2.44,
+            "probability": 0.99853515625
+          },
+          {
+            "word": "に",
+            "start": 2.44,
+            "end": 3.0,
+            "probability": 0.9658203125
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "seek": 0,
+        "start": 3.539999999999999,
+        "end": 9.0,
+        "text": "2Shader HQでは輪郭線や光を調整できます",
+        "tokens": [
+          50514,
+          17,
+          7774,
+          8312,
+          43209,
+          16719,
+          12290,
+          103,
+          11178,
+          255,
+          31699,
+          7355,
+          20690,
+          5998,
+          32943,
+          27662,
+          2474,
+          22851,
+          50814
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.1216230034828186,
+        "compression_ratio": 1.1818181818181819,
+        "no_speech_prob": 0.037716370075941086,
+        "words": [
+          {
+            "word": "2",
+            "start": 3.539999999999999,
+            "end": 4.02,
+            "probability": 0.284423828125
+          },
+          {
+            "word": "Sh",
+            "start": 4.02,
+            "end": 4.26,
+            "probability": 0.38720703125
+          },
+          {
+            "word": "ader",
+            "start": 4.26,
+            "end": 4.5,
+            "probability": 0.939453125
+          },
+          {
+            "word": " HQ",
+            "start": 4.5,
+            "end": 5.0,
+            "probability": 0.66748046875
+          },
+          {
+            "word": "では",
+            "start": 5.0,
+            "end": 5.6,
+            "probability": 0.9208984375
+          },
+          {
+            "word": "輪",
+            "start": 5.6,
+            "end": 6.1,
+            "probability": 0.7958984375
+          },
+          {
+            "word": "郭",
+            "start": 6.1,
+            "end": 6.24,
+            "probability": 0.98828125
+          },
+          {
+            "word": "線",
+            "start": 6.24,
+            "end": 6.46,
+            "probability": 0.982421875
+          },
+          {
+            "word": "や",
+            "start": 6.46,
+            "end": 6.88,
+            "probability": 0.9951171875
+          },
+          {
+            "word": "光",
+            "start": 6.88,
+            "end": 7.26,
+            "probability": 0.97314453125
+          },
+          {
+            "word": "を",
+            "start": 7.26,
+            "end": 7.7,
+            "probability": 0.99072265625
+          },
+          {
+            "word": "調",
+            "start": 7.7,
+            "end": 8.14,
+            "probability": 0.9853515625
+          },
+          {
+            "word": "整",
+            "start": 8.14,
+            "end": 8.24,
+            "probability": 0.9951171875
+          },
+          {
+            "word": "で",
+            "start": 8.24,
+            "end": 8.46,
+            "probability": 0.95849609375
+          },
+          {
+            "word": "きます",
+            "start": 8.46,
+            "end": 9.0,
+            "probability": 0.99951171875
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "seek": 0,
+        "start": 9.6,
+        "end": 12.76,
+        "text": "リムライトで輪郭に光を",
+        "tokens": [
+          50814,
+          12376,
+          32026,
+          40230,
+          7588,
+          2474,
+          12290,
+          103,
+          11178,
+          255,
+          4108,
+          20690,
+          5998,
+          50964
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.1216230034828186,
+        "compression_ratio": 1.1818181818181819,
+        "no_speech_prob": 0.037716370075941086,
+        "words": [
+          {
+            "word": "リ",
+            "start": 9.6,
+            "end": 10.0,
+            "probability": 0.61474609375
+          },
+          {
+            "word": "ム",
+            "start": 10.0,
+            "end": 10.16,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "ライ",
+            "start": 10.16,
+            "end": 10.36,
+            "probability": 0.99609375
+          },
+          {
+            "word": "ト",
+            "start": 10.36,
+            "end": 10.54,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "で",
+            "start": 10.54,
+            "end": 10.98,
+            "probability": 0.99365234375
+          },
+          {
+            "word": "輪",
+            "start": 10.98,
+            "end": 11.28,
+            "probability": 0.998046875
+          },
+          {
+            "word": "郭",
+            "start": 11.28,
+            "end": 11.46,
+            "probability": 1.0
+          },
+          {
+            "word": "に",
+            "start": 11.46,
+            "end": 11.7,
+            "probability": 0.99658203125
+          },
+          {
+            "word": "光",
+            "start": 11.7,
+            "end": 12.0,
+            "probability": 0.99462890625
+          },
+          {
+            "word": "を",
+            "start": 12.0,
+            "end": 12.76,
+            "probability": 0.97314453125
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "seek": 0,
+        "start": 12.76,
+        "end": 15.26,
+        "text": "ブルームで輝きを",
+        "tokens": [
+          50964,
+          28889,
+          9405,
+          44265,
+          2474,
+          12290,
+          251,
+          7016,
+          5998,
+          51114
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.1216230034828186,
+        "compression_ratio": 1.1818181818181819,
+        "no_speech_prob": 0.037716370075941086,
+        "words": [
+          {
+            "word": "ブ",
+            "start": 12.76,
+            "end": 13.14,
+            "probability": 0.5986328125
+          },
+          {
+            "word": "ル",
+            "start": 13.14,
+            "end": 13.28,
+            "probability": 0.99560546875
+          },
+          {
+            "word": "ーム",
+            "start": 13.28,
+            "end": 13.38,
+            "probability": 0.986328125
+          },
+          {
+            "word": "で",
+            "start": 13.38,
+            "end": 13.72,
+            "probability": 0.99365234375
+          },
+          {
+            "word": "輝",
+            "start": 13.72,
+            "end": 14.14,
+            "probability": 0.99560546875
+          },
+          {
+            "word": "き",
+            "start": 14.14,
+            "end": 14.3,
+            "probability": 0.99853515625
+          },
+          {
+            "word": "を",
+            "start": 14.3,
+            "end": 15.26,
+            "probability": 0.98779296875
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "seek": 0,
+        "start": 15.26,
+        "end": 18.94,
+        "text": "リフュージョンで柔らかな雰囲気も楽しめます",
+        "tokens": [
+          51114,
+          12376,
+          17320,
+          26167,
+          44143,
+          28579,
+          4824,
+          2474,
+          17238,
+          242,
+          5154,
+          24939,
+          6306,
+          108,
+          3919,
+          110,
+          25870,
+          4801,
+          35479,
+          2849,
+          11429,
+          5368,
+          51314
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.1216230034828186,
+        "compression_ratio": 1.1818181818181819,
+        "no_speech_prob": 0.037716370075941086,
+        "words": [
+          {
+            "word": "リ",
+            "start": 15.26,
+            "end": 15.62,
+            "probability": 0.52392578125
+          },
+          {
+            "word": "フ",
+            "start": 15.62,
+            "end": 15.74,
+            "probability": 0.96044921875
+          },
+          {
+            "word": "ュ",
+            "start": 15.74,
+            "end": 15.84,
+            "probability": 0.99072265625
+          },
+          {
+            "word": "ージ",
+            "start": 15.84,
+            "end": 15.94,
+            "probability": 0.99169921875
+          },
+          {
+            "word": "ョ",
+            "start": 15.94,
+            "end": 15.98,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "ン",
+            "start": 15.98,
+            "end": 16.1,
+            "probability": 0.99755859375
+          },
+          {
+            "word": "で",
+            "start": 16.1,
+            "end": 16.56,
+            "probability": 0.99365234375
+          },
+          {
+            "word": "柔",
+            "start": 16.56,
+            "end": 16.84,
+            "probability": 0.98193359375
+          },
+          {
+            "word": "ら",
+            "start": 16.84,
+            "end": 17.04,
+            "probability": 0.99853515625
+          },
+          {
+            "word": "かな",
+            "start": 17.04,
+            "end": 17.24,
+            "probability": 0.9970703125
+          },
+          {
+            "word": "雰",
+            "start": 17.24,
+            "end": 17.7,
+            "probability": 0.99755859375
+          },
+          {
+            "word": "囲",
+            "start": 17.7,
+            "end": 17.7,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "気",
+            "start": 17.7,
+            "end": 17.8,
+            "probability": 0.99853515625
+          },
+          {
+            "word": "も",
+            "start": 17.8,
+            "end": 18.18,
+            "probability": 0.9736328125
+          },
+          {
+            "word": "楽",
+            "start": 18.18,
+            "end": 18.42,
+            "probability": 0.97900390625
+          },
+          {
+            "word": "し",
+            "start": 18.42,
+            "end": 18.54,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "め",
+            "start": 18.54,
+            "end": 18.64,
+            "probability": 0.89208984375
+          },
+          {
+            "word": "ます",
+            "start": 18.64,
+            "end": 18.94,
+            "probability": 0.994140625
+          }
+        ]
+      }
+    ],
+    "language": "ja"
+  }
+}

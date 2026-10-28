@@ -1,0 +1,143 @@
+{
+  "result": "pass",
+  "scene_count": 15,
+  "normalization": "Punctuation and whitespace removed; アプリ上 normalized to あぷりじょう only.",
+  "limitation": "Returned Live transcript is not independent ASR and does not establish naturalness.",
+  "scenes": [
+    {
+      "scene": 1,
+      "normalized_text_identical": true,
+      "raw_text_identical": true,
+      "resolved_voice": "harema",
+      "session_closed": true,
+      "audio_sha256": "fbbfd38d8cc401980bd1038e994ed675da9a5174ca31106fdfb39da1d9ff6d1b",
+      "audio_file": "assets/harema-scene01-raw.wav"
+    },
+    {
+      "scene": 2,
+      "normalized_text_identical": true,
+      "raw_text_identical": false,
+      "resolved_voice": "harema",
+      "session_closed": true,
+      "audio_sha256": "f837a0e5cd23e042f2491456dbe18784d932ed6745e788ce8b1dccb2fdefac44",
+      "audio_file": "assets/harema-scene02-raw.wav"
+    },
+    {
+      "scene": 3,
+      "normalized_text_identical": true,
+      "raw_text_identical": true,
+      "resolved_voice": "harema",
+      "session_closed": true,
+      "audio_sha256": "5bb7838a063adb945fab0360044644278c057cadf3686bc589cca931be20765c",
+      "audio_file": "assets/harema-scene03-raw.wav"
+    },
+    {
+      "scene": 4,
+      "normalized_text_identical": true,
+      "raw_text_identical": true,
+      "resolved_voice": "harema",
+      "session_closed": true,
+      "audio_sha256": "c3ab41bf2a57d95f45239e7d98749dc751c8e4c66bfd6255c8c899fca4922140",
+      "audio_file": "assets/harema-scene04-raw.wav"
+    },
+    {
+      "scene": 5,
+      "normalized_text_identical": true,
+      "raw_text_identical": true,
+      "resolved_voice": "harema",
+      "session_closed": true,
+      "audio_sha256": "5f99526aa935f7a7be2af466f493fe69f818f5d17c2d95719d8bc03a83e8bf5c",
+      "audio_file": "assets/harema-scene05-raw.wav"
+    },
+    {
+      "scene": 6,
+      "normalized_text_identical": true,
+      "raw_text_identical": true,
+      "resolved_voice": "harema",
+      "session_closed": true,
+      "audio_sha256": "8bc8758c33bad6cea71890fb21fb1ce0f1e157ce0e7e3df52395d373ae9eb895",
+      "audio_file": "assets/harema-scene06-raw.wav"
+    },
+    {
+      "scene": 7,
+      "normalized_text_identical": true,
+      "raw_text_identical": true,
+      "resolved_voice": "harema",
+      "session_closed": true,
+      "audio_sha256": "2ffb3e01d36673d3640f47394aed02f2d3abd5608a18c57f22358d31aa39e6c9",
+      "audio_file": "assets/harema-scene07-raw.wav"
+    },
+    {
+      "scene": 8,
+      "normalized_text_identical": true,
+      "raw_text_identical": true,
+      "resolved_voice": "harema",
+      "session_closed": true,
+      "audio_sha256": "1ea6de8a6304d71a6498ab51d5d7c8ab58e342c3619f911e30f9ef161444b589",
+      "audio_file": "assets/harema-scene08-raw.wav"
+    },
+    {
+      "scene": 9,
+      "normalized_text_identical": true,
+      "raw_text_identical": true,
+      "resolved_voice": "harema",
+      "session_closed": true,
+      "audio_sha256": "b046c7c1fff1eab93818d33ac2cb68e6d5eefe9b542f9d7605424171d2e99b39",
+      "audio_file": "assets/harema-scene09-raw.wav"
+    },
+    {
+      "scene": 10,
+      "normalized_text_identical": true,
+      "raw_text_identical": false,
+      "resolved_voice": "harema",
+      "session_closed": true,
+      "audio_sha256": "84e93b79cefe76335f440803ddbe4348af022fc914e687fd38e26095b90754a4",
+      "audio_file": "assets/harema-scene10-raw.wav"
+    },
+    {
+      "scene": 11,
+      "normalized_text_identical": true,
+      "raw_text_identical": false,
+      "resolved_voice": "harema",
+      "session_closed": true,
+      "audio_sha256": "79c8e22f22e6e2f3595c2034668abdaa7cb471373d0be6f14913ba1867dda90a",
+      "audio_file": "assets/harema-scene11-raw.wav"
+    },
+    {
+      "scene": 12,
+      "normalized_text_identical": true,
+      "raw_text_identical": false,
+      "resolved_voice": "harema",
+      "session_closed": true,
+      "audio_sha256": "50f71d59c70ff754eccdc5bebdbb7a9a93ded2fcb625b3242f86af6f9e8de1f4",
+      "audio_file": "assets/harema-scene12-raw.wav"
+    },
+    {
+      "scene": 13,
+      "normalized_text_identical": true,
+      "raw_text_identical": true,
+      "resolved_voice": "harema",
+      "session_closed": true,
+      "audio_sha256": "a7408e96d9dc7e4df532d4093772c13eda085ac370d7c4cbb335b985213eadfa",
+      "audio_file": "assets/harema-scene13-raw.wav"
+    },
+    {
+      "scene": 14,
+      "normalized_text_identical": true,
+      "raw_text_identical": false,
+      "resolved_voice": "harema",
+      "session_closed": true,
+      "audio_sha256": "00a335a4d5df904f115fc5fddc31215dfa41cf8c45406fd5bc61e33aff42bcd0",
+      "audio_file": "assets/harema-scene14-raw.wav"
+    },
+    {
+      "scene": 15,
+      "normalized_text_identical": true,
+      "raw_text_identical": true,
+      "resolved_voice": "harema",
+      "session_closed": true,
+      "audio_sha256": "0eb1288bdc1539509f68c4becde9b756b77de3d4c55857674c4e614b41a92453",
+      "audio_file": "assets/harema-scene15-raw.wav"
+    }
+  ]
+}

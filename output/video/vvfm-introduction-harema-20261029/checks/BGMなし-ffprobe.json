@@ -1,0 +1,357 @@
+{
+  "streams": [
+    {
+      "index": 0,
+      "codec_name": "h264",
+      "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+      "profile": "High",
+      "codec_type": "video",
+      "codec_tag_string": "avc1",
+      "codec_tag": "0x31637661",
+      "mime_codec_string": "avc1.640032",
+      "width": 1920,
+      "height": 1080,
+      "coded_width": 1920,
+      "coded_height": 1088,
+      "has_b_frames": 0,
+      "sample_aspect_ratio": "1:1",
+      "display_aspect_ratio": "16:9",
+      "pix_fmt": "yuv420p",
+      "level": 50,
+      "color_range": "tv",
+      "color_space": "bt709",
+      "color_transfer": "bt709",
+      "color_primaries": "bt709",
+      "chroma_location": "left",
+      "field_order": "progressive",
+      "refs": 5,
+      "is_avc": "true",
+      "nal_length_size": "4",
+      "id": "0x1",
+      "r_frame_rate": "24/1",
+      "avg_frame_rate": "24/1",
+      "time_base": "1/12288",
+      "start_pts": 0,
+      "start_time": "0.000000",
+      "duration_ts": 2519040,
+      "duration": "205.000000",
+      "bit_rate": "5487988",
+      "bits_per_raw_sample": "8",
+      "nb_frames": "4920",
+      "nb_read_frames": "4920",
+      "extradata_size": 50,
+      "disposition": {
+        "default": 1,
+        "dub": 0,
+        "original": 0,
+        "comment": 0,
+        "lyrics": 0,
+        "karaoke": 0,
+        "forced": 0,
+        "hearing_impaired": 0,
+        "visual_impaired": 0,
+        "clean_effects": 0,
+        "attached_pic": 0,
+        "timed_thumbnails": 0,
+        "non_diegetic": 0,
+        "captions": 0,
+        "descriptions": 0,
+        "metadata": 0,
+        "dependent": 0,
+        "still_image": 0,
+        "multilayer": 0
+      },
+      "tags": {
+        "language": "und",
+        "handler_name": "VideoHandler",
+        "encoder": "Lavc62.28.102 libx264"
+      }
+    },
+    {
+      "index": 1,
+      "codec_name": "aac",
+      "codec_long_name": "AAC (Advanced Audio Coding)",
+      "profile": "LC",
+      "codec_type": "audio",
+      "codec_tag_string": "mp4a",
+      "codec_tag": "0x6134706d",
+      "mime_codec_string": "mp4a.40.2",
+      "sample_fmt": "fltp",
+      "sample_rate": "48000",
+      "channels": 2,
+      "channel_layout": "stereo",
+      "bits_per_sample": 0,
+      "initial_padding": 0,
+      "id": "0x2",
+      "r_frame_rate": "0/0",
+      "avg_frame_rate": "0/0",
+      "time_base": "1/48000",
+      "start_pts": 0,
+      "start_time": "0.000000",
+      "duration_ts": 9840000,
+      "duration": "205.000000",
+      "bit_rate": "144734",
+      "nb_frames": "9611",
+      "nb_read_frames": "9610",
+      "extradata_size": 5,
+      "disposition": {
+        "default": 1,
+        "dub": 0,
+        "original": 0,
+        "comment": 0,
+        "lyrics": 0,
+        "karaoke": 0,
+        "forced": 0,
+        "hearing_impaired": 0,
+        "visual_impaired": 0,
+        "clean_effects": 0,
+        "attached_pic": 0,
+        "timed_thumbnails": 0,
+        "non_diegetic": 0,
+        "captions": 0,
+        "descriptions": 0,
+        "metadata": 0,
+        "dependent": 0,
+        "still_image": 0,
+        "multilayer": 0
+      },
+      "tags": {
+        "language": "jpn",
+        "handler_name": "SoundHandler"
+      }
+    },
+    {
+      "index": 2,
+      "codec_name": "bin_data",
+      "codec_long_name": "binary data",
+      "codec_type": "data",
+      "codec_tag_string": "text",
+      "codec_tag": "0x74786574",
+      "id": "0x3",
+      "r_frame_rate": "0/0",
+      "avg_frame_rate": "0/0",
+      "time_base": "1/1000",
+      "start_pts": 0,
+      "start_time": "0.000000",
+      "duration_ts": 205000,
+      "duration": "205.000000",
+      "bit_rate": "36",
+      "nb_frames": "15",
+      "extradata_size": 63,
+      "disposition": {
+        "default": 0,
+        "dub": 0,
+        "original": 0,
+        "comment": 0,
+        "lyrics": 0,
+        "karaoke": 0,
+        "forced": 0,
+        "hearing_impaired": 0,
+        "visual_impaired": 0,
+        "clean_effects": 0,
+        "attached_pic": 0,
+        "timed_thumbnails": 0,
+        "non_diegetic": 0,
+        "captions": 0,
+        "descriptions": 0,
+        "metadata": 0,
+        "dependent": 0,
+        "still_image": 0,
+        "multilayer": 0
+      },
+      "tags": {
+        "language": "eng",
+        "handler_name": "SubtitleHandler"
+      }
+    }
+  ],
+  "chapters": [
+    {
+      "id": 0,
+      "time_base": "1/1000",
+      "start": 0,
+      "start_time": "0.000000",
+      "end": 12000,
+      "end_time": "12.000000",
+      "tags": {
+        "title": "01 いつものMacで、VMDをリアルタイム再生"
+      }
+    },
+    {
+      "id": 1,
+      "time_base": "1/1000",
+      "start": 12000,
+      "start_time": "12.000000",
+      "end": 26000,
+      "end_time": "26.000000",
+      "tags": {
+        "title": "02 VMD Viewer for Macの紹介"
+      }
+    },
+    {
+      "id": 2,
+      "time_base": "1/1000",
+      "start": 26000,
+      "start_time": "26.000000",
+      "end": 38000,
+      "end_time": "38.000000",
+      "tags": {
+        "title": "03 Windowsユーザーにも、出先のMacで"
+      }
+    },
+    {
+      "id": 3,
+      "time_base": "1/1000",
+      "start": 38000,
+      "start_time": "38.000000",
+      "end": 54000,
+      "end_time": "54.000000",
+      "tags": {
+        "title": "04 PMX、VMD、WAVを読み込んでリアルタイム再生"
+      }
+    },
+    {
+      "id": 4,
+      "time_base": "1/1000",
+      "start": 54000,
+      "start_time": "54.000000",
+      "end": 71000,
+      "end_time": "71.000000",
+      "tags": {
+        "title": "05 ボーンと3Dギズモで少しアレンジ"
+      }
+    },
+    {
+      "id": 5,
+      "time_base": "1/1000",
+      "start": 71000,
+      "start_time": "71.000000",
+      "end": 86000,
+      "end_time": "86.000000",
+      "tags": {
+        "title": "06 モーフとカメラで、お気に入りの瞬間へ"
+      }
+    },
+    {
+      "id": 6,
+      "time_base": "1/1000",
+      "start": 86000,
+      "start_time": "86.000000",
+      "end": 99000,
+      "end_time": "99.000000",
+      "tags": {
+        "title": "07 リアルタイムで確認し、保存・動画出力へ"
+      }
+    },
+    {
+      "id": 7,
+      "time_base": "1/1000",
+      "start": 99000,
+      "start_time": "99.000000",
+      "end": 117000,
+      "end_time": "117.000000",
+      "tags": {
+        "title": "08 ToonShader HQで見た目を仕上げる"
+      }
+    },
+    {
+      "id": 8,
+      "time_base": "1/1000",
+      "start": 117000,
+      "start_time": "117.000000",
+      "end": 132000,
+      "end_time": "132.000000",
+      "tags": {
+        "title": "09 DoFでキャラクターを引き立てる"
+      }
+    },
+    {
+      "id": 9,
+      "time_base": "1/1000",
+      "start": 132000,
+      "start_time": "132.000000",
+      "end": 145000,
+      "end_time": "145.000000",
+      "tags": {
+        "title": "10 対応する.fxdayoで演出を加える"
+      }
+    },
+    {
+      "id": 10,
+      "time_base": "1/1000",
+      "start": 145000,
+      "start_time": "145.000000",
+      "end": 160000,
+      "end_time": "160.000000",
+      "tags": {
+        "title": "11 Macで動きを支える技術とPMX 2.1"
+      }
+    },
+    {
+      "id": 11,
+      "time_base": "1/1000",
+      "start": 160000,
+      "start_time": "160.000000",
+      "end": 168000,
+      "end_time": "168.000000",
+      "tags": {
+        "title": "12 QDEFで、ねじったときも形を保つ"
+      }
+    },
+    {
+      "id": 12,
+      "time_base": "1/1000",
+      "start": 168000,
+      "start_time": "168.000000",
+      "end": 178000,
+      "end_time": "178.000000",
+      "tags": {
+        "title": "13 ソフトボディで、布やロープをしなやかに"
+      }
+    },
+    {
+      "id": 13,
+      "time_base": "1/1000",
+      "start": 178000,
+      "start_time": "178.000000",
+      "end": 196000,
+      "end_time": "196.000000",
+      "tags": {
+        "title": "14 Bulletの物理演算と二つのモード"
+      }
+    },
+    {
+      "id": 14,
+      "time_base": "1/1000",
+      "start": 196000,
+      "start_time": "196.000000",
+      "end": 205000,
+      "end_time": "205.000000",
+      "tags": {
+        "title": "15 Macで、気軽にMMDを楽しもう"
+      }
+    }
+  ],
+  "format": {
+    "filename": "/Users/minmin/projects/VvfM/output/video/vvfm-introduction-harema-20261029/VvfM_紹介動画_Harema版_3分25秒_BGMなし_1080p.mp4",
+    "nb_streams": 3,
+    "nb_programs": 0,
+    "nb_stream_groups": 0,
+    "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+    "format_long_name": "QuickTime / MOV",
+    "start_time": "0.000000",
+    "duration": "205.000000",
+    "size": "144446222",
+    "bit_rate": "5636925",
+    "probe_score": 100,
+    "tags": {
+      "major_brand": "isom",
+      "minor_version": "512",
+      "compatible_brands": "isomiso2avc1mp41",
+      "title": "VMD Viewer for Mac 紹介動画 PMX 2.1追加版",
+      "artist": "VMD Viewer for Mac",
+      "encoder": "Lavf62.12.102",
+      "comment": "AI-generated narration: OpenAI GPT-Live gpt-live-1 / Harema; BGMなし"
+    }
+  }
+}

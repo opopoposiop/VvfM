@@ -26,8 +26,8 @@ shots={
 12:[(0,5.5,'demo02.mp4',80,viewport),(5.1,12.9,'01-hero.png',None,None),(12.5,18,'demo01.mp4',85,viewport)],
 13:[(0,4.4,'13-ending.jpg',None,None),(4.0,9,'demo02.mp4',88,app)]}
 shots[14]=shots.pop(12);shots[15]=shots.pop(13)
-shots[12]=[(0,8,'pmx21-qdef-source.mov',0,(1160,340,1370,880))]
-shots[13]=[(0,10,'pmx21-softbody-source.mov',.15,(1100,420,1600,850))]
+shots[12]=[(0,8,'pmx21-qdef-source.mov',0,None)]
+shots[13]=[(0,10,'pmx21-softbody-source.mov',.15,None)]
 # Shorten only the final hold of existing shots to meet the 205-second edit.
 for scene in scenes:
  n=scene['id'];dur=scene['duration']
@@ -48,10 +48,16 @@ copy={
 13:('VMD Viewer for Mac','Macで、\n気軽にMMD。','VMDをリアルタイム再生。','LET’S PLAY')}
 copy[14]=copy.pop(12);copy[15]=copy.pop(13)
 copy[12]=('PMX 2.1 / QDEF','ねじっても、\n形を保つ。','左：BDEF（PMX 2.0）\n右3本：QDEF（PMX 2.1）','PMX 2.1 — QDEF')
-copy[13]=('PMX 2.1 / ソフトボディ','布も、ロープも、\nしなやかに。','固定した部分を支点に、\n柔らかく揺れる動き。','PMX 2.1 — SOFT BODY')
+copy[13]=('PMX 2.1 / ソフトボディ','布・ロープが\nしなやかに。','固定した部分を支点に、\n柔らかく揺れる動き。','PMX 2.1 — SOFT BODY')
 # Simple original vector doodles echo the reference without copying its artwork.
 icons='''<svg class="doodle laptop" viewBox="0 0 180 140" aria-hidden="true"><path d="M25 15 Q82 10 150 19 L155 104 23 104Z" fill="#D5EDE0" stroke="#202632" stroke-width="4"/><path d="M36 29 L137 31 140 87 35 86Z" fill="#FAFAF6" stroke="#202632" stroke-width="3"/><path d="M23 104 L7 124 Q82 134 174 123 L155 104" fill="#F4CAD6" stroke="#202632" stroke-width="4"/><path d="M77 48 L103 61 77 76Z" fill="#285CDE" stroke="#202632" stroke-width="2"/></svg><svg class="doodle star" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 5 61 35 95 38 69 60 76 94 49 75 20 93 27 59 5 37 38 34Z" fill="#F5D875" stroke="#202632" stroke-width="3"/></svg><svg class="doodle music" data-layout-ignore viewBox="0 0 100 110" aria-hidden="true"><path d="M34 80 L34 25 78 14 78 70 M35 40 L77 29" fill="none" stroke="#202632" stroke-width="6"/><ellipse cx="22" cy="84" rx="16" ry="12" fill="#F4CAD6" stroke="#202632" stroke-width="3"/><ellipse cx="66" cy="74" rx="16" ry="12" fill="#D5EDE0" stroke="#202632" stroke-width="3"/></svg>'''
 css='''@font-face{font-family:"Hiragino Maru Gothic ProN";src:local("Hiragino Maru Gothic ProN")}@font-face{font-family:"Hiragino Sans";src:local("Hiragino Sans")}*{box-sizing:border-box;margin:0;padding:0}html,body{width:1920px;height:1080px;overflow:hidden;background:#FAFAF6;color:#202632}body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif}.scene{position:absolute;inset:0;width:1920px;height:1080px;background:#FAFAF6;overflow:hidden}.scene+.scene{opacity:0}.scene-content{width:100%;height:100%;padding:54px 72px 132px;display:flex;flex-direction:column;gap:28px;box-sizing:border-box}.header{display:flex;justify-content:space-between;align-items:center;height:52px;flex-shrink:0}.brand{font-size:26px;font-weight:700;letter-spacing:.02em}.chapter{font-family:Menlo,monospace;font-size:23px;letter-spacing:.07em;color:#4D5663}.page{border:2px solid #202632;border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:#F5D875;font-family:Menlo;font-size:24px}.main{display:flex;gap:42px;align-items:center;flex:1;min-height:0}.copy{display:flex;flex-direction:column;gap:29px;width:515px;flex-shrink:0;padding-bottom:32px;position:relative;z-index:3}.eyebrow{font-size:34px;font-weight:700;line-height:1.5}.title{font-size:76px;font-weight:900;line-height:1.34;letter-spacing:-.045em;white-space:pre-line;overflow-wrap:normal}.lead{font-size:31px;font-weight:400;line-height:1.85;white-space:pre-line}.marker{background:linear-gradient(transparent 64%,#F5D875 64%,#F5D875 93%,transparent 93%);box-decoration-break:clone;-webkit-box-decoration-break:clone}.visual{position:relative;flex:1;min-width:0;height:726px;display:flex;align-items:center;justify-content:center;z-index:2}.paper-shadow{position:absolute;inset:30px -8px 20px 12px;border:3px solid #202632;border-radius:26px;background:#D5EDE0;transform:rotate(1.3deg);z-index:0}.shot{position:absolute;inset:19px 0 30px;display:flex;align-items:center;justify-content:center;background:#FAFAF6;border:3px solid #202632;border-radius:22px;overflow:hidden;z-index:1}.shot:not(:first-of-type){opacity:0}.media-crop{position:relative;overflow:hidden;flex-shrink:0;max-width:100%;max-height:100%;background:#202632}.media-crop img,.media-crop video{position:absolute;max-width:none;max-height:none;object-fit:fill}.detail-multi{gap:28px}.detail-multi .shot-label{left:auto;right:25px;bottom:36px}.shot-label{position:absolute;left:22px;bottom:21px;z-index:3;background:#FAFAF6;color:#202632;border:2px solid #202632;border-radius:10px;padding:9px 16px;font-size:23px;max-width:90%;font-weight:600}.annotation{position:absolute;z-index:8;right:30px;top:0;transform:rotate(2deg);padding:15px 22px;background:#F5D875;border:2px solid #202632;box-shadow:4px 4px 0 #202632;border-radius:10px;font-size:30px;font-weight:700}.badge{display:inline-flex;width:max-content;max-width:100%;background:#D5EDE0;border:2px solid #202632;padding:12px 20px;border-radius:14px;font-size:25px;line-height:1.5}.caption-track{position:absolute;left:72px;right:72px;bottom:18px;height:116px;display:flex;align-items:center;justify-content:center;border-top:2px solid #202632;z-index:90}.caption{position:absolute;inset:12px 0 0;display:flex;align-items:center;justify-content:center;text-align:center;font-size:38px;font-weight:600;line-height:1.35;white-space:pre-line;opacity:0;background:#FAFAF6}.doodle{position:absolute;z-index:1;pointer-events:none}.laptop{width:142px;left:425px;bottom:145px;transform:rotate(-12deg)}.star{width:75px;right:25px;top:120px;transform:rotate(12deg)}.music{width:70px;left:-15px;top:405px;transform:rotate(-12deg)}.paper-loop{position:absolute;width:240px;height:130px;border:2px solid #202632;border-radius:55% 45% 45% 55%;right:-110px;bottom:80px;transform:rotate(-23deg);background:#F4CAD6}.paper-tab{position:absolute;width:145px;height:76px;left:-65px;top:130px;background:#D5EDE0;border:2px solid #202632;border-radius:22px;transform:rotate(-10deg)}.step-list{display:flex;flex-direction:column;gap:16px;margin-top:4px}.step{font-size:29px;display:flex;align-items:center;gap:16px}.step b{font-family:Menlo,monospace;background:#F5D875;border:2px solid #202632;border-radius:12px;padding:8px 13px;min-width:106px;text-align:center}.tech-lines{display:flex;flex-direction:column;gap:18px}.tech-row{display:flex;gap:18px;align-items:center;font-size:28px}.tech-row strong{font-family:Menlo,monospace;display:flex;justify-content:center;align-items:center;background:#D5EDE0;border:2px solid #202632;border-radius:12px;min-width:112px;min-height:56px}.mode{display:flex;flex-direction:column;gap:9px;border:2px solid #202632;border-radius:15px;padding:18px;background:#D5EDE0;font-size:28px}.mode:nth-child(2){background:#F4CAD6}.mode small{font-size:22px}.footer-link{font-family:Menlo,monospace;font-size:25px;line-height:1.65;word-break:break-word;color:#285CDE}.ai-credit{font-size:20px;color:#4D5663}.scene-1 .title{font-size:77px}.scene-2 .eyebrow{font-size:49px}.scene-2 .title{font-size:92px}.scene-11 .title{font-size:72px}.scene-12 .title{font-size:73px}.scene-13 .title{font-size:68px}.scene-14 .title{font-size:68px}.scene-15 .title{font-size:74px}.scene-15 .copy{width:550px;gap:25px}.pmx-label{position:absolute;top:83%;transform:translateX(-50%);background:#FAFAF6;color:#202632;border:2px solid #202632;border-radius:8px;padding:8px 10px;font-size:21px;line-height:1.4;white-space:nowrap;text-align:center;z-index:6}.pmx-label small{font-size:18px;display:block}.small-note{font-size:20px;line-height:1.55;color:#4D5663}.progress-line{position:absolute;bottom:0;left:0;height:7px;width:1920px;background:#285CDE;transform-origin:left center;z-index:100}.full-feature .copy{width:440px}.full-feature .title{font-size:70px}.static-tag{font-size:19px;position:absolute;right:17px;bottom:9px;color:#4D5663;z-index:5}.arrow{font-size:38px;color:#285CDE;align-self:center}.workflow{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.workflow span{font-size:26px;border:2px solid #202632;background:#D5EDE0;border-radius:12px;padding:14px}.workflow span:last-child{background:#F4CAD6}'''
+# PMX 2.1 uses the whole recorded window, including controls and timeline.
+css+='''.app-screen-scene .scene-content{padding:44px 52px 132px;gap:18px}.app-screen-scene .main{gap:24px}.app-screen-scene .copy{width:352px;gap:24px;padding-bottom:0}.app-screen-scene .eyebrow{font-size:28px}.app-screen-scene .title{font-size:56px;line-height:1.35}.app-screen-scene .lead{font-size:26px;line-height:1.7}.app-screen-scene .badge{font-size:23px}.app-screen-scene .tech-row{font-size:23px}.app-screen-scene .visual{height:812px}.app-screen-scene .shot{inset:0;background:#FAFAF6}.app-screen-scene .paper-shadow{inset:12px -8px 0 8px}.app-screen-scene .small-note{font-size:20px}'''
+# PMX-inspired illustrations remain outside the real app view.
+css+=""".scene-2 .visual{flex:0 0 1040px;margin-left:21px}.scene-2 .laptop{display:none}.pmx-illustration{position:absolute;width:160px;height:260px;top:670px;z-index:6;overflow:hidden;pointer-events:none;transform-origin:50% 100%}.pmx-illustration-left{left:450px}.pmx-illustration-right{left:1730px}.pmx-illustration img{position:absolute;max-width:none;max-height:none}"""
+# Closing characters enter from 197 s; keep the URL and caption rail clear.
+css+=""".scene-15 .visual{flex:0 0 1040px}.scene-15 .laptop{display:none}.scene-15 .pmx-illustration{opacity:0}.scene-15 .pmx-illustration-left{left:490px}"""
 # Every phrase is assigned a measured interval after audio preparation; a first
 # authoring pass uses paragraph-proportional timings without generating audio.
 cap_file=ROOT/'source/captions.json'
@@ -76,15 +82,18 @@ for s in scenes:
  if n==11:extra='<div class="tech-lines"><div class="tech-row"><strong>CPU</strong>姿勢・物理</div><div class="tech-row"><strong>GPU</strong>Metal描画</div></div><div class="badge">PMX 2.0 / 2.1 対応</div><p class="small-note">収録画面内のモデルはPMX 2.0です。</p>'
  if n==14:extra='<div class="tech-lines"><div class="mode"><b>3.25 ネイティブ</b></div><div class="mode"><b>2.75 互換</b><small>既知の動きの違いを調整</small></div></div><p class="small-note">両モードともBullet 3.25を使用。</p>'
  if n==15:extra='<div class="footer-link"><span style="display:block">配布情報・使い方</span>github.com/opopoposiop/VvfM</div><p class="ai-credit">AIナレーション：HeyGen Jhenny</p>'
- if n==12:extra='<div class="badge">ねじり変形を比較</div><p class="small-note">PMX 2.1テストモデルによる実演。</p>'
- if n==13:extra='<div class="tech-lines"><div class="tech-row">頂点固定 / 剛体アンカー</div><div class="tech-row">両端固定のロープ</div></div><p class="small-note">PMX 2.1テストモデルによる実演。</p>'
+ if n==12:extra='<div class="badge">ねじり変形を比較</div><p class="small-note">VMD Viewerのアプリ実画面。</p>'
+ if n==13:extra='<div class="tech-lines"><div class="tech-row">頂点固定 / 剛体アンカー</div><div class="tech-row">両端固定のロープ</div></div><p class="small-note">VMD Viewerのアプリ実画面。</p>'
  media=[]
  for j,(a,b,file,offset,crop) in enumerate(shots[n]):
   video=file.endswith(('.mp4','.mov'));iw,ih=((2926,1750)if file.startswith('pmx21-')else(1280,720))if video else Image.open(COMP/'assets'/file).size
   x,y,cw,ch=crop or (0,0,iw,ih)
   # Fit region without stretching; height caps at 660 px.
   maxw=1195 if n not in (1,15) else 1150
-  maxh=660;scale=min(maxw/cw,maxh/ch);w=cw*scale;h=ch*scale
+  maxh=660
+  if n in (2,15):maxw=1028;maxh=650
+  if n in (12,13):maxw=1400;maxh=790
+  scale=min(maxw/cw,maxh/ch);w=cw*scale;h=ch*scale
   id=f'{sid}m{j}'
   style=f'left:{-x/cw*100:.5f}%;top:{-y/ch*100:.5f}%;width:{iw/cw*100:.5f}%;height:{ih/ch*100:.5f}%;'
   attrs=f'id="{id}media" src="assets/{file}" style="{style}"'
@@ -94,10 +103,6 @@ for s in scenes:
   else:
    attrs+=f' class="clip" data-start="{base+a:.3f}" data-duration="{b-a:.3f}" data-track-index="{100+n*10+j}"'
    content=f'<img {attrs} alt="{E(s["title"])}">'
-  if n==12:
-   content+=''.join(f'<div class="pmx-label" style="left:{x}%">{label}</div>'for x,label in [(16.1,'BDEF 2.0'),(38.3,'QDEF<small>ウェイト合計 1.0</small>'),(61.0,'QDEF<small>ウェイト合計 0.5</small>'),(83.2,'QDEF<small>ウェイト合計 4.0</small>')])
-  if n==13:
-   content+=''.join(f'<div class="pmx-label" style="left:{x}%">{label}</div>'for x,label in [(16,'頂点固定の布'),(47,'剛体アンカーの布'),(78,'両端固定ロープ')])
   label='';
   if n==5 and j==0:label='3Dギズモで腕の角度を調整'
   if n==5 and j==1:label='数値で調整 → キー登録'
@@ -115,7 +120,28 @@ for s in scenes:
   shot_manifest.append({'scene':n,'start':base+a,'end':base+b,'source':file,'source_start':offset,'crop':crop,'playback_rate':1 if video else None})
  badge='VMDをリアルタイム再生'if n in(1,4) else ('お気に入りを、自分の手で'if n==2 else '')
  visual=f'<div class="visual"><div class="paper-shadow" data-layout-ignore></div>{"".join(media)}{f"<div class=annotation>{badge}</div>"if badge else ""}</div>'
- content=f'<div class="scene scene-{n}" id="{sid}" style="z-index:{n};opacity:{1 if n==1 else 0}"><div class="paper-loop" data-layout-ignore></div><div class="paper-tab" data-layout-ignore></div>{icons}<div class="scene-content"><div class="header"><div class="brand">VMD Viewer for Mac</div><div class="chapter">{E(chapter)}</div><div class="page">{n:02}</div></div><div class="main"><div class="copy"><div class="eyebrow">{E(ey)}</div><h1 class="title"><span class="marker">{E(title)}</span></h1><p class="lead">{E(lead)}</p>{extra}</div>{visual}</div></div></div>'
+ content=f'<div class="scene scene-{n}{" app-screen-scene" if n in (12,13) else ""}" id="{sid}" style="z-index:{n};opacity:{1 if n==1 else 0}"><div class="paper-loop" data-layout-ignore></div><div class="paper-tab" data-layout-ignore></div>{icons}<div class="scene-content"><div class="header"><div class="brand">VMD Viewer for Mac</div><div class="chapter">{E(chapter)}</div><div class="page">{n:02}</div></div><div class="main"><div class="copy"><div class="eyebrow">{E(ey)}</div><h1 class="title"><span class="marker">{E(title)}</span></h1><p class="lead">{E(lead)}</p>{extra}</div>{visual}</div></div></div>'
+ if n in (2,15):
+  characters=[]
+  for side in ('left','right'):
+   filename=f'pmx-character-{side}.png'
+   image=Image.open(COMP/'assets'/filename)
+   # Ignore near-invisible alpha specks only when calculating the layout box; PNG pixels stay intact.
+   bbox=image.getchannel('A').point(lambda value: 255 if value>=8 else 0).getbbox()
+   x0,y0,x1,y1=bbox
+   scale=min(156/(x1-x0),256/(y1-y0))
+   width,height=image.width*scale,image.height*scale
+   left=(160-(x1-x0)*scale)/2-x0*scale
+   top=(260-(y1-y0)*scale)/2-y0*scale
+   style=f'width:{width:.5f}px;height:{height:.5f}px;left:{left:.5f}px;top:{top:.5f}px'
+   characters.append(f'<div class="pmx-illustration pmx-illustration-{side}" data-layout-allow-overflow><img src="assets/{filename}" style="{style}" alt="収録PMXモデルを参考にしたキャラクターイラスト"></div>')
+  content=content.replace('<div class="scene-content">',''.join(characters)+'<div class="scene-content">',1)
+  if n==2:
+   anim.append(f'tl.from("#{sid} .pmx-illustration-left",{{scale:.92,opacity:0,duration:.55,ease:"sine.out",immediateRender:false}},{base+.7});')
+   anim.append(f'tl.from("#{sid} .pmx-illustration-right",{{scale:.92,opacity:0,duration:.55,ease:"power2.out",immediateRender:false}},{base+.85});')
+  else:
+   for side,ease in [("left","sine.out"),("right","power2.out")]:
+    anim.append(f'tl.fromTo("#{sid} .pmx-illustration-{side}",{{scale:.92,opacity:0}},{{scale:1,opacity:1,duration:.5,ease:"{ease}",immediateRender:false}},197.0);')
  htmls.append(content)
  if n>1:
   # Whole-scene crossfade is the exit; no child exits before the transition.

@@ -1,0 +1,115 @@
+{
+  "text": "アプリ上でリアルタイム再生。",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0.0,
+      "end": 2.68,
+      "text": "アプリ上でリアルタイム再生。",
+      "tokens": [
+        50364,
+        12817,
+        20953,
+        12376,
+        5708,
+        2474,
+        12376,
+        12817,
+        9405,
+        12144,
+        8040,
+        32026,
+        8623,
+        8244,
+        1543,
+        50514
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.1972015605253332,
+      "compression_ratio": 0.8571428571428571,
+      "no_speech_prob": 0.016858231276273727,
+      "words": [
+        {
+          "word": "ア",
+          "start": 0.0,
+          "end": 0.32,
+          "probability": 0.857421875
+        },
+        {
+          "word": "プ",
+          "start": 0.32,
+          "end": 0.46,
+          "probability": 0.99609375
+        },
+        {
+          "word": "リ",
+          "start": 0.46,
+          "end": 0.66,
+          "probability": 0.99853515625
+        },
+        {
+          "word": "上",
+          "start": 0.66,
+          "end": 0.92,
+          "probability": 0.91748046875
+        },
+        {
+          "word": "で",
+          "start": 0.92,
+          "end": 1.2,
+          "probability": 0.994140625
+        },
+        {
+          "word": "リ",
+          "start": 1.2,
+          "end": 1.58,
+          "probability": 0.70947265625
+        },
+        {
+          "word": "ア",
+          "start": 1.58,
+          "end": 1.72,
+          "probability": 0.9853515625
+        },
+        {
+          "word": "ル",
+          "start": 1.72,
+          "end": 1.86,
+          "probability": 0.9990234375
+        },
+        {
+          "word": "タ",
+          "start": 1.86,
+          "end": 2.04,
+          "probability": 0.9775390625
+        },
+        {
+          "word": "イ",
+          "start": 2.04,
+          "end": 2.12,
+          "probability": 0.99951171875
+        },
+        {
+          "word": "ム",
+          "start": 2.12,
+          "end": 2.24,
+          "probability": 0.99951171875
+        },
+        {
+          "word": "再",
+          "start": 2.24,
+          "end": 2.42,
+          "probability": 0.92919921875
+        },
+        {
+          "word": "生。",
+          "start": 2.42,
+          "end": 2.68,
+          "probability": 0.98974609375
+        }
+      ]
+    }
+  ],
+  "language": "ja"
+}

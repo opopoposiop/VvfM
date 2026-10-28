@@ -1,0 +1,18 @@
+{
+  "result": "pass",
+  "review_type": "independent read-only audit",
+  "approved_mono_samples_per_channel": {
+    "11": 184320,
+    "12": 330240
+  },
+  "full_audio_stereo_frames": 9840000,
+  "checks": [
+    "approved WAV byte identity and placed PCM channel identity",
+    "outside-patch narration and mix PCM identity",
+    "full-track BGM contribution identity",
+    "captions JSON and ASS, EDL, chapters, HTML and SRT byte identity",
+    "all 15 scene display text and timings unchanged",
+    "only scene 11 and 12 spoken text and alignment updated"
+  ],
+  "full_mp4_decode_repeated": false
+}

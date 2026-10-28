@@ -1,0 +1,91 @@
+{
+  "preceding": {
+    "before": {
+      "interval_seconds": [
+        17.55,
+        18.65
+      ],
+      "voiced_frames": 94,
+      "median_hz": 190.6,
+      "p25_hz": 183.88,
+      "p75_hz": 224.51
+    },
+    "after": {
+      "interval_seconds": [
+        17.55,
+        18.65
+      ],
+      "voiced_frames": 94,
+      "median_hz": 190.6,
+      "p25_hz": 183.88,
+      "p75_hz": 224.51
+    }
+  },
+  "apurijou": {
+    "before": {
+      "interval_seconds": [
+        18.94,
+        19.52
+      ],
+      "voiced_frames": 47,
+      "median_hz": 271.97,
+      "p25_hz": 259.27,
+      "p75_hz": 284.66
+    },
+    "after": {
+      "interval_seconds": [
+        18.94,
+        19.52
+      ],
+      "voiced_frames": 48,
+      "median_hz": 216.92,
+      "p25_hz": 205.61,
+      "p75_hz": 225.79
+    }
+  },
+  "following_clause": {
+    "before": {
+      "interval_seconds": [
+        19.94,
+        20.9
+      ],
+      "voiced_frames": 68,
+      "median_hz": 206.58,
+      "p25_hz": 197.35,
+      "p75_hz": 226.61
+    },
+    "after": {
+      "interval_seconds": [
+        19.94,
+        20.9
+      ],
+      "voiced_frames": 68,
+      "median_hz": 206.58,
+      "p25_hz": 197.35,
+      "p75_hz": 226.61
+    }
+  },
+  "following_sentence": {
+    "before": {
+      "interval_seconds": [
+        21.38,
+        22.9
+      ],
+      "voiced_frames": 110,
+      "median_hz": 221.94,
+      "p25_hz": 211.04,
+      "p75_hz": 237.02
+    },
+    "after": {
+      "interval_seconds": [
+        21.38,
+        22.9
+      ],
+      "voiced_frames": 110,
+      "median_hz": 221.94,
+      "p25_hz": 211.04,
+      "p75_hz": 237.02
+    }
+  }
+}
+PASS: 18.9–19.94s patched, pitch maximum -4.0 semitones; other PCM and BGM identical.

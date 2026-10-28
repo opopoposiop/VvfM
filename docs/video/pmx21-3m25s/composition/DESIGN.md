@@ -30,4 +30,16 @@ Reference: the user-supplied 「いつものMacで、気軽にMMD体験.mp4」. 
 - Do not use neon gradients, excessive stickers, fast text spins or crowded grids.
 
 ## PMX 2.1 reconstruction
-Reuse the earlier build376 QDEF and SoftBody window recordings at 1x. Add a clear BDEF/QDEF comparison and labels for pinned cloth, rigid anchors and rope. Preserve the paper palette and Jhenny voice. The edited duration is exactly 205 seconds.
+Reuse the earlier build376 QDEF and SoftBody window recordings at 1x. Show the complete recorded app window, including title bar, model list, playback controls and timeline. Keep explanations outside the recorded window. Never crop to the viewport or overlay labels on the application UI. Preserve the paper palette and Jhenny voice. The edited duration is exactly 205 seconds.
+
+## PMX character illustrations — 2026-10-24
+
+The user explicitly requested chibi illustrations inspired by the two PMX models in the recorded app. Use the built-in image-generated transparent PNGs only as decorations outside the real app view. The left character has swept reddish hair and navy knee socks; the right wears the camouflage hat and has bare lower legs. Both wear the model's violet blazer, green tie and dark pleated skirt. Scene 2 (12–26 s) shows the two illustrations on either side of a slightly narrower app frame. Remove that scene's laptop doodle to keep the left character clear. Preserve all scene timings, captions, audio, other layouts and original video playback speeds. Retain generous separation from app controls and the bottom caption rail.
+
+## Closing illustrations — 2026-10-24
+
+Reuse the same two transparent PNGs in scene 15. Keep their initial opacity zero; both enter at 197 s over 0.5 s and fade with the final scene at 204.35–205 s. Use a 1040 px app frame without stretching the footage. Place the left character at x=490 and the right at x=1730, both y=670 with 160×260 px layout boxes, clear of the distribution URL and caption rail. Hide only this scene's laptop doodle. Preserve the existing scene-2 placement, all other scenes, captions, source timings and both final audio streams.
+
+## Narration and caption revision — 2026-10-25
+
+Preserve all scene layouts, illustrations, source playback rates and caption timings. Only replace the ToonShader HQ product-name caption and change the rim-light caption from 縁 to 輪郭. The arm sentence and rim-light sentence use newly synthesized reference-voice narration with restrained pitch contours; retain all unrelated narration and the BGM stem.

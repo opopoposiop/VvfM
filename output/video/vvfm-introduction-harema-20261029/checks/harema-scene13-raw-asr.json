@@ -1,0 +1,332 @@
+{
+  "engine": "local mlx-whisper",
+  "model": "openai/whisper-medium converted locally to MLX",
+  "audio_uploaded": false,
+  "source": "assets/harema-scene13-raw.wav",
+  "sha256": "a7408e96d9dc7e4df532d4093772c13eda085ac370d7c4cbb335b985213eadfa",
+  "transcript": {
+    "text": "ソフトボディでは布やロープの柔らかな動きも固定した部分を視点にしなやかに揺れる様子を表現できます。",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 5.32,
+        "text": "ソフトボディでは布やロープの柔らかな動きも",
+        "tokens": [
+          50364,
+          42668,
+          17320,
+          7588,
+          37626,
+          31327,
+          26760,
+          16719,
+          34688,
+          7355,
+          17164,
+          15266,
+          245,
+          2972,
+          17238,
+          242,
+          5154,
+          24939,
+          12572,
+          7016,
+          4801,
+          50614
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.14527606964111328,
+        "compression_ratio": 1.1666666666666667,
+        "no_speech_prob": 0.010797376744449139,
+        "words": [
+          {
+            "word": "ソ",
+            "start": 0.0,
+            "end": 0.62,
+            "probability": 0.931640625
+          },
+          {
+            "word": "フ",
+            "start": 0.62,
+            "end": 0.78,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "ト",
+            "start": 0.78,
+            "end": 0.84,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "ボ",
+            "start": 0.84,
+            "end": 0.96,
+            "probability": 0.990234375
+          },
+          {
+            "word": "デ",
+            "start": 0.96,
+            "end": 1.06,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "ィ",
+            "start": 1.06,
+            "end": 1.16,
+            "probability": 1.0
+          },
+          {
+            "word": "では",
+            "start": 1.16,
+            "end": 1.62,
+            "probability": 0.88916015625
+          },
+          {
+            "word": "布",
+            "start": 1.62,
+            "end": 2.06,
+            "probability": 0.471435546875
+          },
+          {
+            "word": "や",
+            "start": 2.06,
+            "end": 2.38,
+            "probability": 0.994140625
+          },
+          {
+            "word": "ロ",
+            "start": 2.38,
+            "end": 2.56,
+            "probability": 0.99462890625
+          },
+          {
+            "word": "ープ",
+            "start": 2.56,
+            "end": 2.7,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "の",
+            "start": 2.7,
+            "end": 2.96,
+            "probability": 0.99609375
+          },
+          {
+            "word": "柔",
+            "start": 2.96,
+            "end": 3.2,
+            "probability": 0.974609375
+          },
+          {
+            "word": "ら",
+            "start": 3.2,
+            "end": 3.38,
+            "probability": 0.99853515625
+          },
+          {
+            "word": "かな",
+            "start": 3.38,
+            "end": 3.54,
+            "probability": 0.99658203125
+          },
+          {
+            "word": "動",
+            "start": 3.54,
+            "end": 3.76,
+            "probability": 0.98779296875
+          },
+          {
+            "word": "き",
+            "start": 3.76,
+            "end": 3.9,
+            "probability": 1.0
+          },
+          {
+            "word": "も",
+            "start": 3.9,
+            "end": 5.32,
+            "probability": 0.99462890625
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "seek": 0,
+        "start": 5.32,
+        "end": 11.1,
+        "text": "固定した部分を視点にしなやかに揺れる様子を表現できます。",
+        "tokens": [
+          50614,
+          3919,
+          118,
+          12088,
+          8533,
+          32174,
+          5998,
+          27333,
+          12579,
+          4108,
+          2849,
+          3203,
+          7355,
+          3703,
+          4108,
+          11673,
+          118,
+          35367,
+          49261,
+          7626,
+          5998,
+          17571,
+          9581,
+          2474,
+          22851,
+          1543,
+          50964
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.14527606964111328,
+        "compression_ratio": 1.1666666666666667,
+        "no_speech_prob": 0.010797376744449139,
+        "words": [
+          {
+            "word": "固",
+            "start": 5.32,
+            "end": 5.62,
+            "probability": 0.875
+          },
+          {
+            "word": "定",
+            "start": 5.62,
+            "end": 5.78,
+            "probability": 1.0
+          },
+          {
+            "word": "した",
+            "start": 5.78,
+            "end": 5.96,
+            "probability": 0.9970703125
+          },
+          {
+            "word": "部分",
+            "start": 5.96,
+            "end": 6.26,
+            "probability": 0.99072265625
+          },
+          {
+            "word": "を",
+            "start": 6.26,
+            "end": 6.56,
+            "probability": 0.99462890625
+          },
+          {
+            "word": "視",
+            "start": 6.56,
+            "end": 6.68,
+            "probability": 0.74609375
+          },
+          {
+            "word": "点",
+            "start": 6.68,
+            "end": 6.82,
+            "probability": 0.99365234375
+          },
+          {
+            "word": "に",
+            "start": 6.82,
+            "end": 7.66,
+            "probability": 0.99609375
+          },
+          {
+            "word": "し",
+            "start": 7.66,
+            "end": 7.9,
+            "probability": 0.857421875
+          },
+          {
+            "word": "な",
+            "start": 7.9,
+            "end": 8.02,
+            "probability": 0.99462890625
+          },
+          {
+            "word": "や",
+            "start": 8.02,
+            "end": 8.18,
+            "probability": 1.0
+          },
+          {
+            "word": "か",
+            "start": 8.18,
+            "end": 8.34,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "に",
+            "start": 8.34,
+            "end": 8.42,
+            "probability": 0.99755859375
+          },
+          {
+            "word": "揺",
+            "start": 8.42,
+            "end": 8.62,
+            "probability": 0.96484375
+          },
+          {
+            "word": "れる",
+            "start": 8.62,
+            "end": 8.8,
+            "probability": 0.99755859375
+          },
+          {
+            "word": "様",
+            "start": 8.8,
+            "end": 9.1,
+            "probability": 0.9853515625
+          },
+          {
+            "word": "子",
+            "start": 9.1,
+            "end": 9.26,
+            "probability": 0.9931640625
+          },
+          {
+            "word": "を",
+            "start": 9.26,
+            "end": 9.94,
+            "probability": 0.99658203125
+          },
+          {
+            "word": "表",
+            "start": 9.94,
+            "end": 10.3,
+            "probability": 0.98388671875
+          },
+          {
+            "word": "現",
+            "start": 10.3,
+            "end": 10.5,
+            "probability": 0.99658203125
+          },
+          {
+            "word": "で",
+            "start": 10.5,
+            "end": 10.72,
+            "probability": 0.84033203125
+          },
+          {
+            "word": "きます。",
+            "start": 10.72,
+            "end": 11.1,
+            "probability": 0.99951171875
+          }
+        ]
+      }
+    ],
+    "language": "ja"
+  }
+}

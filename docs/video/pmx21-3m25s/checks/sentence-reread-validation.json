@@ -1,0 +1,55 @@
+{
+  "duration_seconds": 205,
+  "patch_interval_seconds": [
+    14.85,
+    20.98
+  ],
+  "new_clip_duration_seconds": 6.026666666666666,
+  "source_trim_seconds": [
+    0.1,
+    6.36
+  ],
+  "tempo_preserving_pitch": 1.04,
+  "display_sentence": "PMXモデルとVMDモーションを読み込んで、アプリ上でリアルタイム再生。",
+  "pronunciation": "あぷりじょう",
+  "romaji": "apuri jou",
+  "spoken_sentence": "ピーエムエックスモデルとブイエムディーモーションを読み込んで、あぷりじょうでリアルタイム再生。",
+  "continuous_sentence_recording": true,
+  "pitch_shift_semitones": 0,
+  "replaces_prior_word_splice_and_pitch_adjustment": true,
+  "voice": "HeyGen Jhenny",
+  "reference_sentence_lufs": -16.22,
+  "narration_pcm_outside_patch_identical": true,
+  "with_bgm_pcm_outside_patch_identical": true,
+  "bgm_contribution_preserved": true,
+  "previous_fxdayo_and_yuka_fix_preserved": true,
+  "inputs": [
+    {
+      "file": "assets/narration-before-sentence-reread.wav",
+      "sha256": "76fff5e832c40bf2cf6127055f4872b1bda545d27e74e65993b3bf15487bd87e"
+    },
+    {
+      "file": "assets/with-bgm-before-sentence-reread.wav",
+      "sha256": "868c51fdc2b8cb9846276f637c3fc765b758f7614335faced0ef1e5725e2fc2e"
+    },
+    {
+      "file": "assets/jhenny-sentence-reread-original.wav",
+      "sha256": "3a891448a683e42d34d9ff945502263af4ea2fe27377784d965d136fafbd11ff"
+    }
+  ],
+  "unchanged_caption_sha256": "3c602adb993e4ebc0325646e3a8de36f7202abc18d0bb63d29a1d1f93d3b1d31",
+  "unchanged_edit_decision_list_sha256": "660c13c5a48cf2c4b3b31c2d1981401c38226a46028ed1d011a9277a2c844453",
+  "new_audio_measurement_before_normalizing": {
+    "input_i": "-13.54",
+    "input_tp": "-3.42",
+    "input_lra": "1.50",
+    "input_thresh": "-23.80",
+    "output_i": "-16.16",
+    "output_tp": "-6.22",
+    "output_lra": "1.50",
+    "output_thresh": "-26.39",
+    "normalization_type": "dynamic",
+    "target_offset": "0.16"
+  },
+  "result": "pass"
+}

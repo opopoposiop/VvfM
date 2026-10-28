@@ -1,0 +1,28 @@
+{
+  "result": "completed_with_pronunciation_uncertainty",
+  "engine": "offline mlx-whisper, openai/whisper-medium converted from existing local cache",
+  "audio_uploaded": false,
+  "checked": [
+    "all 15 original scene recordings",
+    "full narration decoded from final no-BGM AAC",
+    "second full pass using vocabulary hints only"
+  ],
+  "whole_sentence_omission_identified": false,
+  "whole_sentence_review_method": "Read both full-length transcripts and all 15 original-scene transcripts against the 41 supplied sentences; this does not prove phonetic exactness.",
+  "asr_discrepancies": [
+    "気軽に -> 気なるに",
+    "3Dギズモ -> 3Dキズモ",
+    "確かめながら -> 隠しめながら",
+    "モーフ -> 毛布",
+    "リアルタイム再生 -> リアルタイム散声/賛成 in unhinted pass",
+    "ToonShader HQ -> 2Shader/トゥーシェダー; recognized with vocabulary hint",
+    "ディフュージョン -> リフュージョン",
+    "被写界深度 -> 被写解進度/振動",
+    "fxdayo -> FXバイオ",
+    "ペンライト -> 県ライト",
+    "3.25/2.75 -> 3.2V/2.75V in final pass; 3.25/2.75 recognized in raw recording"
+  ],
+  "interpretation": "Many discrepancies also occur before speed adjustment, and recognition varies by context. Do not assert that they are all ASR mistakes or all actual pronunciation mistakes. Human listening is needed for phonetic accuracy and naturalness.",
+  "script_returned_by_generator": "Normalized text matched all 15 supplied scene scripts; independently recorded in harema-live-text-validation.json",
+  "human_listening_acceptance": "not asserted"
+}

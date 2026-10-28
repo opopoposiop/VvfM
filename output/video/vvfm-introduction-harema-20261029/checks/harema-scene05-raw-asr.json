@@ -1,0 +1,559 @@
+{
+  "engine": "local mlx-whisper",
+  "model": "openai/whisper-medium converted locally to MLX",
+  "audio_uploaded": false,
+  "source": "assets/harema-scene05-raw.wav",
+  "sha256": "5f99526aa935f7a7be2af466f493fe69f818f5d17c2d95719d8bc03a83e8bf5c",
+  "transcript": {
+    "text": "腕の角度を少し変えて、お気に入りのポーズにボーンを選び、3Dキズモで調整したらキーを登録。タイムラインで前後を隠しめながら、服への食い込みなど気になる部分も整えられます。",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 9.5,
+        "text": "腕の角度を少し変えて、お気に入りのポーズにボーンを選び、3Dキズモで調整したらキーを登録。",
+        "tokens": [
+          50364,
+          164,
+          12831,
+          2972,
+          29389,
+          13127,
+          5998,
+          15686,
+          2849,
+          40931,
+          31045,
+          1231,
+          6117,
+          25870,
+          4108,
+          14028,
+          5095,
+          2972,
+          34718,
+          3384,
+          29061,
+          4108,
+          37626,
+          44632,
+          5998,
+          21625,
+          38761,
+          1231,
+          18,
+          35,
+          15535,
+          29061,
+          29183,
+          2474,
+          32943,
+          27662,
+          8533,
+          5154,
+          15535,
+          3384,
+          5998,
+          46246,
+          1543,
+          50814
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.1463649076573989,
+        "compression_ratio": 1.3210526315789475,
+        "no_speech_prob": 0.06237852945923805,
+        "words": [
+          {
+            "word": "腕",
+            "start": 0.0,
+            "end": 0.5,
+            "probability": 0.9140625
+          },
+          {
+            "word": "の",
+            "start": 0.5,
+            "end": 0.7,
+            "probability": 0.9921875
+          },
+          {
+            "word": "角",
+            "start": 0.7,
+            "end": 0.9,
+            "probability": 0.9873046875
+          },
+          {
+            "word": "度",
+            "start": 0.9,
+            "end": 1.04,
+            "probability": 1.0
+          },
+          {
+            "word": "を",
+            "start": 1.04,
+            "end": 1.18,
+            "probability": 0.98388671875
+          },
+          {
+            "word": "少",
+            "start": 1.18,
+            "end": 1.38,
+            "probability": 0.994140625
+          },
+          {
+            "word": "し",
+            "start": 1.38,
+            "end": 1.54,
+            "probability": 0.9697265625
+          },
+          {
+            "word": "変",
+            "start": 1.54,
+            "end": 1.66,
+            "probability": 0.97216796875
+          },
+          {
+            "word": "えて、",
+            "start": 1.66,
+            "end": 2.28,
+            "probability": 0.9921875
+          },
+          {
+            "word": "お",
+            "start": 2.56,
+            "end": 2.64,
+            "probability": 0.97705078125
+          },
+          {
+            "word": "気",
+            "start": 2.64,
+            "end": 2.78,
+            "probability": 0.99267578125
+          },
+          {
+            "word": "に",
+            "start": 2.78,
+            "end": 2.88,
+            "probability": 0.99560546875
+          },
+          {
+            "word": "入",
+            "start": 2.88,
+            "end": 2.92,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "り",
+            "start": 2.92,
+            "end": 3.04,
+            "probability": 0.99853515625
+          },
+          {
+            "word": "の",
+            "start": 3.04,
+            "end": 3.18,
+            "probability": 0.9921875
+          },
+          {
+            "word": "ポ",
+            "start": 3.18,
+            "end": 3.34,
+            "probability": 0.99462890625
+          },
+          {
+            "word": "ー",
+            "start": 3.34,
+            "end": 3.44,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "ズ",
+            "start": 3.44,
+            "end": 3.54,
+            "probability": 1.0
+          },
+          {
+            "word": "に",
+            "start": 3.54,
+            "end": 4.48,
+            "probability": 0.96875
+          },
+          {
+            "word": "ボ",
+            "start": 4.48,
+            "end": 4.78,
+            "probability": 0.5810546875
+          },
+          {
+            "word": "ーン",
+            "start": 4.78,
+            "end": 4.9,
+            "probability": 0.529296875
+          },
+          {
+            "word": "を",
+            "start": 4.9,
+            "end": 5.12,
+            "probability": 0.99169921875
+          },
+          {
+            "word": "選",
+            "start": 5.12,
+            "end": 5.28,
+            "probability": 0.9951171875
+          },
+          {
+            "word": "び、",
+            "start": 5.28,
+            "end": 5.64,
+            "probability": 0.9931640625
+          },
+          {
+            "word": "3",
+            "start": 6.0,
+            "end": 6.24,
+            "probability": 0.88720703125
+          },
+          {
+            "word": "D",
+            "start": 6.24,
+            "end": 6.42,
+            "probability": 0.9375
+          },
+          {
+            "word": "キ",
+            "start": 6.42,
+            "end": 6.56,
+            "probability": 0.67138671875
+          },
+          {
+            "word": "ズ",
+            "start": 6.56,
+            "end": 6.66,
+            "probability": 0.994140625
+          },
+          {
+            "word": "モ",
+            "start": 6.66,
+            "end": 6.76,
+            "probability": 0.97265625
+          },
+          {
+            "word": "で",
+            "start": 6.76,
+            "end": 6.94,
+            "probability": 0.98974609375
+          },
+          {
+            "word": "調",
+            "start": 6.94,
+            "end": 7.24,
+            "probability": 0.990234375
+          },
+          {
+            "word": "整",
+            "start": 7.24,
+            "end": 7.34,
+            "probability": 0.99755859375
+          },
+          {
+            "word": "した",
+            "start": 7.34,
+            "end": 7.56,
+            "probability": 0.99462890625
+          },
+          {
+            "word": "ら",
+            "start": 7.56,
+            "end": 8.08,
+            "probability": 0.998046875
+          },
+          {
+            "word": "キ",
+            "start": 8.08,
+            "end": 8.36,
+            "probability": 0.58154296875
+          },
+          {
+            "word": "ー",
+            "start": 8.36,
+            "end": 8.48,
+            "probability": 0.99560546875
+          },
+          {
+            "word": "を",
+            "start": 8.48,
+            "end": 8.7,
+            "probability": 0.99072265625
+          },
+          {
+            "word": "登録。",
+            "start": 8.7,
+            "end": 9.5,
+            "probability": 0.974609375
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "seek": 0,
+        "start": 10.56,
+        "end": 16.6,
+        "text": "タイムラインで前後を隠しめながら、服への食い込みなど気になる部分も整えられます。",
+        "tokens": [
+          50864,
+          12144,
+          8040,
+          32026,
+          40230,
+          4824,
+          2474,
+          8945,
+          5661,
+          5998,
+          10673,
+          254,
+          2849,
+          11429,
+          3203,
+          5142,
+          5154,
+          1231,
+          27408,
+          29440,
+          2972,
+          25155,
+          1764,
+          9830,
+          120,
+          11362,
+          3203,
+          7594,
+          25870,
+          22615,
+          4895,
+          32174,
+          4801,
+          27662,
+          6474,
+          5154,
+          4132,
+          5368,
+          1543,
+          51214
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.1463649076573989,
+        "compression_ratio": 1.3210526315789475,
+        "no_speech_prob": 0.06237852945923805,
+        "words": [
+          {
+            "word": "タ",
+            "start": 10.56,
+            "end": 10.6,
+            "probability": 0.97900390625
+          },
+          {
+            "word": "イ",
+            "start": 10.6,
+            "end": 10.64,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "ム",
+            "start": 10.64,
+            "end": 10.78,
+            "probability": 0.5322265625
+          },
+          {
+            "word": "ライ",
+            "start": 10.78,
+            "end": 10.92,
+            "probability": 0.99560546875
+          },
+          {
+            "word": "ン",
+            "start": 10.92,
+            "end": 11.04,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "で",
+            "start": 11.04,
+            "end": 11.2,
+            "probability": 0.99609375
+          },
+          {
+            "word": "前",
+            "start": 11.2,
+            "end": 11.42,
+            "probability": 0.96875
+          },
+          {
+            "word": "後",
+            "start": 11.42,
+            "end": 11.54,
+            "probability": 0.98828125
+          },
+          {
+            "word": "を",
+            "start": 11.54,
+            "end": 11.74,
+            "probability": 0.99365234375
+          },
+          {
+            "word": "隠",
+            "start": 11.74,
+            "end": 11.9,
+            "probability": 0.98486328125
+          },
+          {
+            "word": "し",
+            "start": 11.9,
+            "end": 12.02,
+            "probability": 0.97802734375
+          },
+          {
+            "word": "め",
+            "start": 12.02,
+            "end": 12.12,
+            "probability": 0.7783203125
+          },
+          {
+            "word": "な",
+            "start": 12.12,
+            "end": 12.28,
+            "probability": 0.99755859375
+          },
+          {
+            "word": "が",
+            "start": 12.28,
+            "end": 12.5,
+            "probability": 0.9970703125
+          },
+          {
+            "word": "ら、",
+            "start": 12.5,
+            "end": 12.92,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "服",
+            "start": 13.1,
+            "end": 13.18,
+            "probability": 0.86279296875
+          },
+          {
+            "word": "へ",
+            "start": 13.18,
+            "end": 13.34,
+            "probability": 0.96728515625
+          },
+          {
+            "word": "の",
+            "start": 13.34,
+            "end": 13.54,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "食",
+            "start": 13.54,
+            "end": 13.66,
+            "probability": 0.71630859375
+          },
+          {
+            "word": "い",
+            "start": 13.66,
+            "end": 13.74,
+            "probability": 0.99853515625
+          },
+          {
+            "word": "込",
+            "start": 13.74,
+            "end": 13.82,
+            "probability": 0.9970703125
+          },
+          {
+            "word": "み",
+            "start": 13.82,
+            "end": 13.96,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "な",
+            "start": 13.96,
+            "end": 14.08,
+            "probability": 0.9794921875
+          },
+          {
+            "word": "ど",
+            "start": 14.08,
+            "end": 14.5,
+            "probability": 1.0
+          },
+          {
+            "word": "気",
+            "start": 14.5,
+            "end": 14.74,
+            "probability": 0.90966796875
+          },
+          {
+            "word": "にな",
+            "start": 14.74,
+            "end": 14.92,
+            "probability": 0.99169921875
+          },
+          {
+            "word": "る",
+            "start": 14.92,
+            "end": 15.04,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "部分",
+            "start": 15.04,
+            "end": 15.28,
+            "probability": 0.99267578125
+          },
+          {
+            "word": "も",
+            "start": 15.28,
+            "end": 15.6,
+            "probability": 0.990234375
+          },
+          {
+            "word": "整",
+            "start": 15.6,
+            "end": 15.88,
+            "probability": 0.98388671875
+          },
+          {
+            "word": "え",
+            "start": 15.88,
+            "end": 16.04,
+            "probability": 0.99755859375
+          },
+          {
+            "word": "ら",
+            "start": 16.04,
+            "end": 16.16,
+            "probability": 0.9931640625
+          },
+          {
+            "word": "れ",
+            "start": 16.16,
+            "end": 16.24,
+            "probability": 0.99609375
+          },
+          {
+            "word": "ます。",
+            "start": 16.24,
+            "end": 16.6,
+            "probability": 0.99951171875
+          }
+        ]
+      }
+    ],
+    "language": "ja"
+  }
+}

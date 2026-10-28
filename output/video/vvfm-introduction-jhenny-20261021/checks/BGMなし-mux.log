@@ -1,0 +1,129 @@
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/minmin/projects/VvfM/output/video/vvfm-introduction-jhenny-20261021/final-render-v2.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf62.12.102
+  Duration: 00:03:18.02, start: 0.000000, bitrate: 6142 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1920x1080 [SAR 1:1 DAR 16:9], 5943 kb/s, 24 fps, 24 tbr, 12288 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      encoder         : Lavc62.28.102 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 195 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+[aist#1:0/pcm_s16le @ 0x7620c10780] Guessed Channel Layout: stereo
+Input #1, wav, from '/Users/minmin/projects/VvfM/output/video/vvfm-introduction-jhenny-20261021/assets/narration-only.wav':
+  Duration: 00:03:18.00, bitrate: 1536 kb/s
+  Stream #1:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 48000 Hz, stereo, s16, 1536 kb/s
+Input #2, ffmetadata, from '/Users/minmin/projects/VvfM/output/video/vvfm-introduction-jhenny-20261021/source/chapters.ffmeta':
+  Metadata:
+    title           : VMD Viewer for Mac 紹介動画
+    artist          : VMD Viewer for Mac
+    comment         : AI narration: HeyGen Jhenny
+  Duration: 00:03:18.00, start: 0.000000, bitrate: 0 kb/s
+  Chapters:
+    Chapter #2:0: start 0.000000, end 12.000000
+      Metadata:
+        title           : 01 いつものMacで、VMDをリアルタイム再生
+    Chapter #2:1: start 12.000000, end 26.000000
+      Metadata:
+        title           : 02 VMD Viewer for Macの紹介
+    Chapter #2:2: start 26.000000, end 38.000000
+      Metadata:
+        title           : 03 Windowsユーザーにも、出先のMacで
+    Chapter #2:3: start 38.000000, end 57.000000
+      Metadata:
+        title           : 04 PMX、VMD、WAVを読み込んでリアルタイム再生
+    Chapter #2:4: start 57.000000, end 77.000000
+      Metadata:
+        title           : 05 ボーンと3Dギズモで少しアレンジ
+    Chapter #2:5: start 77.000000, end 94.000000
+      Metadata:
+        title           : 06 モーフとカメラで、お気に入りの瞬間へ
+    Chapter #2:6: start 94.000000, end 108.000000
+      Metadata:
+        title           : 07 リアルタイムで確認し、保存・動画出力へ
+    Chapter #2:7: start 108.000000, end 127.000000
+      Metadata:
+        title           : 08 ToonShader HQで見た目を仕上げる
+    Chapter #2:8: start 127.000000, end 143.000000
+      Metadata:
+        title           : 09 DoFでキャラクターを引き立てる
+    Chapter #2:9: start 143.000000, end 156.000000
+      Metadata:
+        title           : 10 対応する.fxdayoで演出を加える
+    Chapter #2:10: start 156.000000, end 171.000000
+      Metadata:
+        title           : 11 Macで動きを支える技術とPMX 2.1
+    Chapter #2:11: start 171.000000, end 189.000000
+      Metadata:
+        title           : 12 Bulletの物理演算と二つのモード
+    Chapter #2:12: start 189.000000, end 198.000000
+      Metadata:
+        title           : 13 Macで、気軽にMMDを楽しもう
+Stream mapping:
+  Stream #0:0 -> #0:0 (copy)
+  Stream #1:0 -> #0:1 (pcm_s16le (native) -> aac (native))
+Output #0, mp4, to '/Users/minmin/projects/VvfM/output/video/vvfm-introduction-jhenny-20261021/VvfM_紹介動画_Jhenny_BGMなし_1080p.mp4':
+  Metadata:
+    title           : VMD Viewer for Mac 紹介動画
+    artist          : VMD Viewer for Mac
+    comment         : AI narration: HeyGen Jhenny; BGMなし
+    encoder         : Lavf62.12.102
+  Chapters:
+    Chapter #0:0: start 0.000000, end 12.000000
+      Metadata:
+        title           : 01 いつものMacで、VMDをリアルタイム再生
+    Chapter #0:1: start 12.000000, end 26.000000
+      Metadata:
+        title           : 02 VMD Viewer for Macの紹介
+    Chapter #0:2: start 26.000000, end 38.000000
+      Metadata:
+        title           : 03 Windowsユーザーにも、出先のMacで
+    Chapter #0:3: start 38.000000, end 57.000000
+      Metadata:
+        title           : 04 PMX、VMD、WAVを読み込んでリアルタイム再生
+    Chapter #0:4: start 57.000000, end 77.000000
+      Metadata:
+        title           : 05 ボーンと3Dギズモで少しアレンジ
+    Chapter #0:5: start 77.000000, end 94.000000
+      Metadata:
+        title           : 06 モーフとカメラで、お気に入りの瞬間へ
+    Chapter #0:6: start 94.000000, end 108.000000
+      Metadata:
+        title           : 07 リアルタイムで確認し、保存・動画出力へ
+    Chapter #0:7: start 108.000000, end 127.000000
+      Metadata:
+        title           : 08 ToonShader HQで見た目を仕上げる
+    Chapter #0:8: start 127.000000, end 143.000000
+      Metadata:
+        title           : 09 DoFでキャラクターを引き立てる
+    Chapter #0:9: start 143.000000, end 156.000000
+      Metadata:
+        title           : 10 対応する.fxdayoで演出を加える
+    Chapter #0:10: start 156.000000, end 171.000000
+      Metadata:
+        title           : 11 Macで動きを支える技術とPMX 2.1
+    Chapter #0:11: start 171.000000, end 189.000000
+      Metadata:
+        title           : 12 Bulletの物理演算と二つのモード
+    Chapter #0:12: start 189.000000, end 198.000000
+      Metadata:
+        title           : 13 Macで、気軽にMMDを楽しもう
+  Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1920x1080 [SAR 1:1 DAR 16:9], q=2-31, 5943 kb/s, 24 fps, 24 tbr, 12288 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      encoder         : Lavc62.28.102 libx264
+  Stream #0:1(jpn): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 192 kb/s
+    Metadata:
+      encoder         : Lavc62.28.102 aac
+frame=  721 fps=0.0 q=-1.0 size=   25857KiB time=00:00:29.90 bitrate=7082.0kbits/s speed=59.2x elapsed=0:00:00.50    
+frame= 1526 fps=1518 q=-1.0 size=   49665KiB time=00:01:03.44 bitrate=6412.7kbits/s speed=63.1x elapsed=0:00:01.00    
+frame= 2443 fps=1618 q=-1.0 size=   71425KiB time=00:01:41.65 bitrate=5756.0kbits/s speed=67.3x elapsed=0:00:01.51    
+frame= 3269 fps=1622 q=-1.0 size=   98305KiB time=00:02:16.08 bitrate=5917.7kbits/s speed=67.5x elapsed=0:00:02.01    
+frame= 4158 fps=1650 q=-1.0 size=  130305KiB time=00:02:53.12 bitrate=6166.0kbits/s speed=68.7x elapsed=0:00:02.52    
+[mp4 @ 0x7621017200] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 0x7620c20240] video:143652KiB audio:3479KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.068663%
+frame= 4752 fps=1651 q=-1.0 Lsize=  147232KiB time=00:03:18.00 bitrate=6091.5kbits/s speed=68.8x elapsed=0:00:02.87    
+[aac @ 0x7621039c00] Qavg: 18958.029

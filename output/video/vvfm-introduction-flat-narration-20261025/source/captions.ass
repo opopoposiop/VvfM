@@ -1,0 +1,52 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Hiragino Maru Gothic ProN,39,&H00322620,&H00322620,&H00F6FAFA,&H00F6FAFA,-1,0,0,0,100,100,0,0,1,0,0,2,80,80,25,1
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.65,0:00:04.18,Default,,0,0,0,,いつものMacで、VMDをリアルタイム再生。
+Dialogue: 0,0:00:04.54,0:00:07.58,Default,,0,0,0,,好きなキャラクターが、その場で動き出す。
+Dialogue: 0,0:00:07.71,0:00:09.87,Default,,0,0,0,,気軽にMMDを楽しもう。
+Dialogue: 0,0:00:12.90,0:00:14.40,Default,,0,0,0,,VMD Viewer for Mac。
+Dialogue: 0,0:00:14.44,0:00:20.93,Default,,0,0,0,,PMXモデルとVMDモーションを読み込んで、アプリ上でリアルタイム再生。
+Dialogue: 0,0:00:21.26,0:00:25.19,Default,,0,0,0,,動きを楽しみながら、表情やポーズも自分好みに。
+Dialogue: 0,0:00:27.06,0:00:29.31,Default,,0,0,0,,いつもWindowsで楽しんでいる方も。
+Dialogue: 0,0:00:29.35,0:00:32.31,Default,,0,0,0,,出先で、あの表情を足したい。
+Dialogue: 0,0:00:32.35,0:00:34.17,Default,,0,0,0,,気になる姿勢を直したい。
+Dialogue: 0,0:00:34.28,0:00:36.35,Default,,0,0,0,,そんなときにも、手元のMacで。
+Dialogue: 0,0:00:38.65,0:00:45.09,Default,,0,0,0,,PMXモデルとVMDモーション、\NWAVの音楽を読み込んだら、再生ボタンを押すだけ。
+Dialogue: 0,0:00:45.36,0:00:48.47,Default,,0,0,0,,VMDの動きを、その場でリアルタイム再生。
+Dialogue: 0,0:00:48.51,0:00:52.12,Default,,0,0,0,,音楽に合わせて踊るキャラクターを、Macで楽しめます。
+Dialogue: 0,0:00:54.65,0:00:57.75,Default,,0,0,0,,腕の角度を少し変えて、お気に入りのポーズに。
+Dialogue: 0,0:00:57.79,0:01:01.97,Default,,0,0,0,,ボーンを選び、3Dギズモで調整したら、キーを登録。
+Dialogue: 0,0:01:02.35,0:01:08.48,Default,,0,0,0,,タイムラインで前後を確かめながら、\N服への食い込みなど、気になる部分も整えられます。
+Dialogue: 0,0:01:11.65,0:01:14.07,Default,,0,0,0,,表情も、自分好みに。
+Dialogue: 0,0:01:14.16,0:01:18.37,Default,,0,0,0,,モーフの値は、タイムラインで変化を見ながら調整できます。
+Dialogue: 0,0:01:18.54,0:01:23.51,Default,,0,0,0,,笑顔を作り、カメラの構図も整えて、お気に入りの瞬間へ。
+Dialogue: 0,0:01:26.65,0:01:29.85,Default,,0,0,0,,リアルタイム再生で、調整した動きを確認。
+Dialogue: 0,0:01:30.16,0:01:32.63,Default,,0,0,0,,作業はプロジェクトにまとめて保存できます。
+Dialogue: 0,0:01:33.07,0:01:36.43,Default,,0,0,0,,気に入ったシーンは、音声付きの動画にして残しましょう。
+Dialogue: 0,0:01:40.01,0:01:42.13,Default,,0,0,0,,見た目も、もっと自分好みに。
+Dialogue: 0,0:01:42.17,0:01:45.73,Default,,0,0,0,,ToonShader HQでは、輪郭線や光を調整できます。
+Dialogue: 0,0:01:46.17,0:01:49.51,Default,,0,0,0,,リムライトで輪郭に光を、ブルームで輝きを。
+Dialogue: 0,0:01:49.55,0:01:52.62,Default,,0,0,0,,ディフュージョンで、柔らかな雰囲気も楽しめます。
+Dialogue: 0,0:01:57.92,0:02:01.15,Default,,0,0,0,,顔にピントを合わせて、背景をふんわり。
+Dialogue: 0,0:02:01.19,0:02:04.95,Default,,0,0,0,,被写界深度、ディーオーエフで、キャラクターを引き立てられます。
+Dialogue: 0,0:02:05.19,0:02:09.79,Default,,0,0,0,,ピントの位置もキーに記録して、見せたい表情へ視線を集めましょう。
+Dialogue: 0,0:02:13.10,0:02:16.31,Default,,0,0,0,,対応するfxdayoで、ステージの演出も。
+Dialogue: 0,0:02:16.40,0:02:22.75,Default,,0,0,0,,ペンライトや床の反射など、一部の対応エフェクトを使って、\Nシーンの楽しみを広げられます。
+Dialogue: 0,0:02:26.09,0:02:32.54,Default,,0,0,0,,ボーンや物理の計算と、メタルの描画が、VMDのリアルタイム再生を支えます。
+Dialogue: 0,0:02:32.98,0:02:36.23,Default,,0,0,0,,PMX2.1のモデルにも対応しています。
+Dialogue: 0,0:02:40.55,0:02:47.28,Default,,0,0,0,,PMX 2.1のQDEFは、ねじったときの形を保つための変形方式です。
+Dialogue: 0,0:02:48.75,0:02:52.52,Default,,0,0,0,,ソフトボディでは、布やロープの柔らかな動きも。
+Dialogue: 0,0:02:52.56,0:02:56.98,Default,,0,0,0,,固定した部分を支点に、しなやかに揺れる様子を表現できます。
+Dialogue: 0,0:02:58.98,0:03:01.54,Default,,0,0,0,,揺れを支える物理演算は、バレット。
+Dialogue: 0,0:03:01.58,0:03:05.16,Default,,0,0,0,,3.25ネイティブと、2.75互換を選べます。
+Dialogue: 0,0:03:05.20,0:03:10.98,Default,,0,0,0,,どちらも3.25を使い、互換モードでは、既知の動きの違いを調整しています。
+Dialogue: 0,0:03:16.70,0:03:18.60,Default,,0,0,0,,VMD Viewer for Mac。
+Dialogue: 0,0:03:18.64,0:03:22.88,Default,,0,0,0,,いつものMacで、VMDをリアルタイム再生。

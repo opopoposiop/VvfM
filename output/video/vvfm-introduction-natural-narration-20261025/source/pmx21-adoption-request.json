@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-23",
+  "user_instruction": "この再合成音声を採用して、2分34秒と2分43秒の一文を差し替え、BGMあり・なしの動画を再出力してください。",
+  "adopted_trial_folder": "vvfm-introduction-local-voice-trial-20261023",
+  "baseline_folder": "vvfm-introduction-sentence-reread-jhenny-20261022",
+  "additional_tts_generation": false,
+  "output_editions": [
+    "BGMあり",
+    "BGMなし"
+  ],
+  "video_and_subtitle_changes": false
+}

@@ -1,0 +1,433 @@
+{
+  "engine": "local mlx-whisper",
+  "model": "openai/whisper-medium converted locally to MLX",
+  "audio_uploaded": false,
+  "source": "assets/harema-scene07-raw.wav",
+  "sha256": "2ffb3e01d36673d3640f47394aed02f2d3abd5608a18c57f22358d31aa39e6c9",
+  "transcript": {
+    "text": "リアルタイム散声で調整した動きを確認。作業はプロジェクトにまとめて保存できます。気に入ったシーンは音声付きの動画にして残しましょう。",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.5,
+        "text": "リアルタイム散声で調整した動きを確認。",
+        "tokens": [
+          50364,
+          12376,
+          12817,
+          9405,
+          12144,
+          8040,
+          32026,
+          7017,
+          96,
+          32045,
+          2474,
+          32943,
+          27662,
+          8533,
+          12572,
+          7016,
+          5998,
+          24293,
+          22041,
+          1543,
+          50539
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.19991940259933472,
+        "compression_ratio": 1.2452830188679245,
+        "no_speech_prob": 0.01635204441845417,
+        "words": [
+          {
+            "word": "リ",
+            "start": 0.0,
+            "end": 0.42,
+            "probability": 0.8896484375
+          },
+          {
+            "word": "ア",
+            "start": 0.42,
+            "end": 0.56,
+            "probability": 0.99462890625
+          },
+          {
+            "word": "ル",
+            "start": 0.56,
+            "end": 0.64,
+            "probability": 0.99853515625
+          },
+          {
+            "word": "タ",
+            "start": 0.64,
+            "end": 0.74,
+            "probability": 0.95849609375
+          },
+          {
+            "word": "イ",
+            "start": 0.74,
+            "end": 0.76,
+            "probability": 0.99853515625
+          },
+          {
+            "word": "ム",
+            "start": 0.76,
+            "end": 0.94,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "散",
+            "start": 0.94,
+            "end": 1.12,
+            "probability": 0.634765625
+          },
+          {
+            "word": "声",
+            "start": 1.12,
+            "end": 1.22,
+            "probability": 0.42236328125
+          },
+          {
+            "word": "で",
+            "start": 1.22,
+            "end": 1.6,
+            "probability": 0.98486328125
+          },
+          {
+            "word": "調",
+            "start": 1.6,
+            "end": 1.96,
+            "probability": 0.92578125
+          },
+          {
+            "word": "整",
+            "start": 1.96,
+            "end": 2.06,
+            "probability": 0.99755859375
+          },
+          {
+            "word": "した",
+            "start": 2.06,
+            "end": 2.26,
+            "probability": 0.99462890625
+          },
+          {
+            "word": "動",
+            "start": 2.26,
+            "end": 2.52,
+            "probability": 0.98828125
+          },
+          {
+            "word": "き",
+            "start": 2.52,
+            "end": 2.68,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "を",
+            "start": 2.68,
+            "end": 2.86,
+            "probability": 0.99169921875
+          },
+          {
+            "word": "確",
+            "start": 2.86,
+            "end": 3.12,
+            "probability": 0.99267578125
+          },
+          {
+            "word": "認。",
+            "start": 3.12,
+            "end": 3.5,
+            "probability": 0.99951171875
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "seek": 0,
+        "start": 4.34,
+        "end": 7.34,
+        "text": "作業はプロジェクトにまとめて保存できます。",
+        "tokens": [
+          50564,
+          11914,
+          27119,
+          3065,
+          20953,
+          17164,
+          14655,
+          28571,
+          10825,
+          7588,
+          4108,
+          2889,
+          3193,
+          38975,
+          24302,
+          39781,
+          2474,
+          22851,
+          1543,
+          50714
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.19991940259933472,
+        "compression_ratio": 1.2452830188679245,
+        "no_speech_prob": 0.01635204441845417,
+        "words": [
+          {
+            "word": "作",
+            "start": 4.34,
+            "end": 4.44,
+            "probability": 0.7333984375
+          },
+          {
+            "word": "業",
+            "start": 4.44,
+            "end": 4.58,
+            "probability": 0.6318359375
+          },
+          {
+            "word": "は",
+            "start": 4.58,
+            "end": 4.72,
+            "probability": 0.95458984375
+          },
+          {
+            "word": "プ",
+            "start": 4.72,
+            "end": 4.98,
+            "probability": 0.9267578125
+          },
+          {
+            "word": "ロ",
+            "start": 4.98,
+            "end": 5.02,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "ジ",
+            "start": 5.02,
+            "end": 5.1,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "ェ",
+            "start": 5.1,
+            "end": 5.1,
+            "probability": 0.998046875
+          },
+          {
+            "word": "ク",
+            "start": 5.1,
+            "end": 5.22,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "ト",
+            "start": 5.22,
+            "end": 5.34,
+            "probability": 1.0
+          },
+          {
+            "word": "に",
+            "start": 5.34,
+            "end": 5.48,
+            "probability": 0.810546875
+          },
+          {
+            "word": "ま",
+            "start": 5.48,
+            "end": 5.56,
+            "probability": 0.5361328125
+          },
+          {
+            "word": "と",
+            "start": 5.56,
+            "end": 5.68,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "めて",
+            "start": 5.68,
+            "end": 5.86,
+            "probability": 0.99609375
+          },
+          {
+            "word": "保",
+            "start": 5.86,
+            "end": 6.1,
+            "probability": 0.98681640625
+          },
+          {
+            "word": "存",
+            "start": 6.1,
+            "end": 6.2,
+            "probability": 1.0
+          },
+          {
+            "word": "で",
+            "start": 6.2,
+            "end": 6.38,
+            "probability": 0.97607421875
+          },
+          {
+            "word": "きます。",
+            "start": 6.38,
+            "end": 7.34,
+            "probability": 0.99951171875
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "seek": 0,
+        "start": 8.06,
+        "end": 11.94,
+        "text": "気に入ったシーンは音声付きの動画にして残しましょう。",
+        "tokens": [
+          50739,
+          25870,
+          4108,
+          14028,
+          10102,
+          11054,
+          44632,
+          3065,
+          18034,
+          32045,
+          41469,
+          7016,
+          2972,
+          37963,
+          4108,
+          8822,
+          15976,
+          233,
+          2849,
+          26513,
+          1543,
+          50964
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.19991940259933472,
+        "compression_ratio": 1.2452830188679245,
+        "no_speech_prob": 0.01635204441845417,
+        "words": [
+          {
+            "word": "気",
+            "start": 8.06,
+            "end": 8.14,
+            "probability": 0.978515625
+          },
+          {
+            "word": "に",
+            "start": 8.14,
+            "end": 8.26,
+            "probability": 0.9970703125
+          },
+          {
+            "word": "入",
+            "start": 8.26,
+            "end": 8.28,
+            "probability": 0.95458984375
+          },
+          {
+            "word": "った",
+            "start": 8.28,
+            "end": 8.48,
+            "probability": 0.998046875
+          },
+          {
+            "word": "シ",
+            "start": 8.48,
+            "end": 8.7,
+            "probability": 0.99462890625
+          },
+          {
+            "word": "ーン",
+            "start": 8.7,
+            "end": 8.76,
+            "probability": 0.99267578125
+          },
+          {
+            "word": "は",
+            "start": 8.76,
+            "end": 9.36,
+            "probability": 0.99560546875
+          },
+          {
+            "word": "音",
+            "start": 9.36,
+            "end": 9.7,
+            "probability": 0.6708984375
+          },
+          {
+            "word": "声",
+            "start": 9.7,
+            "end": 9.86,
+            "probability": 0.9951171875
+          },
+          {
+            "word": "付",
+            "start": 9.86,
+            "end": 10.02,
+            "probability": 0.958984375
+          },
+          {
+            "word": "き",
+            "start": 10.02,
+            "end": 10.16,
+            "probability": 0.98583984375
+          },
+          {
+            "word": "の",
+            "start": 10.16,
+            "end": 10.3,
+            "probability": 0.9921875
+          },
+          {
+            "word": "動画",
+            "start": 10.3,
+            "end": 10.54,
+            "probability": 0.99072265625
+          },
+          {
+            "word": "に",
+            "start": 10.54,
+            "end": 10.8,
+            "probability": 0.99658203125
+          },
+          {
+            "word": "して",
+            "start": 10.8,
+            "end": 11.06,
+            "probability": 0.99658203125
+          },
+          {
+            "word": "残",
+            "start": 11.06,
+            "end": 11.42,
+            "probability": 0.947265625
+          },
+          {
+            "word": "し",
+            "start": 11.42,
+            "end": 11.62,
+            "probability": 0.99267578125
+          },
+          {
+            "word": "ましょう。",
+            "start": 11.62,
+            "end": 11.94,
+            "probability": 0.9990234375
+          }
+        ]
+      }
+    ],
+    "language": "ja"
+  }
+}

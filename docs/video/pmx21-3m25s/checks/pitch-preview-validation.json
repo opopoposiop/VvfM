@@ -1,0 +1,21 @@
+{
+  "file": "VvfM_アプリ上音高調整_7秒プレビュー.mp4",
+  "source_interval_seconds": [
+    16,
+    23
+  ],
+  "audio": "narration only, extracted from final BGMなし edition",
+  "duration_seconds": 7.0,
+  "frames": 168,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "bytes": 2625914,
+  "sha256": "a7b57a0482387a827520b14a0b6063563f68fa0244c27450eddf2115060a519a",
+  "full_decode": "pass",
+  "final_mp4_apurijou_median_f0_hz": 216.92,
+  "video_identical_to_previous_edition": true,
+  "captions_and_scene_timing_unchanged": true,
+  "result": "pass"
+}

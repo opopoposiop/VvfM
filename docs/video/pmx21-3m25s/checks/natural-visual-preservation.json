@@ -1,0 +1,19 @@
+{
+  "result": "pass",
+  "mode": "audio-only revision",
+  "source_production_folder": "vvfm-introduction-flat-narration-20261025",
+  "reused_file": "final-render.mp4",
+  "video_bitstream_hash": "SHA256=fe0ffb257139d087a6567be2769e8d85101eea5cbb741ad03a46ab344c0541b2",
+  "file_sha256": "85cacec2fcca05d3c50a32ad9e62d7e8e9e2f4b6f07d8dcbcd75a1226b710228",
+  "rendered_video_file_identical_to_previous": true,
+  "captions_and_illustrations_identical": true,
+  "scene_timing_and_display_text_identical": true,
+  "identical_sources": {
+    "source/captions.json": "364f678c695f35126568b8894ecd229c2083d7ef93986ff1ac5e7b0c5b9f754b",
+    "source/captions.ass": "b758f7f90fbbad3ab105e637edc818d45d89446bb8268ba44537cc1298269126",
+    "source/chapters.ffmeta": "b2e206fd8b2e1cfcb5a512ebfd9352d22349cae4d598c9a9310a9cc05141110e",
+    "source/edit-decision-list.json": "660c13c5a48cf2c4b3b31c2d1981401c38226a46028ed1d011a9277a2c844453",
+    "source/character-placement.json": "ccf780fe51c8a79bab578876ae5c7fb66294feb81f7d458539ffa7fe1270a677",
+    "composition/index.html": "119798f3d769ca93295f3f326760459e3d44e103544f5aa7dc938e16632dd05e"
+  }
+}

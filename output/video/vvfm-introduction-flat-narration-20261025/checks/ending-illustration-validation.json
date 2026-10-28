@@ -1,0 +1,114 @@
+{
+  "result": "pass",
+  "baseline_production_folder": "vvfm-introduction-character-illustrations-20261024",
+  "changed_scene": 15,
+  "unchanged_scene_html": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "overview_illustrations_unchanged": true,
+  "existing_timeline_unchanged": true,
+  "added_entrance_tweens": [
+    "tl.fromTo(\"#s15 .pmx-illustration-left\",{scale:.92,opacity:0},{scale:1,opacity:1,duration:.5,ease:\"sine.out\",immediateRender:false},197.0);",
+    "tl.fromTo(\"#s15 .pmx-illustration-right\",{scale:.92,opacity:0},{scale:1,opacity:1,duration:.5,ease:\"power2.out\",immediateRender:false},197.0);"
+  ],
+  "new_styles_scoped_to_scene_15": true,
+  "new_image_generation": false,
+  "illustration_png_bytes_unchanged": true,
+  "caption_html_and_timeline_unchanged": true,
+  "external_subtitle_identical": true,
+  "all_scene_timings_unchanged": true,
+  "all_audio_source_bytes_unchanged": true,
+  "unchanged_files": [
+    {
+      "file": "source/scenes.json",
+      "sha256": "1e26af233804b4687ceca55b44ee637d476f4a8e0699bd9c2c3f8e6bcb2264ed"
+    },
+    {
+      "file": "source/captions.json",
+      "sha256": "3c602adb993e4ebc0325646e3a8de36f7202abc18d0bb63d29a1d1f93d3b1d31"
+    },
+    {
+      "file": "source/captions.ass",
+      "sha256": "d6f5130a01d68e4f6dc00752088ff81acbf747ae3ffdc8d969b826772065d407"
+    },
+    {
+      "file": "source/edit-decision-list.json",
+      "sha256": "660c13c5a48cf2c4b3b31c2d1981401c38226a46028ed1d011a9277a2c844453"
+    },
+    {
+      "file": "source/audio-alignment.json",
+      "sha256": "9130ec5d82bc56b61200ba4dba3a3089d82977f9fcab66ef3288de0cf4f861c1"
+    },
+    {
+      "file": "source/chapters.ffmeta",
+      "sha256": "b2e206fd8b2e1cfcb5a512ebfd9352d22349cae4d598c9a9310a9cc05141110e"
+    },
+    {
+      "file": "composition/assets/pmx-character-left.png",
+      "sha256": "825cca6c285897785b2bc779a742a9bc49bace362de21f82147fea35f063b681"
+    },
+    {
+      "file": "composition/assets/pmx-character-right.png",
+      "sha256": "4906165ac3fe259576a67abce12b5c62ea92e9148794ac516e50201b6c1b9c8a"
+    },
+    {
+      "file": "composition/assets/final-mix.wav",
+      "sha256": "68f0e39e178c68370aef57b8e2b7262c908034d19775d39cb3c7419683f39645"
+    },
+    {
+      "file": "assets/with-bgm-final-unchanged.m4a",
+      "sha256": "989576f80003ea9ca5278954869c0c4729b873af95f8c531bf799b78b871e3c2"
+    },
+    {
+      "file": "assets/narration-final-unchanged.m4a",
+      "sha256": "e57640f3316ac9983de56a6ffd147c9417d3d05682f56be86b80fc2ff2584fa9"
+    },
+    {
+      "file": "assets/with-bgm.wav",
+      "sha256": "68f0e39e178c68370aef57b8e2b7262c908034d19775d39cb3c7419683f39645"
+    },
+    {
+      "file": "assets/narration-only.wav",
+      "sha256": "3498ae44e1753b455325ad058812d2aa11f83825bb1a7cadd9c871b84ac3237c"
+    }
+  ],
+  "layout_samples": [
+    18,
+    196.9,
+    197,
+    197.5,
+    201,
+    204.6
+  ],
+  "layout_issues": 0,
+  "contrast_checks_passed": 43,
+  "contrast_checks_total": 43,
+  "reviewed_lint_warning": {
+    "code": "duplicate_media_discovery_risk",
+    "count": 1,
+    "reason": "The same two PNGs intentionally appear as decorative img elements in scenes 2 and 15. They are not timed media clips; scene 15 has initial opacity 0 and explicit GSAP entrance tweens."
+  },
+  "visual_review": {
+    "snapshots": [
+      196.9,
+      197.5
+    ],
+    "characters_hidden_before_197": true,
+    "characters_visible_at_197_5": true,
+    "url_app_controls_and_captions_uncovered": true
+  },
+  "human_full_video_listening_claimed": false
+}

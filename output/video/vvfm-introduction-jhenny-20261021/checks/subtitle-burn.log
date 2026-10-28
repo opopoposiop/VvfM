@@ -1,0 +1,16 @@
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'visual-master-v2.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf62.12.102
+  Duration: 00:03:18.00, start: 0.000000, bitrate: 5894 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1920x1080 [SAR 1:1 DAR 16:9], 5893 kb/s, 24 fps, 24 tbr, 12288 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      encoder         : Lavc62.28.102 libx264
+[AVFilterGraph @ 0x74e4c20200] No option name near 'source/captions.ass'
+[AVFilterGraph @ 0x74e4c20200] Error parsing a filter description around: 
+[AVFilterGraph @ 0x74e4c20200] Error parsing filterchain 'ass=source/captions.ass' around: 
+Error opening output file captioned-master.mp4.
+Error opening output files: Invalid argument

@@ -1,0 +1,34 @@
+{
+  "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-Base-4bit",
+  "method": "local voice-reference sentence synthesis followed by measured gentle pitch-contour compression where needed",
+  "date": "2026-10-25",
+  "baseline_production_folder": "vvfm-introduction-character-ending-20261024",
+  "reference_audio": "assets/jhenny-flat-reference.wav",
+  "reference_text": "ピーエムエックスモデルとブイエムディーモーションを読み込んで、あぷりじょうでリアルタイム再生。",
+  "external_audio_upload": false,
+  "new_synthesis_authorized_by_user": true,
+  "exact_voice_identity_claimed": false,
+  "sentences": [
+    {
+      "scene": 5,
+      "user_time": "00:54",
+      "display": "腕の角度を少し変えて、お気に入りのポーズに。",
+      "spoken": "うでのかくどをすこしかえて、おきにいりのぽーずに。",
+      "direction": "lower, flat onset and restrained intonation for entire continuous sentence",
+      "file_prefix": "flat-scene05-raw"
+    },
+    {
+      "scene": 8,
+      "user_time": "01:48",
+      "display": "リムライトで輪郭に光を、ブルームで輝きを。",
+      "spoken": "りむらいとでりんかくにひかりを、ぶるーむでかがやきを。",
+      "direction": "flat, restrained intonation",
+      "file_prefix": "flat-scene08-raw"
+    }
+  ],
+  "caption_only_change": {
+    "user_time": "01:45",
+    "display": "ToonShader HQでは、輪郭線や光を調整できます。",
+    "existing_pronunciation_retained": "トゥーンシェーダー・エイチキューでは、輪郭線や光を調整できます。"
+  }
+}

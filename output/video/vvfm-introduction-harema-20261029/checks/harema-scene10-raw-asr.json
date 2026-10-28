@@ -1,0 +1,416 @@
+{
+  "engine": "local mlx-whisper",
+  "model": "openai/whisper-medium converted locally to MLX",
+  "audio_uploaded": false,
+  "source": "assets/harema-scene10-raw.wav",
+  "sha256": "84e93b79cefe76335f440803ddbe4348af022fc914e687fd38e26095b90754a4",
+  "transcript": {
+    "text": "対応するFXバイオでステージの演出も、県ライトや床の反射など一部の対応エフェクトを使って、シーンの楽しみを広げられます。",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": "対応するFXバイオでステージの演出も、",
+        "tokens": [
+          50364,
+          35252,
+          4263,
+          250,
+          22570,
+          36092,
+          42282,
+          18743,
+          2474,
+          9550,
+          22985,
+          44143,
+          2972,
+          31382,
+          7781,
+          4801,
+          1231,
+          50564
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.12423521188589243,
+        "compression_ratio": 1.2054794520547945,
+        "no_speech_prob": 0.05167773738503456,
+        "words": [
+          {
+            "word": "対",
+            "start": 0.0,
+            "end": 0.76,
+            "probability": 0.98779296875
+          },
+          {
+            "word": "応",
+            "start": 0.76,
+            "end": 0.92,
+            "probability": 1.0
+          },
+          {
+            "word": "する",
+            "start": 0.92,
+            "end": 1.18,
+            "probability": 0.99462890625
+          },
+          {
+            "word": "FX",
+            "start": 1.18,
+            "end": 1.82,
+            "probability": 0.70068359375
+          },
+          {
+            "word": "バイ",
+            "start": 1.82,
+            "end": 2.16,
+            "probability": 0.9892578125
+          },
+          {
+            "word": "オ",
+            "start": 2.16,
+            "end": 2.24,
+            "probability": 0.99609375
+          },
+          {
+            "word": "で",
+            "start": 2.24,
+            "end": 2.6,
+            "probability": 0.89306640625
+          },
+          {
+            "word": "ス",
+            "start": 2.6,
+            "end": 2.84,
+            "probability": 0.82568359375
+          },
+          {
+            "word": "テ",
+            "start": 2.84,
+            "end": 2.94,
+            "probability": 0.99853515625
+          },
+          {
+            "word": "ージ",
+            "start": 2.94,
+            "end": 3.08,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "の",
+            "start": 3.08,
+            "end": 3.26,
+            "probability": 0.98095703125
+          },
+          {
+            "word": "演",
+            "start": 3.26,
+            "end": 3.48,
+            "probability": 0.99169921875
+          },
+          {
+            "word": "出",
+            "start": 3.48,
+            "end": 3.66,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "も、",
+            "start": 3.66,
+            "end": 4.0,
+            "probability": 0.99755859375
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "seek": 0,
+        "start": 4.86,
+        "end": 10.42,
+        "text": "県ライトや床の反射など一部の対応エフェクトを使って、",
+        "tokens": [
+          50564,
+          2862,
+          234,
+          40230,
+          7588,
+          7355,
+          6346,
+          232,
+          2972,
+          22138,
+          1530,
+          226,
+          3203,
+          7594,
+          2257,
+          13470,
+          2972,
+          35252,
+          4263,
+          250,
+          26215,
+          17320,
+          28571,
+          10825,
+          7588,
+          5998,
+          22982,
+          6102,
+          1231,
+          50864
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.12423521188589243,
+        "compression_ratio": 1.2054794520547945,
+        "no_speech_prob": 0.05167773738503456,
+        "words": [
+          {
+            "word": "県",
+            "start": 4.86,
+            "end": 5.26,
+            "probability": 0.5693359375
+          },
+          {
+            "word": "ライ",
+            "start": 5.26,
+            "end": 5.46,
+            "probability": 0.8037109375
+          },
+          {
+            "word": "ト",
+            "start": 5.46,
+            "end": 5.82,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "や",
+            "start": 5.82,
+            "end": 6.22,
+            "probability": 0.9677734375
+          },
+          {
+            "word": "床",
+            "start": 6.22,
+            "end": 6.58,
+            "probability": 0.953125
+          },
+          {
+            "word": "の",
+            "start": 6.58,
+            "end": 6.82,
+            "probability": 0.9970703125
+          },
+          {
+            "word": "反",
+            "start": 6.82,
+            "end": 7.02,
+            "probability": 0.8984375
+          },
+          {
+            "word": "射",
+            "start": 7.02,
+            "end": 7.12,
+            "probability": 1.0
+          },
+          {
+            "word": "な",
+            "start": 7.12,
+            "end": 7.32,
+            "probability": 0.96728515625
+          },
+          {
+            "word": "ど",
+            "start": 7.32,
+            "end": 7.66,
+            "probability": 1.0
+          },
+          {
+            "word": "一",
+            "start": 7.66,
+            "end": 7.92,
+            "probability": 0.8544921875
+          },
+          {
+            "word": "部",
+            "start": 7.92,
+            "end": 8.04,
+            "probability": 0.99560546875
+          },
+          {
+            "word": "の",
+            "start": 8.04,
+            "end": 8.3,
+            "probability": 0.998046875
+          },
+          {
+            "word": "対",
+            "start": 8.3,
+            "end": 8.54,
+            "probability": 0.98779296875
+          },
+          {
+            "word": "応",
+            "start": 8.54,
+            "end": 8.66,
+            "probability": 1.0
+          },
+          {
+            "word": "エ",
+            "start": 8.66,
+            "end": 8.82,
+            "probability": 0.91943359375
+          },
+          {
+            "word": "フ",
+            "start": 8.82,
+            "end": 8.96,
+            "probability": 0.98486328125
+          },
+          {
+            "word": "ェ",
+            "start": 8.96,
+            "end": 8.96,
+            "probability": 0.99658203125
+          },
+          {
+            "word": "ク",
+            "start": 8.96,
+            "end": 9.02,
+            "probability": 1.0
+          },
+          {
+            "word": "ト",
+            "start": 9.02,
+            "end": 9.14,
+            "probability": 0.9990234375
+          },
+          {
+            "word": "を",
+            "start": 9.14,
+            "end": 9.3,
+            "probability": 0.9970703125
+          },
+          {
+            "word": "使",
+            "start": 9.3,
+            "end": 9.54,
+            "probability": 0.990234375
+          },
+          {
+            "word": "って、",
+            "start": 9.54,
+            "end": 10.42,
+            "probability": 0.9990234375
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "seek": 0,
+        "start": 10.78,
+        "end": 12.82,
+        "text": "シーンの楽しみを広げられます。",
+        "tokens": [
+          50864,
+          11054,
+          44632,
+          2972,
+          35479,
+          2849,
+          11362,
+          5998,
+          6346,
+          225,
+          26012,
+          5154,
+          4132,
+          5368,
+          1543,
+          51014
+        ],
+        "temperature": 0,
+        "avg_logprob": -0.12423521188589243,
+        "compression_ratio": 1.2054794520547945,
+        "no_speech_prob": 0.05167773738503456,
+        "words": [
+          {
+            "word": "シ",
+            "start": 10.78,
+            "end": 10.84,
+            "probability": 0.966796875
+          },
+          {
+            "word": "ーン",
+            "start": 10.84,
+            "end": 10.98,
+            "probability": 0.994140625
+          },
+          {
+            "word": "の",
+            "start": 10.98,
+            "end": 11.24,
+            "probability": 0.99609375
+          },
+          {
+            "word": "楽",
+            "start": 11.24,
+            "end": 11.48,
+            "probability": 0.99658203125
+          },
+          {
+            "word": "し",
+            "start": 11.48,
+            "end": 11.58,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "み",
+            "start": 11.58,
+            "end": 11.7,
+            "probability": 1.0
+          },
+          {
+            "word": "を",
+            "start": 11.7,
+            "end": 11.9,
+            "probability": 0.99853515625
+          },
+          {
+            "word": "広",
+            "start": 11.9,
+            "end": 12.1,
+            "probability": 0.9931640625
+          },
+          {
+            "word": "げ",
+            "start": 12.1,
+            "end": 12.26,
+            "probability": 0.99951171875
+          },
+          {
+            "word": "ら",
+            "start": 12.26,
+            "end": 12.38,
+            "probability": 0.99560546875
+          },
+          {
+            "word": "れ",
+            "start": 12.38,
+            "end": 12.5,
+            "probability": 0.99658203125
+          },
+          {
+            "word": "ます。",
+            "start": 12.5,
+            "end": 12.82,
+            "probability": 0.9990234375
+          }
+        ]
+      }
+    ],
+    "language": "ja"
+  }
+}

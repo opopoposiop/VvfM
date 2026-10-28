@@ -1,0 +1,26 @@
+{
+  "result": "pass",
+  "duration_seconds": 205,
+  "cues": 41,
+  "scenes": 15,
+  "all_narration_replaced": true,
+  "voice": "Harema",
+  "provider": "OpenAI GPT-Live",
+  "model": "gpt-live-1",
+  "ai_generated": true,
+  "bgm_contribution_identical_all_pcm_samples": true,
+  "pitch_shift_semitones": 0,
+  "max_abs_narration_sample": 21893,
+  "max_abs_mix_sample": 22041,
+  "tempo_range": [
+    1,
+    1.6499999999999997
+  ],
+  "subtitle_cues_unchanged": true,
+  "local_asr_validation": {
+    "status": "completed_with_pronunciation_uncertainty",
+    "report": "checks/harema-local-asr-review.json"
+  },
+  "human_listening_acceptance": "not asserted",
+  "note": "BGM identity applies to WAV PCM before lossy AAC encoding."
+}

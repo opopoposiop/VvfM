@@ -15,14 +15,39 @@
     },
     {
       "scene": 2,
-      "source_file": "assets/jhenny-original.wav",
-      "source_start": 8.670000000000002,
-      "source_end": 20.15,
       "start": 12.65,
       "end": 25.393166666666666,
-      "tempo": 0.9,
       "script": "VMD Viewer for Mac。PMXモデルとVMDモーションを読み込んで、アプリ上でリアルタイム再生。動きを楽しみながら、表情やポーズも自分好みに。",
-      "reused_from_scene": 2
+      "segments": [
+        {
+          "source_file": "assets/narration-before-sentence-reread.wav",
+          "source_start": 12.65,
+          "source_end": 14.85,
+          "start": 12.65,
+          "end": 14.85,
+          "tempo": 1
+        },
+        {
+          "source_file": "assets/jhenny-sentence-reread-original.wav",
+          "source_start": 0.1,
+          "source_end": 6.36,
+          "start": 14.85,
+          "end": 20.876666666666665,
+          "tempo": 1.04,
+          "spoken": "ピーエムエックスモデルとブイエムディーモーションを読み込んで、あぷりじょうでリアルタイム再生。",
+          "target_lufs": -16.22,
+          "continuous_sentence": true,
+          "pitch_shift_semitones": 0
+        },
+        {
+          "source_file": "assets/narration-before-sentence-reread.wav",
+          "source_start": 20.98,
+          "source_end": 25.393166666666666,
+          "start": 20.98,
+          "end": 25.393166666666666,
+          "tempo": 1
+        }
+      ]
     },
     {
       "scene": 3,
@@ -48,14 +73,35 @@
     },
     {
       "scene": 5,
-      "source_file": "assets/jhenny-original.wav",
-      "source_start": 41.370000000000005,
-      "source_end": 53.870000000000005,
-      "start": 54.65,
+      "start": 54.18,
       "end": 68.53170833333333,
-      "tempo": 0.9,
       "script": "腕の角度を少し変えて、お気に入りのポーズに。ボーンを選び、3Dギズモで調整したら、キーを登録。タイムラインで前後を確かめながら、服への食い込みなど、気になる部分も整えられます。",
-      "reused_from_scene": 5
+      "segments": [
+        {
+          "source_file": "assets/natural-arm-final.wav",
+          "source_start": 0,
+          "source_end": 3.2563333333333335,
+          "start": 54.56,
+          "end": 57.81633333333333,
+          "tempo": 1,
+          "spoken": "腕の角度を少し変えて、お気に入りのポーズに。",
+          "continuous_sentence": true,
+          "preparation": "source/prepare_natural_sentences.py",
+          "original_generation": "assets/natural-arm-raw.wav",
+          "generation_tempo_adjustment": 1.0,
+          "pitch_shift_semitones": 0,
+          "pitch_contour_compression": false
+        },
+        {
+          "source_file": "assets/narration-only-before-natural.wav",
+          "source_start": 57.925,
+          "source_end": 68.53170833333333,
+          "start": 57.925,
+          "end": 68.53170833333333,
+          "tempo": 1
+        }
+      ],
+      "boundary_ramp_seconds": 0.004
     },
     {
       "scene": 6,
@@ -81,14 +127,58 @@
     },
     {
       "scene": 8,
-      "source_file": "assets/jhenny-original.wav",
-      "source_start": 71.77,
-      "source_end": 83.71,
       "start": 99.65,
       "end": 112.90179166666667,
-      "tempo": 0.9,
-      "script": "見た目も、もっと自分好みに。トゥーンシェーダー・エイチキューでは、輪郭線や光を調整できます。リムライトで縁に光を、ブルームで輝きを。ディフュージョンで、柔らかな雰囲気も楽しめます。",
-      "reused_from_scene": 8
+      "script": "見た目も、もっと自分好みに。ToonShader HQでは、輪郭線や光を調整できます。リムライトで輪郭に光を、ブルームで輝きを。ディフュージョンで、柔らかな雰囲気も楽しめます。",
+      "segments": [
+        {
+          "source_file": "assets/narration-only-before-natural.wav",
+          "source_start": 99.65,
+          "source_end": 102.12,
+          "start": 99.65,
+          "end": 102.12,
+          "tempo": 1
+        },
+        {
+          "source_file": "assets/natural-toon-final.wav",
+          "source_start": 0,
+          "source_end": 3.5845,
+          "start": 102.18,
+          "end": 105.76450000000001,
+          "tempo": 1,
+          "spoken": "トゥーンシェーダーエイチキューでは、りんかくせんやひかりをちょうせいできます。",
+          "continuous_sentence": true,
+          "preparation": "source/prepare_natural_sentences.py",
+          "original_generation": "assets/natural-toon-v2-raw.wav",
+          "generation_tempo_adjustment": 1.08,
+          "pitch_shift_semitones": 0,
+          "pitch_contour_compression": false
+        },
+        {
+          "source_file": "assets/natural-rim-final.wav",
+          "source_start": 0,
+          "source_end": 3.347958333333333,
+          "start": 106.12,
+          "end": 109.46795833333334,
+          "tempo": 1,
+          "spoken": "リムライトで輪郭に光を、ブルームで輝きを。",
+          "continuous_sentence": true,
+          "preparation": "source/prepare_natural_sentences.py",
+          "original_generation": "assets/natural-rim-raw.wav",
+          "generation_tempo_adjustment": 1.1,
+          "pitch_shift_semitones": 0,
+          "pitch_contour_compression": false
+        },
+        {
+          "source_file": "assets/narration-only-before-natural.wav",
+          "source_start": 109.55,
+          "source_end": 112.90179166666667,
+          "start": 109.55,
+          "end": 112.90179166666667,
+          "tempo": 1
+        }
+      ],
+      "boundary_ramp_seconds": 0.004
     },
     {
       "scene": 9,
@@ -103,35 +193,77 @@
     },
     {
       "scene": 10,
-      "source_file": "assets/jhenny-original.wav",
-      "source_start": 94.81,
-      "source_end": 104.08,
       "start": 132.65,
-      "end": 142.93935416666667,
-      "tempo": 0.9,
-      "script": "対応するエフエックスダヨーで、ステージの演出も。ペンライトや床の反射など、一部の対応エフェクトを使って、シーンの楽しみを広げられます。",
-      "reused_from_scene": 10
+      "end": 142.75674999999998,
+      "script": "対応するfxdayoで、ステージの演出も。ペンライトや床の反射など、一部の対応エフェクトを使って、シーンの楽しみを広げられます。",
+      "segments": [
+        {
+          "source_file": "assets/narration-before-fxdayo-fix.wav",
+          "source_start": 132.65,
+          "source_end": 136.2,
+          "start": 132.65,
+          "end": 136.2,
+          "tempo": 1
+        },
+        {
+          "source_file": "assets/jhenny-fxdayo-yuka-original.wav",
+          "source_start": 0,
+          "source_end": 6.55675,
+          "start": 136.2,
+          "end": 142.75674999999998,
+          "tempo": 1,
+          "spoken": "ペンライトやゆかのはんしゃなど、一部の対応エフェクトを使って、シーンの楽しみを広げられます。",
+          "target_lufs": -17.35
+        }
+      ]
     },
     {
       "scene": 11,
-      "source_file": "assets/jhenny-original.wav",
-      "source_start": 104.08,
-      "source_end": 113.92,
       "start": 145.65,
-      "end": 156.57389583333332,
-      "tempo": 0.9,
+      "end": 156.4325,
       "script": "ボーンや物理の計算と、メタルの描画が、VMDのリアルタイム再生を支えます。PMX2.1のモデルにも対応しています。",
-      "reused_from_scene": 11
+      "segments": [
+        {
+          "source_file": "assets/narration-before-pmx21-pronunciation.wav",
+          "source_start": 145.65,
+          "source_end": 152.55,
+          "start": 145.65,
+          "end": 152.55,
+          "tempo": 1
+        },
+        {
+          "source_file": "assets/pmx21-scene11-approved.wav",
+          "source_start": 0,
+          "source_end": 3.84,
+          "start": 152.5925,
+          "end": 156.4325,
+          "tempo": 1,
+          "pitch_shift_semitones": 0,
+          "spoken": "ぴーえむえっくす　にーてん　いちのモデルにも対応しています。",
+          "continuous_sentence": true,
+          "approved_pcm_identical_per_channel": true
+        }
+      ]
     },
     {
       "scene": 12,
-      "source_file": "assets/jhenny-pmx21-original.wav",
-      "source_start": 0,
-      "source_end": 6.5,
-      "start": 160.55,
-      "end": 167.37995833333335,
-      "tempo": 0.95,
-      "script": "PMX 2.1のQDEFは、ねじったときの形を保つための変形方式です。"
+      "start": 160.36,
+      "end": 167.24,
+      "script": "PMX 2.1のQDEFは、ねじったときの形を保つための変形方式です。",
+      "segments": [
+        {
+          "source_file": "assets/pmx21-scene12-approved.wav",
+          "source_start": 0,
+          "source_end": 6.88,
+          "start": 160.36,
+          "end": 167.24,
+          "tempo": 1,
+          "pitch_shift_semitones": 0,
+          "spoken": "ぴーえむえっくす　にーてん　いちのキューデフは、ねじったときの形を保つための変形方式です。",
+          "continuous_sentence": true,
+          "approved_pcm_identical_per_channel": true
+        }
+      ]
     },
     {
       "scene": 13,
