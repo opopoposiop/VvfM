@@ -1,6 +1,8 @@
 # VMD Viewer for Mac スペックシート
 
-**基準日: 2026-10-28（日本時間） | 保存済みRelease: v0.57.22 / build495**
+**機能仕様の基準日: 2026-10-28（日本時間） | 保存済みRelease: v0.57.22 / build495**
+
+**ライセンス文書更新: 2026-10-31 | 補足EULA 2.0確定・日本語原本／英訳**
 
 PMXモデルとVMDモーションの再生・編集・レンダリングを行うmacOSアプリ。複数モデル、音声・動画の同期表示、物理演算、材質調整、モーション保存、動画書き出しに対応します。
 
@@ -22,9 +24,9 @@ PMXモデルとVMDモーションの再生・編集・レンダリングを行�
 
 内部開発にはXcode 26または互換するSwift 6ツールチェーンを使用します。これは利用者の実行環境とは別の条件で、ソースコードの公開・提供を意味しません。
 
-上記は2026-10-28時点の公開予定方針です。[公開予定先VvfM](https://github.com/opopoposiop/VvfM)のMITと[補足EULA案](../../Licenses/VMDViewer-EULA-ja.md)は適用対象を分けます。同じバイナリにMITを無限定に適用したまま、EULAで禁止を追加する整理ではありません。[MMDayo_MobFesのMIT](../../Licenses/MMDayo_MobFes/LICENSE)等の既存許諾を維持します。
+機能仕様は2026-10-28基準のまま、ライセンス案内は2026-10-31確定の補足EULA 2.0に更新しました。バイナリ公開時には、採用するReleaseを明示します。[公開予定先VvfM](https://github.com/opopoposiop/VvfM)のMITと[補足EULA 2.0](../../Licenses/VMDViewer-EULA-ja.md)は適用対象を分けます。同じバイナリにMITを無限定に適用したまま、EULAで禁止を追加する整理ではありません。[MMDayo_MobFesのMIT](../../Licenses/MMDayo_MobFes/LICENSE)等の既存許諾を維持します。
 
-本リポジトリのMIT適用範囲と、将来の独自バイナリに対するEULAの区分は[ライセンス適用範囲](../../LICENSING.md)に記載しています。EULAは2.0-draft（公開案）です。採用する公開版では、対象version/build、全文の提示・同意方法、配布物の同梱表示を明示します。保存済みbuild495のapp・ZIPと既存のMIT許諾は、この文書追加によって変更していません。
+本リポジトリのMIT適用範囲と、将来の独自バイナリに対するEULAの区分は[ライセンス適用範囲](../../LICENSING.md)に記載しています。EULAは2.0確定版で、[日本語版](../../Licenses/VMDViewer-EULA-ja.md)が原本、[英語版](../../Licenses/VMDViewer-EULA-en.md)が参考訳です。内容に相違がある場合は、第9条に従い日本語原本が優先します。採用する公開版では、対象version/build、全文の提示・同意方法、配布物の同梱表示を明示します。保存済みbuild495のapp・ZIPと既存のMIT許諾は、この文書追加によって変更していません。
 
 ## 2. 対応形式
 
@@ -139,6 +141,6 @@ Bulletの2.75互換モードも、実行するエンジンは同梱3.25です。
 | 性能・実機 | 全機能の実機合格、33 ms応答、安定60 fps、正式な長時間耐久、全コーデック・解像度・全尺条件を保証する資料ではありません。 |
 | 今回の文書追加 | PDF・Markdown・参照リンクとライセンス表記を確認。アプリの再ビルド、GUI・音声・動画出力の再検証は実施していません。 |
 
-操作手順は[一般ユーザーマニュアル](../../GUIDE.md)、利用条件は[ライセンス適用範囲](../../LICENSING.md)、[補足EULA案](../../Licenses/VMDViewer-EULA-ja.md)、[第三者通知](../../THIRD_PARTY_NOTICES.md)を参照してください。マニュアルはv0.56.49／build453の操作説明を基準とするため、本資料の基準版とは異なります。
+操作手順は[一般ユーザーマニュアル](../../GUIDE.md)、利用条件は[ライセンス適用範囲](../../LICENSING.md)、[補足EULA 2.0](../../Licenses/VMDViewer-EULA-ja.md)、[第三者通知](../../THIRD_PARTY_NOTICES.md)を参照してください。マニュアルはv0.56.49／build453の操作説明を基準とするため、本資料の基準版とは異なります。
 
 [PDF版](VMDViewer_SpecSheet_ja.pdf)にも同じ公開・ライセンス方針を記載しています。実際の公開版と入手方法は[VvfMのReleases](https://github.com/opopoposiop/VvfM/releases)で案内します。
