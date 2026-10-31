@@ -968,7 +968,7 @@ ProResのアルファはpremultiplied（色が透明度で乗算された）形�
 
 ## 素材・ライセンス・不具合報告
 
-公開文書の [MIT License](LICENSE) と、今後のアプリ独自バイナリに適用する [補足EULA案](Licenses/VMDViewer-EULA-ja.md) は対象を分けています。[ライセンス適用範囲](LICENSING.md)と、使用するReleaseの案内を確認してください。EULA案にはリバースエンジニアリング禁止と、法令・第三者ライセンス・既存MIT許諾による例外を定めています。既存版の条件を遡及変更するものではありません。
+公開文書の [MIT License](LICENSE) と、今後のアプリ独自バイナリに適用する [補足EULA 2.0・日本語原本](Licenses/VMDViewer-EULA-ja.md)（[英訳](Licenses/VMDViewer-EULA-en.md)） は対象を分けています。[ライセンス適用範囲](LICENSING.md)と、使用するReleaseの案内を確認してください。EULAにはリバースエンジニアリング禁止と、法令・第三者ライセンス・既存MIT許諾による例外を定めています。既存版の条件を遡及変更するものではありません。
 
 同梱ライブラリ・画像・エフェクトには [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) と各原文の条件が適用されます。Bullet、ZIPFoundation、共有Toon画像、Holographic、Rhinestone、MMDayo_MobFesには、それぞれの告知・利用条件があります。
 

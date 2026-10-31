@@ -33,10 +33,10 @@ macOS 14以降のMetal対応Macが必要です。配布アプリの対応チッ�
 公開文書とアプリのバイナリでは、ライセンスの適用対象を分けています。詳細は [ライセンス適用範囲（LICENSING.md）](LICENSING.md) を参照してください。
 
 - **公開文書・MIT対象として提供するサンプル等**：[MIT License](LICENSE)を維持します。
-- **今後EULAを明示して公開するアプリ独自バイナリ**：[補足EULA](Licenses/VMDViewer-EULA-ja.md)を適用し、逆コンパイル・逆アセンブル等のリバースエンジニアリングを禁止する予定です。適用法令、第三者ライセンス、既に付与されたMIT等の許諾による例外を保持します。
+- **今後EULAを明示して公開するアプリ独自バイナリ**：[補足EULA](Licenses/VMDViewer-EULA-ja.md)を適用し、逆コンパイル・逆アセンブル等のリバースエンジニアリングを禁止する条項を定めています。適用法令、第三者ライセンス、既に付与されたMIT等の許諾による例外を保持します。
 - **第三者のライブラリ・SDK・エフェクト・素材**：各権利者の条件と通知を維持します。[第三者通知](THIRD_PARTY_NOTICES.md)と[ライセンス原文一覧](Licenses/README.md)を確認してください。
 
-補足EULAは現在 **2.0-draft（公開案）** です。対象のversion/build、全文の提示・同意方法、配布物の条件は採用するReleaseで明示します。この案内と文書の追加によって、既存版のMIT許諾や保存済みbuild495のアプリ・ZIPの条件が変わることはありません。
+補足EULAは **2.0（2026年10月31日確定）** です。[日本語版](Licenses/VMDViewer-EULA-ja.md)を原本とし、[英語版](Licenses/VMDViewer-EULA-en.md)は参考訳です。内容に相違がある場合は、第9条に従い日本語原本が優先します。対象のversion/build、全文の提示・同意方法、配布物の条件は採用するReleaseで明示します。この案内と文書の追加によって、既存版のMIT許諾や保存済みbuild495のアプリ・ZIPの条件が変わることはありません。
 
 ## 使い始める
 
@@ -57,5 +57,5 @@ MikuMikuDanceとの画像・物理・エフェクトの完全一致は保証し�
 - [技術ガイド](VvfM_Technical_Note.md)：編集・描画・保存の仕組み、形式互換、性能の検証範囲
 - スペックシート：[PDF](docs/spec-sheet/VMDViewer_SpecSheet_ja.pdf)／[Markdown](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)。2026年10月28日・v0.57.22／build495基準
 - [.fxdayo資料の案内](docs/fxdayo/README.md)：開発者向け解説、教材、対応条件と現行版との差分
-- [ライセンス適用範囲](LICENSING.md)／[MIT原文](LICENSE)／[補足EULA](Licenses/VMDViewer-EULA-ja.md)／[第三者通知](THIRD_PARTY_NOTICES.md)
+- [ライセンス適用範囲](LICENSING.md)／[MIT原文](LICENSE)／[EULA日本語原本](Licenses/VMDViewer-EULA-ja.md)・[英訳](Licenses/VMDViewer-EULA-en.md)／[第三者通知](THIRD_PARTY_NOTICES.md)
 - [Issues](https://github.com/opopoposiop/VvfM/issues)：不具合報告。アプリの版、Macの環境、操作手順、エラーを添えてください
