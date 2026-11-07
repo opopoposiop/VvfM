@@ -76,4 +76,3 @@
 - 公開予定先: [VvfM](https://github.com/opopoposiop/VvfM)。公開資料のMITと配布バイナリのEULAの対象を分けて案内します。
 - 同梱物の通知: [THIRD_PARTY_NOTICES.md](https://github.com/opopoposiop/VvfM/blob/main/THIRD_PARTY_NOTICES.md)。
 - 同梱文書の一覧: [Licenses/README.md](https://github.com/opopoposiop/VvfM/blob/main/Licenses/README.md)。
-- MMDayo_MobFesの許諾原文: [MMDayo_MobFes/LICENSE](https://github.com/opopoposiop/VvfM/blob/main/Licenses/MMDayo_MobFes/LICENSE)。
