@@ -64,7 +64,7 @@ MikuMikuDanceとの画像・物理・エフェクトの完全一致は保証し�
 - [ライセンス適用範囲](LICENSING.md)／[MIT原文](LICENSE)／[EULA日本語原本](Licenses/VMDViewer-EULA-ja.md)・[英訳](Licenses/VMDViewer-EULA-en.md)／[第三者通知](THIRD_PARTY_NOTICES.md)
 - [Issues](https://github.com/opopoposiop/VvfM/issues)：不具合報告。アプリの版、Macの環境、操作手順、エラーを添えてください
 
-  ## 謝辞
+## 謝辞
 
 VMD viewer for Macの開発にあたり技術的参考にさせていただきました お礼申し上げます
 
