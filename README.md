@@ -68,12 +68,11 @@ MikuMikuDanceとの画像・物理・エフェクトの完全一致は保証し�
 
 VMD viewer for Macの開発にあたり技術的参考にさせていただきました お礼申し上げます
 
-[MikuMikuDance](https://sites.google.com/view/vpvp/?pli=1&authuser=0) 樋口M 様
-[MikuMikuDayo](https://github.com/pennennennennennenem/MikuMikuDayo) サンドマン 様
-[MikuMikuMoving](https://sites.google.com/site/mikumikumoving/) Mogg 様
-[PMXEditor](https://www.nicovideo.jp/watch/sm14024773) 極北P 様
-[AutoLuminous](https://www.nicovideo.jp/watch/sm19843111) そぼろ 様
-[msToonCoordinator](https://www.nicovideo.jp/watch/sm39850446) ましまし 様
-[ikHolographic](https://seiga.nicovideo.jp/seiga/im8315687) ikeno 様
-[浅草みどり](https://www.nicovideo.jp/watch/sm36384153) くれよん 様
-[水崎ツバメ](https://www.nicovideo.jp/watch/sm36519353) くれよん 様
+- [MikuMikuDance](https://sites.google.com/view/vpvp/?pli=1&authuser=0) 樋口M 様
+- [MikuMikuDayo](https://github.com/pennennennennennenem/MikuMikuDayo) サンドマン 様
+- [MikuMikuMoving](https://sites.google.com/site/mikumikumoving/) Mogg 様
+- [PMXEditor](https://www.nicovideo.jp/watch/sm14024773) 極北P 様
+- [AutoLuminous](https://www.nicovideo.jp/watch/sm19843111) そぼろ 様
+- [msToonCoordinator](https://www.nicovideo.jp/watch/sm39850446) ましまし 様
+- [ikHolographic](https://seiga.nicovideo.jp/seiga/im8315687) ikeno 様
+- [浅草みどり](https://www.nicovideo.jp/watch/sm36384153) / [水崎ツバメ](https://www.nicovideo.jp/watch/sm36519353) くれよん 様
