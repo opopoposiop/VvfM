@@ -6,95 +6,129 @@
   "capture_date": "2026-11-08",
   "timezone": "Asia/Tokyo",
   "project": "5_uni_Crystal_Hall_Test.vmdviewer",
-  "capture_method": "Running application windows captured through native UI automation. JPEG bytes and embedded color profiles preserved without resizing or image edits.",
+  "capture_method": "Running application windows captured through native UI automation as JPEG. Original captures are identified by source_file, source_sha256, and source_commit.",
   "images": [
     {
-      "file": "01-overview.jpg",
+      "file": "01-overview.png",
       "captured_at": "2026-11-08T03:35:24.904Z",
       "description": "メイン画面、モーフモード、450フレーム、VMDカメラON",
       "width": 2926,
       "height": 1896,
-      "sha256": "cae88187c46a47c204324aa46ebc9a82a57c379afc0536b00b509da6d98b6a1f"
+      "sha256": "4d66d579bc6bbb83a6bdb5922067b3dfc7937c05de713fe08672b76ddfde397b",
+      "source_file": "01-overview.jpg",
+      "source_sha256": "cae88187c46a47c204324aa46ebc9a82a57c379afc0536b00b509da6d98b6a1f"
     },
     {
-      "file": "02-bone-gizmo.jpg",
+      "file": "02-bone-gizmo.png",
       "captured_at": "2026-11-08T03:30:53.929Z",
       "description": "ボーンモード、水崎ツバメの上半身、466フレーム、ローカル回転ギズモ",
       "width": 2926,
       "height": 1896,
-      "sha256": "c55ba12fde10f7cd0cf536d4f281d22a57565154ade8f4111b21e124e60a9a94"
+      "sha256": "ac22a055595f8978def3f58cc394938240263dbbe38680e971e1099de18486e0",
+      "source_file": "02-bone-gizmo.jpg",
+      "source_sha256": "c55ba12fde10f7cd0cf536d4f281d22a57565154ade8f4111b21e124e60a9a94"
     },
     {
-      "file": "03-interpolation-window.jpg",
+      "file": "03-interpolation-window.png",
       "captured_at": "2026-11-08T03:25:08.555Z",
       "description": "補間曲線ウインドウ、カメラ1 466f、R、P1 61,20／P2 46,106",
       "width": 660,
       "height": 844,
-      "sha256": "b1195b1e17f5c50b8e585d93f28b99a91c4661dd5e30a646e58abcb67a5bb51e"
+      "sha256": "0c2ff13a753040a30432951b094bcd7a00f12c47878096da5aca9d087537933c",
+      "source_file": "03-interpolation-window.jpg",
+      "source_sha256": "b1195b1e17f5c50b8e585d93f28b99a91c4661dd5e30a646e58abcb67a5bb51e"
     },
     {
-      "file": "04-camera-interpolation-timeline.jpg",
+      "file": "04-camera-interpolation-timeline.png",
       "captured_at": "2026-11-08T03:24:55.621Z",
       "description": "カメラ1、466フレーム、Rチャンネル、434→466の補間曲線と音声波形",
       "width": 2906,
       "height": 1896,
-      "sha256": "09d1059149fa2517cbe1f78cbbaba32f8d9b0fefa924385ff44d63bc5cf8a180"
+      "sha256": "20d2e8f4e9623d04ceb888fe28802f63623085e6b8ead366bbaaa9fd0cd59ad8",
+      "source_file": "04-camera-interpolation-timeline.jpg",
+      "source_sha256": "09d1059149fa2517cbe1f78cbbaba32f8d9b0fefa924385ff44d63bc5cf8a180"
     },
     {
-      "file": "05-camera-controls.jpg",
+      "file": "05-camera-controls.png",
       "captured_at": "2026-11-08T03:24:29.419Z",
       "description": "カメラ1、466フレーム、既存カメラキー選択、VMDカメラON",
       "width": 2906,
       "height": 1896,
-      "sha256": "f5fd72301f6f713ca5d9a93aa2f1f129037ee94c13dbd431cab038bafbad9cc6"
+      "sha256": "57c7b2f151b85b05b433d7c1575060ba0bbc78ea4576f36debb1e8b9aca07cd6",
+      "source_file": "05-camera-controls.jpg",
+      "source_sha256": "f5fd72301f6f713ca5d9a93aa2f1f129037ee94c13dbd431cab038bafbad9cc6"
     },
     {
-      "file": "06-morph-timeline.jpg",
+      "file": "06-morph-timeline.png",
       "captured_at": "2026-11-08T03:32:57.898Z",
       "description": "モーフモード、まばたき行、466フレーム、目グループと音声波形",
       "width": 2926,
       "height": 1896,
-      "sha256": "36e8a0a75748626888891a693a258f8d7186fc27e4e31d06a5e3a1072d65b8d3"
+      "sha256": "eede50c33ca7e40d19eee54463262667b17f37e0dd06e00c9680c967ebd95dd3",
+      "source_file": "06-morph-timeline.jpg",
+      "source_sha256": "36e8a0a75748626888891a693a258f8d7186fc27e4e31d06a5e3a1072d65b8d3"
     },
     {
-      "file": "07-morph-controls.jpg",
+      "file": "07-morph-controls.png",
       "captured_at": "2026-11-08T03:33:28.425Z",
       "description": "モーフ操作ウインドウ、水崎ツバメ、466f、目（38）グループ",
       "width": 840,
       "height": 1104,
-      "sha256": "d711269bc782ea0d07878cdaf7f021eaf531385ee8f44863dbf4398a9ad02aae"
+      "sha256": "ca699535dea4ab3e170bc998f805f2be4817570cc42b7dee15278e11f73089a9",
+      "source_file": "07-morph-controls.jpg",
+      "source_sha256": "d711269bc782ea0d07878cdaf7f021eaf531385ee8f44863dbf4398a9ad02aae"
     },
     {
-      "file": "08-physics-mode.jpg",
+      "file": "08-physics-mode.png",
       "captured_at": "2026-11-08T03:25:40.121Z",
       "description": "物理演算モードメニュー、常時演算、120fps、466フレーム",
       "width": 2906,
       "height": 1896,
-      "sha256": "047af65c5efa61dc8f0cad83d9da9fafa9061770d97b18a849d34cb0439aca07"
+      "sha256": "77a9485fd8c5b184028de73915f2918a880f5ca83ff6e97e0e1e39ce86f2aec1",
+      "source_file": "08-physics-mode.jpg",
+      "source_sha256": "047af65c5efa61dc8f0cad83d9da9fafa9061770d97b18a849d34cb0439aca07"
     },
     {
-      "file": "09-toon-hq-settings.jpg",
+      "file": "09-toon-hq-settings.png",
       "captured_at": "2026-11-08T03:25:59.792Z",
       "description": "ToonShader HQ設定、影色Type2、PMXエッジ個別、466フレーム",
       "width": 2906,
       "height": 1896,
-      "sha256": "8c51958d925ccc390a9928af4a35e8971b6281126d253c33ab627f3557030edf"
+      "sha256": "37f0c672decb206a66207050a56f4515bc790920de29691ec1afa48f171c7e2b",
+      "source_file": "09-toon-hq-settings.jpg",
+      "source_sha256": "8c51958d925ccc390a9928af4a35e8971b6281126d253c33ab627f3557030edf"
     },
     {
-      "file": "10-dof-off.jpg",
+      "file": "10-dof-off.png",
       "captured_at": "2026-11-08T03:35:59.081Z",
       "description": "450フレーム、DoF全体OFF、図11と同じVMDカメラ構図",
       "width": 2926,
       "height": 1896,
-      "sha256": "d258f751e8730d7ece9274e3a544636ceaf5571f2a1d759e2502c8f7afd681f3"
+      "sha256": "7449692401306090d0f30b059101d3f64f2d24969fcce154b3434c4f46ce15d2",
+      "source_file": "10-dof-off.jpg",
+      "source_sha256": "d258f751e8730d7ece9274e3a544636ceaf5571f2a1d759e2502c8f7afd681f3"
     },
     {
-      "file": "11-dof-on.jpg",
+      "file": "11-dof-on.png",
       "captured_at": "2026-11-08T03:35:27.806Z",
       "description": "450フレーム、DoF全体ON、F/1.00、図10と同じVMDカメラ構図",
       "width": 2926,
       "height": 1896,
-      "sha256": "022414deb9f2de59a7c56064edfb0f844369bd08254db6ea3702490e5ba54d8b"
+      "sha256": "6fbb9014e0e01470ef15fb3d1eb73dc864b73d786363c9d2cfd3394a848a902e",
+      "source_file": "11-dof-on.jpg",
+      "source_sha256": "022414deb9f2de59a7c56064edfb0f844369bd08254db6ea3702490e5ba54d8b"
     }
-  ]
+  ],
+  "source_commit": "136b3e54ac0aab76b68fcdef9110fa8b645c3841",
+  "post_processing": {
+    "date": "2026-11-08",
+    "method": "Converted to lossless RGBA PNG. Removed the white matte only outside the four rounded window corners, using an antialiased mask derived from the unobstructed upper-right corners of the nine dark main-window captures. The same native window geometry was applied to the two light panels. Unmatted partial-alpha boundary pixels to prevent white fringes.",
+    "corner_region_max_px": [
+      48,
+      48
+    ],
+    "unchanged": "Image dimensions, ICC profiles, and every fully opaque RGB pixel match the decoded source JPEG. No resizing or generative editing.",
+    "transparent_pixels_per_image": 848,
+    "partial_alpha_pixels_per_image": 320
+  }
 }

@@ -12,7 +12,7 @@ PMXモデルとVMDモーションをMacで再生・編集し、音声付きの�
 
 操作説明はv0.56.49／build453を基に、v0.58.4／build569までの変更点を本文と更新補足へ追記しています。READMEと一般ユーザーマニュアルの画面例は、2026年11月8日に起動中のv0.58.4／build569から撮影しました。[スペックシート](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)は2026年10月28日・保存済みv0.57.22／build495を基準とする別資料です。配布アプリの公開状況はReleasesで確認してください。
 
-![VvfM v0.58.4／build569のメイン画面](images/v0.58.4-build569/01-overview.jpg)
+![VvfM v0.58.4／build569のメイン画面](images/v0.58.4-build569/01-overview.png)
 
 ## 主な機能
 
