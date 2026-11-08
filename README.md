@@ -1,5 +1,7 @@
 # VMD Viewer for Mac（VvfM）
 
+> 2026年11月8日更新：[v0.58.4／build569の変更概要](docs/updates/codex-motion-2026-11-08.md)。動画入りプロジェクトの保存、自動保存と回復、モーフ／カメラのダブルクリック登録、HQ設定の説明表示を更新しました。
+
 [EULA 日本語原本](Licenses/VMDViewer-EULA-ja.md)｜[English](Licenses/VMDViewer-EULA-en.md)
 
 PMXモデルとVMDモーションをMacで再生・編集し、音声付きの動画を書き出せるアプリです。ボーン・表情・カメラの調整から、見た目の仕上げ、作業の保存まで行えます。
@@ -8,7 +10,7 @@ PMXモデルとVMDモーションをMacで再生・編集し、音声付きの�
 
 **詳しい操作は [一般ユーザーマニュアル（GUIDE.md）](GUIDE.md) を参照してください。**
 
-操作説明は、2026年10月19日に確認した開発側の参照版（v0.56.49／build453）に合わせています。[スペックシート](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)は2026年10月28日・保存済みv0.57.22／build495を基準とする別資料です。掲載画像は旧版の画面例です。配布アプリの公開状況はReleasesで確認してください。
+操作説明はv0.56.49／build453を基に、v0.58.4／build569までの変更点を本文と更新補足へ追記しています。[スペックシート](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)は2026年10月28日・保存済みv0.57.22／build495を基準とする別資料です。掲載画像は旧版の画面例です。配布アプリの公開状況はReleasesで確認してください。
 
 ![VvfMのメイン画面](images/01-scene3-overview.png)
 

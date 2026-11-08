@@ -1,17 +1,17 @@
 # 未知の.fxdayoを受け入れるインターフェイス改修計画
 
-> VvfM収録注（2026-10-19）：[公開main `3620662`](https://github.com/opopoposiop/VMDviewer_for_Mac/tree/36206626a7214ad8b8de5bba362189a38c285529)から取り込みました。本文は初期P0〜P3案とv0.56.42の採用範囲を含む計画資料です。骨・別個体controllerの後続対応など、現在の採否は[資料の案内](README.md)を参照してください。本取込ではビルド・実機試験を再実施していません。
+> VvfM収録注（2026-10-19）：開発版v0.56.49／build453（記録ID `3620662`）から取り込みました。本文は初期P0〜P3案とv0.56.42の採用範囲を含む計画資料です。骨・別個体controllerの後続対応など、現在の採否は[資料の案内](README.md)を参照してください。本取込ではビルド・実機試験を再実施していません。
 
 
 VMD Viewerが、名前やSHAを事前登録していない`.fxdayo`を、宣言された機能と実際のscene条件から受け入れられるようにする。受入理由と拒否理由を作者へ返し、原文変更、再読込、project保存、live、動画出力まで同じ実行契約を保持する。
 
-2026-10-06時点では`dayo130.hdr-scene.v1`のcompilerとexecutorが既に通常経路へ接続されている。本計画はそれを基礎とした仕様の明確化と拡張であり、汎用runtimeを一から作る計画ではない。初稿は文書化と静的照合のみだったが、その後の依頼によりv0.56.20ではP0・P1を実装対象とした。以下の詳細設計は初稿の検討経緯も含む。現在の採用範囲を次節、実行証拠を[実装記録](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-07-fxdayo-interface-v05620/IMPLEMENTATION.md)へ分離する。
+2026-10-06時点では`dayo130.hdr-scene.v1`のcompilerとexecutorが既に通常経路へ接続されている。本計画はそれを基礎とした仕様の明確化と拡張であり、汎用runtimeを一から作る計画ではない。初稿は文書化と静的照合のみだったが、その後の依頼によりv0.56.20ではP0・P1を実装対象とした。以下の詳細設計は初稿の検討経緯も含む。採用範囲は次節、当時の検証条件と未確認範囲は本書の検証概要に記す。
 
 作者の記述手順と現行の制約は[技術解説書](FXDAYO_DEVELOPER_GUIDE.md)、参照ファイルのhashは[調査snapshot](SOURCE_SNAPSHOT.json)を正本とする。
 
 ## v0.56.42の追加範囲
 
-[汎用runtime改良計画](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-14-fxdayo-generic-runtime-plan/PLAN.md)の初期到達点に沿い、R0の20原文診断、R1の共通定義・能力分析、R2の色契約と保存、R3のtexture資源操作を通常live/exportへ接続した。追加profileは`dayo130.postprocess.v2`／`dayo130.color.v2`。self bool/intとlocal 3D texture primitiveも含むが、骨・外部個体、共有simulation、端数dispatch、混在描画の契約は未成立のため拒否を維持する。検証結果と限定範囲は[今回の記録](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-14-fxdayo-runtime-v05642/IMPLEMENTATION.md)を正本とし、以下の旧P2/P3案全体の完成とは扱わない。
+限定原文runtimeの拡張として、R0の20原文診断、R1の共通定義・能力分析、R2の色契約と保存、R3のtexture資源操作を通常live/exportへ接続した。追加profileは`dayo130.postprocess.v2`／`dayo130.color.v2`。self bool/intとlocal 3D texture primitiveも含むが、骨・外部個体、共有simulation、端数dispatch、混在描画の契約は未成立のため拒否を維持する。これは限定profileでの対応であり、以下の旧P2/P3案全体の完成とは扱わない。
 
 ## v0.56.20の採用範囲
 
@@ -56,9 +56,9 @@ VMD Viewerが、名前やSHAを事前登録していない`.fxdayo`を、宣言�
 | 保存 | schema25、原文package、source intent、元folderなしの復元 | 実行選択と新profileの移行規則、将来SDK解決の固定 |
 | export | 共通executorと独立history、失敗時の停止 | sample契約の明文化、機能別preflight、liveとの対照試験 |
 
-コード入口は[loader](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Effects/FxDayoEffects.swift)、[IR](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Effects/FxDayoProgramIR.swift)、[compiler](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Effects/FxDayoCompilerService.swift)、[executor](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Renderer/MetalFxDayoExecutor.swift)、[scene profile](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Effects/FxDayoSceneProfile.swift)。
+処理は読込、構造検査、コンパイル、GPU実行、シーン条件の検査へ分かれる。構造検査の成功だけで実行可能とは判定しない。
 
-build402の記録には元MotionBlurの7pass、原文の改名・式変更、限定sceneのlive、保存往復、短尺動画がある。これを全素材・任意解像度・Dayo画像互換の合格とは扱わない。[既存の実装記録](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-06-motionblur-generic-proof-plan/IMPLEMENTATION.md)
+build402の記録には元MotionBlurの7pass、原文の改名・式変更、限定sceneのlive、保存往復、短尺動画がある。これを全素材・任意解像度・Dayo画像互換の合格とは扱わない。
 
 ## 最優先で固定する互換契約（初稿の課題と方針）
 
@@ -297,7 +297,7 @@ liveは全ownerの同一transactionとGPU成功・positive actual-present後にc
 
 exportはimmutable snapshotと独立sessionを作り、rational PTSから入力sampleを求める。GPU成功後の完成frameだけwriterへ渡す。履歴effectのlive/export同値を試験する場合は入力sample列も揃える。物理の全fixed-stepを飛ばす方法でeffectの遅延を隠さない。
 
-既存の[DayoFrameHistory](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Renderer/DayoFrameHistory.swift)と[表示transaction](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Playback/RendererPresentationOwnership.swift)を拡張し、第二の独立した履歴commit機構を作らない。
+既存のフレーム履歴と表示の確定処理を拡張し、第二の独立した履歴commit機構を作らない。
 
 ## UIと開発者の操作
 
@@ -312,7 +312,7 @@ exportはimmutable snapshotと独立sessionを作り、rational PTSから入力s
 | 元sourceへ移動する | 読み込んだ元fileとproject内snapshotを区別 |
 | 診断を保存する | source hash・profile・環境・失敗stageをまとめ、機密pathは任意で伏せる |
 
-任意のfile watcherを後から導入する場合はdebounce、編集中の一時構文エラー、保存連打、取消、PMX削除を扱う。取り込み時に失敗するたび既存sceneを消さない。新しい別windowを作る場合は[WindowUI](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/WindowUI.md)の前面表示、最大化・全画面、focusと再生保持を完了条件へ追加する。
+任意のfile watcherを後から導入する場合はdebounce、編集中の一時構文エラー、保存連打、取消、PMX削除を扱う。取り込み時に失敗するたび既存sceneを消さない。新しい別windowを作る場合は共通ウインドウ仕様の前面表示、最大化・全画面、focusと再生保持を完了条件へ追加する。
 
 ## 保存と移行
 
@@ -363,7 +363,7 @@ deform、renderer、DXRは独立した成立性調査から始める。deformで
 
 ## 受入試験
 
-以下は受入matrixであり、各行をすべて通過済みとする一覧ではない。v0.56.20で実際に行った範囲・未検証は[実装記録](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-07-fxdayo-interface-v05620/IMPLEMENTATION.md)へ記す。
+以下は受入matrixであり、各行をすべて通過済みとする一覧ではない。v0.56.20での教材確認と、全素材・Dayo画像同値・正式性能の未確認範囲は分けて扱う。
 
 | ID | 試験 | 合格条件 |
 |---|---|---|
@@ -385,7 +385,7 @@ A03は入れ子import/include、importstr、生成code、大小文字、symlink�
 
 単体・GPU fixture・通常統合・Release GUI・Dayo画像比較・正式性能は別のgateとする。素材不足やGPU不足によるskipは成功へ数えない。GPU fault等をpure state testだけで代替した場合は、実機障害注入が未検証であることを記録する。
 
-実装変更時は関連テスト、全`swift test`、`git diff --check`を行い、描画・資源・配布物に関係する段階ではRelease buildと対象実機検証を追加する。性能の許容差は計測前にsceneごとに決め、FPSだけで採用しない。詳細は[検証コマンド例](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/skills/references/verification-commands.md)と[Metal性能契約](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/skills/mmd-metal-performance-qa/references/performance-rules.md)へ接続する。
+実装変更時は関連テスト、全`swift test`、`git diff --check`を行い、描画・資源・配布物に関係する段階ではRelease buildと対象実機検証を追加する。性能の許容差は計測前にsceneごとに決め、FPSだけで採用しない。実表示FPS、CPU／GPU時間、姿勢鮮度、資源量を分けて評価する。
 
 ## 採用時に残す証拠
 
@@ -397,9 +397,9 @@ A03は入れ子import/include、importstr、生成code、大小文字、symlink�
 
 初稿の調査対象HEADは`6c83be79a10eda0a15a2da6e5fda103d2b49e274`、未コミット実装を含むv0.56.16作業ツリー。設計の前提は現行コードで再確認した。[参照snapshot](SOURCE_SNAPSHOT.json)
 
-- 先行の[汎用runtime研究](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-06-generic-fxdayo-research/RESEARCH.md)と[MotionBlur実装記録](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-06-motionblur-generic-proof-plan/IMPLEMENTATION.md)を引き継ぐ。実装済みのcompiler、scene入力、保存、exportを新規成果として数え直さない。
-- [adapter契約](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/skills/mmd-fxdayo-adapter-engineering/references/adapter-resolution-contract.md)のterminal拒否、単一owner、native優先順位を維持する。原文経路は独立した契約として扱う。
-- [再生復旧](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/skills/mmd-realtime-playback-recovery/references/presentation-recovery-contract.md)、[動画書出し](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/skills/mmd-deterministic-movie-export-qa/references/movie-export-rules.md)、[Metal資源](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/skills/mmd-metal-performance-qa/references/performance-rules.md)の既存境界を保持する。
+- 先行の汎用runtime研究とMotionBlur実装記録を引き継ぐ。実装済みのcompiler、scene入力、保存、exportを新規成果として数え直さない。
+- adapter契約のterminal拒否、単一owner、native優先順位を維持する。原文経路は独立した契約として扱う。
+- 再生復旧、動画書出し、Metal資源の既存境界を保持する。
 - DXC/SPIRV-Cross経路を現行基盤として継続する。変換器の全面置換は本計画の前提にしない。[DXC](https://github.com/microsoft/DirectXShaderCompiler/blob/main/docs/SPIR-V.rst)、[SPIRV-Cross](https://github.com/KhronosGroup/SPIRV-Cross)
 
 能力表・構造schema・jobとGPU予算はv0.56.20実装に合わせて公開した。端数dispatchとDayo比較の許容誤差は未採用・未確定。Dayo 1.30配布物の対応upstream commit、全素材の画像互換、build402の正式性能と600秒耐久は引き続き未確認・未受入である。

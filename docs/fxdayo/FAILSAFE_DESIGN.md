@@ -1,15 +1,15 @@
 # .fxdayoが動作しない場合のフェイルセーフ設計
 
-> VvfM収録注（2026-10-19）：[公開main `3620662`](https://github.com/opopoposiop/VMDviewer_for_Mac/tree/36206626a7214ad8b8de5bba362189a38c285529)から取り込みました。本文はv0.56.21導入時の設計・検証です。v0.56.47以降のGPU device障害では、通常描画を継続せず保存を維持して再起動を案内します。後続の境界は[資料の案内](README.md)を参照してください。本取込ではビルド・実機試験を再実施していません。
+> VvfM収録注（2026-10-19）：開発版v0.56.49／build453（記録ID `3620662`）から取り込みました。本文はv0.56.21導入時の設計・検証です。v0.56.47以降のGPU device障害では、通常描画を継続せず保存を維持して再起動を案内します。後続の境界は[資料の案内](README.md)を参照してください。本取込ではビルド・実機試験を再実施していません。
 
 
 2026-10-07。設計対象は、未知の`.fxdayo`の読込・再読込・live実行が失敗しても、通常のモデル表示、操作、再生、保存を継続できること。失敗した効果とその依存先を実行対象から外し、新しい通常フレームを表示する。効果の失敗をViewer全体の表示失敗へ直結させない。
 
-**v0.56.21で本設計の通常経路を実装。** 基準はHEAD `1b9cdf2e2cde9f57f4098c70662a30c1d3f759d4`、v0.56.20 / build409。本書の受入条件と実施済みの証拠を区別し、最新の検証結果・未検証・指定Astraレビュー状況は[実装記録](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-07-fxdayo-failsafe-v05621/IMPLEMENTATION.md)へ記す。原文との画像同等性や正式性能合格を意味しない。build410を保存したが、600秒連続再生の停止と指定Astraレビューは未完了。
+**v0.56.21で本設計の通常経路を実装。** 基準はHEAD `1b9cdf2e2cde9f57f4098c70662a30c1d3f759d4`、v0.56.20 / build409。本書の受入条件と実施済みの証拠を区別する。以下は導入時の検証概要であり、最新の全機能検証を示すものではない。原文との画像同等性や正式性能合格を意味しない。build410を保存したが、600秒連続再生の停止と指定Astraレビューは未完了。
 
 ## 現在の問題と変更する境界
 
-[MotionBlurの再現記録](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-07-motionblur-live-stop/README.md)では、原文のcompileは成功している。しかしMetal選択、native effect混在などが原文実行profileに適合せず、フレーム全体が中断し、再生開始も失敗する。MotionBlurだけを非表示にすると通常描画と再生が復帰する。
+当時のMotionBlurの再現試験では、原文のcompileは成功している。しかしMetal選択、native effect混在などが原文実行profileに適合せず、フレーム全体が中断し、再生開始も失敗する。MotionBlurだけを非表示にすると通常描画と再生が復帰する。
 
 | 現在の接続 | 設計で変更する責務 |
 |---|---|
@@ -18,7 +18,7 @@
 | `stageFxDayoAttachment`がモデル全体の編集transactionに入る | 同じPMXのpostprocess差替えを独立した候補採用へ分離し、不要な物理resetとViewer全体の入力無効化を避ける |
 | PMX読込とproject復元が原文compile／実行ownerの復元に依存する | 正常なモデル・原文データの復元と、その環境で実行できるかの判定を分離する |
 
-根拠は[MetalModelView.swift](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Renderer/MetalModelView.swift)、[AppModel.swift](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/App/AppModel.swift)、[FxDayoAuthoring.swift](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/App/FxDayoAuthoring.swift)、[PMXParser.swift](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Formats/PMXParser.swift)、[ProjectPayloadArchiveIO.swift](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Project/ProjectPayloadArchiveIO.swift)。既存の非対応契約を緩めて無理に実行する変更ではない。
+描画、編集状態、原文の取込、PMX解析、プロジェクト保存を横断した設計である。既存の非対応契約を緩めて無理に実行する変更ではない。
 
 ## 維持する契約
 
@@ -29,7 +29,7 @@
 - ユーザーの描画設定、effect有効化の意図、原文、controller値を自動で書き換えない。自動停止は実行状態として表示する。
 - 動画書出しはactive effectの失敗で停止する。liveの自動停止を、効果を欠いた動画の成功へ転用しない。
 
-適用契約は[互換性](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/skills/mmd-fxdayo-compatibility-qa/SKILL.md)、[adapter](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/skills/mmd-fxdayo-adapter-engineering/SKILL.md)、[再生復旧](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/skills/mmd-realtime-playback-recovery/SKILL.md)、[Metal資源・性能](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/skills/mmd-metal-performance-qa/SKILL.md)、[動画書出し](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/skills/mmd-deterministic-movie-export-qa/SKILL.md)に従う。過去のnative限定の説明と、現在の限定profileによる原文実行は区別する。
+互換性の検査、単一の実行経路、実表示後の再生確定、未完了GPU資源の保持、書出しの成功時だけの確定を共通の条件とする。過去のnative限定の説明と、現在の限定profileによる原文実行は区別する。
 
 ## 失敗の分類と停止範囲
 
@@ -72,7 +72,7 @@ postprocessのbypassは、そのpassに入る直前の正常な色を後段へ�
 
 `FxDayoLiveExecutionPlan`でsource間の依存と履歴世代を保持する。モデル・controller・描画設定のimmutable snapshotから、採用owner、順序、依存関係、除外理由、資源予約を決める。実装は同一journalのimmutable入力を使い、原文encoder作成前にpreflightと除外対象を確定する。原文結果の履歴登録は原文GPU成功後、公開は同一attemptの正のpresent後に限る。
 
-検査を読込／再読込／通常frame／書出しで共有し、各入口で異なる条件だけを明示する。現在の[FxDayoSceneProfile](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Effects/FxDayoSceneProfile.swift)と[FxDayoResourceBudget](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Effects/FxDayoResourceBudget.swift)に加え、以下を計画に含める。
+検査を読込／再読込／通常frame／書出しで共有し、各入口で異なる条件だけを明示する。シーンの適合条件とGPU資源量の上限検査に加え、以下を計画に含める。
 
 - renderStyle、投影、AA・MetalFX、DoF／Bloom／Diffusion、透明背景、native混在、材質・textureの性質。
 - FrameTime／RealTime、controller入力の有限性・範囲、pass依存、vertex／buffer ABI、読書き範囲。
@@ -104,7 +104,7 @@ softな条件不一致は、関連するcontext fingerprintが変わったとき
 5. **再描画するpose**は既に評価済みのimmutable入力を再利用する。必要な次の物理stepは通常のschedulerだけが進める。同じ再生／seek意図を引き継ぎ、effect失敗を理由とするphysics resetやclockの飛ばしを行わない。
 6. **clock／audio**は既存の表示復旧方針に従う。通常表示の正のactual-presentが出るまで復旧成功にせず、表示途絶中の音声・時計の扱いもその契約に従う。通常表示まで失敗したときだけterminalへ進む。
 
-[DayoFrameHistory](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Renderer/DayoFrameHistory.swift)のGPU成功・正のpresent・世代一致の条件を維持する。破棄は正確なleaseに対して行い、別の正常なeffectの履歴を巻き込まない。停止対象と依存先のtemporal epochだけを更新し、再有効化時に古い履歴を混ぜない。
+フレーム履歴のGPU成功・正のpresent・世代一致の条件を維持する。破棄は正確なleaseに対して行い、別の正常なeffectの履歴を巻き込まない。停止対象と依存先のtemporal epochだけを更新し、再有効化時に古い履歴を混ぜない。
 
 通常描画へ切り替えるだけで済む不適合は、再生停止を経由せず表示を続ける。既に表示を失っている場合は復旧待ちとなり、連続再生や無停止を未確認のまま保証しない。
 

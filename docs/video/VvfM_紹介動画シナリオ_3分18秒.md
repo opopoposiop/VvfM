@@ -423,7 +423,7 @@ DoF全体と当該フレームの有効状態を確認する。焦点キーの�
 
 技術紹介でもリアルタイム再生中のキャラクターを画面に残し、その動きをCPUとGPUが支えることを伝える。原案の「MMD相当をMacで実現」は、モデル・モーションの再生と編集をMac上で行う説明に具体化する。
 
-根拠：[開発側の機能一覧][S7]、[PMX 2.0／2.1対応表][S8]、[描画と物理の仕組み][S9]。
+確認範囲：PMX 2.0／2.1の読込とMetal描画。[描画と物理の仕組み][S9]。
 
 ### 12 Bulletの物理演算と二つのモード
 
@@ -455,7 +455,7 @@ DoF全体と当該フレームの有効状態を確認する。焦点キーの�
 
 モード変更を実演する場合は「適用して再計算」まで含める。二つのモードの優劣や、MMDと同一の揺れを示す比較にはしない。
 
-根拠：[Bulletモードの操作][S2]、[物理モードの実装範囲][S8]。
+根拠：[Bulletモードの操作][S2]。両モードとも同梱Bullet 3.25を使用し、2.75互換は既知の挙動差を調整する。
 
 ### 13 Macで、気軽にMMDを楽しもう
 
@@ -531,7 +531,7 @@ DoF全体と当該フレームの有効状態を確認する。焦点キーの�
 
 ## 参照資料
 
-基準日：2026年10月20日。指定された両リポジトリの公開mainのSHAを照合し、該当するローカルGitオブジェクト・資料を読んで作成した。配布側は `0fa323b3121c3b6c8f54fad277074dcf9246fce8`、開発側は `36206626a7214ad8b8de5bba362189a38c285529`（v0.56.49／build453）。以下の機能根拠は、その公開コミットに固定している。これは配布アプリの最新版を認定するものではない。
+基準日：2026年10月20日。配布文書と開発版の記録を照合して作成した。配布側は `0fa323b3121c3b6c8f54fad277074dcf9246fce8`、開発側は `36206626a7214ad8b8de5bba362189a38c285529`（v0.56.49／build453）。以下はその時点の機能概要で、非公開の開発資料へのリンクは掲載していない。これは配布アプリの最新版を認定するものではない。
 
 原案：`Vvfm紹介動画シナリオ.md`（ユーザー提供の原案。このリポジトリには未収録）。原案の3分18秒・日本語女性ナレーションと項目構成を維持し、追加指定の「Macで手軽にMMDを楽しむ」を中心に展開した。2026年10月21日の追加指定を受け、「VMDをリアルタイム再生して楽しめる」ことを最優先の訴求にした。
 
@@ -543,8 +543,8 @@ DoF全体と当該フレームの有効状態を確認する。焦点キーの�
 | S4 | [GUIDE ToonShader HQ][S4]：輪郭線、RimLight、Bloom、Diffusion |
 | S5 | [GUIDE DoFと照明][S5]：HQ・透視投影の条件、焦点ターゲットとキー登録 |
 | S6 | [GUIDE .fxdayoへの対応][S6]：一部対応、専用処理の例、解析・互換性・実行の区別 |
-| S7 | [開発リポジトリ README][S7]：公開mainの機能とMetal描画 |
-| S8 | [PMX 2.0／2.1対応表][S8]：PMXの対応範囲、Bullet 2.75互換／3.25ネイティブの意味 |
+| S7 | 開発版の機能概要：PMX・VMDの読込、再生・編集とMetal描画。アプリのソースコードは非公開 |
+| S8 | PMX 2.0／2.1を読み込み、両物理モードとも同梱Bullet 3.25を使用。2.75互換は既知の挙動差を調整するもので、完全互換ではない |
 | S9 | [VvfM技術ガイド][S9]：CPUの姿勢・物理計算とGPU描画の役割 |
 
 [S1]: https://github.com/opopoposiop/VvfM/blob/0fa323b3121c3b6c8f54fad277074dcf9246fce8/README.md
@@ -553,6 +553,4 @@ DoF全体と当該フレームの有効状態を確認する。焦点キーの�
 [S4]: https://github.com/opopoposiop/VvfM/blob/0fa323b3121c3b6c8f54fad277074dcf9246fce8/GUIDE.md#toonshader-hqのエフェクト
 [S5]: https://github.com/opopoposiop/VvfM/blob/0fa323b3121c3b6c8f54fad277074dcf9246fce8/GUIDE.md#dofと照明
 [S6]: https://github.com/opopoposiop/VvfM/blob/0fa323b3121c3b6c8f54fad277074dcf9246fce8/GUIDE.md#fxdayoへの対応
-[S7]: https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/README.md
-[S8]: https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/PMX_2.0_2.1_CONFORMANCE.md
 [S9]: https://github.com/opopoposiop/VvfM/blob/0fa323b3121c3b6c8f54fad277074dcf9246fce8/VvfM_Technical_Note.md
