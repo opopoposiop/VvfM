@@ -63,3 +63,17 @@ MikuMikuDanceとの画像・物理・エフェクトの完全一致は保証し�
 - [.fxdayo資料の案内](docs/fxdayo/README.md)：開発者向け解説、教材、対応条件と現行版との差分
 - [ライセンス適用範囲](LICENSING.md)／[MIT原文](LICENSE)／[EULA日本語原本](Licenses/VMDViewer-EULA-ja.md)・[英訳](Licenses/VMDViewer-EULA-en.md)／[第三者通知](THIRD_PARTY_NOTICES.md)
 - [Issues](https://github.com/opopoposiop/VvfM/issues)：不具合報告。アプリの版、Macの環境、操作手順、エラーを添えてください
+
+  ## 謝辞
+
+VMD viewer for Macの開発にあたり技術的参考にさせていただきました お礼申し上げます
+
+[MikuMikuDance](https://sites.google.com/view/vpvp/?pli=1&authuser=0) 樋口M 様
+[MikuMikuDayo](https://github.com/pennennennennennenem/MikuMikuDayo) サンドマン 様
+[MikuMikuMoving](https://sites.google.com/site/mikumikumoving/) Mogg 様
+[PMXEditor](https://www.nicovideo.jp/watch/sm14024773) 極北P 様
+[AutoLuminous](https://www.nicovideo.jp/watch/sm19843111) そぼろ 様
+[msToonCoordinator](https://www.nicovideo.jp/watch/sm39850446) ましまし 様
+[ikHolographic](https://seiga.nicovideo.jp/seiga/im8315687) ikeno 様
+[浅草みどり](https://www.nicovideo.jp/watch/sm36384153) くれよん 様
+[水崎ツバメ](https://www.nicovideo.jp/watch/sm36519353) くれよん 様
