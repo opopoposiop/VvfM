@@ -1,15 +1,15 @@
 # MikuMikuDayoとVMD Viewerの.fxdayo開発者向け技術解説書
 
-> VvfM収録注（2026-10-19）：[公開main `3620662`](https://github.com/opopoposiop/VMDviewer_for_Mac/tree/36206626a7214ad8b8de5bba362189a38c285529)から取り込みました。本文の「現行」は主に2026-10-14のv0.56.37研究時点を指し、v0.56.42の追記を含みます。v0.56.46のcontroller等、後続の採用範囲と未完了項目は[資料の案内](README.md)を参照してください。本取込ではビルド・実機試験を再実施していません。
+> VvfM収録注（2026-10-19）：開発版v0.56.49／build453（記録ID `3620662`）から取り込みました。本文の「現行」は主に2026-10-14のv0.56.37研究時点を指し、v0.56.42の追記を含みます。v0.56.46のcontroller等、後続の採用範囲と未完了項目は[資料の案内](README.md)を参照してください。本取込ではビルド・実機試験を再実施していません。
 
 
 `.fxdayo`は、GPUで実行するHLSLに加え、入力資源、出力資源、パスの順序、PMXから受け取る操作値を定義するエフェクト形式である。両アプリで同じ原文を動かすには、HLSLの構文だけでなく、ホストが供給するデータの意味と実行条件を合わせる必要がある。
 
 VMD Viewerの現行作業ツリーには、既知エフェクトをMetalへ移植した専用adapterと、未知の原文をコンパイルする限定汎用runtimeがある。新作はまず、後者の対応範囲に収まる単純な画面加工から始める。**`.fxdayo`という拡張子、解析成功、コンパイル成功のいずれも、すべての機能やDayoとの画像一致を保証しない。**
 
-**2026-10-14更新。** 対象はMikuMikuDayo 1.30配布物と、ViewerのVERSION `0.56.37`の作業ツリー（HEAD `6328f50376fe9217de76dc82401c97e80360a0eb`、未コミット変更を含む）。以下の「現行Viewer」は、この時点のコードで確認した契約を指す。今回の更新は、同梱postprocessの20本を未知原文として調べた[互換性研究](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-14-fxdayo-postprocess-research/COMPATIBILITY.md)と[テスト環境研究](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-14-fxdayo-postprocess-research/TEST_ENVIRONMENT.md)を反映した文書更新であり、新しい対応機能の実装や動作試験は行っていない。
+**2026-10-14更新。** 対象はMikuMikuDayo 1.30配布物と、ViewerのVERSION `0.56.37`の作業ツリー（HEAD `6328f50376fe9217de76dc82401c97e80360a0eb`、未コミット変更を含む）。以下の「現行Viewer」は、この時点のコードで確認した契約を指す。今回の更新は、同梱postprocessの20本を未知原文として調べた互換性研究とテスト環境研究を反映した文書更新であり、新しい対応機能の実装や動作試験は行っていない。
 
-既存の作者インターフェイスP0・P1は[v0.56.20の実装記録](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-07-fxdayo-interface-v05620/IMPLEMENTATION.md)、フェイルセーフは[v0.56.21の実装記録](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-07-fxdayo-failsafe-v05621/IMPLEMENTATION.md)を参照する。[インターフェイス計画](INTERFACE_PLAN.md)のP2以降や、本書の拡張案は現行機能と区別する。過去buildの検証結果をv0.56.37や20本全体の合格には繰り越さない。
+作者インターフェイスP0・P1はv0.56.20、失敗時の隔離・再試行・保存はv0.56.21で導入した。[インターフェイス計画](INTERFACE_PLAN.md)のP2以降や、本書の拡張案は現行機能と区別する。過去buildの検証結果をv0.56.37や20本全体の合格には繰り越さない。
 
 ## 読み方と到達点
 
@@ -43,7 +43,7 @@ PMXと同名の.fxdayo
 定義の評価 → controllerとresourceの宣言生成 → パスごとのshader生成
 ```
 
-prefixは単なる注釈欄ではない。ここにあるincludeやmacroを捨てると、shaderの意味が変わる。現行Viewerの生成順はprefix、controller宣言、sampler/resource宣言、`fx.code`、shader本文。パス名から`YRZ_PASS_<name>`が定義される。[コンパイラ実装](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Effects/FxDayoCompilerService.swift)
+prefixは単なる注釈欄ではない。ここにあるincludeやmacroを捨てると、shaderの意味が変わる。現行Viewerの生成順はprefix、controller宣言、sampler/resource宣言、`fx.code`、shader本文。パス名から`YRZ_PASS_<name>`が定義される。
 
 ### categoryとパス種別
 
@@ -55,7 +55,7 @@ categoryはエフェクトを差し込む段階、パス種別は一回の処理
 | `render` | 変形済みモデルを使うシーン描画 | 対象外 |
 | `postprocess` | 描画結果を使った画面加工 | 限定profileで対象 |
 
-現行profileのパスは`postprocess`、`compute`、index bufferを使う限定`rasterizer`。`copy`、`clearUAV`、`clearRTV`、`mipmapgen`、`raytracing`という独立したパス種別は受け入れない。RTVの`clear`指定と、独立したclearパスは区別する。[IRの受入検査](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Effects/FxDayoProgramIR.swift)
+現行profileのパスは`postprocess`、`compute`、index bufferを使う限定`rasterizer`。`copy`、`clearUAV`、`clearRTV`、`mipmapgen`、`raytracing`という独立したパス種別は受け入れない。RTVの`clear`指定と、独立したclearパスは区別する。
 
 ### Viewerの二つの実行経路
 
@@ -71,7 +71,7 @@ categoryはエフェクトを差し込む段階、パス種別は一回の処理
           Jsonnet → 厳密IR → DXCのSPIR-V → SPIRV-CrossのMSL → Metal
 ```
 
-現行loaderは、未知の名前やSHAを理由に一律拒否する方式ではない。ただし構造が既知adapterに合う原文は、先にnative経路へ接続され得る。HLSLの式を書き換えたのに見た目が変わらない場合は、最初に選択された実行方式を確認する。エフェクト読込状況の「方式」で「原文を実行」を選べる。「自動選択」「Native adapter」と区別し、選択をprojectへ保存する。既知契約のterminal拒否は原文指定でも迂回しない。[loader](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Effects/FxDayoEffects.swift)、[registry](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Effects/FxDayoAdapterRegistry.swift)
+現行loaderは、未知の名前やSHAを理由に一律拒否する方式ではない。ただし構造が既知adapterに合う原文は、先にnative経路へ接続され得る。HLSLの式を書き換えたのに見た目が変わらない場合は、最初に選択された実行方式を確認する。エフェクト読込状況の「方式」で「原文を実行」を選べる。「自動選択」「Native adapter」と区別し、選択をprojectへ保存する。既知契約のterminal拒否は原文指定でも迂回しない。
 
 DXCによる言語変換とSPIRV-CrossによるMSL生成は、Dayoのシーン入力や履歴を作らない。それらはViewerのrendererが供給する。変換器の導入だけでは互換runtimeは完成しない。[DXC SPIR-V仕様](https://github.com/microsoft/DirectXShaderCompiler/blob/main/docs/SPIR-V.rst)、[SPIRV-Cross](https://github.com/KhronosGroup/SPIRV-Cross)
 
@@ -147,7 +147,7 @@ float4 ExposurePS(ScreenVertex input) : SV_TARGET
 
 `samplers`の定義から`ImageSampler`の宣言が生成されるため、同名の`SamplerState`をHLSLへ重複宣言しない。`RTV`を省略したパスは既定出力へ書く。postprocessのvertex入力は`float4 POSITION`と`float2 TEXCOORD`で、最初の例ではこの二つをそのまま渡す。`SV_VertexID`だけで三角形を生成する別形式は、現行Viewerのpostprocess入力契約に合わない。
 
-Viewerの原文実行位置はHQ ToonのHDRトーンマップ前なので、RGBを2倍にしても最終表示の各画素値が2倍になるとは限らない。中間HDR値は1を超えてよい。ここで`saturate(color.rgb)`や独自のガンマ変換を入れると、後段のトーンマップへ渡す情報を変える。[実行器](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Renderer/MetalFxDayoExecutor.swift)、[通常renderer](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Renderer/MetalModelView.swift)
+Viewerの原文実行位置はHQ ToonのHDRトーンマップ前なので、RGBを2倍にしても最終表示の各画素値が2倍になるとは限らない。中間HDR値は1を超えてよい。ここで`saturate(color.rgb)`や独自のガンマ変換を入れると、後段のトーンマップへ渡す情報を変える。
 
 ### MikuMikuDayoで確認する
 
@@ -214,9 +214,9 @@ VMDモーフと手動値
   → 全パス
 ```
 
-現行source programは`(self)`の`float`だけに対応し、モーフ名がない、重複する、値が非有限なら拒否する。別PMXの名前指定、ボーン位置、行列、controller配列を使うDayo effectは、そのままでは対象外。[controller検査](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Effects/FxDayoSceneProfile.swift)
+現行source programは`(self)`の`float`だけに対応し、モーフ名がない、重複する、値が非有限なら拒否する。別PMXの名前指定、ボーン位置、行列、controller配列を使うDayo effectは、そのままでは対象外。
 
-controller内の`desc`と`slider`も現行の厳密IRでは受け入れない。Dayoの`desc`は説明文だが、`slider`には範囲・既定値・対数／整数入力の指定があり、配布実装は既定値をmorphへ接続する。これらを削って定義を通すだけでは、元の操作値を再現したことにならない。ColorGradingSDRのように既定値やVMDが見た目へ影響する素材では、初期値、既存キー、手動値、resetの優先関係まで確認する。[1.30のcontrollerと既定値の調査](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-14-fxdayo-postprocess-research/COMPATIBILITY.md)
+controller内の`desc`と`slider`も現行の厳密IRでは受け入れない。Dayoの`desc`は説明文だが、`slider`には範囲・既定値・対数／整数入力の指定があり、配布実装は既定値をmorphへ接続する。これらを削って定義を通すだけでは、元の操作値を再現したことにならない。ColorGradingSDRのように既定値やVMDが見た目へ影響する素材では、初期値、既存キー、手動値、resetの優先関係まで確認する。
 
 手動スライダーだけでなく、VMDの0・中間・最大値、group/flip経由、同じPMXの二個体で異なる値、seek後と動画出力の値を確認する。二個体は同じ原文を共有していても、controllerと履歴の可変状態を共有してはならない。
 
@@ -261,7 +261,7 @@ attachment開始時のScreenTexture → Exposure → ExposureBuffer → Tint →
 
 現行Viewerの`ScreenTexture`はattachmentの開始時点の画面であり、同じattachment内でパスを実行するたびに直前の出力へ置き換わるものではない。後続パスは前段が書いたtexture名を明示して読む。別attachmentへ進む際には前attachmentの出力が次の入力になる。
 
-この境界は、Dayo 1.30がeffectごとに出力を入力へcopyする構造と一致する。汎用互換性を広げる際も、ScreenTextureをpassごとに自動更新する変更は行わない。[Dayo／Viewerの接続比較](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-14-fxdayo-postprocess-research/COMPATIBILITY.md)
+この境界は、Dayo 1.30がeffectごとに出力を入力へcopyする構造と一致する。汎用互換性を広げる際も、ScreenTextureをpassごとに自動更新する変更は行わない。
 
 同じパスで同じtextureを読みながらRTVへ書かない。二枚を交互に使うか、別の出力資源を設ける。`clear:false`はその資源の内容が既に有効であるときに使う。特に条件付きパスの後段では、producerがスキップされた場合の内容を設計する。現行版が未書込み資源の意味まで全て静的保証するとは扱わない。
 
@@ -290,11 +290,11 @@ Viewerの現行接続:
   HQのHDR画像 → 原文postprocess chain → Viewerのtone mapper → 出力
 ```
 
-このため原文ACESの後に再びACESを掛ける、SDR向けの処理へHDRを渡す、といった意味の違いが起こり得る。Dayoの`renDayo.h`末尾にはtone mappingというコメントがあるが、対応する`background.hlsl`はgamma変換とclamp／出力色空間を扱う。コメントだけからACES二重適用が両アプリ共通と判断しない。Viewer側の実処理は[MetalEffectStack.swift](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Renderer/MetalEffectStack.swift)の`applyTonemapper`を参照する。
+このため原文ACESの後に再びACESを掛ける、SDR向けの処理へHDRを渡す、といった意味の違いが起こり得る。Dayoの`renDayo.h`末尾にはtone mappingというコメントがあるが、対応する`background.hlsl`はgamma変換とclamp／出力色空間を扱う。コメントだけからACES二重適用が両アプリ共通と判断しない。Viewerは原文処理の後にトーンマップを行うため、原文側の色変換と重ねる場合は順序を確認する。
 
 未知HLSLの色域やtone mapperをファイル名だけで判定しない。将来の拡張では、scene-linear／display-linear／最終encodeの境界とtone mappingのownerを明示する必要がある。作者の宣言やproject側のchain設定で原文を保持する案は**研究段階**であり、現行UIに任意の挿入位置を選ぶ機能があるわけではない。
 
-DayoのppIn／ppOutはRGBA32F、Viewerの標準原文入出力はRGBA16Fである。色変換順序に加え、精度・HDR値域・alphaも別々に比較する。具体的なsource位置・hashは[互換性研究と環境記録](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-14-fxdayo-postprocess-research/README.md)に保存した。今回、この構造差を画像差として測定してはいない。
+DayoのppIn／ppOutはRGBA32F、Viewerの標準原文入出力はRGBA16Fである。色変換順序に加え、精度・HDR値域・alphaも別々に比較する。この概要は当時のコードと環境の照合に基づく。今回、この構造差を画像差として測定してはいない。
 
 ### computeの寸法
 
@@ -315,9 +315,9 @@ void CS(uint3 tid : SV_DispatchThreadID)
 
 group barrierがあるshaderで一部スレッドだけ早期returnする設計は別途検討が必要である。ホストが自動でguardを差し込む、dispatchを切り捨てる、余剰bufferを作る方法を、原文と同じ意味とみなしてはならない。
 
-元MotionBlurの初期化は、標準定数で概ね`幅×高さ/16`要素を1024スレッド単位で処理する。1024×576なら36,864要素で36 groupとなるが、1920×1080は129,600要素で1024の倍数にならない。build402では後者と3840×2160を拒否する。この制約は「全`.fxdayo`が1080p非対応」という意味ではない。[既存の実装・検証記録](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-06-motionblur-generic-proof-plan/IMPLEMENTATION.md)
+元MotionBlurの初期化は、標準定数で概ね`幅×高さ/16`要素を1024スレッド単位で処理する。1024×576なら36,864要素で36 groupとなるが、1920×1080は129,600要素で1024の倍数にならない。build402では後者と3840×2160を拒否する。この制約は「全`.fxdayo`が1080p非対応」という意味ではない。
 
-2026-10-14のコード確認でも[FxDayoResourceBudget](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Effects/FxDayoResourceBudget.swift)の倍数検査は残っている。Dayo 1.30は切上げdispatchを使うため、今後は元shaderの越境アクセスとbarrierを調べたうえで意味の一致を検証する。通常解像度と端数解像度は個別の試験caseにし、教材の1080p成功をMotionBlurの1080p成功へ読み替えない。
+2026-10-14のコード確認でもdispatch要素数の倍数検査は残っている。Dayo 1.30は切上げdispatchを使うため、今後は元shaderの越境アクセスとbarrierを調べたうえで意味の一致を検証する。通常解像度と端数解像度は個別の試験caseにし、教材の1080p成功をMotionBlurの1080p成功へ読み替えない。
 
 ## 条件式と互換性上の注意
 
@@ -331,7 +331,7 @@ v0.56.20はDayo 1.30の`PassCond`と同じく、条件配列の全要素をAND�
 | `["OnLoad \|\| OnResize"]` | loadまたはresize |
 | `["OnLoad", "OnResize"]` | loadかつresize |
 
-イベントは最後に表示確定したcontextから求める。初回はOnStart・OnLoad・OnResize。Viewerの新規session（program・モデル世代・可視性・effect順の変更）はOnStartとOnLoad、寸法変更はOnResize、再生／停止の切替はOnStart。これはDayoのイベント名に対応させたViewerのsession初期化方針であり、Dayoアプリ全体の通知順を完全再現するとの主張ではない。seekだけではこれらを再発行せず、frame差分と前回geometryをリセットする。program・モデル構成が同じなら、寸法が変わっていない資源の内容を保持する。resize時もサイズが同じ絶対寸法bufferなどは保持し、サイズが変わった資源は再生成する。これは積分型effectの過去再現を保証するものではない。[履歴とイベント](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Renderer/DayoFrameHistory.swift)
+イベントは最後に表示確定したcontextから求める。初回はOnStart・OnLoad・OnResize。Viewerの新規session（program・モデル世代・可視性・effect順の変更）はOnStartとOnLoad、寸法変更はOnResize、再生／停止の切替はOnStart。これはDayoのイベント名に対応させたViewerのsession初期化方針であり、Dayoアプリ全体の通知順を完全再現するとの主張ではない。seekだけではこれらを再発行せず、frame差分と前回geometryをリセットする。program・モデル構成が同じなら、寸法が変わっていない資源の内容を保持する。resize時もサイズが同じ絶対寸法bufferなどは保持し、サイズが変わった資源は再生成する。これは積分型effectの過去再現を保証するものではない。
 
 scene-v1では、最初の読取りより後に無条件writerがある循環履歴資源を初回0で開始する。このViewer固有の既存初期値を`FXD-RESOURCE-ZERO-HISTORY`で明示する。一般の初期化passが実行されず後段がresourceを読むと、`FXD-RESOURCE-UNINITIALIZED`で停止する。同じpassのtexture読取り・出力は`FXD-RESOURCE-FEEDBACK`で拒否する。検査はresource単位であり、shaderがbufferの全要素を書いたことやGPU上の停止性までは証明しない。
 
@@ -339,7 +339,7 @@ scene-v1では、最初の読取りより後に無条件writerがある循環履
 
 ### 秒とVMD frame
 
-Dayo 1.30の`FrameTime`はVMD frame番号を30で割った秒である。描画が60 HzでもVMD時計は30 frame/秒のまま。現行原文profileはFrameTimeを要求し、RealTimeを使うeffectはそのまま受け入れない。[同梱cb.hlsli](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Resources/Dayo130SDK/cb.hlsli)、[入力ABI](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Renderer/DayoSceneInputs.swift)
+Dayo 1.30の`FrameTime`はVMD frame番号を30で割った秒である。描画が60 HzでもVMD時計は30 frame/秒のまま。現行原文profileはFrameTimeを要求し、RealTimeを使うeffectはそのまま受け入れない。
 
 時刻だけから明るさを求めるなら、たとえば`0.75 + 0.25 * sin(6.2831853 * Dayo::FrameTime)`という式にできる。前回出力へ加算するfeedbackでは、同じframeでもそれまでのsample列で結果が変わる。両者を同じ「時間依存」として扱わない。
 
@@ -347,7 +347,7 @@ Dayo 1.30の`FrameTime`はVMD frame番号を30で割った秒である。描画�
 
 ### 履歴の確定
 
-現行Viewerは、候補のGPU処理が完了しただけではlive履歴を更新しない。同じ表示transaction、全ownerの表示確定、正のactual-present時刻が成立した候補を次の基準にする。表示されなかった候補や失敗した候補の状態を次へ混ぜない。[DayoFrameHistory](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Renderer/DayoFrameHistory.swift)
+現行Viewerは、候補のGPU処理が完了しただけではlive履歴を更新しない。同じ表示transaction、全ownerの表示確定、正のactual-present時刻が成立した候補を次の基準にする。表示されなかった候補や失敗した候補の状態を次へ混ぜない。
 
 seekと再生状態の切替では、前回geometryとframe差分を再初期化する。program・モデル世代・可視性・effect順の変更では資源候補を再生成し、resizeでは寸法が一致する資源だけ前回内容を引き継ぐ。過去を積分する任意effectをseek先で再現する保証はない。積分型effectには始点からの再実行やcheckpointなど別の契約が必要になる。
 
@@ -355,7 +355,7 @@ seekと再生状態の切替では、前回geometryとframe差分を再初期化
 
 動画はliveの可変履歴から独立して評価する。出力rateを`num/den` fpsとすると、出力frame `n`のPTSは`n×den/num`秒、対応するVMD frameは`開始frame+n×30×den/num`で求める。履歴effectのsample列がliveと異なれば、同じframe番号でも画素一致は自動では成立しない。
 
-現行source programは不透明出力を対象とする。実行中effectのresource・encoder・GPU失敗を、effectを省いた成功動画へ置き換えない。既存ファイルの置換は全処理の成功後に行う。[MovieExportSession](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Export/MovieExportSession.swift)、[書出し契約](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/skills/mmd-deterministic-movie-export-qa/references/movie-export-rules.md)
+現行source programは不透明出力を対象とする。実行中effectのresource・encoder・GPU失敗を、effectを省いた成功動画へ置き換えない。既存ファイルの置換は全処理の成功後に行う。
 
 ## シーン入力とMetal変換の境界
 
@@ -369,7 +369,7 @@ seekと再生状態の切替では、前回geometryとframe差分を再初期化
 | `IB` | モデル別のindex buffer配列 | IDとモデルtableの同じ世代を使う |
 | `ViewCB` | camera、model数、FrameTime系、解像度、sample、一部event等 | headerに宣言があってもすべて参照可能ではない |
 
-ViewCBの`RealTime`、mouse、照明等、TLAS、任意bindless texture、汎用material tableは初期profileの対応範囲外。型付きSPIR-Vのmemberアクセスも検査されるため、別名の変数を経由して参照すれば対応になるわけではない。[reflection](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Effects/FxDayoCompiledProgram.swift)、[member契約](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Effects/FxDayoVertexAccessContract.swift)
+ViewCBの`RealTime`、mouse、照明等、TLAS、任意bindless texture、汎用material tableは初期profileの対応範囲外。型付きSPIR-Vのmemberアクセスも検査されるため、別名の変数を経由して参照すれば対応になるわけではない。
 
 HLSLの`register(tN, spaceM)`はMetalのtexture番号と同義ではない。現行compilerはregister種別とspaceを分離して変換し、reflectionで衝突や型を照合する。作者は同梱system resourceを自己流のregisterで再宣言せず、Dayo headerと定義から生成される宣言を使う。
 
@@ -399,7 +399,7 @@ HLSLの`register(tN, spaceM)`はMetalのtexture番号と同義ではない。現
 
 ### v0.56.42の追加profileと色設定
 
-`dayo130.postprocess.v2`は共通2D機能と資源操作を追加した契約で、scene geometryが不要とreflectionで確認できる場合は`dayo130.color.v2`を選ぶ。新規原文でもv1へ適合する場合は従来のv1を選び、保存packageのprofileは保持する。20原文の段階別結果と検証範囲は[実装記録](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-14-fxdayo-runtime-v05642/IMPLEMENTATION.md)に分ける。
+`dayo130.postprocess.v2`は共通2D機能と資源操作を追加した契約で、scene geometryが不要とreflectionで確認できる場合は`dayo130.color.v2`を選ぶ。新規原文でもv1へ適合する場合は従来のv1を選び、保存packageのprofileは保持する。20原文すべての実行・画像同値が成立したことを示すものではない。
 
 | v2追加項目 | 意味と制約 |
 |---|---|
@@ -433,13 +433,13 @@ MyEffect/
   README.md
 ```
 
-現行runtimeは取り込み時の原文と対応する推移的依存を固定し、保存projectへ含める。保存用の`.vvfm-fxdayo.json`は内部packageであり、作者用の新しいDayo文法や手編集用のmanifestではない。Jsonnetが生成する`fx.code`のincludeも同じrootから捕捉する。取り込み後、compilerが未収録のファイルを参照することは拒否する。[SourcePackage](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Effects/FxDayoSourcePackage.swift)
+現行runtimeは取り込み時の原文と対応する推移的依存を固定し、保存projectへ含める。保存用の`.vvfm-fxdayo.json`は内部packageであり、作者用の新しいDayo文法や手編集用のmanifestではない。Jsonnetが生成する`fx.code`のincludeも同じrootから捕捉する。取り込み後、compilerが未収録のファイルを参照することは拒否する。
 
 依存が親フォルダにある場合は「依存ファイルのrootを指定」で範囲を明示する。自動的に親へ探索範囲を広げない。`importstr`はUTF-8の文字列、`importbin`は生bytesとして扱い、その中身を別のimportとして解析しない。
 
-今回の20本には、原文より上の`hlsl/`、FXAAの`.fxsub`、FogのDDS・補助PMX、GlareのHDR画像等がある。includeを捕捉できることと、画像resourceや外部controllerを実行器が扱えることは別である。AbbeFeedbackのquoted include 2本は配布配置と合わず、root指定では直らない。大文字小文字だけが違うpathは、case-insensitiveな環境で見つかっても、case-sensitiveなpackage保存・復元で再確認する。[依存台帳](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-14-fxdayo-postprocess-research/CORPUS.json)
+今回の20本には、原文より上の`hlsl/`、FXAAの`.fxsub`、FogのDDS・補助PMX、GlareのHDR画像等がある。includeを捕捉できることと、画像resourceや外部controllerを実行器が扱えることは別である。AbbeFeedbackのquoted include 2本は配布配置と合わず、root指定では直らない。大文字小文字だけが違うpathは、case-insensitiveな環境で見つかっても、case-sensitiveなpackage保存・復元で再確認する。
 
-元フォルダを失ったprojectでは「採用済み原文と依存を書き出す」で新しいフォルダへ展開できる。`source/`内のentryを編集元に選び、必要なら展開先の`source/`を依存rootへ指定する。既存フォルダは上書きしない。保存projectを編集元sourceの自動更新先として使わない。原文を更新した版と、既存project内の取り込み済み版は別のsnapshotである。復元では原文実行の意図を保持し、再コンパイル失敗をnative近似へ無言で変更しない。[project保存](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Project/ProjectPayloadArchiveIO.swift)
+元フォルダを失ったprojectでは「採用済み原文と依存を書き出す」で新しいフォルダへ展開できる。`source/`内のentryを編集元に選び、必要なら展開先の`source/`を依存rootへ指定する。既存フォルダは上書きしない。保存projectを編集元sourceの自動更新先として使わない。原文を更新した版と、既存project内の取り込み済み版は別のsnapshotである。復元では原文実行の意図を保持し、再コンパイル失敗をnative近似へ無言で変更しない。
 
 ## 失敗を切り分ける
 
@@ -504,9 +504,9 @@ MyEffect/
 | Dayo比較 | 同一scene／時刻／controller／色条件の基準画像 | 対象caseでの画像互換 |
 | 性能・耐久 | 同一ReleaseのA/B、tail、VMD時計、pose age、CPU/GPU・資源、10分 | 測定条件内での性能・安定性 |
 
-現存する[ProgramTests](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Tests/VMDViewerTests/FxDayoProgramTests.swift)は依存・IR・ABI等、[ProgramGPUTests](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Tests/VMDViewerTests/FxDayoProgramGPUTests.swift)は合成GPUと教材、[SceneIntegrationTests](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Tests/VMDViewerTests/FxDayoSceneIntegrationTests.swift)はPMX・live・export、[FailsafeTests](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Tests/VMDViewerTests/FxDayoFailsafeTests.swift)は故障・隔離を扱う。ただし外部原文の7 pass／12 stage試験はMotionBlur向けで、任意の20本へそのまま差し替えるrunnerではない。
+当時の検証は、依存・構造・入力形式、合成GPUと教材、PMX・再生・書出しの結合、故障・隔離に分けていた。ただし外部原文の7 pass／12 stage試験はMotionBlur向けで、任意の20本へそのまま差し替えるrunnerではない。
 
-GPU／統合群の既存opt-inは`VMD_FXDAYO_SOURCE`と`VMD_FXDAYO_TOOLCHAIN`、GUIは追加の`VMD_FXDAYO_GUI=1`である。toolchain環境変数を明示rootとして使う試験と、bundle／DEBUGの既定toolchainを探すproduction経路は異なる。実際に使ったbinaryとSDKのhashを記録する。2026-10-14にはローカルtoolchain 16ファイルとSDK 6 headerのmanifest一致を読取確認したが、再実行してはいない。[環境記録](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-14-fxdayo-postprocess-research/ENVIRONMENT.json)
+GPU／統合群の既存opt-inは`VMD_FXDAYO_SOURCE`と`VMD_FXDAYO_TOOLCHAIN`、GUIは追加の`VMD_FXDAYO_GUI=1`である。toolchain環境変数を明示rootとして使う試験と、bundle／DEBUGの既定toolchainを探すproduction経路は異なる。実際に使ったbinaryとSDKのhashを記録する。2026-10-14にはローカルtoolchain 16ファイルとSDK 6 headerのmanifest一致を読取確認したが、再実行してはいない。
 
 未知原文の証明には、整合した改名で出力が変わらないこと、簡単な式変更で対象画素が変わること、include変更でcacheが更新されることを使う。source owner・program identity・実行pass・採用出力を記録し、nativeやbaselineへの退避を原文成功へ数えない。既知adapterのterminal拒否を回避する目的の改名とは区別する。
 
@@ -514,7 +514,7 @@ GPU／統合群の既存opt-inは`VMD_FXDAYO_SOURCE`と`VMD_FXDAYO_TOOLCHAIN`、
 
 exportは開始時の拒否と、1 frame以上をappendした後のactive resource／encoder／GPU失敗を分ける。後者でもrun失敗、progress 1.0未通知、既存finalのhash保持、temporary cleanupを確認する。GPU比較の浮動小数点許容差はformatと値域からcaseごとに定め、既存教材の閾値を全素材へ流用しない。
 
-20件corpus runner、汎用case manifest、Dayo基準画像の比較環境は**構築案**であり、今回追加した機能ではない。最初に台帳とproduction受入診断、次に小さなGPU fixture、その後に通常経路・Dayo比較・性能へ進む。[具体的な構築案と受入条件](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-14-fxdayo-postprocess-research/TEST_ENVIRONMENT.md)
+20件corpus runner、汎用case manifest、Dayo基準画像の比較環境は**構築案**であり、今回追加した機能ではない。最初に台帳とproduction受入診断、次に小さなGPU fixture、その後に通常経路・Dayo比較・性能へ進む。
 
 ## 既存effectを両環境へ持ち込む
 
@@ -541,13 +541,13 @@ native adapterはViewer本体の開発を伴う。作者が`.fxdayo`だけを書
 4. deformでは出力がどの段階の頂点かを固定する。完成したskin済み頂点なら既定skinを重ねず、current/previousを別々に供給する。
 5. controllerとposeの世代、GPU失敗、保存復元、画像と数値を確認する。
 
-sourceのbyte一致が必要な既知adapterでは、コメントや空白の編集でもhashが変わる。動作例に合わせるための安易な整形や改名判定を入れず、元契約と選択されたownerを確認する。[adapter設計契約](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/skills/mmd-fxdayo-adapter-engineering/references/adapter-resolution-contract.md)、[登録時の確認事項](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/skills/mmd-fxdayo-adapter-engineering/references/native-profile-checklist.md)
+sourceのbyte一致が必要な既知adapterでは、コメントや空白の編集でもhashが変わる。動作例に合わせるための安易な整形や改名判定を入れず、元契約と選択されたownerを確認する。
 
 ## 同梱postprocess 20本から見える拡張課題
 
 2026-10-14にDayo 1.30の`postprocess/`以下を`Test/`も含めて再帰列挙した。全20本に同名PMXが存在する。単純JSONとして読めたのは7本、コメント・末尾commaを読取時だけ除いた構造整理では17本、Jsonnetの式等が残るものは3本だった。これは構文・実行の合否や「17本対応」を意味しない。今回Jsonnet評価、compile、GPU実行、PMX内部のcontroller解決は行っていない。
 
-次表は名前別adapterを追加する分類ではなく、共通能力を検証するための素材群である。完全なhash、20行の個別制約、依存とsource位置は[互換性研究](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-14-fxdayo-postprocess-research/COMPATIBILITY.md)と[素材台帳](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-14-fxdayo-postprocess-research/CORPUS.json)を参照する。
+次表は名前別adapterを追加する分類ではなく、共通能力を検証するための素材群である。同梱postprocess 20本を静的に分類した概要であり、各素材がそのまま実行できることを示す表ではない。
 
 | 素材群 | 件数 | 共通の研究課題 |
 |---|---:|---|
@@ -565,19 +565,19 @@ Fog／Fluidは単純な画面加工と分けて設計する。共有resourceは�
 
 ## 参照資料と調査基準
 
-初稿の調査日は2026-10-06。Viewerの当時のHEADは`6c83be79a10eda0a15a2da6e5fda103d2b49e274`で、未コミット変更を含む。当時読んだファイルのSHAは[初稿の参照snapshot](SOURCE_SNAPSHOT.json)へ保持する。2026-10-14の研究は別の[基準](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-14-fxdayo-postprocess-research/BASELINE.json)・[素材台帳](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-14-fxdayo-postprocess-research/CORPUS.json)・[環境記録](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-14-fxdayo-postprocess-research/ENVIRONMENT.json)に結び付け、初稿のsnapshotを上書きしない。
+初稿の調査日は2026-10-06。Viewerの当時のHEADは`6c83be79a10eda0a15a2da6e5fda103d2b49e274`で、未コミット変更を含む。当時読んだファイルのSHAは[初稿の参照snapshot](SOURCE_SNAPSHOT.json)へ保持する。2026-10-14の研究は別時点の20原文・依存・環境の調査であり、初稿のsnapshotを上書きしない。
 
 | 資料 | 根拠に使う範囲 |
 |---|---|
 | [Dayo公式解説](https://github.com/pennennennennennenem/MikuMikuDayo/blob/main/tutorial/fxdayo.md) | 形式、category、起動方式の概要。公開mainを配布1.30と同一とは扱わない |
 | ローカルDayo 1.30の`src/YRZFx.ixx` | 定義生成、controller、`ParsePassCond`と`PassCond`。pathとhashはsnapshotに記録 |
 | ローカル1.30の`postprocess/motionblur/MotionBlur.fxdayo` | system include、複数pass、履歴、端数dispatchの具体例 |
-| [同梱SDK manifest](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Resources/Dayo130SDK/manifest.json) | headerの出典とhash。対応upstream commitは未確認 |
-| [v0.56.16実装記録](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-06-motionblur-generic-proof-plan/IMPLEMENTATION.md) | 既存の限定実行・保存・動画検証。今回の再試験結果ではない |
-| [build402 Release記録](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-06-motionblur-generic-proof-plan/RELEASE.md) | 同梱compiler、署名、GUI読込・1024×576短尺出力。Dayo画像比較と正式性能は未受入 |
-| [2026-10-14 postprocess研究](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-14-fxdayo-postprocess-research/README.md) | 20原文の静的要求、現行コードの制約、色処理・依存・テスト環境案。動作試験ではない |
+| 同梱SDK manifest | headerの出典とhash。対応upstream commitは未確認 |
+| v0.56.16実装記録 | 既存の限定実行・保存・動画検証。今回の再試験結果ではない |
+| build402 Release記録 | 同梱compiler、署名、GUI読込・1024×576短尺出力。Dayo画像比較と正式性能は未受入 |
+| 2026-10-14 postprocess研究 | 20原文の静的要求、現行コードの制約、色処理・依存・テスト環境案。動作試験ではない |
 
-v0.56.20では`STATUS.md`と旧adapter文書の全面未実装という記述も更新した。当時の実行根拠は[v0.56.20の実装記録](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-07-fxdayo-interface-v05620/IMPLEMENTATION.md)へ保持し、現在の能力は実コードで再確認する。今回の更新はWindows版Dayoの教材実行・同条件画像比較、20本の動作、正式性能を新たに検証したものではない。
+v0.56.20では`STATUS.md`と旧adapter文書の全面未実装という記述も更新した。当時は教材の中間HDR値と限定された通常操作を確認しており、後続版の全面検証へ繰り越さない。今回の更新はWindows版Dayoの教材実行・同条件画像比較、20本の動作、正式性能を新たに検証したものではない。
 
 
 ## 停止・再試行・保存（v0.56.21で導入）
@@ -590,8 +590,8 @@ Metal／LE、RealTime、AA、native混在、材質や内部寸法の不適合は
 
 通常画像と原文処理は別commandで実行する。原文が表示期限に間に合わない場合は同じ姿勢の通常画像を使用し、500 ms watchdogでは新規試行を停止する。timerでGPUを取消したり未完了資源を再利用したりはしない。共有GPUのhangやdevice失効で通常描画も失敗する場合まで、無停止を保証するものではない。
 
-原文packageの保存はschema25で導入し、schema27で実行ON／OFF・承認fingerprintの保存を追加した。v0.56.42のproject全体のcurrent schemaは33で、明示した色契約を保存する場合はminimumReaderVersion33を要求する。旧nilの色設定は従来のHDR契約とreader条件を保持する。正常なpackageはcompilerが使えなくても復元できる。CRC／hashやpathの破損は引き続きproject読込失敗とする。失敗・未完了試行の記録は端末内へ保存し、同じ環境での自動再実行を抑止する。[保存形式](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Scene/SceneDocument.swift)、[reader検査](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/Sources/VMDViewer/Project/ProjectArchiveReader.swift)
+原文packageの保存はschema25で導入し、schema27で実行ON／OFF・承認fingerprintの保存を追加した。v0.56.42のproject全体のcurrent schemaは33で、明示した色契約を保存する場合はminimumReaderVersion33を要求する。旧nilの色設定は従来のHDR契約とreader条件を保持する。正常なpackageはcompilerが使えなくても復元できる。CRC／hashやpathの破損は引き続きproject読込失敗とする。失敗・未完了試行の記録は端末内へ保存し、同じ環境での自動再実行を抑止する。
 
 動画は停止中の有効な原文があると既定で開始を拒否する。必要な場合だけ動画書出し画面の「停止中の効果を除いて書き出す」を選び、表示された除外対象を確定する。OFFの効果は通常どおり実行しない。残った効果の実行途中の失敗は書出し失敗となり、不完全な完成動画へ置き換えない。
 
-詳細は[フェイルセーフ設計](FAILSAFE_DESIGN.md)と[実装・検証記録](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-07-fxdayo-failsafe-v05621/IMPLEMENTATION.md)を参照する。
+詳細は[フェイルセーフ設計](FAILSAFE_DESIGN.md)を参照する。

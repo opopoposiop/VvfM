@@ -35,8 +35,8 @@ subject to the following restrictions:
 ### PMX 2.1 SoftBody subset (v0.56.0)
 
 The required BulletSoftBody subset (34 headers and 9 C++ files) is from the
-official Bullet `3.25` tag. Original file hashes are recorded in
-[the provenance manifest](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-09-29-pmx21-conformance-review/BULLET_SOFTBODY_UPSTREAM.json).
+official Bullet `3.25` tag. The subset adds PMX cloth and rope simulation;
+the modified behavior and limits are summarized below.
 `BulletSoftBody/btSoftBody.cpp` is modified by VMD Viewer: a symmetric
 pseudoinverse handles singular planar-cloth / collinear-rope pose and cluster
 inertia matrices. The change is marked in that file; it is not an unmodified
@@ -50,9 +50,7 @@ VMD Viewer modifies the vendored Bullet 3.25 files `btSoftBody.h/.cpp`,
 contact and motor rules per world/body. Alterations are marked in source.
 The original notices and the numerical protections above remain intact.
 The app still links only the bundled 3.25-based library; this is not a full
-Bullet 2.75 replacement. Original reference provenance and limits are in
-[the comparison](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-09-30-bullet-275-325-pmx21-comparison/REVIEW.md)
-and [implementation](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-09-30-bullet-mode-v0561/IMPLEMENTATION.md).
+Bullet 2.75 replacement and does not guarantee MMD-equivalent physics.
 
 ## ZIPFoundation 0.9.20
 
@@ -119,8 +117,8 @@ THE SOFTWARE.
 ## Holographic / ikHolographic
 
 - 原エフェクト: ikeno（@ikeno_mmd）。使用・改変・再配布の許可は同梱の `Sources/VMDViewer/Resources/BuiltinEffects/Holographic/original_readme.txt`（CP932）を参照。配布appでは `VMDViewerForMac_VMDViewer.bundle/BuiltinEffects/Holographic/` に収容する。
-- `.fxdayo`契約・Metal移植の参照元: [opopoposiop/MMDayo_Holographic](https://github.com/opopoposiop/MMDayo_Holographic)、commit `d4b8960db2d27d49ff1b856a783231e969ceac63`。
-- `Sources/VMDViewer/Effects/IkHolographicContract.generated.swift`、Holographic関連実装・テスト素材は同repoの配布patchを基に現行Viewerへ統合・修正。原作者のREADMEを変更せず保持する。
+- `.fxdayo`の定義とMetalへの移植は、非公開のMMDayo_Holographic開発資料（記録ID `d4b8960db2d27d49ff1b856a783231e969ceac63`）を基にしています。原エフェクトをViewerの描画へ接続した近似で、MME全体の互換を保証しません。
+- `Sources/VMDViewer/Effects/IkHolographicContract.generated.swift`、Holographic関連実装・テスト素材は同開発資料の移植patchを基に現行Viewerへ統合・修正。原作者のREADMEを変更せず保持する。
 
 ## Rhinestone
 
@@ -153,7 +151,6 @@ The reference header credits full.fx v1.4 by 舞力介入P as its base.
 - Author's explanation: https://note.com/mashimashi_note/n/n2c2144638054
 - Reference readme terms: 「エフェクト自体の使用・改変・再配布は自己責任で実行してください。」
 - Modified implementation: Sources/VMDViewer/Renderer/ToonShadowColorShader.swift
-- [Reference hashes and implementation scope](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-08-toon-shadow-color/IMPLEMENTATION.md)
 
 This is a modified Metal implementation of the standard automatic shadow-color
 transform, with guarded achromatic conversion and HQ color-space/HDR handling.

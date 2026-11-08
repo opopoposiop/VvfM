@@ -1,6 +1,6 @@
 # .fxdayo開発者向け資料
 
-MikuMikuDayo 1.30の原文と、VMD Viewerの専用adapter・限定原文runtimeを理解するための資料です。2026年10月19日に確認した[公開main `3620662`](https://github.com/opopoposiop/VMDviewer_for_Mac/tree/36206626a7214ad8b8de5bba362189a38c285529)（v0.56.49／build453）を参照しています。VvfMでの配布公開や、Dayoとの画像一致を示すものではありません。
+MikuMikuDayo 1.30の原文と、VMD Viewerの専用adapter・限定原文runtimeを理解するための資料です。基礎資料は2026年10月19日に確認した開発版v0.56.49／build453（記録ID `3620662`）です。後続版の概要を以下へ追記しています。VvfMでの配布公開や、Dayoとの画像一致を示すものではありません。
 
 | 目的 | 入口 |
 |---|---|
@@ -16,18 +16,20 @@ MikuMikuDayo 1.30の原文と、VMD Viewerの専用adapter・限定原文runtime
 
 開発者ガイド本文の「現行」は主にv0.56.37の研究時点を指し、v0.56.42の追記を含みます。計画の旧P2／P3や研究のR0〜R7を、現行機能の一覧や全項目完成の宣言として読まないでください。
 
-- **v0.56.42**：v2 profileへ共通定義、pass macro、対応するBORDER／UNORM、self bool／int、2D／3D texture、mip・clear／copy等を追加。不透明8bit PNG／BMPの依存保存と、HDR／tone mapper／表示linearの担当・順序を検査します。[実装と未完了項目](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-14-fxdayo-runtime-v05642/IMPLEMENTATION.md)。
-- **v0.56.46**：色処理専用原文とFXAAの明示profile併用、骨controller、UUIDで指定する別個体controllerを追加しました。資料中の「骨・外部個体は未対応」は、この後続対応と分けて読んでください。[採用範囲](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-17-research-implementation-v05646/CONTROLLERS.md)／[全体の実装・検証](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-17-research-implementation-v05646/IMPLEMENTATION.md)。
-- **v0.56.47以降**：通常のeffect候補失敗とGPU device障害を区別します。device障害では描画・背景GPU処理・MetalFX生成・動画出力を再起動まで止め、保存は維持します。「効果を除外すれば常に描画継続できる」という保証ではありません。[GPU障害時の停止](https://github.com/opopoposiop/VMDviewer_for_Mac/blob/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-18-gpu-failure-stop/README.md)。
+- **v0.56.42**：v2 profileへ共通定義、pass macro、対応するBORDER／UNORM、self bool／int、2D／3D texture、mip・clear／copy等を追加。不透明8bit PNG／BMPの依存保存と、HDR／tone mapper／表示linearの担当・順序を検査します。
+- **v0.56.46**：色処理専用原文とFXAAの明示profile併用、骨controller、UUIDで指定する別個体controllerを追加しました。資料中の「骨・外部個体は未対応」は、この後続対応と分けて読んでください。
+- **v0.56.47以降**：通常のeffect候補失敗とGPU device障害を区別します。device障害では描画・背景GPU処理・MetalFX生成・動画出力を再起動まで止め、保存は維持します。「効果を除外すれば常に描画継続できる」という保証ではありません。
+- **v0.58.1**：エフェクト割り当てのJSON保存・移植と、SSRのCPU準備の更新を追加しました。局所的なCPU処理の短縮と全体の性能受入は分けて扱います。
+- **v0.58.2〜4**：床反射v6はRoughnessを持つ別コントローラを使用します。旧SSR資料のv1〜v4を改名するだけでv6に変わるものではありません。HQ拡張、動画入りプロジェクトの保存と検証の限界は[更新補足](../updates/codex-motion-2026-11-08.md)を参照してください。
 
 任意の端数dispatch、共有Fog／Fluid simulation、すべての描画方式の混在への一般化はできません。構造schemaの通過、解析、compile、GPU実行、実表示、原版との画像同値、正式性能・600秒耐久は別の確認です。JSON Schema 2は旧v1と拡張v2の構造上の上位集合であり、実行の許可や全機能対応を示すものではありません。
 
 ## 取込情報
 
-今回の取込元は上記の公開mainに固定し、開発ブランチの未公開差分は含めていません。開発者ガイド、計画、フェイルセーフ、SSR、教材説明、定義schemaを同期しました。文書へ収録注を追加し、収録外のコード・仕様・検証記録へのリンクは同じ公開コミットへ固定しています。開発元のソースツリーや生ログはVvfMへコピーしていません。
+教材と定義schemaの取込元は上記のv0.56.49参照版です。開発者ガイド、計画、フェイルセーフ、SSR、教材説明には各資料の時点を記しています。2026年11月8日、収録外の非公開コード・仕様・検証記録へのリンクを削除し、動作と制限の概要へ整理しました。開発元のソースツリーや生ログはVvfMへコピーしていません。
 
-3組の教材の `.fxdayo`／PMXと再生成スクリプト、初稿 `SOURCE_SNAPSHOT.json` は、公開mainと同一のbytesを保持しています。snapshotは2026-10-06の初稿の調査対象を示す履歴で、今回の取込コミットへ書き換えていません。
+3組の教材の `.fxdayo`／PMXと再生成スクリプト、初稿 `SOURCE_SNAPSHOT.json` は、取込時の参照版と同一のbytesを保持しています。snapshotは2026-10-06の初稿の調査対象を示す履歴で、今回の取込コミットへ書き換えていません。
 
-v0.56.20の実装・レビュー・Release・GUI記録は、[開発元の当時の資料](https://github.com/opopoposiop/VMDviewer_for_Mac/tree/36206626a7214ad8b8de5bba362189a38c285529/reports/2026-10-07-fxdayo-interface-v05620)を参照してください。初回取込は2026-10-07、基準HEAD `16e20241e84755c78cb180b3e1f190dc7c73bfaa` の未コミット変更を含む作業ツリー由来でした。記録中の未公開・未検証という説明や、転載していない `evidence/` の名前を、現行版の結果へ読み替えないでください。
+v0.56.20では作者インターフェイスのP0・P1、教材GPU処理、限定条件の実機操作を確認しました。Dayoとの画像同値や正式性能の全面受入を示す記録ではありません。初回取込は2026-10-07、基準HEAD `16e20241e84755c78cb180b3e1f190dc7c73bfaa` の未コミット変更を含む作業ツリー由来でした。記録中の未公開・未検証という説明や、転載していない `evidence/` の名前を、現行版の結果へ読み替えないでください。
 
 検証件数・GUI・性能の結果は開発元の記録を参照したもので、今回の文書更新ではアプリのビルド・テスト・実機試験を再実施していません。ライセンスと同梱toolchainの通知は[第三者ライセンス](../../THIRD_PARTY_NOTICES.md)を確認してください。
