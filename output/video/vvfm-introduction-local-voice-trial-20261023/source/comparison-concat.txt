@@ -1,4 +1,0 @@
-file '../assets/comparison-00.mp4'
-file '../assets/comparison-01.mp4'
-file '../assets/comparison-02.mp4'
-file '../assets/comparison-03.mp4'

@@ -1,28 +1,0 @@
-[aist#0:0/pcm_s16le @ 0x75bcc10180] Guessed Channel Layout: stereo
-Input #0, wav, from 'assets/bgm-original.wav':
-  Duration: 00:03:18.00, bitrate: 1536 kb/s
-  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 48000 Hz, stereo, s16, 1536 kb/s
-Stream mapping:
-  Stream #0:0 -> #0:0 (pcm_s16le (native) -> pcm_s16le (native))
-Press [q] to stop, [?] for help
-Output #0, null, to 'pipe:':
-  Metadata:
-    encoder         : Lavf62.12.102
-  Stream #0:0: Audio: pcm_s16le, 192000 Hz, stereo, s16, 6144 kb/s
-    Metadata:
-      encoder         : Lavc62.28.102 pcm_s16le
-size=N/A time=00:00:16.10 bitrate=N/A speed=31.9x elapsed=0:00:00.50    size=N/A time=00:00:33.30 bitrate=N/A speed=  33x elapsed=0:00:01.00    size=N/A time=00:00:50.50 bitrate=N/A speed=33.4x elapsed=0:00:01.51    size=N/A time=00:01:07.70 bitrate=N/A speed=33.5x elapsed=0:00:02.01    size=N/A time=00:01:24.40 bitrate=N/A speed=33.5x elapsed=0:00:02.52    size=N/A time=00:01:41.10 bitrate=N/A speed=33.4x elapsed=0:00:03.02    size=N/A time=00:01:58.20 bitrate=N/A speed=33.5x elapsed=0:00:03.53    size=N/A time=00:02:15.10 bitrate=N/A speed=33.5x elapsed=0:00:04.03    size=N/A time=00:02:32.00 bitrate=N/A speed=33.5x elapsed=0:00:04.54    size=N/A time=00:02:49.00 bitrate=N/A speed=33.5x elapsed=0:00:05.04    size=N/A time=00:03:06.30 bitrate=N/A speed=33.6x elapsed=0:00:05.54    [Parsed_loudnorm_0 @ 0x75bcc48900] 
-{
-	"input_i" : "-29.17",
-	"input_tp" : "-18.11",
-	"input_lra" : "1.30",
-	"input_thresh" : "-39.32",
-	"output_i" : "-27.93",
-	"output_tp" : "-16.47",
-	"output_lra" : "1.20",
-	"output_thresh" : "-38.03",
-	"normalization_type" : "dynamic",
-	"target_offset" : "-0.07"
-}
-[out#0/null @ 0x75bcc48180] video:0KiB audio:148500KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
-size=N/A time=00:03:18.00 bitrate=N/A speed=33.9x elapsed=0:00:05.84    

@@ -1,36 +1,0 @@
-[transformers] You are using a model of type `qwen3_tts` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
-  Initialized encoder codebooks
-Loaded speech tokenizer from /private/tmp/vvfm-qwen3-tts-base-4bit-20261023/speech_tokenizer
-[94mText:[0m うでのかくどをすこしかえて、おきにいりのぽーずに。
-[94mVoice:[0m None
-[94mSpeed:[0m 1.0x
-[94mLanguage:[0m Japanese
-ICL generation: うでのかくどをすこしかえて、おきにいりのぽーずに。...
-ICL Generation:   0%|          | 0/300 [00:00<?, ?tokens/s]ICL Generation:   0%|          | 1/300 [00:00<01:01,  4.86tokens/s]ICL Generation:   3%|▎         | 8/300 [00:00<00:09, 30.24tokens/s]ICL Generation:   5%|▌         | 15/300 [00:00<00:06, 43.21tokens/s]ICL Generation:   7%|▋         | 22/300 [00:00<00:05, 50.54tokens/s]ICL Generation:  10%|▉         | 29/300 [00:00<00:04, 54.95tokens/s]ICL Generation:  12%|█▏        | 36/300 [00:00<00:04, 58.05tokens/s]ICL Generation:  14%|█▍        | 43/300 [00:00<00:04, 59.72tokens/s]                                                                    ==========
-Duration:              00:00:03.520
-Samples/sec:           67038.4
-Prompt:                44 tokens, 34.9 tokens-per-sec
-Audio:                 84480 samples, 67038.4 samples-per-sec
-Real-time factor:      2.79x
-Processing time:       1.26s
-Peak memory usage:     5.67GB
-Joining 1 audio files
-✅ Audio successfully generated and saving as: /Users/minmin/projects/VvfM/output/video/vvfm-introduction-flat-narration-20261025/assets/flat-scene05-raw.wav
-Saved /Users/minmin/projects/VvfM/output/video/vvfm-introduction-flat-narration-20261025/assets/flat-scene05-raw.wav
-[94mText:[0m りむらいとでりんかくにひかりを、ぶるーむでかがやきを。
-[94mVoice:[0m None
-[94mSpeed:[0m 1.0x
-[94mLanguage:[0m Japanese
-ICL generation: りむらいとでりんかくにひかりを、ぶるーむでかがやきを。...
-ICL Generation:   0%|          | 0/300 [00:00<?, ?tokens/s]ICL Generation:   1%|▏         | 4/300 [00:00<00:07, 39.04tokens/s]ICL Generation:   4%|▎         | 11/300 [00:00<00:05, 53.98tokens/s]ICL Generation:   6%|▌         | 18/300 [00:00<00:04, 58.67tokens/s]ICL Generation:   8%|▊         | 25/300 [00:00<00:04, 61.05tokens/s]ICL Generation:  11%|█         | 32/300 [00:00<00:04, 62.50tokens/s]ICL Generation:  13%|█▎        | 39/300 [00:00<00:04, 62.81tokens/s]ICL Generation:  15%|█▌        | 46/300 [00:00<00:04, 63.28tokens/s]                                                                    ==========
-Duration:              00:00:04.080
-Samples/sec:           85775.5
-Prompt:                51 tokens, 44.7 tokens-per-sec
-Audio:                 97920 samples, 85775.5 samples-per-sec
-Real-time factor:      3.57x
-Processing time:       1.14s
-Peak memory usage:     5.88GB
-Joining 1 audio files
-✅ Audio successfully generated and saving as: /Users/minmin/projects/VvfM/output/video/vvfm-introduction-flat-narration-20261025/assets/flat-scene08-raw.wav
-Saved /Users/minmin/projects/VvfM/output/video/vvfm-introduction-flat-narration-20261025/assets/flat-scene08-raw.wav
-Local synthesis complete. Speech and similarity validation still required.

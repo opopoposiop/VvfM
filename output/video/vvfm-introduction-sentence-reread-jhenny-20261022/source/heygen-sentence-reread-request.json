@@ -1,8 +1,0 @@
-{
-  "voiceId": "9530fac2d1f148f8b57b51b783b0df13",
-  "engine": "heygen_voice",
-  "inputType": "text",
-  "language": "ja",
-  "speed": 1,
-  "text": "ピーエムエックスモデルとブイエムディーモーションを読み込んで、あぷりじょうでリアルタイム再生。"
-}

@@ -1,52 +1,0 @@
-[transformers] You are using a model of type `qwen3_tts` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
-  Initialized encoder codebooks
-Loaded speech tokenizer from /private/tmp/vvfm-qwen3-tts-base-4bit-20261023/speech_tokenizer
-[94mText:[0m 腕の角度を少し変えて、お気に入りのポーズに。
-[94mVoice:[0m None
-[94mSpeed:[0m 1.0x
-[94mLanguage:[0m Japanese
-ICL generation: 腕の角度を少し変えて、お気に入りのポーズに。...
-ICL Generation:   0%|          | 0/300 [00:00<?, ?tokens/s]ICL Generation:   1%|          | 3/300 [00:00<00:10, 28.29tokens/s]ICL Generation:   3%|▎         | 10/300 [00:00<00:05, 49.07tokens/s]ICL Generation:   6%|▌         | 17/300 [00:00<00:05, 54.44tokens/s]ICL Generation:   8%|▊         | 24/300 [00:00<00:04, 56.76tokens/s]ICL Generation:  10%|█         | 31/300 [00:00<00:04, 58.22tokens/s]ICL Generation:  13%|█▎        | 38/300 [00:00<00:04, 58.91tokens/s]                                                                    ==========
-Duration:              00:00:03.360
-Samples/sec:           65359.3
-Prompt:                42 tokens, 34.0 tokens-per-sec
-Audio:                 80640 samples, 65359.3 samples-per-sec
-Real-time factor:      2.72x
-Processing time:       1.23s
-Peak memory usage:     6.06GB
-Joining 1 audio files
-✅ Audio successfully generated and saving as: /Users/minmin/projects/VvfM/output/video/vvfm-introduction-natural-narration-20261025/assets/natural-arm-raw.wav
-Saved /Users/minmin/projects/VvfM/output/video/vvfm-introduction-natural-narration-20261025/assets/natural-arm-raw.wav
-[94mText:[0m トゥーンシェーダー、エイチキューでは、輪郭線や光を調整できます。
-[94mVoice:[0m None
-[94mSpeed:[0m 1.0x
-[94mLanguage:[0m Japanese
-ICL generation: トゥーンシェーダー、エイチキューでは、輪郭線や光を調整できます。...
-ICL Generation:   0%|          | 0/300 [00:00<?, ?tokens/s]ICL Generation:   1%|          | 2/300 [00:00<00:14, 19.99tokens/s]ICL Generation:   3%|▎         | 9/300 [00:00<00:06, 45.22tokens/s]ICL Generation:   5%|▌         | 16/300 [00:00<00:05, 52.85tokens/s]ICL Generation:   8%|▊         | 23/300 [00:00<00:04, 56.21tokens/s]ICL Generation:  10%|█         | 30/300 [00:00<00:04, 58.26tokens/s]ICL Generation:  12%|█▏        | 37/300 [00:00<00:04, 59.58tokens/s]ICL Generation:  15%|█▍        | 44/300 [00:00<00:04, 60.50tokens/s]ICL Generation:  17%|█▋        | 51/300 [00:00<00:04, 61.04tokens/s]ICL Generation:  19%|█▉        | 58/300 [00:01<00:03, 61.23tokens/s]                                                                    ==========
-Duration:              00:00:04.720
-Samples/sec:           69467.6
-Prompt:                59 tokens, 36.2 tokens-per-sec
-Audio:                 113280 samples, 69467.6 samples-per-sec
-Real-time factor:      2.89x
-Processing time:       1.63s
-Peak memory usage:     7.03GB
-Joining 1 audio files
-✅ Audio successfully generated and saving as: /Users/minmin/projects/VvfM/output/video/vvfm-introduction-natural-narration-20261025/assets/natural-toon-raw.wav
-Saved /Users/minmin/projects/VvfM/output/video/vvfm-introduction-natural-narration-20261025/assets/natural-toon-raw.wav
-[94mText:[0m リムライトで輪郭に光を、ブルームで輝きを。
-[94mVoice:[0m None
-[94mSpeed:[0m 1.0x
-[94mLanguage:[0m Japanese
-ICL generation: リムライトで輪郭に光を、ブルームで輝きを。...
-ICL Generation:   0%|          | 0/300 [00:00<?, ?tokens/s]ICL Generation:   1%|          | 2/300 [00:00<00:15, 19.83tokens/s]ICL Generation:   3%|▎         | 9/300 [00:00<00:06, 45.28tokens/s]ICL Generation:   5%|▌         | 16/300 [00:00<00:05, 53.05tokens/s]ICL Generation:   8%|▊         | 23/300 [00:00<00:04, 56.68tokens/s]ICL Generation:  10%|█         | 30/300 [00:00<00:04, 58.37tokens/s]ICL Generation:  12%|█▏        | 37/300 [00:00<00:04, 59.76tokens/s]ICL Generation:  15%|█▍        | 44/300 [00:00<00:04, 60.55tokens/s]                                                                    ==========
-Duration:              00:00:04.000
-Samples/sec:           68716.0
-Prompt:                50 tokens, 35.8 tokens-per-sec
-Audio:                 96000 samples, 68716.0 samples-per-sec
-Real-time factor:      2.86x
-Processing time:       1.40s
-Peak memory usage:     7.03GB
-Joining 1 audio files
-✅ Audio successfully generated and saving as: /Users/minmin/projects/VvfM/output/video/vvfm-introduction-natural-narration-20261025/assets/natural-rim-raw.wav
-Saved /Users/minmin/projects/VvfM/output/video/vvfm-introduction-natural-narration-20261025/assets/natural-rim-raw.wav
-Local synthesis complete. Speech and similarity validation still required.
