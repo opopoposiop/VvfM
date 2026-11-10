@@ -47,7 +47,7 @@ DoF／Beamの先行準備拡張は既定OFFで、全体FPS＋5%の目標は未�
 
 ## 動作環境と入手
 
-macOS 14以降のMetal対応Macが必要です。配布アプリの対応チップ・環境・利用条件は、入手元の案内を確認してください。アプリの実行にXcodeは不要です。
+macOS 14以降のMetal対応Mac(M2以降)が必要です。intel CPU搭載のMacでは動作しません。
 
 配布アプリは [v0.58.8のZIP](https://github.com/opopoposiop/VvfM/releases/download/v0.58.8/VMD.Viewer.app.zip) からダウンロードできます。ZIPを展開してアプリを取り出し、[GUIDEの「導入と起動」](GUIDE.md#導入と起動) に従って起動してください。配布ファイル名は `VMD.Viewer.app.zip` です。過去の版やリリース情報は [Releases](https://github.com/opopoposiop/VvfM/releases) を参照してください。
 
