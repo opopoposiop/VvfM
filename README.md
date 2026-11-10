@@ -1,20 +1,26 @@
+![MacでMMD — VMD viewer for Mac](images/vvfm-eyecatch.jpg)
+
 # VMD Viewer for Mac（VvfM）
 
-> 2026年11月10日更新：[v0.58.5〜v0.58.8／build590までの変更概要](docs/updates/codex-motion-2026-11-08.md)。カメラ・DoF操作、自動保存・回復履歴、物理シーク、動画表示の遅延、再生停止の整合を改善しました。
+> 2026年11月10日更新：[v0.58.8リリース](https://github.com/opopoposiop/VvfM/releases/tag/v0.58.8)を掲載。カメラ・DoF操作、自動保存・回復履歴、物理シーク、動画表示の遅延、再生停止の整合を改善しました。[変更概要・確認範囲](docs/updates/codex-motion-2026-11-08.md)
+
+**[v0.58.8 アプリをダウンロード（ZIP）](https://github.com/opopoposiop/VvfM/releases/download/v0.58.8/VMD.Viewer.app.zip)**｜[リリース詳細](https://github.com/opopoposiop/VvfM/releases/tag/v0.58.8)｜[導入・初回起動](GUIDE.md#導入と起動)
 
 [EULA 日本語原本](Licenses/VMDViewer-EULA-ja.md)｜[English](Licenses/VMDViewer-EULA-en.md)
 
 PMXモデルとVMDモーションをMacで再生・編集し、音声付きの動画を書き出せるアプリです。ボーン・表情・カメラの調整から、見た目の仕上げ、作業の保存まで行えます。
 
-このリポジトリには、配布案内・操作説明・スペックシートを掲載します。アプリ本体のソースコードは非公開とし、アプリはバイナリ形式で公開する予定です。
+このリポジトリには、配布案内・操作説明・スペックシートを掲載します。アプリ本体のソースコードは非公開とし、アプリは[Releases](https://github.com/opopoposiop/VvfM/releases)でバイナリ形式で配布しています。
 
 **詳しい操作は [一般ユーザーマニュアル（GUIDE.md）](GUIDE.md) を参照してください。**
 
-操作説明はv0.56.49／build453を基に、v0.58.4／build569までの変更点を本文と更新補足へ追記しています。v0.58.5〜v0.58.8の不具合解消・改善点は本READMEと[更新補足](docs/updates/codex-motion-2026-11-08.md)にまとめています。READMEと一般ユーザーマニュアルの画面例は、2026年11月8日に起動中のv0.58.4／build569から撮影しました。[スペックシート](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)は2026年10月28日・保存済みv0.57.22／build495を基準とする別資料です。配布アプリの公開状況はReleasesで確認してください。
+操作説明はv0.56.49／build453を基に、v0.58.4／build569までの変更点を本文と更新補足へ追記しています。v0.58.8の更新内容（v0.58.5〜v0.58.7の修正を含む）は本READMEと[更新補足](docs/updates/codex-motion-2026-11-08.md)にまとめています。READMEと一般ユーザーマニュアルの画面例は、2026年11月8日に起動中のv0.58.4／build569から撮影しました。[スペックシート](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)は2026年10月28日・保存済みv0.57.22／build495を基準とする別資料です。
 
 ![VvfM v0.58.4／build569のメイン画面](images/v0.58.4-build569/01-overview.png)
 
-## v0.58.5〜v0.58.8の主な修正・改善
+## v0.58.8の更新内容
+
+2026年11月10日公開。[リリースノート](https://github.com/opopoposiop/VvfM/releases/tag/v0.58.8)に掲載された、v0.58.5〜v0.58.8の主な修正・改善をまとめています。
 
 - **カメラ操作の修正**：XYZパネルのドラッグが画面更新で取り消され、値が元に戻る不具合を修正。
 - **DoFの数値入力を追加**：F値、ボケ量、絞り羽根、回転、縦横比、最大CoC、ハイライト閾値を直接入力可能に。小数入力、確定・取消、Undo、保存に対応。
@@ -45,7 +51,7 @@ DoF／Beamの先行準備拡張は既定OFFで、全体FPS＋5%の目標は未�
 
 macOS 14以降のMetal対応Macが必要です。配布アプリの対応チップ・環境・利用条件は、入手元の案内を確認してください。アプリの実行にXcodeは不要です。
 
-配布情報は [Releases](https://github.com/opopoposiop/VvfM/releases)、導入・初回起動は [GUIDEの「導入と起動」](GUIDE.md#導入と起動) を参照してください。
+配布アプリは [v0.58.8のZIP](https://github.com/opopoposiop/VvfM/releases/download/v0.58.8/VMD.Viewer.app.zip) からダウンロードできます。ZIPを展開してアプリを取り出し、[GUIDEの「導入と起動」](GUIDE.md#導入と起動) に従って起動してください。配布ファイル名は `VMD.Viewer.app.zip` です。過去の版やリリース情報は [Releases](https://github.com/opopoposiop/VvfM/releases) を参照してください。
 
 モデル・モーション・音源は、利用許諾を確認したものを別途用意します。
 
