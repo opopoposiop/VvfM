@@ -2,9 +2,7 @@
 
 # VMD Viewer for Mac（VvfM）
 
-> 2026年11月10日更新：[v0.58.8リリース](https://github.com/opopoposiop/VvfM/releases/tag/v0.58.8)を掲載。カメラ・DoF操作、自動保存・回復履歴、物理シーク、動画表示の遅延、再生停止の整合を改善しました。[変更概要・確認範囲](docs/updates/codex-motion-2026-11-08.md)
-
-[v0.58.8 アプリをダウンロード（ZIP）](https://github.com/opopoposiop/VvfM/releases/download/v0.58.8/VMD.Viewer.app.zip)｜[リリース詳細](https://github.com/opopoposiop/VvfM/releases/tag/v0.58.8)｜[導入・初回起動](GUIDE.md#導入と起動)
+[v0.58.8 アプリをダウンロード（ZIP）](https://github.com/opopoposiop/VvfM/releases/download/v0.58.8/VMD.Viewer.app.zip)｜[リリース詳細](https://github.com/opopoposiop/VvfM/releases/tag/v0.58.8)｜[導入・初回起動](GUIDE.md#導入と起動)[スペックシート](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)
 
 [EULA 日本語原本](Licenses/VMDViewer-EULA-ja.md)｜[English](Licenses/VMDViewer-EULA-en.md)
 
@@ -15,8 +13,6 @@ PMXモデルとVMDモーションをMacで再生・編集し、音声付きの�
 このリポジトリには、配布案内・操作説明・スペックシートを掲載します。アプリ本体のソースコードは非公開とし、アプリは[Releases](https://github.com/opopoposiop/VvfM/releases)でバイナリ形式で配布しています。
 
 **詳しい操作は [一般ユーザーマニュアル（GUIDE.md）](GUIDE.md) を参照してください。**
-
-操作説明はv0.56.49／build453を基に、v0.58.4／build569までの変更点を本文と更新補足へ追記しています。v0.58.8の更新内容（v0.58.5〜v0.58.7の修正を含む）は本READMEと[更新補足](docs/updates/codex-motion-2026-11-08.md)にまとめています。READMEと一般ユーザーマニュアルの画面例は、2026年11月8日に起動中のv0.58.4／build569から撮影しました。[スペックシート](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)は2026年10月28日・保存済みv0.57.22／build495を基準とする別資料です。
 
 ![VvfM v0.58.4／build569のメイン画面](images/v0.58.4-build569/01-overview.png)
 
