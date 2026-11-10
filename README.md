@@ -4,7 +4,7 @@
 
 > 2026年11月10日更新：[v0.58.8リリース](https://github.com/opopoposiop/VvfM/releases/tag/v0.58.8)を掲載。カメラ・DoF操作、自動保存・回復履歴、物理シーク、動画表示の遅延、再生停止の整合を改善しました。[変更概要・確認範囲](docs/updates/codex-motion-2026-11-08.md)
 
-**[v0.58.8 アプリをダウンロード（ZIP）](https://github.com/opopoposiop/VvfM/releases/download/v0.58.8/VMD.Viewer.app.zip)**｜[リリース詳細](https://github.com/opopoposiop/VvfM/releases/tag/v0.58.8)｜[導入・初回起動](GUIDE.md#導入と起動)
+[v0.58.8 アプリをダウンロード（ZIP）](https://github.com/opopoposiop/VvfM/releases/download/v0.58.8/VMD.Viewer.app.zip)｜[リリース詳細](https://github.com/opopoposiop/VvfM/releases/tag/v0.58.8)｜[導入・初回起動](GUIDE.md#導入と起動)
 
 [EULA 日本語原本](Licenses/VMDViewer-EULA-ja.md)｜[English](Licenses/VMDViewer-EULA-en.md)
 
