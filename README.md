@@ -2,7 +2,7 @@
 
 # VMD Viewer for Mac（VvfM）
 
-[v0.58.8 アプリをダウンロード（ZIP）](https://github.com/opopoposiop/VvfM/releases/download/v0.58.8/VMD.Viewer.app.zip)｜[リリース詳細](https://github.com/opopoposiop/VvfM/releases/tag/v0.58.8)｜[導入・初回起動](GUIDE.md#導入と起動)｜[スペックシート](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)
+[アプリをダウンロード（ZIP）](https://github.com/opopoposiop/VvfM/releases/download/v0.58.8/VMD.Viewer.app.zip)｜[リリース詳細](https://github.com/opopoposiop/VvfM/releases/tag/v0.58.8)｜[導入・初回起動](GUIDE.md#導入と起動)｜[スペックシート](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)
 
 [EULA 日本語原本](Licenses/VMDViewer-EULA-ja.md)｜[English](Licenses/VMDViewer-EULA-en.md)
 
@@ -16,23 +16,11 @@ PMXモデルとVMDモーションをMacで再生・編集し、音声付きの�
 
 ![VvfM v0.58.4／build569のメイン画面](images/v0.58.4-build569/01-overview.png)
 
-## v0.58.8の更新内容
+## v0.58.12の更新内容
 
-2026年11月10日公開。[リリースノート](https://github.com/opopoposiop/VvfM/releases/tag/v0.58.8)に掲載された、v0.58.5〜v0.58.8の主な修正・改善をまとめています。
-
-- **カメラ操作の修正**：XYZパネルのドラッグが画面更新で取り消され、値が元に戻る不具合を修正。
-- **DoFの数値入力を追加**：F値、ボケ量、絞り羽根、回転、縦横比、最大CoC、ハイライト閾値を直接入力可能に。小数入力、確定・取消、Undo、保存に対応。
-- **DoF画面の操作性を改善**：詳細項目を見出しの文字・余白から開閉できるようにし、設定キーの操作部を左寄せに整理。
-- **自動保存・回復履歴を改善**：自動保存間隔を30秒〜30分から選択可能にし、件数確認付きの回復履歴一括削除を追加。
-- **物理初期化とシーク復元を修正**：初期化位置のずれや、前後シークで保存状態が重複し、先頭から不要な再計算が発生する問題を解消。
-- **動画・モデル表示の遅延を改善**：再生準備の待機中に背景動画を不要に読み直し、動画やモデルの表示が遅れる経路を修正。
-- **停止位置と状態表示の整合を改善**：停止先の実表示を確認してから停止完了とするよう変更。停止後に「再生中」や、シーク後に「単体物理を初期化中」が残る問題を修正。
-- **連続操作の安定性を改善**：再生・停止・シーク・プロジェクト再読込で、古い処理の完了が新しい表示、停止位置、通知を上書きする問題を修正。
-- **物理計算の継続性を改善**：停止時も既存の物理状態を引き継ぎ、共有物理の計算途中の結果を失敗と判定して打ち切る問題を修正。
-- **静止エフェクトによる停止待ちを修正**：必要な入力が揃う前の停止確定や、古い評価結果への差し戻りを防ぎ、停止表示が完了しない原因を解消。
-- **自動検証の終了判定を改善**：停止先の表示と提出済み描画処理の完了を確認してから終了し、タイムアウトや記録失敗を成功扱いしないよう変更。
-- **ライセンス案内を更新**：同梱EULAの日本語版・英訳をVvfM掲載内容に合わせて更新し、GitHub上のライセンス文書への導線を整備。
-
+- **モーフキーのドラッグによる異常終了を修正**　同じIDを持つモーフキーが複数ある場合も、各キーを保持したまま移動できるようにしました。
+- **通常再生時のMetalFXの準備処理を一本化**　非同期の準備処理に統合済みだった旧切替設定と、二重に準備する分岐を削除しました。
+- 
 ## 主な機能
 
 - 複数のPMXモデルとVMDモーションの読み込み・再生、編集を引き継ぐPMXの入れ替え
@@ -47,7 +35,7 @@ PMXモデルとVMDモーションをMacで再生・編集し、音声付きの�
 
 macOS 14以降のMetal対応Mac(M2以降)が必要です。intel CPU搭載のMacでは動作しません。
 
-配布アプリは [v0.58.8のZIP](https://github.com/opopoposiop/VvfM/releases/download/v0.58.8/VMD.Viewer.app.zip) からダウンロードできます。ZIPを展開してアプリを取り出し、[GUIDEの「導入と起動」](GUIDE.md#導入と起動) に従って起動してください。配布ファイル名は `VMD.Viewer.app.zip` です。過去の版やリリース情報は [Releases](https://github.com/opopoposiop/VvfM/releases) を参照してください。
+配布アプリは [ZIP](https://github.com/opopoposiop/VvfM/releases/download/v0.58.8/VMD.Viewer.app.zip) からダウンロードできます。ZIPを展開してアプリを取り出し、[GUIDEの「導入と起動」](GUIDE.md#導入と起動) に従って起動してください。配布ファイル名は `VMD.Viewer.app.zip` です。過去の版やリリース情報は [Releases](https://github.com/opopoposiop/VvfM/releases) を参照してください。
 
 モデル・モーション・音源は、利用許諾を確認したものを別途用意します。
 
