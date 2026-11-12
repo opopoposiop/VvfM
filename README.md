@@ -1,4 +1,4 @@
-![MacでMMD — VMD viewer for Mac](images/vvfm-eyecatch.jpg)
+![MacでMMD — VMD Viewer for Mac](images/vvfm-eyecatch.jpg)
 
 # VMD Viewer for Mac（VvfM）
 
@@ -33,7 +33,7 @@ PMXモデルとVMDモーションをMacで再生・編集し、音声付きの�
 
 ## 動作環境と入手
 
-macOS 14以降のMetal対応Mac(M2以降)が必要です。intel CPU搭載のMacでは動作しません。
+macOS 14以降のMetal対応Mac(M2以降)が必要です。Intel CPU搭載のMacでは動作しません。
 
 配布アプリは [ZIP](https://github.com/opopoposiop/VvfM/releases/download/v0.58.12/VMD.Viewer.app.zip) からダウンロードできます。ZIPを展開してアプリを取り出し、[GUIDEの「導入と起動」](GUIDE.md#導入と起動) に従って起動してください。配布ファイル名は `VMD.Viewer.app.zip` です。過去の版やリリース情報は [Releases](https://github.com/opopoposiop/VvfM/releases) を参照してください。
 
@@ -73,7 +73,7 @@ MikuMikuDanceとの画像・物理・エフェクトの完全一致は保証し�
 
 ## 謝辞
 
-VMD viewer for Macの開発にあたり技術的参考にさせていただきました お礼申し上げます
+VMD Viewer for Macの開発にあたり技術的参考にさせていただきました お礼申し上げます
 
 - [MikuMikuDance](https://sites.google.com/view/vpvp/?pli=1&authuser=0) 樋口M 様
 - [MikuMikuDayo](https://github.com/pennennennennennenem/MikuMikuDayo) サンドマン 様

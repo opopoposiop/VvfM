@@ -1,9 +1,9 @@
 # 未知の.fxdayoを受け入れるインターフェイス改修計画
 
-> VvfM収録注（2026-10-19）：開発版v0.56.49／build453（記録ID `3620662`）から取り込みました。本文は初期P0〜P3案とv0.56.42の採用範囲を含む計画資料です。骨・別個体controllerの後続対応など、現在の採否は[資料の案内](README.md)を参照してください。本取込ではビルド・実機試験を再実施していません。
+> VvfM収録注（2026-10-19）：開発版v0.56.49／build453（記録ID `3620662`）から取り込みました。本文は初期P0〜P3案とv0.56.42の採用範囲を含む計画資料です。骨・別個体controllerの後続対応など、現在の採否は[資料の案内](README.md)を参照してください。本取り込みではビルド・実機試験を再実施していません。
 
 
-VMD Viewerが、名前やSHAを事前登録していない`.fxdayo`を、宣言された機能と実際のscene条件から受け入れられるようにする。受入理由と拒否理由を作者へ返し、原文変更、再読込、project保存、live、動画出力まで同じ実行契約を保持する。
+VMD Viewerが、名前やSHAを事前登録していない`.fxdayo`を、宣言された機能と実際のscene条件から受け入れられるようにする。受入理由と拒否理由を作者へ返し、原文変更、再読み込み、project保存、live、動画出力まで同じ実行契約を保持する。
 
 2026-10-06時点では`dayo130.hdr-scene.v1`のcompilerとexecutorが既に通常経路へ接続されている。本計画はそれを基礎とした仕様の明確化と拡張であり、汎用runtimeを一から作る計画ではない。初稿は文書化と静的照合のみだったが、その後の依頼によりv0.56.20ではP0・P1を実装対象とした。以下の詳細設計は初稿の検討経緯も含む。採用範囲は次節、当時の検証条件と未確認範囲は本書の検証概要に記す。
 
@@ -18,14 +18,14 @@ VMD Viewerが、名前やSHAを事前登録していない`.fxdayo`を、宣言�
 | 対象 | 実装と境界 |
 |---|---|
 | P0 | 条件配列AND、未供給OnLoadSkybox参照の拒否、[構造schema](definition.schema.json)と能力API、段階別診断、明示的な実行方式と単一owner |
-| P1 API・作者UI | `FxDayoRuntimeService.inspect/compile/preflight`、取消job、既存読込状況UIの再検査・再読込・原文/root選択・snapshot書出し・診断JSON |
+| P1 API・作者UI | `FxDayoRuntimeService.inspect/compile/preflight`、取消job、既存読込状況UIの再検査・再読込・原文/root選択・snapshot書き出し・診断JSON |
 | P1 原文と保存 | 型付き依存package2、root内正規化、生成codeのinclude捕捉、実compiler bytesとoptionsを含むcache identity、schema26の実行選択。旧schema25/package1を読む |
 | P1 実行・資源 | load/start/resize/seekの区別、resourceアクセス計画、初期化とtexture feedback検査、source effect群1 GiBの資源予算。GPU/actual-present後の採用 |
 | P1 color | `dayo130.hdr-color.v1`。履歴・scene資源を使わない画面加工ではGBufferを作らず、PMX alpha材質を許可。不透明出力など共通条件は保持 |
 | 継続する制約 | computeは全passでthreadgroupの倍数を要求。shaderを書き換えず、端数dispatchは未採用。scene profileはv1の互換修正として記録 |
 | 今回の対象外 | P2、P3、作者manifest、独立temporal profile、shader停止性の証明、Windows Dayo実行・画像完全一致、正式性能受入 |
 
-擬似APIの`makeSession`は新たな並行ownerを作らず、既存`MetalFxDayoExecutor`とlive/export各自の`DayoFrameHistory`へ統合した。reloadは既存のモデル差替えtransactionを利用し、未登録編集を拒否、現在frameの物理再評価、失敗時rollback、再生再開までつなぐ。コンパイル成功のみでは適用完了としない。
+擬似APIの`makeSession`は新たな並行ownerを作らず、既存`MetalFxDayoExecutor`とlive/export各自の`DayoFrameHistory`へ統合した。reloadは既存のモデル差し替えtransactionを利用し、未登録編集を拒否、現在frameの物理再評価、失敗時rollback、再生再開までつなぐ。コンパイル成功のみでは適用完了としない。
 
 予算は1job 120秒、同時1・待機4、子process RSS監視1 GiB、入力込みworkspace96 MiB、source effect群のGPU資源1 GiB。Viewer全体のRSS・driverメモリや任意shaderの実行時間を保証する上限ではない。検証の通過数・条件・残る未確認は実装記録を正本とする。
 
@@ -45,18 +45,18 @@ VMD Viewerが、名前やSHAを事前登録していない`.fxdayo`を、宣言�
 
 | 層 | 現行コードで確認できる到達点 | 次に整備する境界 |
 |---|---|---|
-| 取り込み | `FxDayoLoader.loadAdjacent`、未登録sourceのbackground compile | 読込前の要求照会、明示的な実行方式、PMXとsourceの再関連付け |
+| 取り込み | `FxDayoLoader.loadAdjacent`、未登録sourceのbackground compile | 読み込み前の要求照会、明示的な実行方式、PMXとsourceの再関連付け |
 | 原文固定 | `FxDayoSourcePackage`、依存bytes・SDK/profile・intent保存 | root内の正規化path、import種別、生成include、virtual pathの一般化 |
 | 定義 | Jsonnet→厳密な`FxDayoProgramIR`、未知field拒否 | 機械可読schema、metadataと実行fieldの区別、Dayoのdefaultと条件式の正確な再現 |
 | compiler | DXC→SPIR-V→SPIRV-Cross→MSL、reflection検査、8-entry cache | job取消、source位置付き診断、総時間・メモリ制限、artifact identityの強化 |
 | owner | nativeと`.sourceProgram`を分離、terminal拒否を先行 | 選択理由の公開、native近似による原文変更の吸収を防ぐ明示モード |
 | GPU | ordered compute/postprocess/index-only rasterizer | 条件の互換修正、資源read/write計画、必要入力だけを供給するprofile |
-| scene | HQ Toon HDR、不透明triangle、camera/GBuffer/前回頂点 | 単純画面加工の軽量化、透過・AA・他effect混在の段階的受入 |
+| scene | ToonShader HQ HDR、不透明triangle、camera/GBuffer/前回頂点 | 単純画面加工の軽量化、透過・AA・他effect混在の段階的受入 |
 | 履歴 | 候補状態と確定状態の分離、actual-present連動 | reset原因別event、reload世代、積分型effectの再実行方針 |
 | 保存 | schema25、原文package、source intent、元folderなしの復元 | 実行選択と新profileの移行規則、将来SDK解決の固定 |
 | export | 共通executorと独立history、失敗時の停止 | sample契約の明文化、機能別preflight、liveとの対照試験 |
 
-処理は読込、構造検査、コンパイル、GPU実行、シーン条件の検査へ分かれる。構造検査の成功だけで実行可能とは判定しない。
+処理は読み込み、構造検査、コンパイル、GPU実行、シーン条件の検査へ分かれる。構造検査の成功だけで実行可能とは判定しない。
 
 build402の記録には元MotionBlurの7pass、原文の改名・式変更、限定sceneのlive、保存往復、短尺動画がある。これを全素材・任意解像度・Dayo画像互換の合格とは扱わない。
 
@@ -345,7 +345,7 @@ P0は機能を拡張する前の契約修正である。追加pass対応や1080p
 
 ### P1 作者が反復開発できる入口
 
-P0を基礎に、inspect/compile/preflight API、job取消、再読込transaction、source map、package root選択、依存型の分離、cache identity、scene総予算を実装する。並行compileの積極導入より、旧jobの誤適用とUI停止を防ぐことを先に成立させる。
+P0を基礎に、inspect/compile/preflight API、job取消、再読み込みtransaction、source map、package root選択、依存型の分離、cache identity、scene総予算を実装する。並行compileの積極導入より、旧jobの誤適用とUI停止を防ぐことを先に成立させる。
 
 color profileを追加し、scene geometryを参照しない新作を使って、PMX alpha等の制約をどこまで外せるか契約ごとに検証する。端数dispatchは独立の変更として取り組み、対応可否を解像度別に公開する。
 
@@ -372,7 +372,7 @@ deform、renderer、DXRは独立した成立性調査から始める。deformで
 | A03 | 依存 | root内の依存が保存後も同じbytesへ解決され、root外・衝突・欠落を理由付き拒否 |
 | A04 | ABIと資源 | offset/stride/major、register space衝突、未対応member、未初期化readを正しく受入/拒否 |
 | A05 | controller | 0/既定/負値/範囲外、group/flip、重複名、二個体、VMDなしで仕様どおり |
-| A06 | live | play/pause/seek/loop/resize、model差替え、effect順、late completionで世代混在なし |
+| A06 | live | play/pause/seek/loop/resize、model差し替え、effect順、late completionで世代混在なし |
 | A07 | reload | 保存連打、旧job完了、取消、compile失敗、PMX削除で誤適用なし |
 | A08 | 履歴失敗 | GPU failure、positive present欠落、retryで未表示候補をcommitせず二重stepなし |
 | A09 | 保存 | 元folder移動、cache削除、新SDK/旧reader、方式保持、改ざん検出 |
@@ -399,7 +399,7 @@ A03は入れ子import/include、importstr、生成code、大小文字、symlink�
 
 - 先行の汎用runtime研究とMotionBlur実装記録を引き継ぐ。実装済みのcompiler、scene入力、保存、exportを新規成果として数え直さない。
 - adapter契約のterminal拒否、単一owner、native優先順位を維持する。原文経路は独立した契約として扱う。
-- 再生復旧、動画書出し、Metal資源の既存境界を保持する。
+- 再生復旧、動画書き出し、Metal資源の既存境界を保持する。
 - DXC/SPIRV-Cross経路を現行基盤として継続する。変換器の全面置換は本計画の前提にしない。[DXC](https://github.com/microsoft/DirectXShaderCompiler/blob/main/docs/SPIR-V.rst)、[SPIRV-Cross](https://github.com/KhronosGroup/SPIRV-Cross)
 
 能力表・構造schema・jobとGPU予算はv0.56.20実装に合わせて公開した。端数dispatchとDayo比較の許容誤差は未採用・未確定。Dayo 1.30配布物の対応upstream commit、全素材の画像互換、build402の正式性能と600秒耐久は引き続き未確認・未受入である。

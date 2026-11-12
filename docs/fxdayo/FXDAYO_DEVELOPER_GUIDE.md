@@ -1,6 +1,6 @@
 # MikuMikuDayoとVMD Viewerの.fxdayo開発者向け技術解説書
 
-> VvfM収録注（2026-10-19）：開発版v0.56.49／build453（記録ID `3620662`）から取り込みました。本文の「現行」は主に2026-10-14のv0.56.37研究時点を指し、v0.56.42の追記を含みます。v0.56.46のcontroller等、後続の採用範囲と未完了項目は[資料の案内](README.md)を参照してください。本取込ではビルド・実機試験を再実施していません。
+> VvfM収録注（2026-10-19）：開発版v0.56.49／build453（記録ID `3620662`）から取り込みました。本文の「現行」は主に2026-10-14のv0.56.37研究時点を指し、v0.56.42の追記を含みます。v0.56.46のcontroller等、後続の採用範囲と未完了項目は[資料の案内](README.md)を参照してください。本取り込みではビルド・実機試験を再実施していません。
 
 
 `.fxdayo`は、GPUで実行するHLSLに加え、入力資源、出力資源、パスの順序、PMXから受け取る操作値を定義するエフェクト形式である。両アプリで同じ原文を動かすには、HLSLの構文だけでなく、ホストが供給するデータの意味と実行条件を合わせる必要がある。
@@ -147,7 +147,7 @@ float4 ExposurePS(ScreenVertex input) : SV_TARGET
 
 `samplers`の定義から`ImageSampler`の宣言が生成されるため、同名の`SamplerState`をHLSLへ重複宣言しない。`RTV`を省略したパスは既定出力へ書く。postprocessのvertex入力は`float4 POSITION`と`float2 TEXCOORD`で、最初の例ではこの二つをそのまま渡す。`SV_VertexID`だけで三角形を生成する別形式は、現行Viewerのpostprocess入力契約に合わない。
 
-Viewerの原文実行位置はHQ ToonのHDRトーンマップ前なので、RGBを2倍にしても最終表示の各画素値が2倍になるとは限らない。中間HDR値は1を超えてよい。ここで`saturate(color.rgb)`や独自のガンマ変換を入れると、後段のトーンマップへ渡す情報を変える。
+Viewerの原文実行位置はToonShader HQのHDRトーンマップ前なので、RGBを2倍にしても最終表示の各画素値が2倍になるとは限らない。中間HDR値は1を超えてよい。ここで`saturate(color.rgb)`や独自のガンマ変換を入れると、後段のトーンマップへ渡す情報を変える。
 
 ### MikuMikuDayoで確認する
 
@@ -159,10 +159,10 @@ Viewerの原文実行位置はHQ ToonのHDRトーンマップ前なので、RGB�
 ### VMD Viewerで確認する
 
 1. compiler同梱版を使用し、実際の版／buildを記録する。作者インターフェイスとフェイルセーフの導入はv0.56.20／v0.56.21で、当時の実機結果は各実装記録を参照する。本書の更新でv0.56.37を実行検証したという意味ではない。
-2. HQ Toon、透視投影にし、「設定 → 再生 → .fxdayo 動作」でFrameTimeを選ぶ。この動作モードはアプリ設定なので、教材projectを開くだけでは切り替わらない。AA・DoF・Bloom・DiffusionをOFFにし、native effectとの混在を避ける。
-3. `ExposureDemo.pmx`を通常のモデル読込から追加する。別名の原文は「原文を選択」で関連付けられる。
+2. ToonShader HQ、透視投影にし、「設定 → 再生 → .fxdayo 動作」でFrameTimeを選ぶ。この動作モードはアプリ設定なので、教材projectを開くだけでは切り替わらない。AA・DoF・Bloom・DiffusionをOFFにし、native effectとの混在を避ける。
+3. `ExposureDemo.pmx`を通常のモデル読み込みから追加する。別名の原文は「原文を選択」で関連付けられる。
 4. エフェクト読込状況の方式を「原文を実行」にする。単純な画面加工は`dayo130.hdr-color.v1`になり、GBuffer・前回頂点を作らない。「変換完了」とruntimeの実行状態をそれぞれ確認する。
-5. 原文を保存し、「再検査」で確認、「再読込」で候補を準備する。初回や内容を変更した未知原文は「この原文を試す」で実行する。自動ファイル監視はない。同じPMXのpostprocess差替えはモデル個体・物理・未登録編集を保持し、GPU成功とactual-present後に確定する。準備中や失敗時の保存は採用済み原文を使う。native描画ownerまで変わる変更は既存のモデル差替え検査を使う。
+5. 原文を保存し、「再検査」で確認、「再読込」で候補を準備する。初回や内容を変更した未知原文は「この原文を試す」で実行する。自動ファイル監視はない。同じPMXのpostprocess差し替えはモデル個体・物理・未登録編集を保持し、GPU成功とactual-present後に確定する。準備中や失敗時の保存は採用済み原文を使う。native描画ownerまで変わる変更は既存のモデル差し替え検査を使う。
 6. 変換中は「取消」、適用の表示待ち中はViewer側の進捗の取消を使用する。失敗・取消では前回採用版を保持し、その版を保存・exportの入力にする。編集版のエラーと現在の実行状態を別に確認する。
 7. 停止、再生、seek、resizeを確認し、短い不透明動画を書き出す。color profileにはcomputeがないため、MotionBlur固有のthreadgroup倍数条件は適用されない。共通の描画・寸法・資源条件は残る。
 
@@ -171,7 +171,7 @@ Viewerの原文実行位置はHQ ToonのHDRトーンマップ前なので、RGB�
 
 ### 定義と式を変更する
 
-教材PMXに一意な名前のモーフ`明るさ`を用意する。形状を動かす必要がなければ、通常の有効なPMXとして保存できる操作専用モーフを使用する。Viewer内でPMXモーフ定義そのものを新規作成・書出しできるという意味ではない。
+教材PMXに一意な名前のモーフ`明るさ`を用意する。形状を動かす必要がなければ、通常の有効なPMXとして保存できる操作専用モーフを使用する。Viewer内でPMXモーフ定義そのものを新規作成・書き出しできるという意味ではない。
 
 `fx`内へ次の`controllers`配列を加える。
 
@@ -381,7 +381,7 @@ HLSLの`register(tN, spaceM)`はMetalのtexture番号と同義ではない。現
 
 | 項目 | 現行作業ツリーの条件 |
 |---|---|
-| scene | HQ Toon、透視投影、不透明triangle、1 sample、AA/DoF/Bloom/Diffusionなし |
+| scene | ToonShader HQ、透視投影、不透明triangle、1 sample、AA/DoF/Bloom/Diffusionなし |
 | 混在 | native effectと材質effect graphとの混在を拒否 |
 | device | Metal argument buffer tier 2、各compute pipelineのthreadgroup上限を満たす |
 | 定義 | `fx.category=postprocess`、`cereal_class_version=0`、未知fieldを拒否 |
@@ -391,11 +391,11 @@ HLSLの`register(tN, spaceM)`はMetalのtexture番号と同義ではない。現
 | sceneサイズ | 画面各辺4096以下、model table最大256 |
 | GPU容量 | resource 256 MiB、program候補512 MiB、scene入力候補512 MiB。source effect群の確定・候補・GPU退役待ちを含む共通予算1 GiB |
 | compute | 定義とreflectionのthreadgroup一致、全出力軸がその整数倍 |
-| 保存 | 実行選択／package schema 2の導入条件はproject schema・minimum reader 26。native payloadを持たない原文attachmentの現行保存は、実行ON／OFF・承認fingerprintを含むschema27以上を要求。旧schema25・package1の読込を保持 |
+| 保存 | 実行選択／package schema 2の導入条件はproject schema・minimum reader 26。native payloadを持たない原文attachmentの現行保存は、実行ON／OFF・承認fingerprintを含むschema27以上を要求。旧schema25・package1の読み込みを保持 |
 
 共通GPU予算はsource effect用のGBuffer、program資源、定数・argument bufferとGPU使用中の旧資源を数える。Viewer全体のHDR、pipeline、driver、RSSを含む上限ではない。compilerは同時1・待機4job、総時間120秒、子process RSS監視1 GiB、入力を含むworkspace96 MiB。取消は外部compiler子processの終了まで確認する。同期Metal pipeline APIは呼出しを強制終了できないため、復帰後に取消・期限を再確認し結果を採用しない。shaderのGPU計算量を制限するsandboxではない。
 
-`dayo130.hdr-color.v1`は資源・条件・履歴・scene geometryを参照しないpostprocessをreflectionから自動選択する。ScreenTexture、self float、許可されたcamera/frame値だけを使い、PMXのalpha材質をscene profileの理由で拒否しない。HQ Toon・透視・FrameTime・AA/DoF/Bloom/Diffusionなし・native混在なし・不透明出力という共通条件は残る。透明な動画出力の対応とは別である。
+`dayo130.hdr-color.v1`は資源・条件・履歴・scene geometryを参照しないpostprocessをreflectionから自動選択する。ScreenTexture、self float、許可されたcamera/frame値だけを使い、PMXのalpha材質をscene profileの理由で拒否しない。ToonShader HQ・透視・FrameTime・AA/DoF/Bloom/Diffusionなし・native混在なし・不透明出力という共通条件は残る。透明な動画出力の対応とは別である。
 
 ### v0.56.42の追加profileと色設定
 
@@ -453,7 +453,7 @@ MyEffect/
 | vertex入力がprofile外 | postprocessに所定のPOSITIONとTEXCOORDがあるか |
 | threadgroupの倍数ではない | 各computeのoutputSizeを解決し、各軸で割り切れるか |
 | compile済みなのに実行拒否 | scene設定、alpha材質、混在effect、実際の描画pixel寸法 |
-| 原文変更が結果へ反映されない | native/sourceの実行方式、読み込んだ元path、保存snapshot、再読込の有無 |
+| 原文変更が結果へ反映されない | native/sourceの実行方式、読み込んだ元path、保存snapshot、再読み込みの有無 |
 | 色が白飛びする／暗くなる | HDR／SDRの挿入位置、トーンマップ重複、範囲clamp、alphaの扱い |
 | 初期状態で黒い | controllerの既定値・既存VMD・必要資源を確認。ColorGradingの黒出力だけでGPU失敗と断定しない |
 | 複数条件で実行頻度が違う | v0.56.20は配列AND。旧版のOR依存と、load/start/resizeの発火条件を確認 |
@@ -504,7 +504,7 @@ MyEffect/
 | Dayo比較 | 同一scene／時刻／controller／色条件の基準画像 | 対象caseでの画像互換 |
 | 性能・耐久 | 同一ReleaseのA/B、tail、VMD時計、pose age、CPU/GPU・資源、10分 | 測定条件内での性能・安定性 |
 
-当時の検証は、依存・構造・入力形式、合成GPUと教材、PMX・再生・書出しの結合、故障・隔離に分けていた。ただし外部原文の7 pass／12 stage試験はMotionBlur向けで、任意の20本へそのまま差し替えるrunnerではない。
+当時の検証は、依存・構造・入力形式、合成GPUと教材、PMX・再生・書き出しの結合、故障・隔離に分けていた。ただし外部原文の7 pass／12 stage試験はMotionBlur向けで、任意の20本へそのまま差し替えるrunnerではない。
 
 GPU／統合群の既存opt-inは`VMD_FXDAYO_SOURCE`と`VMD_FXDAYO_TOOLCHAIN`、GUIは追加の`VMD_FXDAYO_GUI=1`である。toolchain環境変数を明示rootとして使う試験と、bundle／DEBUGの既定toolchainを探すproduction経路は異なる。実際に使ったbinaryとSDKのhashを記録する。2026-10-14にはローカルtoolchain 16ファイルとSDK 6 headerのmanifest一致を読取確認したが、再実行してはいない。
 
@@ -574,7 +574,7 @@ Fog／Fluidは単純な画面加工と分けて設計する。共有resourceは�
 | ローカル1.30の`postprocess/motionblur/MotionBlur.fxdayo` | system include、複数pass、履歴、端数dispatchの具体例 |
 | 同梱SDK manifest | headerの出典とhash。対応upstream commitは未確認 |
 | v0.56.16実装記録 | 既存の限定実行・保存・動画検証。今回の再試験結果ではない |
-| build402 Release記録 | 同梱compiler、署名、GUI読込・1024×576短尺出力。Dayo画像比較と正式性能は未受入 |
+| build402 Release記録 | 同梱compiler、署名、GUI読み込み・1024×576短尺出力。Dayo画像比較と正式性能は未受入 |
 | 2026-10-14 postprocess研究 | 20原文の静的要求、現行コードの制約、色処理・依存・テスト環境案。動作試験ではない |
 
 v0.56.20では`STATUS.md`と旧adapter文書の全面未実装という記述も更新した。当時は教材の中間HDR値と限定された通常操作を確認しており、後続版の全面検証へ繰り越さない。今回の更新はWindows版Dayoの教材実行・同条件画像比較、20本の動作、正式性能を新たに検証したものではない。
@@ -590,8 +590,8 @@ Metal／LE、RealTime、AA、native混在、材質や内部寸法の不適合は
 
 通常画像と原文処理は別commandで実行する。原文が表示期限に間に合わない場合は同じ姿勢の通常画像を使用し、500 ms watchdogでは新規試行を停止する。timerでGPUを取消したり未完了資源を再利用したりはしない。共有GPUのhangやdevice失効で通常描画も失敗する場合まで、無停止を保証するものではない。
 
-原文packageの保存はschema25で導入し、schema27で実行ON／OFF・承認fingerprintの保存を追加した。v0.56.42のproject全体のcurrent schemaは33で、明示した色契約を保存する場合はminimumReaderVersion33を要求する。旧nilの色設定は従来のHDR契約とreader条件を保持する。正常なpackageはcompilerが使えなくても復元できる。CRC／hashやpathの破損は引き続きproject読込失敗とする。失敗・未完了試行の記録は端末内へ保存し、同じ環境での自動再実行を抑止する。
+原文packageの保存はschema25で導入し、schema27で実行ON／OFF・承認fingerprintの保存を追加した。v0.56.42のproject全体のcurrent schemaは33で、明示した色契約を保存する場合はminimumReaderVersion33を要求する。旧nilの色設定は従来のHDR契約とreader条件を保持する。正常なpackageはcompilerが使えなくても復元できる。CRC／hashやpathの破損は引き続きproject読み込み失敗とする。失敗・未完了試行の記録は端末内へ保存し、同じ環境での自動再実行を抑止する。
 
-動画は停止中の有効な原文があると既定で開始を拒否する。必要な場合だけ動画書出し画面の「停止中の効果を除いて書き出す」を選び、表示された除外対象を確定する。OFFの効果は通常どおり実行しない。残った効果の実行途中の失敗は書出し失敗となり、不完全な完成動画へ置き換えない。
+動画は停止中の有効な原文があると既定で開始を拒否する。必要な場合だけ動画書き出し画面の「停止中の効果を除いて書き出す」を選び、表示された除外対象を確定する。OFFの効果は通常どおり実行しない。残った効果の実行途中の失敗は書き出し失敗となり、不完全な完成動画へ置き換えない。
 
 詳細は[フェイルセーフ設計](FAILSAFE_DESIGN.md)を参照する。
