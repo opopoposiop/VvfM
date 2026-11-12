@@ -1,11 +1,11 @@
 # .fxdayoが動作しない場合のフェイルセーフ設計
 
-> VvfM収録注（2026-10-19）：開発版v0.56.49／build453（記録ID `3620662`）から取り込みました。本文はv0.56.21導入時の設計・検証です。v0.56.47以降のGPU device障害では、通常描画を継続せず保存を維持して再起動を案内します。後続の境界は[資料の案内](README.md)を参照してください。本取込ではビルド・実機試験を再実施していません。
+> VvfM収録注（2026-10-19）：開発版v0.56.49／build453（記録ID `3620662`）から取り込みました。本文はv0.56.21導入時の設計・検証です。v0.56.47以降のGPU device障害では、通常描画を継続せず保存を維持して再起動を案内します。後続の境界は[資料の案内](README.md)を参照してください。本取り込みではビルド・実機試験を再実施していません。
 
 
-2026-10-07。設計対象は、未知の`.fxdayo`の読込・再読込・live実行が失敗しても、通常のモデル表示、操作、再生、保存を継続できること。失敗した効果とその依存先を実行対象から外し、新しい通常フレームを表示する。効果の失敗をViewer全体の表示失敗へ直結させない。
+2026-10-07。設計対象は、未知の`.fxdayo`の読み込み・再読み込み・live実行が失敗しても、通常のモデル表示、操作、再生、保存を継続できること。失敗した効果とその依存先を実行対象から外し、新しい通常フレームを表示する。効果の失敗をViewer全体の表示失敗へ直結させない。
 
-**v0.56.21で本設計の通常経路を実装。** 基準はHEAD `1b9cdf2e2cde9f57f4098c70662a30c1d3f759d4`、v0.56.20 / build409。本書の受入条件と実施済みの証拠を区別する。以下は導入時の検証概要であり、最新の全機能検証を示すものではない。原文との画像同等性や正式性能合格を意味しない。build410を保存したが、600秒連続再生の停止と指定Astraレビューは未完了。
+**v0.56.21で本設計の通常経路を実装。** 基準はHEAD `1b9cdf2e2cde9f57f4098c70662a30c1d3f759d4`、v0.56.20／build409。本書の受入条件と実施済みの証拠を区別する。以下は導入時の検証概要であり、最新の全機能検証を示すものではない。原文との画像同等性や正式性能合格を意味しない。build410を保存したが、600秒連続再生の停止と指定Astraレビューは未完了。
 
 ## 現在の問題と変更する境界
 
@@ -15,10 +15,10 @@
 |---|---|
 | `MetalModelView`の原文実行前検査とencodeのcatchが`failRendererPresentationSubmission`を呼ぶ | optional effectの不適合を実行計画からの除外へ変換する。通常描画自身の失敗は引き続きrendererの失敗とする |
 | `AppModel`が表示transactionのterminal失敗で音声・再生を停止する | effectの除外後に通常表示を試み、その表示transactionの結果でclock／audioを確定する |
-| `stageFxDayoAttachment`がモデル全体の編集transactionに入る | 同じPMXのpostprocess差替えを独立した候補採用へ分離し、不要な物理resetとViewer全体の入力無効化を避ける |
-| PMX読込とproject復元が原文compile／実行ownerの復元に依存する | 正常なモデル・原文データの復元と、その環境で実行できるかの判定を分離する |
+| `stageFxDayoAttachment`がモデル全体の編集transactionに入る | 同じPMXのpostprocess差し替えを独立した候補採用へ分離し、不要な物理resetとViewer全体の入力無効化を避ける |
+| PMX読み込みとproject復元が原文compile／実行ownerの復元に依存する | 正常なモデル・原文データの復元と、その環境で実行できるかの判定を分離する |
 
-描画、編集状態、原文の取込、PMX解析、プロジェクト保存を横断した設計である。既存の非対応契約を緩めて無理に実行する変更ではない。
+描画、編集状態、原文の取り込み、PMX解析、プロジェクト保存を横断した設計である。既存の非対応契約を緩めて無理に実行する変更ではない。
 
 ## 維持する契約
 
@@ -27,9 +27,9 @@
 - 失敗した候補の画像、頂点、履歴を採用しない。全ownerのGPU成功と正のactual-presentが同一の表示transactionに揃ってから表示・clock／audioをcommitする。
 - effectの再試行でVMD時計を巻き戻したり、物理stepやimpulseを重複実行したりしない。通常のlossless fixed-step契約を維持する。
 - ユーザーの描画設定、effect有効化の意図、原文、controller値を自動で書き換えない。自動停止は実行状態として表示する。
-- 動画書出しはactive effectの失敗で停止する。liveの自動停止を、効果を欠いた動画の成功へ転用しない。
+- 動画書き出しはactive effectの失敗で停止する。liveの自動停止を、効果を欠いた動画の成功へ転用しない。
 
-互換性の検査、単一の実行経路、実表示後の再生確定、未完了GPU資源の保持、書出しの成功時だけの確定を共通の条件とする。過去のnative限定の説明と、現在の限定profileによる原文実行は区別する。
+互換性の検査、単一の実行経路、実表示後の再生確定、未完了GPU資源の保持、書き出しの成功時だけの確定を共通の条件とする。過去のnative限定の説明と、現在の限定profileによる原文実行は区別する。
 
 ## 失敗の分類と停止範囲
 
@@ -72,7 +72,7 @@ postprocessのbypassは、そのpassに入る直前の正常な色を後段へ�
 
 `FxDayoLiveExecutionPlan`でsource間の依存と履歴世代を保持する。モデル・controller・描画設定のimmutable snapshotから、採用owner、順序、依存関係、除外理由、資源予約を決める。実装は同一journalのimmutable入力を使い、原文encoder作成前にpreflightと除外対象を確定する。原文結果の履歴登録は原文GPU成功後、公開は同一attemptの正のpresent後に限る。
 
-検査を読込／再読込／通常frame／書出しで共有し、各入口で異なる条件だけを明示する。シーンの適合条件とGPU資源量の上限検査に加え、以下を計画に含める。
+検査を読み込み／再読み込み／通常frame／書き出しで共有し、各入口で異なる条件だけを明示する。シーンの適合条件とGPU資源量の上限検査に加え、以下を計画に含める。
 
 - renderStyle、投影、AA・MetalFX、DoF／Bloom／Diffusion、透明背景、native混在、材質・textureの性質。
 - FrameTime／RealTime、controller入力の有限性・範囲、pass依存、vertex／buffer ABI、読書き範囲。
@@ -128,15 +128,15 @@ CPU側のparse／compileにも上限が必要。現在のprepare制限を維持�
 
 helperから返すのは検査済みデータ・コンパイル成果物と診断であり、プロセス固有のMetal objectをそのまま受け渡さない。Viewer内に残るlibrary／pipeline生成はMainActor外で行い、利用可能な非同期APIを使う。中断不能な呼出しが残る場合はtimeout後も一つの未完了jobとして保持し、同じ処理を積み増さない。compiler helperだけでViewer内のdriver crashまで隔離できたとは扱わない。
 
-## 読込と再読込
+## 読み込みと再読み込み
 
-モデルを正常にparseできたら、その通常表示とVMD接続を先に成立させる。隣接`.fxdayo`の読込・検査・compileは独立jobとし、失敗してもPMXの採用を取り消さない。壊れたPMX自身は従来どおり読込失敗とする。
+モデルを正常にparseできたら、その通常表示とVMD接続を先に成立させる。隣接`.fxdayo`の読み込み・検査・compileは独立jobとし、失敗してもPMXの採用を取り消さない。壊れたPMX自身は従来どおり読み込み失敗とする。
 
-再読込は「正常旧版を維持 → 新版を別資源で準備 → 最新sceneで再検査 → 一度の試行 → 表示成功で採用」の順に行う。旧版も現在条件に適合しない場合は通常描画を維持する。candidate成功前に旧版の資源やpackageを置換しない。
+再読み込みは「正常旧版を維持 → 新版を別資源で準備 → 最新sceneで再検査 → 一度の試行 → 表示成功で採用」の順に行う。旧版も現在条件に適合しない場合は通常描画を維持する。candidate成功前に旧版の資源やpackageを置換しない。
 
 jobにはmodel asset identity、attachment identity、source generationを付ける。新しいreload・モデル削除・OFF操作で古いjobの採用権を取り消す。処理が遅れて完了しても最新の意図を上書きしない。compile中も再生、seek、描画方式変更、保存を利用可能にする。
 
-postprocessの差替えはモデル全体の`isModelAssetEditPending`を立てず、physics resetを行わない。deformのownerやvertex ABIまで変わる差替えは、専用のモデル描画境界で整合を検査する。postprocess向けの高速経路へ無条件に流さない。
+postprocessの差し替えはモデル全体の`isModelAssetEditPending`を立てず、physics resetを行わない。deformのownerやvertex ABIまで変わる差し替えは、専用のモデル描画境界で整合を検査する。postprocess向けの高速経路へ無条件に流さない。
 
 ## 保存とプロジェクト復元
 
@@ -152,9 +152,9 @@ postprocessの差替えはモデル全体の`isModelAssetEditPending`を立て�
 
 ユーザーのOFFは保存対象。自動quarantineは作者のONをOFFへ書き換えず、source fingerprint、runtime／compiler／device情報とともにlocalな診断記録として保持する。提出前に未完了試行を記録し、成功時に解消して、再起動直後の同じ自動crashを防ぐ。未完了記録だけでshader原因と断定はしない。
 
-schema27／minimum reader27にON／OFFと承認fingerprintを保存し、25／26の読込を維持する。package構造・hash・依存を検査した上で、そのruntimeでは未対応のprofileも非実行のデータとして保持する。未知のarchive形式やSDK形式まで解釈するものではない。
+schema27／minimum reader27にON／OFFと承認fingerprintを保存し、25／26の読み込みを維持する。package構造・hash・依存を検査した上で、そのruntimeでは未対応のprofileも非実行のデータとして保持する。未知のarchive形式やSDK形式まで解釈するものではない。
 
-prepare中の保存は、採用済み原文とcontrollerの整合したsnapshotを保存する。未採用candidateを黙って採用済みにしない。初回読込で実行できなかった原文も意図・packageとして保存する。両者は保存後の再読込で検証する。
+prepare中の保存は、採用済み原文とcontrollerの整合したsnapshotを保存する。未採用candidateを黙って採用済みにしない。初回読み込みで実行できなかった原文も意図・packageとして保存する。両者は保存後の再読み込みで検証する。
 
 ## UIと診断
 
@@ -171,11 +171,11 @@ prepare中の保存は、採用済み原文とcontrollerの整合したsnapshot�
 
 診断はeffect／model identity、source hash、phase、理由code、profile条件、plan／attempt、GPU状態、復旧先と結果を記録する。同じ失敗は回数と最終発生時刻へ集約する。renderer全体の失敗とeffect単体の停止を区別し、「描画待機を終了しました」だけで終えない。
 
-## 動画書出しの扱い
+## 動画書き出しの扱い
 
-書出し開始時に独立したimmutable実行計画を作る。作者が有効にしている効果が未対応・隔離中なら、既定では開始を拒否し、対象と理由を示す。liveで通常表示へ戻れたことを、書出しでその効果を省いてよい理由にしない。
+書き出し開始時に独立したimmutable実行計画を作る。作者が有効にしている効果が未対応・隔離中なら、既定では開始を拒否し、対象と理由を示す。liveで通常表示へ戻れたことを、書き出しでその効果を省いてよい理由にしない。
 
-ユーザーが明示的に「停止中の効果を除いて書き出す」を選んだ場合だけ、除外一覧を確定して新しい書出し計画を作る。除外後も残ったactive effectが途中で失敗したら停止する。rational PTS、全fixed-step、active resource失敗時の停止、atomic commit後だけprogress 1.0という既存契約を維持する。
+ユーザーが明示的に「停止中の効果を除いて書き出す」を選んだ場合だけ、除外一覧を確定して新しい書き出し計画を作る。除外後も残ったactive effectが途中で失敗したら停止する。rational PTS、全fixed-step、active resource失敗時の停止、atomic commit後だけprogress 1.0という既存契約を維持する。
 
 ## 実装順序と受入条件
 
@@ -196,7 +196,7 @@ P0だけでGPU hangまで対処済みとはしない。GPUへ到達する未知�
 | 候補採用 | 再生中reload失敗・連続reload・OFF・モデル削除・設定変更・遅い旧job完了。最新の意図を保持し、正常旧版を早期破棄しない |
 | GPU故障 | allocation／encode／command error、watchdog、遅いcompletion、present 0／未到着。まずfault injectionで確認し、危険な実GPU hangを通常試験に使わない |
 | 保存復元 | 有効だが実行不可のpackage、隔離中、prepare中、旧schema、壊れたarchive。原文bytesと意図を保存往復し、破損の厳格拒否を維持 |
-| 書出し | 開始拒否、明示的除外、途中失敗、取消。失敗時に完成動画・progress 1.0を残さない |
+| 書き出し | 開始拒否、明示的除外、途中失敗、取消。失敗時に完成動画・progress 1.0を残さない |
 | 資源と耐久 | resize／再試行／reload反復、600秒再生。in-flight上限、資源lease、履歴世代、ログ集約、actual-present／pose age／clock／入力を別々に記録 |
 
 Swift変更後は関連テストと全`swift test`、`git diff --check`を実施する。描画資源変更にはRelease buildと実機確認を追加する。filter 0件・skipを成功に数えず、実装、テスト、実表示、性能、耐久を別々の結果として残す。実施した検証と残る未確認事項は次節と実装記録を参照する。
@@ -213,7 +213,7 @@ Swift変更後は関連テストと全`swift test`、`git diff --check`を実施
 | 遅延成功を採用しない履歴 | `MetalModelView`のattempt／publication／source世代、`DayoFrameHistory`の個体別履歴 |
 | 再起動時の再試行抑制 | `FxDayoQuarantineStore`の64件上限、fingerprint・compiler ABI・device・OS別記録 |
 | CPU準備 | 既存Jsonnet／DXC／SPIRV-Cross子processの制限、非同期Metal library／pipeline、未完了driver jobの枠保持 |
-| 保存と書出し | `ProjectPayloadArchiveIO`、schema27、`MovieExportSceneSnapshot`の明示除外一覧、export側の厳格検査 |
-| 操作と理由 | 既存エフェクト読込状況の試行／OFF、既存動画書出しの除外選択 |
+| 保存と書き出し | `ProjectPayloadArchiveIO`、schema27、`MovieExportSceneSnapshot`の明示除外一覧、export側の厳格検査 |
+| 操作と理由 | 既存エフェクト読込状況の試行／OFF、既存動画書き出しの除外選択 |
 
 GPU故障はencode後例外、完了結果の失敗、completion通知の遅延を注入する。実際のGPU hangやdriver crashは発生させない。pure依存graphと履歴世代の検査は、4個の実shaderによる画像比較の代替とはしない。未確認の受入項目を含むため、上表の接続を根拠に全matrix合格とは扱わない。

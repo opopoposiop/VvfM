@@ -1,6 +1,6 @@
 # Blue Palace floor SSR profile
 
-> VvfM収録注（2026-10-19）：開発版v0.56.49／build453（記録ID `3620662`）から取り込みました。本文はbuild423等の限定SSR profileと当時の検証を記した資料です。配布素材やWindowsでの画像同値を保証するものではありません。現在版との関係は[資料の案内](README.md)を参照してください。本取込ではビルド・実機試験を再実施していません。
+> VvfM収録注（2026-10-19）：開発版v0.56.49／build453（記録ID `3620662`）から取り込みました。本文はbuild423等の限定SSR profileと当時の検証を記した資料です。配布素材やWindowsでの画像同値を保証するものではありません。現在版との関係は[資料の案内](README.md)を参照してください。本取り込みではビルド・実機試験を再実施していません。
 
 
 `Blue_Palace_SSR.fxdayo` is a closed derivative of opopoposiop/MMDayo_SSR at commit `492907e7ef738fe25c529e93daef7db3f5dc9bfb`. Its source SHA is registered explicitly in `MMDayoSSRDefinition` and the native adapter registry. It uses the existing single SSR owner and shared live/export WorkingFloor pass.
