@@ -64,7 +64,9 @@ MikuMikuDanceとの画像・物理・エフェクトの完全一致は保証し�
 
 ## ドキュメント・問い合わせ
 
-- [一般ユーザーマニュアル](GUIDE.md)：操作手順、ショートカット、対応範囲、困ったときの確認事項
+- [一般ユーザーマニュアル](GUIDE.md)：操作手順、ショートカット、対応範囲,確認事項
+- [FAQ](FAQ.md):困ったときに確認
+- [更新履歴](CHANGELOG.md):アプリリリースバージョンの更新履歴
 - [技術ガイド](VvfM_Technical_Note.md)：編集・描画・保存の仕組み、形式互換、性能の検証範囲
 - スペックシート：[PDF](docs/spec-sheet/VMDViewer_SpecSheet_ja.pdf)／[Markdown](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)。2026年10月28日・v0.57.22／build495基準
 - [.fxdayo資料の案内](docs/fxdayo/README.md)：開発者向け解説、教材、対応条件と現行版との差分
