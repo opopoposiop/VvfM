@@ -2,7 +2,7 @@
 
 # VMD Viewer for Mac（VvfM）
 
-[アプリをダウンロード（ZIP）](https://github.com/opopoposiop/VvfM/releases/download/v0.58.12/VMD.Viewer.app.zip)｜[リリース詳細](https://github.com/opopoposiop/VvfM/releases/tag/v0.58.12)｜[導入・初回起動](GUIDE.md#導入と起動)｜[スペックシート](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)
+[アプリをダウンロード（ZIP）](https://github.com/opopoposiop/VvfM/releases/download/v0.58.18/VMD.Viewer.app.zip)｜[リリース詳細](https://github.com/opopoposiop/VvfM/releases/tag/v0.58.18)｜[導入・初回起動](GUIDE.md#導入と起動)｜[スペックシート](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)
 
 [EULA 日本語原本](Licenses/VMDViewer-EULA-ja.md)｜[English](Licenses/VMDViewer-EULA-en.md)
 
@@ -16,10 +16,25 @@ PMXモデルとVMDモーションをMacで再生・編集し、音声付きの�
 
 ![VvfM v0.58.4／build569のメイン画面](images/v0.58.4-build569/01-overview.png)
 
-## v0.58.12の更新内容
+## v0.58.18の更新内容
 
-- **モーフキーのドラッグによる異常終了を修正**　同じIDを持つモーフキーが複数ある場合も、各キーを保持したまま移動できるようにしました。
-- **通常再生時のMetalFXの準備処理を一本化**　非同期の準備処理に統合済みだった旧切替設定と、二重に準備する分岐を削除しました。
+**再生・編集**
+
+- **物理ループ再生の停止を修正**:「物理優先・再生時のみ」で、ループ先頭の姿勢を準備したまま再生が止まる不具合を修正しました
+- **指ポーズの適用率を追加**:左手・右手・両手・選択ボーンを対象に、現在の姿勢とVPDポーズを0〜100%で混ぜられます。登録前に割合を変えて試せるほか、取消で元の未登録姿勢に戻せます。
+- **多層ボーンタイムラインの編集待ちを短縮**:レイヤーをボーン別にまとめて表示行を作るようにしました。
+- **再生時の描画待ちを追跡できるよう改善**:姿勢や動画の準備完了から、メインスレッドでの受付、対応する描画までを結び付けて記録できるようにしました。
+
+**描画・画質**
+
+- **ToonShader HQの光・影・材質調整を拡充**:材質ごとに局所光を当てても影を残す量を調整でき、リムライトは主光源の方向と色に追従できます。髪の帯状ハイライトの強さ・幅・毛流れ、遠景で密集する内側線の濃さも調整可能になりました。幾何AOには地平線方式を追加し、床と箱の接地付近で陰影の計算誤差を減らしました。
+- **HQの新機能をOFFにしたときのGPU負荷増を抑制**:リムライトの方向追従がOFFなら専用の軽い描画処理を使います。
+- **カメラの被写界深度に新方式を追加**:新方式`type1`は背景の大小のボケを分けて八角形に、手前の大きなボケを円形に描きます。既存プロジェクトは従来方式の`type2`で開きます。どちらも同じ焦点・F値・ボケ量のキーを使い、再生と動画書き出しに反映します。
+
+**読み込み・書き出し**
+
+- **大型VMDの読み込み時のメモリ使用量を削減**:連続するボーンキーの補間データが同じ場合にメモリを共有します。
+- **動画書き出しの頂点モーフをGPU化**:対応するMacでは、通常PMXの表情などによる頂点変形をGPUで計算し、MOV完成までの時間を短縮しました。CPU互換設定、ソフトボディや`.fxdayo`付きのモデルにはCPU処理を使います。
 
 ## 主な機能
 
@@ -35,7 +50,7 @@ PMXモデルとVMDモーションをMacで再生・編集し、音声付きの�
 
 macOS 14以降のMetal対応Mac(M2以降)が必要です。Intel CPU搭載のMacでは動作しません。
 
-配布アプリは [ZIP](https://github.com/opopoposiop/VvfM/releases/download/v0.58.12/VMD.Viewer.app.zip) からダウンロードできます。ZIPを展開してアプリを取り出し、[GUIDEの「導入と起動」](GUIDE.md#導入と起動) に従って起動してください。配布ファイル名は `VMD.Viewer.app.zip` です。過去の版やリリース情報は [Releases](https://github.com/opopoposiop/VvfM/releases) を参照してください。
+配布アプリは [ZIP](https://github.com/opopoposiop/VvfM/releases/download/v0.58.18/VMD.Viewer.app.zip) からダウンロードできます。ZIPを展開してアプリを取り出し、[GUIDEの「導入と起動」](GUIDE.md#導入と起動) に従って起動してください。配布ファイル名は `VMD.Viewer.app.zip` です。過去の版やリリース情報は [Releases](https://github.com/opopoposiop/VvfM/releases) を参照してください。
 
 モデル・モーション・音源は、利用許諾を確認したものを別途用意します。
 
@@ -84,4 +99,5 @@ VMD Viewer for Macの開発にあたり技術的参考にさせていただき�
 - [AutoLuminous](https://www.nicovideo.jp/watch/sm19843111) そぼろ 様
 - [msToonCoordinator](https://www.nicovideo.jp/watch/sm39850446) ましまし 様
 - [ikHolographic](https://seiga.nicovideo.jp/seiga/im8315687) ikeno 様
+- [LiteDOF HC](https://seiga.nicovideo.jp/seiga/im10818176) akeru 様
 - [浅草みどり](https://www.nicovideo.jp/watch/sm36384153) / [水崎ツバメ](https://www.nicovideo.jp/watch/sm36519353) くれよん 様
