@@ -5,12 +5,12 @@
 <meta name="google-site-verification" content="J-O5AVknDOoGeZmMIt8It_xiSTIsqs5Ke5Kr5aalyoA" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ToonShader HQの使い方・エフェクト解説｜MacでMMD制作・VvfM</title>
-<meta name="description" content="VvfMのToonShader HQを使い、MacでMMD作品の陰影・輪郭線・RimLight・Bloom・AO・被写界深度を調整する方法。設定の役割、保存、重いときの対処、MMEとの違いを解説します。">
+<meta name="description" content="VvfMのToonShader HQを使い MacでMMD作品の陰影・輪郭線・RimLight・Bloom・AO・被写界深度を調整する方法 設定の役割 保存 重いときの対処 MMEとの違いを解説します ">
 <link rel="canonical" href="https://opopoposiop.github.io/VvfM/toonshader-hq.html">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:title" content="光と陰影で、作品の表情を。｜VvfM ToonShader HQ">
-<meta property="og:description" content="MacでMMD作品を仕上げる、ToonShader HQのエフェクトガイド。輪郭・光・ぼけの調整から保存まで。">
+<meta property="og:title" content="光と陰影で 作品の表情を ｜VvfM ToonShader HQ">
+<meta property="og:description" content="MacでMMD作品を仕上げる ToonShader HQのエフェクトガイド 輪郭・光・ぼけの調整から保存まで ">
 <meta property="og:url" content="https://opopoposiop.github.io/VvfM/toonshader-hq.html">
 <meta property="og:image" content="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/vvfm-eyecatch.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -26,82 +26,82 @@
 <main id="main">
 <div class="hq-hero"><header class="guide-intro wrap">
 <p class="eyebrow">TOONSHADER HQ · EFFECT GUIDE</p>
-<h1>光と陰影で、<br>作品の表情を。</h1>
-<p class="lead">MacでMMD作品を仕上げる、ToonShader HQ。</p>
-<p>Toonの陰影を土台に、輪郭線、縁の光、発光のにじみ、ピントのぼけを重ねる。Apple SiliconネイティブのVvfMで、見せたい表情に合わせて調整するためのガイドです。</p>
-<p class="guide-note">公開配布版 v0.58.18 を基準に作成。確認日：2026年11月16日。画面例は v0.58.4／build569 のため、配置や項目は使用中の版と異なる場合があります。</p>
-<div class="hq-overview"><div><strong>形を見せる</strong><p>陰影・PMXエッジ・AOで、顔と衣装の立体感を整える。</p></div><div><strong>光を演出する</strong><p>RimLightとBloomで、人物の縁やステージの光を印象的に。</p></div><div><strong>視線を集める</strong><p>DoFと色調整で、主役と背景の距離感をつくる。</p></div></div>
+<h1>光と陰影で<br>作品の表情を</h1>
+<p class="lead">MacでMMD作品を仕上げる ToonShader HQ</p>
+<p>Toonの陰影を土台に 輪郭線 縁の光 発光のにじみ ピントのぼけを重ねる Apple SiliconネイティブのVvfMで 見せたい表情に合わせて調整するためのガイドです</p>
+<p class="guide-note">公開配布版 v0.58.18 を基準に作成 確認日：2026年11月16日 画面例は v0.58.4／build569 のため 配置や項目は使用中の版と異なる場合があります</p>
+<div class="hq-overview"><div><strong>形を見せる</strong><p>陰影・PMXエッジ・AOで 顔と衣装の立体感を整える</p></div><div><strong>光を演出する</strong><p>RimLightとBloomで 人物の縁やステージの光を印象的に</p></div><div><strong>視線を集める</strong><p>DoFと色調整で 主役と背景の距離感をつくる</p></div></div>
 </header></div>
 <div class="guide-layout wrap hq-main-layout">
 <aside><nav class="guide-toc" aria-label="このページの目次"><strong>このページの内容</strong><ol><li><a href="#start">HQを使い始める</a></li><li><a href="#effects">効果と設定の役割</a></li><li><a href="#dof">DoFでピントを合わせる</a></li><li><a href="#material">材質ごとの調整</a></li><li><a href="#advanced">拡張機能と対応範囲</a></li><li><a href="#workflow">仕上げ・保存・キー</a></li><li><a href="#trouble">重い・効かないとき</a></li><li><a href="#references">対応版と資料</a></li></ol></nav></aside>
 <article class="guide-content hq-content">
 <section id="start"><p class="hq-label">01 / FIRST STEP</p><h2>HQを使い始める</h2>
-<ol><li>PMXモデルとVMDモーションを読み込み、顔・髪・衣装・背景が見えるフレームで停止します。</li><li>描画方式から<strong>「ToonShader HQ」</strong>を選びます。</li><li>隣の調整アイコン<strong>「高品質Toonエフェクト調整」</strong>を開きます。設定欄は縦にスクロールできます。</li><li>効果を一つずつON／OFFして比較します。項目の説明は、ラベルや操作部にポインタを重ねて確認できます。</li></ol>
-<div class="guide-callout"><strong>まずは「追加する」より「比較する」。</strong><p>同じフレーム、同じ構図で切り替えると、どの効果が見た目を変えたか分かります。最初からすべてを強くせず、顔の明るさと輪郭を基準に調整しましょう。</p></div>
-<figure class="guide-figure"><a href="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/v0.58.4-build569/09-toon-hq-settings.png"><img src="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/v0.58.4-build569/09-toon-hq-settings.png" alt="VvfMの高品質Toonエフェクト調整画面。影色、PMXエッジ、diffusionなどの設定欄" loading="lazy"></a><figcaption>公開マニュアル掲載の実画面：v0.58.4／build569。値は撮影中のプロジェクトの例で、おすすめの初期値ではありません。画像を選ぶと拡大できます。</figcaption></figure>
-<p>基本の読み込みや動画出力は、<a href="getting-started.html">MacでMMDを始めるガイド</a>を参照してください。対応環境はM2以降のMac・macOS 14以降です。</p></section>
+<ol><li>PMXモデルとVMDモーションを読み込み 顔・髪・衣装・背景が見えるフレームで停止します</li><li>描画方式から<strong>「ToonShader HQ」</strong>を選びます</li><li>隣の調整アイコン<strong>「高品質Toonエフェクト調整」</strong>を開きます 設定欄は縦にスクロールできます</li><li>効果を一つずつON／OFFして比較します 項目の説明は ラベルや操作部にポインタを重ねて確認できます</li></ol>
+<div class="guide-callout"><strong>まずは「追加する」より「比較する」</strong><p>同じフレーム 同じ構図で切り替えると どの効果が見た目を変えたか分かります 最初からすべてを強くせず 顔の明るさと輪郭を基準に調整しましょう</p></div>
+<figure class="guide-figure"><a href="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/v0.58.4-build569/09-toon-hq-settings.png"><img src="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/v0.58.4-build569/09-toon-hq-settings.png" alt="VvfMの高品質Toonエフェクト調整画面 影色 PMXエッジ diffusionなどの設定欄" loading="lazy"></a><figcaption>公開マニュアル掲載の実画面：v0.58.4／build569 値は撮影中のプロジェクトの例で おすすめの初期値ではありません 画像を選ぶと拡大できます</figcaption></figure>
+<p>基本の読み込みや動画出力は<a href="getting-started.html">MacでMMDを始めるガイド</a>を参照してください 対応環境はM2以降のMac・macOS 14以降です</p></section>
 
 <section id="effects"><p class="hq-label">02 / EFFECTS</p><h2>効果と設定の役割</h2>
-<h3>陰影：Toonの影色を決める</h3><p><strong>「陰影 → 影色の計算」</strong>でType1（従来方式）とType2（msToonCoordinator標準自動影色）を選びます。Type2は色相・彩度・輝度を使う自動影色のMetal実装です。</p><p>v0.58.0以降の新規設定と「初期値」はType2。影色指定やHQ設定を持たない旧プロジェクトはType1で復元します。この切替は静的設定で、キーアニメーションの対象ではありません。元のMME全体との互換を意味するものでもありません。</p>
-<h3>PMXエッジ：輪郭を読みやすくする</h3><p><strong>「幅」</strong>で線の太さ、<strong>「濃さ」</strong>で強さを調整します。「従来」でまとめて調整するほか、「個別」で外形線と内側線を分けられます。「検出感度」は内側線の出方を変えます。</p><p>線が目立ちすぎるときは、まず内側線を控えめに。テクスチャに描き込まれた線は、この設定では消えません。</p>
-<h3>diffusion：画面全体を柔らかくする</h3><p><strong>「強度」</strong>は混ぜる量、<strong>「半径」</strong>はにじみの広がりです。Bloomが発光のにじみをつくるのに対し、diffusionは画面を柔らかく見せるために使います。強くすると顔や髪の細部も薄れるため、控えめな量から比較します。</p>
-<h3>RimLight：人物の縁に光を足す</h3><p><strong>「強度」「指数」</strong>で縁の光の量と広がり方を調整します。暗い背景から人物を浮き立たせたい場面に向いています。</p><p>v0.58.16以降は<strong>「光源方向」「光源色」</strong>で主光源への追従を調整できます。方向0は従来の視線依存のリム。光源に追従させる場合は、照明の向きや色も一緒に確認してください。</p>
-<h3>アンチエイリアス：ギザギザとちらつきを抑える</h3><p>OFF・FXAA・TAA・MetalFXから<strong>一つを選択</strong>します。同時に重ねる機能ではありません。</p>
+<h3>陰影：Toonの影色を決める</h3><p><strong>「陰影 → 影色の計算」</strong>でType1（従来方式）とType2（msToonCoordinator標準自動影色）を選びます Type2は色相・彩度・輝度を使う自動影色のMetal実装です</p><p>v0.58.0以降の新規設定と「初期値」はType2 影色指定やHQ設定を持たない旧プロジェクトはType1で復元します この切替は静的設定で キーアニメーションの対象ではありません 元のMME全体との互換を意味するものでもありません</p>
+<h3>PMXエッジ：輪郭を読みやすくする</h3><p><strong>「幅」</strong>で線の太さ<strong>「濃さ」</strong>で強さを調整します 「従来」でまとめて調整するほか 「個別」で外形線と内側線を分けられます 「検出感度」は内側線の出方を変えます</p><p>線が目立ちすぎるときは まず内側線を控えめに テクスチャに描き込まれた線は この設定では消えません</p>
+<h3>diffusion：画面全体を柔らかくする</h3><p><strong>「強度」</strong>は混ぜる量<strong>「半径」</strong>はにじみの広がりです Bloomが発光のにじみをつくるのに対し diffusionは画面を柔らかく見せるために使います 強くすると顔や髪の細部も薄れるため 控えめな量から比較します</p>
+<h3>RimLight：人物の縁に光を足す</h3><p><strong>「強度」「指数」</strong>で縁の光の量と広がり方を調整します 暗い背景から人物を浮き立たせたい場面に向いています</p><p>v0.58.16以降は<strong>「光源方向」「光源色」</strong>で主光源への追従を調整できます 方向0は従来の視線依存のリム 光源に追従させる場合は 照明の向きや色も一緒に確認してください</p>
+<h3>アンチエイリアス：ギザギザとちらつきを抑える</h3><p>OFF・FXAA・TAA・MetalFXから<strong>一つを選択</strong>します 同時に重ねる機能ではありません</p>
 <div class="hq-table-wrap"><table class="hq-table"><caption>AA方式の選び方</caption><thead><tr><th scope="col">方式</th><th scope="col">役割と確認点</th></tr></thead><tbody>
-<tr><td>OFF</td><td>AAなし。効果の切り分けや、AAを使わない出力条件で使用します。</td></tr>
-<tr><td>FXAA</td><td>現在の画像から輪郭を滑らかにする軽量な方式。「FXAA品質」を調整します。</td></tr>
-<tr><td>TAA</td><td>過去フレームも使い、ちらつきを抑えます。「履歴」「ジッター」を調整。動きのあるカットで残像も確認します。</td></tr>
-<tr><td>MetalFX</td><td>対応環境で時間方向の情報と内部解像度を利用。最高100%・高品質77%・バランス67%・自動から方針を選びます。「透過・発光の残像を抑える」も確認します。</td></tr></tbody></table></div>
-<p>MetalFX非対応時はTAA／FXAAへ切り替わります。ライブ表示を「内部解像度表示」にしたHQでは、AAの選択肢はTAA／FXAA／OFFです。表示解像度と動画出力解像度は別の設定です。</p>
-<h3>Bloom：照明や発光材質をにじませる</h3><p>ステージ照明やペンライトなど、明るい部分・発光指定した材質の周囲に光を広げます。</p>
-<dl><dt>しきい値・強度</dt><dd>通常の明るい部分をどこから取り出すか、にじむ光をどれくらい強くするかを調整します。</dd><dt>材質発光倍率・明示材質名</dt><dd>発光入力の強さと、光らせる対象を調整します。明示材質名はカンマ区切りで指定します。</dd><dt>半径・ぼかし強度</dt><dd>光が広がる範囲と柔らかさを変えます。</dd><dt>光芒方向数・芒角度・光芒長さ</dt><dd>光の筋の方向数、向き、長さを変えます。方向数と画面に示される実際の本数を区別してください。</dd><dt>点滅・周期・波形</dt><dd>タイムラインに同期する点滅です。「滑らか」「矩形波」を選べます。周期のキーだけでは、OFFの点滅をONにはしません。</dd></dl>
-<p>白くつぶれるときは、強度や材質発光倍率を下げて比較します。投影スクリーン動画の可視部分はBloomの抽出・合成から除外されます。VvfM内蔵のBloomは、MMEのAutoLuminousを完全移植したものではありません。</p>
-<h3>AO：重なりや接地の陰影を足す</h3><p><strong>「半径」「強度」</strong>で範囲と濃さを調整します。顔や衣装が黒く沈むときは強度を下げます。v0.58.16以降は「幾何AOの距離」を正にし、<strong>「地平線ベースの幾何AO」</strong>を選ぶ方法もあります。接触影・局所光とは別の成分です。</p>
-<h3>Tonemapper：最後に明るさと色を整える</h3><p><strong>「露出」「コントラスト」「彩度」「白レベル」</strong>を調整します。顔、白い服、強い照明の近くを見比べてください。Bloomの強すぎるにじみを、露出だけで無理に隠そうとしないのが調整のコツです。</p></section>
+<tr><td>OFF</td><td>AAなし 効果の切り分けや AAを使わない出力条件で使用します</td></tr>
+<tr><td>FXAA</td><td>現在の画像から輪郭を滑らかにする軽量な方式 「FXAA品質」を調整します</td></tr>
+<tr><td>TAA</td><td>過去フレームも使い ちらつきを抑えます 「履歴」「ジッター」を調整 動きのあるカットで残像も確認します</td></tr>
+<tr><td>MetalFX</td><td>対応環境で時間方向の情報と内部解像度を利用 最高100%・高品質77%・バランス67%・自動から方針を選びます 「透過・発光の残像を抑える」も確認します</td></tr></tbody></table></div>
+<p>MetalFX非対応時はTAA／FXAAへ切り替わります ライブ表示を「内部解像度表示」にしたHQでは AAの選択肢はTAA／FXAA／OFFです 表示解像度と動画出力解像度は別の設定です</p>
+<h3>Bloom：照明や発光材質をにじませる</h3><p>ステージ照明やペンライトなど 明るい部分・発光指定した材質の周囲に光を広げます</p>
+<dl><dt>しきい値・強度</dt><dd>通常の明るい部分をどこから取り出すか にじむ光をどれくらい強くするかを調整します</dd><dt>材質発光倍率・明示材質名</dt><dd>発光入力の強さと 光らせる対象を調整します 明示材質名はカンマ区切りで指定します</dd><dt>半径・ぼかし強度</dt><dd>光が広がる範囲と柔らかさを変えます</dd><dt>光芒方向数・芒角度・光芒長さ</dt><dd>光の筋の方向数 向き 長さを変えます 方向数と画面に示される実際の本数を区別してください</dd><dt>点滅・周期・波形</dt><dd>タイムラインに同期する点滅です 「滑らか」「矩形波」を選べます 周期のキーだけでは OFFの点滅をONにはしません</dd></dl>
+<p>白くつぶれるときは 強度や材質発光倍率を下げて比較します 投影スクリーン動画の可視部分はBloomの抽出・合成から除外されます VvfM内蔵のBloomは MMEのAutoLuminousを完全移植したものではありません</p>
+<h3>AO：重なりや接地の陰影を足す</h3><p><strong>「半径」「強度」</strong>で範囲と濃さを調整します 顔や衣装が黒く沈むときは強度を下げます v0.58.16以降は「幾何AOの距離」を正にし<strong>「地平線ベースの幾何AO」</strong>を選ぶ方法もあります 接触影・局所光とは別の成分です</p>
+<h3>Tonemapper：最後に明るさと色を整える</h3><p><strong>「露出」「コントラスト」「彩度」「白レベル」</strong>を調整します 顔 白い服 強い照明の近くを見比べてください Bloomの強すぎるにじみを 露出だけで無理に隠そうとしないのが調整のコツです</p></section>
 
-<section id="dof"><p class="hq-label">03 / DEPTH OF FIELD</p><h2>DoFでピントを合わせる</h2><p>DoF（被写界深度）は、合焦位置の前後をぼかす機能です。<strong>ToonShader HQ・透視投影</strong>で使います。Metal・LE・正投影では動作しません。</p>
-<ol><li>上部の絞りアイコンから「カメラDoF」を開き、<strong>「被写界深度」</strong>をONにします。</li><li>手動距離、PMXのボーン、または停止中の「画面から焦点を選択」でピントの位置を決めます。人物を追う場合はボーンを指定します。</li><li>F値・ボケ量を調整します。小さいF値はぼけを大きくする方向ですが、距離などによって結果は変わります。</li><li>時間で変える焦点・設定は対応するキーを明示登録し、プロジェクトを保存します。</li></ol>
-<div class="guide-callout"><strong>焦点を選ぶことと、DoFを有効にすることは別です。</strong><p>焦点キーの登録だけではDoFはONになりません。現在フレームの有効キーがOFFなら、その値が優先されます。焦点ボーンが見つからない場合などは保存された距離を使うため、状態表示も確認してください。</p></div>
-<h3>type1とtype2の使い分け</h3><p>v0.58.17以降の「描画方式」で選びます。<strong>type1（LiteDOF HC）</strong>は八角形の後ろぼけと円形の大きな前ぼけを使う方式。<strong>type2（従来DoF）</strong>は羽根数・回転・縦横比・ハイライト閾値などを調整したい場合に使います。新規シーンと方式未指定の旧作品はtype2です。</p><p>描画方式はプロジェクトへ保存されます。単体の.dofvmdを読み込む場合は、読み込み先の方式を使用します。元エフェクトの全機能・完全な見た目の再現を保証するものではありません。</p>
-<div class="hq-compare"><figure class="guide-figure"><img src="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/v0.58.4-build569/10-dof-off.png" alt="DoF OFFの実画面。人物と背景の柱がはっきり見える" loading="lazy"><figcaption><strong>DoF OFF</strong>：人物と背景の細部を見せる。</figcaption></figure><figure class="guide-figure"><img src="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/v0.58.4-build569/11-dof-on.png" alt="DoF ONの実画面。人物にピントを合わせ、背景をぼかしている" loading="lazy"><figcaption><strong>DoF ON</strong>：背景をぼかして人物へ視線を集める。</figcaption></figure></div>
-<p class="guide-note">比較は公開マニュアルのv0.58.4／build569、同一450フレーム・VMDカメラ。ON側はF/1.00、人物の左目を追従先にした例です。type1追加前の画像で、type1／type2の比較ではありません。</p></section>
+<section id="dof"><p class="hq-label">03 / DEPTH OF FIELD</p><h2>DoFでピントを合わせる</h2><p>DoF（被写界深度）は 合焦位置の前後をぼかす機能です<strong>ToonShader HQ・透視投影</strong>で使います Metal・LE・正投影では動作しません</p>
+<ol><li>上部の絞りアイコンから「カメラDoF」を開き<strong>「被写界深度」</strong>をONにします</li><li>手動距離 PMXのボーン または停止中の「画面から焦点を選択」でピントの位置を決めます 人物を追う場合はボーンを指定します</li><li>F値・ボケ量を調整します 小さいF値はぼけを大きくする方向ですが 距離などによって結果は変わります</li><li>時間で変える焦点・設定は対応するキーを明示登録し プロジェクトを保存します</li></ol>
+<div class="guide-callout"><strong>焦点を選ぶことと DoFを有効にすることは別です</strong><p>焦点キーの登録だけではDoFはONになりません 現在フレームの有効キーがOFFなら その値が優先されます 焦点ボーンが見つからない場合などは保存された距離を使うため 状態表示も確認してください</p></div>
+<h3>type1とtype2の使い分け</h3><p>v0.58.17以降の「描画方式」で選びます<strong>type1（LiteDOF HC）</strong>は八角形の後ろぼけと円形の大きな前ぼけを使う方式<strong>type2（従来DoF）</strong>は羽根数・回転・縦横比・ハイライト閾値などを調整したい場合に使います 新規シーンと方式未指定の旧作品はtype2です</p><p>描画方式はプロジェクトへ保存されます 単体の.dofvmdを読み込む場合は 読み込み先の方式を使用します 元エフェクトの全機能・完全な見た目の再現を保証するものではありません</p>
+<div class="hq-compare"><figure class="guide-figure"><img src="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/v0.58.4-build569/10-dof-off.png" alt="DoF OFFの実画面 人物と背景の柱がはっきり見える" loading="lazy"><figcaption><strong>DoF OFF</strong>：人物と背景の細部を見せる</figcaption></figure><figure class="guide-figure"><img src="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/v0.58.4-build569/11-dof-on.png" alt="DoF ONの実画面 人物にピントを合わせ 背景をぼかしている" loading="lazy"><figcaption><strong>DoF ON</strong>：背景をぼかして人物へ視線を集める</figcaption></figure></div>
+<p class="guide-note">比較は公開マニュアルのv0.58.4／build569 同一450フレーム・VMDカメラ ON側はF/1.00 人物の左目を追従先にした例です type1追加前の画像で type1／type2の比較ではありません</p></section>
 
-<section id="material"><p class="hq-label">04 / MATERIAL</p><h2>顔・髪・衣装を、個別に調整する</h2><p>シーン全体を変えるHQ調整とは別に、<strong>「FX → 材質」</strong>でモデルと材質を選んで編集できます。対象が合っていることを確認し、変更後は「変更を適用」で確定します。</p>
-<dl><dt>局所光で顔の陰影が消える</dt><dd>標準HQ材質の「局所光で影を残す量」を上げます（v0.58.13以降）。0%は従来の明るさです。</dd><dt>髪に帯状の艶をつくる</dt><dd>「髪の帯の強さ」を上げ、幅と「毛流れのUV軸」を調整します（v0.58.16以降）。必要ならRG方向マップを使用します。UVの状態によって結果は変わります。</dd><dt>遠景の細かい線が密集する</dt><dd>PMXエッジを「個別」にし、対象材質で「密集した内側線を薄くする」を使用します（v0.58.16以降）。指定した不透明材質の内側線を対象にします。</dd></dl>
-<p>材質プレビューは適用済みの状態を表示します。未適用の配線、シーン全体のDoF、他モデルからの影・反射まで含む最終画面ではないため、メインのViewerでも確認してください。</p></section>
+<section id="material"><p class="hq-label">04 / MATERIAL</p><h2>顔・髪・衣装を 個別に調整する</h2><p>シーン全体を変えるHQ調整とは別に<strong>「FX → 材質」</strong>でモデルと材質を選んで編集できます 対象が合っていることを確認し 変更後は「変更を適用」で確定します</p>
+<dl><dt>局所光で顔の陰影が消える</dt><dd>標準HQ材質の「局所光で影を残す量」を上げます（v0.58.13以降） 0%は従来の明るさです</dd><dt>髪に帯状の艶をつくる</dt><dd>「髪の帯の強さ」を上げ 幅と「毛流れのUV軸」を調整します（v0.58.16以降） 必要ならRG方向マップを使用します UVの状態によって結果は変わります</dd><dt>遠景の細かい線が密集する</dt><dd>PMXエッジを「個別」にし 対象材質で「密集した内側線を薄くする」を使用します（v0.58.16以降） 指定した不透明材質の内側線を対象にします</dd></dl>
+<p>材質プレビューは適用済みの状態を表示します 未適用の配線 シーン全体のDoF 他モデルからの影・反射まで含む最終画面ではないため メインのViewerでも確認してください</p></section>
 
-<section id="advanced"><p class="hq-label">05 / SCOPE</p><h2>拡張機能と、できることの境界</h2>
-<p>HQには環境光・局所照明などの拡張もあります。まず基本効果で絵を整え、必要な機能だけ追加する方法がおすすめです。</p>
+<section id="advanced"><p class="hq-label">05 / SCOPE</p><h2>拡張機能と できることの境界</h2>
+<p>HQには環境光・局所照明などの拡張もあります まず基本効果で絵を整え 必要な機能だけ追加する方法がおすすめです</p>
 <div class="hq-table-wrap"><table class="hq-table"><caption>v0.58.18の公開技術資料に基づく範囲</caption><thead><tr><th scope="col">機能</th><th scope="col">用途・制限</th></tr></thead><tbody>
-<tr><td>環境IBL</td><td>環境画像による照明。2:1のRadiance HDR、2 MiB以下・最大4096×2048。回転・強度・不透明背景表示を設定できます。</td></tr>
-<tr><td>局所反射probe</td><td>静的ステージを焼き込む実験機能。状態が変わると無効になる場合があり、古いprobeを使う出力は拒否されます。</td></tr>
-<tr><td>局所光・体積霧</td><td>点・スポット光や霧の演出。公開技術資料では実験機能に分類されています。</td></tr>
-<tr><td>散乱・速度ぼかし</td><td>肌・布の散乱、TAA時のモーションブラーなど。利用条件と画質・負荷の確認が必要です。</td></tr>
-<tr><td>動画の時間方向露光</td><td>複数時刻のHDRを合成する限定機能。HQ、AA OFF／FXAA、edge OFF、原文postprocessなしなどの条件があります。</td></tr></tbody></table></div>
-<div class="guide-callout"><strong>EeveeやMMEを、そのまま動かす仕組みではありません。</strong><p>参照した表現と、VvfMのMetal実装は区別してください。Eeveeの全機能・材質互換や、MMEの任意の.fxファイルの実行を保証しません。MMDayo_SSRなどの.fxdayo対応も、確認済みの原文・PMX・コントローラーや対応profileに限定されます。HQの設定だけで任意の床を完全な鏡にできるという意味ではありません。</p></div>
-<p>実装・保存・限定条件の出力確認と、すべての素材・画質・性能・長時間動作の保証は別です。詳しくは<a href="https://github.com/opopoposiop/VvfM/blob/main/VvfM_Technical_Note.md">技術ガイドのHQ画質拡張・DoF・外部エフェクトの説明</a>を参照してください。</p></section>
+<tr><td>環境IBL</td><td>環境画像による照明 2:1のRadiance HDR 2 MiB以下・最大4096×2048 回転・強度・不透明背景表示を設定できます</td></tr>
+<tr><td>局所反射probe</td><td>静的ステージを焼き込む実験機能 状態が変わると無効になる場合があり 古いprobeを使う出力は拒否されます</td></tr>
+<tr><td>局所光・体積霧</td><td>点・スポット光や霧の演出 公開技術資料では実験機能に分類されています</td></tr>
+<tr><td>散乱・速度ぼかし</td><td>肌・布の散乱 TAA時のモーションブラーなど 利用条件と画質・負荷の確認が必要です</td></tr>
+<tr><td>動画の時間方向露光</td><td>複数時刻のHDRを合成する限定機能 HQ AA OFF／FXAA edge OFF 原文postprocessなしなどの条件があります</td></tr></tbody></table></div>
+<div class="guide-callout"><strong>EeveeやMMEを そのまま動かす仕組みではありません</strong><p>参照した表現と VvfMのMetal実装は区別してください Eeveeの全機能・材質互換や MMEの任意の.fxファイルの実行を保証しません MMDayo_SSRなどの.fxdayo対応も 確認済みの原文・PMX・コントローラーや対応profileに限定されます HQの設定だけで任意の床を完全な鏡にできるという意味ではありません</p></div>
+<p>実装・保存・限定条件の出力確認と すべての素材・画質・性能・長時間動作の保証は別です 詳しくは<a href="https://github.com/opopoposiop/VvfM/blob/main/VvfM_Technical_Note.md">技術ガイドのHQ画質拡張・DoF・外部エフェクトの説明</a>を参照してください</p></section>
 
-<section id="workflow"><p class="hq-label">06 / FINISH &amp; SAVE</p><h2>少しずつ仕上げて、設定を残す</h2>
-<p class="hq-path">おすすめの調整順：<strong>陰影・輪郭 → AO → RimLight → Bloom・diffusion → DoF → Tonemapper</strong></p><p>これは操作の進め方の提案で、GPUの処理順を表したものではありません。同じフレームで比較した後、カメラや人物が動く短い区間でも確認します。</p>
-<h3>動く効果は、キーを登録する</h3><p>対応するHQ項目の菱形ボタンで現在フレームへ設定キーを登録し、カメラタイムライン側で確認します。曲に合わせてBloomを強める、といった演出に使えます。すべての項目がキー対応ではありません。</p><p>未登録のプレビューと登録済みの値は別です。残したい変化は明示登録し、材質・ノードの未適用変更も適用または取消してから保存・動画出力してください。</p>
-<h3>全体の保存は.vmdviewerで</h3><p>HQ設定、材質、照明、DoFなどを作品と一緒に残すには<strong>プロジェクト保存（⌘S）</strong>を使います。標準VMDだけでHQ設定全体を保存することはできません。新しい機能を使ったプロジェクトは旧版で開けない場合があるため、更新前の原本を残して別名保存します。</p>
-<h3>ノードの順序を変える場合</h3><p>「FX → シーン」の「HDRの接続」で、Diffusion → Bloom、Bloom → Diffusion、片方のみ、両方をバイパスなどを選び、変更を適用します。AA・DoF・Tonemapperなどは固定段階があり、すべてを自由に並べ替えることはできません。</p>
-<p>最後に短い動画を書き出し、再生時のちらつき、光の白飛び、ピントの追従を確認してから全編を出力しましょう。</p></section>
+<section id="workflow"><p class="hq-label">06 / FINISH &amp; SAVE</p><h2>少しずつ仕上げて 設定を残す</h2>
+<p class="hq-path">おすすめの調整順：<strong>陰影・輪郭 → AO → RimLight → Bloom・diffusion → DoF → Tonemapper</strong></p><p>これは操作の進め方の提案で GPUの処理順を表したものではありません 同じフレームで比較した後 カメラや人物が動く短い区間でも確認します</p>
+<h3>動く効果は キーを登録する</h3><p>対応するHQ項目の菱形ボタンで現在フレームへ設定キーを登録し カメラタイムライン側で確認します 曲に合わせてBloomを強める といった演出に使えます すべての項目がキー対応ではありません</p><p>未登録のプレビューと登録済みの値は別です 残したい変化は明示登録し 材質・ノードの未適用変更も適用または取消してから保存・動画出力してください</p>
+<h3>全体の保存は.vmdviewerで</h3><p>HQ設定 材質 照明 DoFなどを作品と一緒に残すには<strong>プロジェクト保存（⌘S）</strong>を使います 標準VMDだけでHQ設定全体を保存することはできません 新しい機能を使ったプロジェクトは旧版で開けない場合があるため 更新前の原本を残して別名保存します</p>
+<h3>ノードの順序を変える場合</h3><p>「FX → シーン」の「HDRの接続」で Diffusion → Bloom Bloom → Diffusion 片方のみ 両方をバイパスなどを選び 変更を適用します AA・DoF・Tonemapperなどは固定段階があり すべてを自由に並べ替えることはできません</p>
+<p>最後に短い動画を書き出し 再生時のちらつき 光の白飛び ピントの追従を確認してから全編を出力しましょう</p></section>
 
 <section id="trouble"><p class="hq-label">07 / TROUBLESHOOTING</p><h2>重い・効かないときの確認</h2>
 <div class="faq">
-<details><summary>再生が重いときは？</summary><p>ライブ表示の描画解像度を下げ、AO・DoF・Bloomなどを一つずつOFFにして負荷を切り分けます。編集中だけToonShader LE／Metalに切り替える方法もあります。動画出力解像度は別設定です。モデル数・物理FPSも影響し、一定FPSを保証する設定ではありません。</p></details>
-<details><summary>DoFが効かないときは？</summary><p>HQ・透視投影・モデル表示・DoF全体ONを確認し、現在フレームの有効キーと描画条件を見ます。焦点キーだけではONになりません。ボーンが見つからない場合は状態表示と解決済み距離を確認します。</p></details>
-<details><summary>画面が白くなりすぎるときは？</summary><p>Bloomの強度・材質発光倍率を下げ、diffusionも一度OFFにして比較します。その後で露出や白レベルを整えます。動いているカットでも顔と白い衣装がつぶれないか確認してください。</p></details>
-<details><summary>透明部分や発光に残像が出るときは？</summary><p>同じ区間をFXAAとTAA／MetalFXで比較します。MetalFXでは「透過・発光の残像を抑える」を確認します。すべての素材で残像がなくなる保証ではありません。</p></details>
-<details><summary>動画に設定が反映されないときは？</summary><p>未登録のHQ／DoFキー、未適用の材質・ノード変更を確認します。保存して開き直した状態と短い出力を比較してください。エラーが出る場合は、対応条件の違う外部エフェクトや出力方式も確認します。</p></details>
-<details><summary>透明背景にも光のにじみを残せますか？</summary><p>透明出力ではRGBとalphaの扱いに制約があります。背景のあるプレビューと同じ見た目になるとは限りません。使用するコーデックとエフェクトの組合せを短い出力で確認し、<a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md">マニュアルの動画出力・透明背景の説明</a>を参照してください。</p></details>
+<details><summary>再生が重いときは？</summary><p>ライブ表示の描画解像度を下げ AO・DoF・Bloomなどを一つずつOFFにして負荷を切り分けます 編集中だけToonShader LE／Metalに切り替える方法もあります 動画出力解像度は別設定です モデル数・物理FPSも影響し 一定FPSを保証する設定ではありません</p></details>
+<details><summary>DoFが効かないときは？</summary><p>HQ・透視投影・モデル表示・DoF全体ONを確認し 現在フレームの有効キーと描画条件を見ます 焦点キーだけではONになりません ボーンが見つからない場合は状態表示と解決済み距離を確認します</p></details>
+<details><summary>画面が白くなりすぎるときは？</summary><p>Bloomの強度・材質発光倍率を下げ diffusionも一度OFFにして比較します その後で露出や白レベルを整えます 動いているカットでも顔と白い衣装がつぶれないか確認してください</p></details>
+<details><summary>透明部分や発光に残像が出るときは？</summary><p>同じ区間をFXAAとTAA／MetalFXで比較します MetalFXでは「透過・発光の残像を抑える」を確認します すべての素材で残像がなくなる保証ではありません</p></details>
+<details><summary>動画に設定が反映されないときは？</summary><p>未登録のHQ／DoFキー 未適用の材質・ノード変更を確認します 保存して開き直した状態と短い出力を比較してください エラーが出る場合は 対応条件の違う外部エフェクトや出力方式も確認します</p></details>
+<details><summary>透明背景にも光のにじみを残せますか？</summary><p>透明出力ではRGBとalphaの扱いに制約があります 背景のあるプレビューと同じ見た目になるとは限りません 使用するコーデックとエフェクトの組合せを短い出力で確認し<a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md">マニュアルの動画出力・透明背景の説明</a>を参照してください</p></details>
 </div></section>
 
-<section id="references"><p class="hq-label">08 / REFERENCE</p><h2>対応版と、詳しい資料</h2><p>このページは<strong>公開配布版v0.58.18</strong>と公開マニュアルを基準に、開発資料の機能説明・設定名を照合して作成しました。開発中の追加機能を、配布版で使える機能として混在させていません。</p>
+<section id="references"><p class="hq-label">08 / REFERENCE</p><h2>対応版と 詳しい資料</h2><p>このページは<strong>公開配布版v0.58.18</strong>と公開マニュアルを基準に 開発資料の機能説明・設定名を照合して作成しました 開発中の追加機能を 配布版で使える機能として混在させていません</p>
 <ul><li><a href="https://github.com/opopoposiop/VvfM/releases/tag/v0.58.18">説明の基準とした配布版：v0.58.18</a></li><li><a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md">一般ユーザーマニュアル：操作・保存・エフェクト</a></li><li><a href="https://github.com/opopoposiop/VvfM/blob/main/VvfM_Technical_Note.md">技術ガイド：描画方式・HQ拡張・検証範囲</a></li><li><a href="https://github.com/opopoposiop/VvfM/blob/main/CHANGELOG.md">更新履歴：使用中の版との違いを確認</a></li></ul>
-<p class="guide-note">掲載画像は公開マニュアルの既存素材を使用しています。モデル・ステージ・モーションなどの利用条件は、それぞれの配布元の規約を確認してください。</p></section>
-<section class="guide-next"><h2>まずは、ひとつのカットから。</h2><p>輪郭、光、ピント。見せたいものに合わせて一つずつ調整し、短い動画で確かめてみましょう。</p><p><a href="https://github.com/opopoposiop/VvfM/releases/latest">最新の配布版を確認する ↗</a> · <a href="getting-started.html">導入・操作ガイド</a> · <a href="./">VvfMトップページ</a></p></section>
+<p class="guide-note">掲載画像は公開マニュアルの既存素材を使用しています モデル・ステージ・モーションなどの利用条件は それぞれの配布元の規約を確認してください</p></section>
+<section class="guide-next"><h2>まずは ひとつのカットから</h2><p>輪郭 光 ピント 見せたいものに合わせて一つずつ調整し 短い動画で確かめてみましょう</p><p><a href="https://github.com/opopoposiop/VvfM/releases/latest">最新の配布版を確認する ↗</a> · <a href="getting-started.html">導入・操作ガイド</a> · <a href="./">VvfMトップページ</a></p></section>
 </article></div>
 </main>
 <footer class="wrap"><p><strong>VMD Viewer for Mac / VvfM</strong><br>Apple Silicon Mac向けMMD動画制作アプリ</p><div><a href="./">ホーム</a><a href="getting-started.html">始め方</a><a href="https://x.com/opoposio1">作者のX</a><a href="https://www.nicovideo.jp/user/617712/video">ニコニコ動画</a><a href="https://github.com/opopoposiop/VvfM/blob/main/LICENSING.md">ライセンス</a><a href="https://github.com/opopoposiop/VvfM/blob/main/Licenses/VMDViewer-EULA-ja.md">EULA</a></div></footer>
