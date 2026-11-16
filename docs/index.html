@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MacでMMD動画制作｜Apple SiliconネイティブのVvfM</title>
+<meta name="description" content="VMD Viewer for Mac（VvfM）はApple SiliconネイティブのMMD動画制作アプリ。PMXモデル・VMDモーションの再生、編集、音声付き動画出力に対応。macOS 14以降・M2以降のMac向け。導入手順、機能、作例を紹介します。">
+<link rel="canonical" href="https://opopoposiop.github.io/VvfM/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="MacでMMD動画制作｜VMD Viewer for Mac（VvfM）">
+<meta property="og:description" content="Apple Siliconネイティブで、PMX・VMDの読み込みから編集、音声付き動画出力まで。macOS 14以降・M2以降のMac向け。">
+<meta property="og:url" content="https://opopoposiop.github.io/VvfM/">
+<meta property="og:image" content="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/vvfm-eyecatch.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="header wrap"><a class="brand" href="./" aria-label="VvfM ホーム">VvfM<span>VMD Viewer for Mac</span></a><nav aria-label="メインナビゲーション"><a href="#features">できること</a><a href="#start">始め方</a><a href="#faq">FAQ</a><a href="https://github.com/opopoposiop/VvfM">GitHub ↗</a></nav></header>
+<main id="main">
+<section class="hero wrap">
+<p class="eyebrow">APPLE SILICON NATIVE · macOS</p>
+<h1>Macで、<br>MMD動画をつくろう。</h1>
+<p class="intro">VMD Viewer for Mac（VvfM）は、Apple SiliconネイティブのMMD動画制作アプリ。PMXモデルとVMDモーションを読み込み、動きや表情を編集して、音声付きの動画へ。</p>
+<p class="requirements">macOS 14以降 / M2以降のMac<span>Intel Macは対象外です。</span></p>
+<div class="actions"><a class="button" href="https://github.com/opopoposiop/VvfM/releases/latest">アプリをダウンロード <span aria-hidden="true">↗</span></a><a class="button secondary" href="https://www.nicovideo.jp/watch/sm47023510">紹介動画を見る ↗</a></div>
+<p class="small">配布ページのZIPを展開して使用します。モデル・モーション・音源は別途必要です。</p>
+<figure class="screen"><img src="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/v0.58.4-build569/01-overview.png" alt="VvfMの編集画面。モデルのプレビューとボーン・モーフ・カメラのタイムラインを表示" width="2926" height="1896" fetchpriority="high"><figcaption>画面例：v0.58.4 / build569。表示はバージョンや素材によって異なります。</figcaption></figure>
+</section>
+<section class="section wrap" id="features"><p class="eyebrow">CREATE ON YOUR MAC</p><h2>読み込む、調整する、動画にする。</h2><div class="cards">
+<article><span class="number">01</span><h3>PMX・VMDを読み込む</h3><p>複数のPMXモデルとVMDモーションを組み合わせて再生。キャラクターやステージを配置し、Mac上で動きを確認できます。</p></article>
+<article><span class="number">02</span><h3>動きと見た目を整える</h3><p>ボーン・モーフ・カメラのタイムラインを編集。音声の波形を見ながら調整し、シェーダーや被写界深度で仕上げます。</p></article>
+<article><span class="number">03</span><h3>作品を保存・出力する</h3><p>作業を.vmdviewerプロジェクトとして保存。H.264・HEVC・ProRes形式の動画出力や、VMDの保存に対応しています。</p></article>
+</div><p class="detail">対応形式やエフェクトの制限は<a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md">一般ユーザーマニュアル</a>で確認できます。</p></section>
+<section class="band"><div class="wrap section" id="start"><p class="eyebrow">FIRST STEPS</p><h2>Apple Silicon MacでMMDを始める</h2><ol class="steps"><li><h3>対応環境を確認する</h3><p>macOS 14以降、M2以降のMacが対象です。必要なメモリや処理負荷は、素材・モデル数・画質設定によって変わります。</p></li><li><h3>アプリと素材を準備する</h3><p><a href="https://github.com/opopoposiop/VvfM/releases/latest">最新リリース</a>からZIPをダウンロードし展開します。初回起動は<a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md#導入と起動">導入手順</a>を参照。利用許諾を確認したPMX・VMD・音源を別途用意してください。</p></li><li><h3>モデルとモーションを再生する</h3><p>PMXと付属テクスチャのフォルダ構成を保ち、⇧⌘Oでモデルを読み込みます。対象モデルを選び、0フレームで⌥⌘OからVMDを読み込み、Spaceで再生します。</p></li><li><h3>保存して、短い動画を出力する</h3><p>⌘Sで作業を保存。⇧⌘Eで短い区間の動画出力を試し、動きや画質を確認してから作品を仕上げましょう。</p></li></ol></div></section>
+<section class="section wrap" id="faq"><p class="eyebrow">BEFORE YOU START</p><h2>よくある質問</h2><div class="faq"><details open><summary>Windows版MikuMikuDanceをMacで動かすアプリですか？</summary><p>いいえ。VvfMはMac向けの別アプリです。MMDで使われるPMX・VMDを読み込みますが、画像・物理演算・エフェクトの完全一致は保証していません。</p></details><details><summary>Intel MacやM1のMacで使えますか？</summary><p>現在の配布版はM2以降・macOS 14以降が対象です。Intel MacやM1は、この動作対象に含めていません。</p></details><details><summary>XcodeやHomebrewは必要ですか？</summary><p>配布ZIPを展開して使うため、XcodeやHomebrewのインストールは不要です。初回起動の確認事項はマニュアルを参照してください。</p></details><details><summary>モデル・モーション・音楽は付属しますか？</summary><p>素材は利用許諾を確認したものを別途用意します。作品の公開や素材入りプロジェクトの共有では、それぞれの規約・クレジット・再配布条件を確認してください。</p></details></div><p class="detail"><a href="https://github.com/opopoposiop/VvfM/blob/main/FAQ.md">詳しいFAQ ↗</a> · <a href="https://github.com/opopoposiop/VvfM/issues">不具合の報告 ↗</a></p></section>
+<section class="cta wrap"><h2>あなたのMacから、作品づくりを。</h2><p>導入手順を確認して、まずは短いモーションの再生から。</p><a class="button" href="https://github.com/opopoposiop/VvfM/releases/latest">最新の配布版を確認する ↗</a></section>
+</main>
+<footer class="wrap"><p><strong>VMD Viewer for Mac / VvfM</strong><br>Apple Silicon Mac向けMMD動画制作アプリ</p><div><a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md">マニュアル</a><a href="https://github.com/opopoposiop/VvfM/blob/main/CHANGELOG.md">更新履歴</a><a href="https://github.com/opopoposiop/VvfM/blob/main/LICENSING.md">ライセンス</a><a href="https://github.com/opopoposiop/VvfM/blob/main/Licenses/VMDViewer-EULA-ja.md">EULA</a></div><p class="small">このページは公開ドキュメントの案内です。配布物の条件は各リリースとライセンス文書をご確認ください。</p></footer>
+</body></html>
