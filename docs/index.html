@@ -15,6 +15,9 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/vvfm-eyecatch.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="style.css">
+<style>
+.video-section{max-width:1000px;text-align:center}.video-section h2{margin-bottom:20px}.video-player{width:100%;aspect-ratio:16/9;background:#000;margin:28px auto 0}.video-player iframe{display:block;width:100%;height:100%;border:0}.video-section .detail{margin-top:18px}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">本文へ移動</a>
@@ -29,6 +32,21 @@
 <p class="requirements">macOS 14以降 / M2以降のMac<span>Intel Macは対象外です。</span></p>
 <p class="small">配布ページのZIPを展開して使用します。モデル・モーション・音源は別途必要です。</p>
 <figure class="screen"><img src="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/vvfm-eyecatch.jpg" alt="MacでMMD — VMD Viewer for Macの紹介画像" width="1920" height="1080" fetchpriority="high"><figcaption>MacでMMD — VMD Viewer for Mac（VvfM）</figcaption></figure>
+</section>
+<section class="section wrap video-section" id="example-video" aria-labelledby="example-video-title">
+<p class="eyebrow">MADE WITH VvfM</p>
+<h2 id="example-video-title">VvfMの作例動画</h2>
+<p>Macで制作したMMD作品を、ニコニコ動画のプレーヤーでご覧いただけます。</p>
+<div class="video-player">
+<script src="https://embed.nicovideo.jp/watch/sm47023510/script?w=960&amp;h=540"></script>
+<script>
+(function () {
+  var player = document.querySelector('#example-video .video-player iframe');
+  if (player) player.title = 'VvfMの作例動画（ニコニコ動画）';
+}());
+</script>
+</div>
+<p class="detail"><a href="https://www.nicovideo.jp/watch/sm47023510">ニコニコ動画で見る ↗</a><br>動画が表示されない場合は、上のリンクからご覧ください。</p>
 </section>
 <section class="section wrap" id="features"><p class="eyebrow">CREATE ON YOUR MAC</p><h2>読み込む、調整する、動画にする。</h2><div class="cards">
 <article><span class="number">01</span><h3>PMX・VMDを読み込む</h3><p>複数のPMXモデルとVMDモーションを組み合わせて再生。キャラクターやステージを配置し、Mac上で動きを確認できます。</p></article>
