@@ -10,7 +10,7 @@
 
 **対応環境：macOS 14以降・M2以降のMac。Intel Macは対象外です。** Windows版MikuMikuDanceとは別のアプリであり、画像・物理・エフェクトの完全一致は保証していません。
 
-[MacでMMDを始める・紹介ページ（公開設定待ち）](https://opopoposiop.github.io/VvfM/)｜[はじめての導入手順](GUIDE.md#導入と起動)｜[よくある質問](FAQ.md)
+[MacでMMDを始める・紹介ページ](https://opopoposiop.github.io/VvfM/)｜[はじめての導入手順](GUIDE.md#導入と起動)｜[よくある質問](FAQ.md)
 
 　[作例/紹介動画](https://www.nicovideo.jp/watch/sm47023510)
 
