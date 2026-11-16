@@ -1,12 +1,16 @@
 ![MacでMMD — VMD Viewer for Mac](images/vvfm-eyecatch.jpg)
 
-# VMD Viewer for Mac（VvfM）
+# MacでMMD動画制作｜VMD Viewer for Mac（VvfM）
 
 [アプリをダウンロード（ZIP）](https://github.com/opopoposiop/VvfM/releases/download/v0.58.18/VMD.Viewer.app.zip)｜[リリース詳細](https://github.com/opopoposiop/VvfM/releases/tag/v0.58.18)｜[導入・初回起動](GUIDE.md#導入と起動)｜[スペックシート](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)
 
 [EULA 日本語原本](Licenses/VMDViewer-EULA-ja.md)｜[English](Licenses/VMDViewer-EULA-en.md)
 
-PMXモデルとVMDモーションをMacで再生・編集し、音声付きの動画を書き出せるアプリです。ボーン・表情・カメラの調整から、見た目の仕上げ、作業の保存まで行えます。
+**VvfMはApple Siliconネイティブで動作するMac向けMMD動画制作アプリです。** PMXモデルとVMDモーションを読み込み、再生・編集して音声付きの動画を書き出せます。ボーン・表情・カメラの調整から、見た目の仕上げ、作業の保存まで行えます。
+
+**対応環境：macOS 14以降・M2以降のMac。Intel Macは対象外です。** Windows版MikuMikuDanceとは別のアプリであり、画像・物理・エフェクトの完全一致は保証していません。
+
+[MacでMMDを始める・紹介ページ（公開設定待ち）](https://opopoposiop.github.io/VvfM/)｜[はじめての導入手順](GUIDE.md#導入と起動)｜[よくある質問](FAQ.md)
 
 　[作例/紹介動画](https://www.nicovideo.jp/watch/sm47023510)
 
