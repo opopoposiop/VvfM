@@ -18,11 +18,12 @@
 <style>
 .hero h1 .native-lead{display:block;font-size:clamp(22px,3vw,40px);line-height:1.4;letter-spacing:-.02em;margin-bottom:16px}.hero .hero-note{max-width:800px;margin:0 auto 26px;font-size:14px;line-height:1.8;color:#a1a1a6}.native-detail{margin-top:32px;font-size:15px;line-height:1.8;color:#6e6e73}.native-detail strong{color:#1d1d1f}
 .video-section{max-width:1000px;text-align:center}.video-section h2{margin-bottom:20px}.video-player{width:100%;aspect-ratio:16/9;background:#000;margin:28px auto 0}.video-player iframe{display:block;width:100%;height:100%;border:0}.video-section .detail{margin-top:18px}
+.realtime-section{text-align:center}.realtime-lead{font-size:clamp(18px,2.3vw,24px);line-height:1.8;max-width:860px;margin:0 auto}.realtime-image{margin:36px 0}.realtime-image img{display:block;width:100%;height:auto;border-radius:18px}.realtime-image figcaption,.realtime-note{font-size:13px;line-height:1.8;color:#515154;text-align:left;max-width:950px;margin:16px auto}.realtime-section .cards{text-align:left}.realtime-section .cards article{background:#fff}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">本文へ移動</a>
-<header class="header wrap"><a class="brand" href="./" aria-label="VvfM ホーム">VvfM<span>VMD Viewer for Mac</span></a><nav aria-label="メインナビゲーション"><a href="#features">できること</a><a href="getting-started.html">始め方</a><a href="toonshader-hq.html">HQエフェクト</a><a href="#faq">FAQ</a><a href="https://github.com/opopoposiop/VvfM">GitHub ↗</a></nav></header>
+<header class="header wrap"><a class="brand" href="./" aria-label="VvfM ホーム">VvfM<span>VMD Viewer for Mac</span></a><nav aria-label="メインナビゲーション"><a href="#features">できること</a><a href="getting-started.html">始め方</a><a href="toonshader-hq.html">HQエフェクト</a><a href="video-export.html">動画出力</a><a href="#faq">FAQ</a><a href="https://github.com/opopoposiop/VvfM">GitHub ↗</a></nav></header>
 <main id="main">
 <section class="hero wrap">
 <p class="eyebrow">APPLE SILICON NATIVE · macOS</p>
@@ -35,6 +36,13 @@
 <p class="small">配布ページのZIPを展開して使用します。モデル・モーション・音源は別途必要です。</p>
 <figure class="screen"><img src="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/vvfm-eyecatch.jpg" alt="MacでMMD — VMD Viewer for Macの紹介画像" width="1920" height="1080" fetchpriority="high"><figcaption>MacでMMD — VMD Viewer for Mac（VvfM）</figcaption></figure>
 </section>
+<section class="band" id="realtime"><div class="section wrap realtime-section">
+<p class="eyebrow">REAL-TIME LOOK DEVELOPMENT</p><h2>エフェクトを重ねて、<br>動きながら仕上げる。</h2>
+<p class="realtime-lead">Apple Siliconネイティブ × Metal。<br>ToonShader HQの陰影や光、DoFのぼけを加えながら、VMDモーションをリアルタイムに確認できます。</p>
+<figure class="realtime-image"><a href="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/v0.58.4-build569/11-dof-on.png"><img src="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/v0.58.4-build569/11-dof-on.png" alt="VvfMでDoFを有効にした実画面。キャラクターにピントを合わせ、背景のステージをぼかした表示" width="2926" height="1896" loading="lazy"></a><figcaption>公開マニュアルの実画面：v0.58.4／build569、2026年11月8日撮影。DoF ON・450フレームの表示例です。画像内のFPSは撮影時の表示で、現行版の性能測定値や再生速度の保証ではありません。<a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md">出典・操作マニュアル</a></figcaption></figure>
+<div class="cards"><article><h3>見た目と動きを、一緒に確認。</h3><p>エフェクトを一つずつ比較し、モーションやカメラの動きと合わせて作品の印象を調整できます。</p></article><article><h3>作業に合わせて、描画負荷を調整。</h3><p>ライブ表示の内部解像度やAA、AO・DoF・Bloom、物理FPSを調整。プレビューの設定と動画出力の解像度は別々に指定できます。</p></article><article><h3>仕上がりは、動画ファイルへ。</h3><p>指定区間を順に計算して書き出すため、画面録画とは異なります。音声付きMP4や合成用ProResに出力できます。</p></article></div>
+<p class="realtime-note">再生パフォーマンスはMacの機種、モデル数、解像度、物理演算、エフェクト設定によって変わります。一定の30／60 fpsや、他アプリより高速であることを保証するものではありません。素材の利用・作品公開には各配布元の規約と必要なクレジットをご確認ください。</p>
+<p class="detail"><a href="toonshader-hq.html">HQエフェクトの使い方 →</a>　<a href="video-export.html">動画ファイル出力ガイド →</a></p></div></section>
 <section class="section wrap video-section" id="example-video" aria-labelledby="example-video-title">
 <p class="eyebrow">MADE WITH VvfM</p>
 <h2 id="example-video-title">VvfMの作例動画</h2>
