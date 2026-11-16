@@ -5,12 +5,12 @@
 <meta name="google-site-verification" content="J-O5AVknDOoGeZmMIt8It_xiSTIsqs5Ke5Kr5aalyoA" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MacでMMD動画を書き出す｜MP4・ProRes・音声・透明動画｜VvfM</title>
-<meta name="description" content="VvfMの動画ファイル出力ガイド。MP4・MOV、H.264・HEVC・ProRes、音声とカメラ、解像度、透明動画、出力完了の確認を解説。">
+<meta name="description" content="VvfMの動画ファイル出力ガイド MP4・MOV H.264・HEVC・ProRes 音声とカメラ 解像度 透明動画 出力完了の確認を解説 ">
 <link rel="canonical" href="https://opopoposiop.github.io/VvfM/video-export.html">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="MacでMMD動画を書き出す｜VvfM">
-<meta property="og:description" content="VvfMの動画ファイル出力ガイド。MP4・MOV、H.264・HEVC・ProRes、音声とカメラ、解像度、透明動画、出力完了の確認を解説。">
+<meta property="og:description" content="VvfMの動画ファイル出力ガイド MP4・MOV H.264・HEVC・ProRes 音声とカメラ 解像度 透明動画 出力完了の確認を解説 ">
 <meta property="og:url" content="https://opopoposiop.github.io/VvfM/video-export.html">
 <meta property="og:image" content="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/vvfm-eyecatch.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -19,21 +19,21 @@
 <style>
 .hq-hero{background:#000;color:#f5f5f7;padding:56px 0}.hq-hero .guide-intro{padding-block:0}.hq-hero h1{max-width:900px}.hq-hero .eyebrow{color:#a1a1a6}.hq-hero .guide-note{color:#a1a1a6}.hq-hero a{color:#66b1ff}.hq-overview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:30px 0 0}.hq-overview div{background:#171719;border:1px solid #353538;border-radius:18px;padding:22px}.hq-overview strong{display:block;font-size:19px;margin-bottom:8px}.hq-overview p{font-size:14px;margin:0;color:#d2d2d7;line-height:1.8}.hq-main-layout{padding-top:40px}.hq-table-wrap{overflow-x:auto;margin:24px 0}.hq-table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.8}.hq-table th,.hq-table td{text-align:left;padding:14px 12px;vertical-align:top;border-bottom:1px solid #d2d2d7}.hq-table th{background:#f5f5f7}.hq-table td:first-child{font-weight:600;min-width:110px}.hq-compare{display:grid;grid-template-columns:1fr 1fr;gap:16px}.hq-compare figure{margin:8px 0}.hq-label{font-size:13px;font-weight:700;letter-spacing:.06em;color:#515154}.hq-path{padding:18px 22px;border-left:3px solid #0071e3;background:#f5f5f7}.hq-content h3{margin-top:28px}.hq-content section:target{scroll-margin-top:28px}@media(max-width:650px){.hq-hero{padding:36px 0}.hq-overview{grid-template-columns:1fr;gap:10px}.hq-overview div{padding:16px 20px}.hq-compare{grid-template-columns:1fr}.hq-table th,.hq-table td{padding:12px 8px}.hq-table{font-size:14px}}
 </style>
-</head><body class="guide-page"><a class="skip" href="#main">本文へ移動</a><header class="header wrap"><a class="brand" href="./" aria-label="VvfM ホーム">VvfM<span>VMD Viewer for Mac</span></a><nav aria-label="メインナビゲーション"><a href="./#features">できること</a><a href="getting-started.html">始め方</a><a href="toonshader-hq.html">HQエフェクト</a><a href="video-export.html">動画出力</a><a href="./#faq">FAQ</a><a href="https://github.com/opopoposiop/VvfM">GitHub ↗</a></nav></header><main id="main"><div class="hq-hero"><header class="guide-intro wrap"><p class="eyebrow">VIDEO EXPORT · VvfM</p><h1>Macで仕上げた動きを、<br>一本の動画へ。</h1><p class="lead">VMDの再生から、音声付きMP4・合成用ProResまで。</p><p>プレビューで確認した作品を、指定した区間・画質でファイルに書き出します。まずは10秒で、構図・揺れ・音声を確かめましょう。</p><p class="guide-note">公開配布版 v0.58.18 の一般ユーザーマニュアルに基づく解説。確認日：2026年11月16日。実機で全出力条件を検証済みという意味ではありません。</p></header></div><div class="guide-layout wrap hq-main-layout"><aside><nav class="guide-toc" aria-label="このページの目次"><strong>動画ファイル出力</strong><ol><li><a href="#step-1">動画を書き出す流れ</a></li><li><a href="#step-2">出力コーデックとコンテナ</a></li><li><a href="#step-3">出力レートとフレーム範囲</a></li><li><a href="#step-4">解像度を選ぶ</a></li><li><a href="#step-5">カメラと音声の注意点</a></li><li><a href="#step-6">透明な素材を書き出す</a></li><li><a href="#step-7">物理演算と出力完了の確認</a></li></ol></nav></aside><article class="guide-content hq-content"><section class="guide-callout"><h2>最初は10秒で試す</h2><p>開始 <strong>0</strong> ／ 終了 <strong>299</strong>、H.264 ／ MP4 ／ 1080p ／ 30 fps。カメラと音声の設定を確認し、書き出したファイルを開いてから全編へ進みます。</p><p>出力の60 fpsは、ライブ再生が60 fpsで動くことを表す値ではありません。</p></section><section id="step-1"><h2>動画を書き出す流れ</h2>
-<p><strong>ファイル → アニメーション動画を書き出す…（⇧⌘E）</strong>、または上部の重なったフィルムのアイコンで専用ウインドウを開きます。単独のフィルムアイコンは入力動画の読み込みです。動画は指定された区間を計算して作成するため、通常再生の画面を録画する操作とは異なります。</p>
+</head><body class="guide-page"><a class="skip" href="#main">本文へ移動</a><header class="header wrap"><a class="brand" href="./" aria-label="VvfM ホーム">VvfM<span>VMD Viewer for Mac</span></a><nav aria-label="メインナビゲーション"><a href="./#features">できること</a><a href="getting-started.html">始め方</a><a href="toonshader-hq.html">HQエフェクト</a><a href="video-export.html">動画出力</a><a href="./#faq">FAQ</a><a href="https://github.com/opopoposiop/VvfM">GitHub ↗</a></nav></header><main id="main"><div class="hq-hero"><header class="guide-intro wrap"><p class="eyebrow">VIDEO EXPORT · VvfM</p><h1>Macで仕上げた動きを<br>一本の動画へ</h1><p class="lead">VMDの再生から 音声付きMP4・合成用ProResまで</p><p>プレビューで確認した作品を 指定した区間・画質でファイルに書き出します まずは10秒で 構図・揺れ・音声を確かめましょう</p><p class="guide-note">公開配布版 v0.58.18 の一般ユーザーマニュアルに基づく解説 確認日：2026年11月16日 実機で全出力条件を検証済みという意味ではありません</p></header></div><div class="guide-layout wrap hq-main-layout"><aside><nav class="guide-toc" aria-label="このページの目次"><strong>動画ファイル出力</strong><ol><li><a href="#step-1">動画を書き出す流れ</a></li><li><a href="#step-2">出力コーデックとコンテナ</a></li><li><a href="#step-3">出力レートとフレーム範囲</a></li><li><a href="#step-4">解像度を選ぶ</a></li><li><a href="#step-5">カメラと音声の注意点</a></li><li><a href="#step-6">透明な素材を書き出す</a></li><li><a href="#step-7">物理演算と出力完了の確認</a></li></ol></nav></aside><article class="guide-content hq-content"><section class="guide-callout"><h2>最初は10秒で試す</h2><p>開始 <strong>0</strong> ／ 終了 <strong>299</strong> H.264 ／ MP4 ／ 1080p ／ 30 fps カメラと音声の設定を確認し 書き出したファイルを開いてから全編へ進みます</p><p>出力の60 fpsは ライブ再生が60 fpsで動くことを表す値ではありません</p></section><section id="step-1"><h2>動画を書き出す流れ</h2>
+<p><strong>ファイル → アニメーション動画を書き出す…（⇧⌘E）</strong> または上部の重なったフィルムのアイコンで専用ウインドウを開きます 単独のフィルムアイコンは入力動画の読み込みです 動画は指定された区間を計算して作成するため 通常再生の画面を録画する操作とは異なります</p>
 <ol>
-<li>ボーン、モーフ、カメラ、エフェクトに未登録・未適用の変更があれば確定し、プロジェクトを保存します。</li>
-<li>「動画を書き出す」を開きます。</li>
-<li><strong>開始／終了</strong> に書き出すVMDフレームの範囲を入力します。</li>
-<li><strong>出力レート</strong>、<strong>コーデック</strong>、<strong>コンテナ</strong>、<strong>解像度</strong>を選びます。</li>
-<li><strong>「VMDカメラを使用」</strong> と <strong>「読み込んだ音声を含める」</strong> を確認します。</li>
-<li>「保存先フォルダを選択…」で場所を指定し、ファイル名を確認します。</li>
-<li>「概要」のフレーム数と長さを確認して、「書き出す」を押します。</li>
-<li>完了後、保存された動画を開き、構図、動き、揺れ、音声を確認します。</li>
+<li>ボーン モーフ カメラ エフェクトに未登録・未適用の変更があれば確定し プロジェクトを保存します</li>
+<li>「動画を書き出す」を開きます</li>
+<li><strong>開始／終了</strong> に書き出すVMDフレームの範囲を入力します</li>
+<li><strong>出力レート</strong><strong>コーデック</strong><strong>コンテナ</strong><strong>解像度</strong>を選びます</li>
+<li><strong>「VMDカメラを使用」</strong> と <strong>「読み込んだ音声を含める」</strong> を確認します</li>
+<li>「保存先フォルダを選択…」で場所を指定し ファイル名を確認します</li>
+<li>「概要」のフレーム数と長さを確認して 「書き出す」を押します</li>
+<li>完了後 保存された動画を開き 構図 動き 揺れ 音声を確認します</li>
 </ol>
-<p>初めての出力は、<strong>H.264／MP4／1080p／30または60 fps</strong> から試せます。全編の前に短い区間を書き出すと、仕上がりを確認しやすくなります。</p>
+<p>初めての出力は<strong>H.264／MP4／1080p／30または60 fps</strong> から試せます 全編の前に短い区間を書き出すと 仕上がりを確認しやすくなります</p>
 </section><section id="step-2"><h2>出力コーデックとコンテナ</h2>
-<p><strong>コーデック</strong>は映像の圧縮方式、<strong>コンテナ</strong>は映像や音声をまとめるファイル形式です。</p>
+<p><strong>コーデック</strong>は映像の圧縮方式<strong>コンテナ</strong>は映像や音声をまとめるファイル形式です</p>
 <div class="hq-table-wrap"><table class="hq-table">
 <thead>
 <tr>
@@ -68,11 +68,11 @@
 <td>XQを必要とする編集・合成工程向け</td>
 </tr>
 </tbody></table></div>
-<p>ProResを選ぶとコンテナはMOVになります。ProResは容量が大きくなりやすいため、保存先の空きを確認します。選んだ方式が利用できない環境では、エラーの内容を確認し、別の方式を選んでください。</p>
+<p>ProResを選ぶとコンテナはMOVになります ProResは容量が大きくなりやすいため 保存先の空きを確認します 選んだ方式が利用できない環境では エラーの内容を確認し 別の方式を選んでください</p>
 </section><section id="step-3"><h2>出力レートとフレーム範囲</h2>
-<p>出力レートには23.98／24／29.97／30／59.94／60 fpsのプリセットと、1〜240 fpsのカスタム指定があります。出力レートを変えても、VMDの時間の基準は30 fpsです。</p>
-<p>範囲には開始と終了の両方のフレームを含みます。<strong>開始0、終了299</strong> は、30 fps出力なら300枚、60 fps出力なら600枚の、10秒の動画になります。300フレームの位置まで含めたい場合は、終了300を指定します。</p>
-<p>端数のレートでは出力枚数の丸めがあるため、最終的な長さは設定ウインドウの「概要」で確認してください。</p>
+<p>出力レートには23.98／24／29.97／30／59.94／60 fpsのプリセットと 1〜240 fpsのカスタム指定があります 出力レートを変えても VMDの時間の基準は30 fpsです</p>
+<p>範囲には開始と終了の両方のフレームを含みます<strong>開始0 終了299</strong> は 30 fps出力なら300枚 60 fps出力なら600枚の 10秒の動画になります 300フレームの位置まで含めたい場合は 終了300を指定します</p>
+<p>端数のレートでは出力枚数の丸めがあるため 最終的な長さは設定ウインドウの「概要」で確認してください</p>
 </section><section id="step-4"><h2>解像度を選ぶ</h2>
 <div class="hq-table-wrap"><table class="hq-table">
 <thead>
@@ -95,12 +95,12 @@
 </tr>
 <tr>
 <td>カスタム</td>
-<td>幅・高さを指定。各辺は2以上の偶数</td>
+<td>幅・高さを指定 各辺は2以上の偶数</td>
 </tr>
 </tbody></table></div>
-<p>高い解像度ほど、細部を大きく出力できますが、処理時間や必要な資源も増えます。画面のプレビュー解像度とは別に指定する設定です。</p>
+<p>高い解像度ほど 細部を大きく出力できますが 処理時間や必要な資源も増えます 画面のプレビュー解像度とは別に指定する設定です</p>
 </section><section id="step-5"><h2>カメラと音声の注意点</h2>
-<p><strong>「VMDカメラを使用」は動画書き出し専用の選択</strong>です。Viewer側のカメラ表示ボタンとは別に確認します。</p>
+<p><strong>「VMDカメラを使用」は動画書き出し専用の選択</strong>です Viewer側のカメラ表示ボタンとは別に確認します</p>
 <div class="hq-table-wrap"><table class="hq-table">
 <thead>
 <tr>
@@ -121,17 +121,17 @@
 <td>書き出し開始時の構図で固定</td>
 </tr>
 </tbody></table></div>
-<p>音声を入れる場合は、先にWAV／M4Aを読み込み、「読み込んだ音声を含める」をONにします。設定欄に表示される音声ファイル名も確認してください。投影用動画を読み込んだだけで、その動画の音声も同じように含まれると考えず、必要な音声を別途読み込んで指定します。</p>
-<p>M4AはPCMへ復号して処理します。アプリでの試聴音量・ミュートは、出力の音声設定には反映されません。</p>
+<p>音声を入れる場合は 先にWAV／M4Aを読み込み 「読み込んだ音声を含める」をONにします 設定欄に表示される音声ファイル名も確認してください 投影用動画を読み込んだだけで その動画の音声も同じように含まれると考えず 必要な音声を別途読み込んで指定します</p>
+<p>M4AはPCMへ復号して処理します アプリでの試聴音量・ミュートは 出力の音声設定には反映されません</p>
 </section><section id="step-6"><h2>透明な素材を書き出す</h2>
-<p>合成用の透明な部分を残す場合は、ProRes 4444またはProRes 4444 XQを選びます。アルファはコーデックから自動的に決まるため、書き出し画面に独立した透明度ON／OFFの切替はありません。</p>
-<p>アルファ対応を選んでも、ステージや不透明な背景モデルが自動で消えるわけではありません。必要な背景・モデルの表示状態も確認します。H.264とHEVCは、このアプリでは不透明な動画になります。</p>
-<p>透明動画ではMetalFXを選んでいても、書き出し時にはTAAへ切り替わります。エフェクトによっては透明出力自体が未対応なので、短い区間で背景との合成結果を確認してください。</p>
-<p>ProResのアルファはpremultiplied（色が透明度で乗算された）形式です。編集ソフトへ取り込む際は、透明度の解釈も確認してください。</p>
-<p><strong>v0.58.15以降</strong>では、頂点モーフの計算方式が「自動」または「GPU」の場合、対応GPUで通常のPMXの動画書き出しにもGPUを使います。有効なソフトボディや <code>.fxdayo</code> 添付のあるモデルは対象外です。「CPU互換」はCPUで計算します。</p>
+<p>合成用の透明な部分を残す場合は ProRes 4444またはProRes 4444 XQを選びます アルファはコーデックから自動的に決まるため 書き出し画面に独立した透明度ON／OFFの切替はありません</p>
+<p>アルファ対応を選んでも ステージや不透明な背景モデルが自動で消えるわけではありません 必要な背景・モデルの表示状態も確認します H.264とHEVCは このアプリでは不透明な動画になります</p>
+<p>透明動画ではMetalFXを選んでいても 書き出し時にはTAAへ切り替わります エフェクトによっては透明出力自体が未対応なので 短い区間で背景との合成結果を確認してください</p>
+<p>ProResのアルファはpremultiplied（色が透明度で乗算された）形式です 編集ソフトへ取り込む際は 透明度の解釈も確認してください</p>
+<p><strong>v0.58.15以降</strong>では 頂点モーフの計算方式が「自動」または「GPU」の場合 対応GPUで通常のPMXの動画書き出しにもGPUを使います 有効なソフトボディや <code>.fxdayo</code> 添付のあるモデルは対象外です 「CPU互換」はCPUで計算します</p>
 </section><section id="step-7"><h2>物理演算と出力完了の確認</h2>
-<p>動画出力は指定範囲を順に計算し、物理は常に物理優先で評価します。編集用シークの「移動先で演算」は使いません。選択したBulletモードは出力に使われます。ライブ再生の速度や「再生優先モード」での一時的な表示が、そのまま動画に記録されるわけではありません。</p>
-<p>全コーデック・全素材・4K・長尺・音声の全組み合わせが検証済みというわけではありません。未対応の構成や必要な素材の読み込み失敗では、出力を停止する場合があります。既存ファイルへの上書きには確認が表示されます。</p>
-<p>書き出し中は進捗と状態を確認し、中止するときは「キャンセル」を使います。成功表示が出るまでは完了と扱わず、完了後に動画を開いて映像・音声・必要なら透明部分を確認します。作業用の <code>.vmdviewer</code> も一緒に保管してください。</p>
-</section><section id="references"><h2>資料と次のステップ</h2><p>操作・形式・制約の出典：<a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md#動画出力">一般ユーザーマニュアル「動画出力」</a>。技術上の対応範囲は<a href="https://github.com/opopoposiop/VvfM/blob/main/VvfM_Technical_Note.md">技術ガイド</a>、変更点は<a href="https://github.com/opopoposiop/VvfM/releases/tag/v0.58.18">v0.58.18リリース</a>を参照してください。</p><p>モデル・モーション・音源の公開利用条件やクレジットを確認してから作品を公開してください。</p><p><a href="toonshader-hq.html">ToonShader HQで見た目を仕上げる →</a><br><a href="getting-started.html">導入・読み込みから始める →</a><br><a href="./#realtime">トップページへ戻る →</a></p></section></article></div></main><footer class="wrap"><nav class="social-links" aria-label="作者のSNSと投稿動画" style="display:flex;flex-wrap:wrap;gap:12px 24px;margin:24px 0"><a href="https://x.com/opoposio1" style="display:inline-flex;align-items:center;gap:9px;min-height:44px;color:#1d1d1f;font-size:14px"><img src="data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+WDwvdGl0bGU+PHBhdGggZD0iTTE0LjIzNCAxMC4xNjIgMjIuOTc3IDBoLTIuMDcybC03LjU5MSA4LjgyNEw3LjI1MSAwSC4yNThsOS4xNjggMTMuMzQzTC4yNTggMjRIMi4zM2w4LjAxNi05LjMxOEwxNi43NDkgMjRoNi45OTN6bS0yLjgzNyAzLjI5OS0uOTI5LTEuMzI5TDMuMDc2IDEuNTZoMy4xODJsNS45NjUgOC41MzIuOTI5IDEuMzI5IDcuNzU0IDExLjA5aC0zLjE4MnoiLz48L3N2Zz4=" width="20" height="20" alt="" aria-hidden="true">X（@opoposio1）</a><a href="https://www.nicovideo.jp/user/617712/video" style="display:inline-flex;align-items:center;gap:9px;min-height:44px;color:#1d1d1f;font-size:14px"><img src="data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+bmljb25pY288L3RpdGxlPjxwYXRoIGQ9Ik0uNDc4NyA3LjUzNHYxMi4xMjc5QTIuMDIxMyAyLjAyMTMgMCAwIDAgMi41IDIxLjY4MzJoMi4zODg4bDEuMzIzIDIuMDk0OGEuNDc3OC40Nzc4IDAgMCAwIC40MDQzLjIyMDUuNDc3OC40Nzc4IDAgMCAwIC40NDEtLjIyMDVsMS4zMjMtMi4wOTQ4aDYuOTgyOGwxLjMyMyAyLjA5NDhhLjQ3NzguNDc3OCAwIDAgMCAuNDQxLjIyMDVjLjE4MzggMCAuMzMwOC0uMDczNS40MDQzLS4yMjA1bDEuMzIzLTIuMDk0OGgyLjY0NjJhMi4wMjEzIDIuMDIxMyAwIDAgMCAyLjAyMTMtMi4wMjEzVjcuNTMzOWEyLjAyMTMgMi4wMjEzIDAgMCAwLTIuMDIxMy0xLjk4NDVoLTcuNjgxbDQuNDQ2OC00LjQ0NjlMMTcuMTYzNyAwbC01LjE0NTIgNS4xNDUyTDYuOCAwIDUuNjk3MyAxLjEwMjVsNC40MTAyIDQuNDEwMkgyLjUzNjdhMi4wMjEzIDIuMDIxMyAwIDAgMC0yLjA1OCAyLjA1OHoiLz48L3N2Zz4=" width="24" height="24" alt="" aria-hidden="true">ニコニコ動画の投稿一覧</a></nav><p><strong>VMD Viewer for Mac / VvfM</strong><br>Apple Silicon Mac向けMMD動画制作アプリ</p><div><a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md">マニュアル</a><a href="https://github.com/opopoposiop/VvfM/blob/main/CHANGELOG.md">更新履歴</a><a href="https://github.com/opopoposiop/VvfM/blob/main/LICENSING.md">ライセンス</a><a href="https://github.com/opopoposiop/VvfM/blob/main/Licenses/VMDViewer-EULA-ja.md">EULA</a></div><p class="small">このページは公開ドキュメントの案内です。配布物の条件は各リリースとライセンス文書をご確認ください。</p></footer>
+<p>動画出力は指定範囲を順に計算し 物理は常に物理優先で評価します 編集用シークの「移動先で演算」は使いません 選択したBulletモードは出力に使われます ライブ再生の速度や「再生優先モード」での一時的な表示が そのまま動画に記録されるわけではありません</p>
+<p>全コーデック・全素材・4K・長尺・音声の全組み合わせが検証済みというわけではありません 未対応の構成や必要な素材の読み込み失敗では 出力を停止する場合があります 既存ファイルへの上書きには確認が表示されます</p>
+<p>書き出し中は進捗と状態を確認し 中止するときは「キャンセル」を使います 成功表示が出るまでは完了と扱わず 完了後に動画を開いて映像・音声・必要なら透明部分を確認します 作業用の <code>.vmdviewer</code> も一緒に保管してください</p>
+</section><section id="references"><h2>資料と次のステップ</h2><p>操作・形式・制約の出典：<a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md#動画出力">一般ユーザーマニュアル「動画出力」</a> 技術上の対応範囲は<a href="https://github.com/opopoposiop/VvfM/blob/main/VvfM_Technical_Note.md">技術ガイド</a> 変更点は<a href="https://github.com/opopoposiop/VvfM/releases/tag/v0.58.18">v0.58.18リリース</a>を参照してください</p><p>モデル・モーション・音源の公開利用条件やクレジットを確認してから作品を公開してください</p><p><a href="toonshader-hq.html">ToonShader HQで見た目を仕上げる →</a><br><a href="getting-started.html">導入・読み込みから始める →</a><br><a href="./#realtime">トップページへ戻る →</a></p></section></article></div></main><footer class="wrap"><nav class="social-links" aria-label="作者のSNSと投稿動画" style="display:flex;flex-wrap:wrap;gap:12px 24px;margin:24px 0"><a href="https://x.com/opoposio1" style="display:inline-flex;align-items:center;gap:9px;min-height:44px;color:#1d1d1f;font-size:14px"><img src="data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+WDwvdGl0bGU+PHBhdGggZD0iTTE0LjIzNCAxMC4xNjIgMjIuOTc3IDBoLTIuMDcybC03LjU5MSA4LjgyNEw3LjI1MSAwSC4yNThsOS4xNjggMTMuMzQzTC4yNTggMjRIMi4zM2w4LjAxNi05LjMxOEwxNi43NDkgMjRoNi45OTN6bS0yLjgzNyAzLjI5OS0uOTI5LTEuMzI5TDMuMDc2IDEuNTZoMy4xODJsNS45NjUgOC41MzIuOTI5IDEuMzI5IDcuNzU0IDExLjA5aC0zLjE4MnoiLz48L3N2Zz4=" width="20" height="20" alt="" aria-hidden="true">X（@opoposio1）</a><a href="https://www.nicovideo.jp/user/617712/video" style="display:inline-flex;align-items:center;gap:9px;min-height:44px;color:#1d1d1f;font-size:14px"><img src="data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+bmljb25pY288L3RpdGxlPjxwYXRoIGQ9Ik0uNDc4NyA3LjUzNHYxMi4xMjc5QTIuMDIxMyAyLjAyMTMgMCAwIDAgMi41IDIxLjY4MzJoMi4zODg4bDEuMzIzIDIuMDk0OGEuNDc3OC40Nzc4IDAgMCAwIC40MDQzLjIyMDUuNDc3OC40Nzc4IDAgMCAwIC40NDEtLjIyMDVsMS4zMjMtMi4wOTQ4aDYuOTgyOGwxLjMyMyAyLjA5NDhhLjQ3NzguNDc3OCAwIDAgMCAuNDQxLjIyMDVjLjE4MzggMCAuMzMwOC0uMDczNS40MDQzLS4yMjA1bDEuMzIzLTIuMDk0OGgyLjY0NjJhMi4wMjEzIDIuMDIxMyAwIDAgMCAyLjAyMTMtMi4wMjEzVjcuNTMzOWEyLjAyMTMgMi4wMjEzIDAgMCAwLTIuMDIxMy0xLjk4NDVoLTcuNjgxbDQuNDQ2OC00LjQ0NjlMMTcuMTYzNyAwbC01LjE0NTIgNS4xNDUyTDYuOCAwIDUuNjk3MyAxLjEwMjVsNC40MTAyIDQuNDEwMkgyLjUzNjdhMi4wMjEzIDIuMDIxMyAwIDAgMC0yLjA1OCAyLjA1OHoiLz48L3N2Zz4=" width="24" height="24" alt="" aria-hidden="true">ニコニコ動画の投稿一覧</a></nav><p><strong>VMD Viewer for Mac / VvfM</strong><br>Apple Silicon Mac向けMMD動画制作アプリ</p><div><a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md">マニュアル</a><a href="https://github.com/opopoposiop/VvfM/blob/main/CHANGELOG.md">更新履歴</a><a href="https://github.com/opopoposiop/VvfM/blob/main/LICENSING.md">ライセンス</a><a href="https://github.com/opopoposiop/VvfM/blob/main/Licenses/VMDViewer-EULA-ja.md">EULA</a></div><p class="small">このページは公開ドキュメントの案内です 配布物の条件は各リリースとライセンス文書をご確認ください</p></footer>
 </body></html>
