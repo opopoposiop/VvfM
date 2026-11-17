@@ -100,32 +100,32 @@
           <div class="guide-callout">
             <p>「モデルのボーン<a class="term-ref" id="term-ref-1" href="#term-1" aria-label="ボーンと貫通の注釈1を読む">[注1]</a>が貫通しているのを見つけてしまった！」「あのモーフ<a class="term-ref" id="term-ref-2" href="#term-2" aria-label="モーフの注釈2を読む">[注2]</a>を使えばよかった！」</p>
             <p>でも 出先にはMacしかない リモートデスクトップ<a class="term-ref" id="term-ref-3" href="#term-3" aria-label="リモートデスクトップの注釈3を読む">[注3]</a>も なぜか画面が来ない</p>
-            <p>MMDで作品を作っていると こんなふうに「今ここだけ直したい」と思うことがあります 手元のMacで少し編集できたら そのための道具として育ってきたのが VMD<a class="term-ref" id="term-ref-4" href="#term-4" aria-label="VMDとPMXの注釈4を読む">[注4]</a> Viewer for Mac（VvfM）です</p>
+            <p>MMDで作品を作っていると こんなふうに「今ここだけ直したい」と思うことがあります 手元のMacで少し編集できたら そのための道具として育ってきたのが VMD Viewer for Mac（VvfM）です</p>
           </div>
           <section id="origin">
             <h2>エフェクトを作っていたら Macのアプリができた</h2>
-            <p>始まりは VMD編集ソフトそのものではありませんでした 当初はCodex<a class="term-ref" id="term-ref-5" href="#term-5" aria-label="Codexの注釈5を読む">[注5]</a>を使い MikuMikuDayo向けのエフェクト<a class="term-ref" id="term-ref-6" href="#term-6" aria-label="エフェクトとHLSLの注釈6を読む">[注6]</a>をHLSLで開発していました その途中で「Macでも簡単にVMDを編集できるようになるのでは」と考え 試作してみたのです</p>
-            <p>すると 思っていた以上のレベルのソフトができました SwiftとSwiftUI<a class="term-ref" id="term-ref-7" href="#term-7" aria-label="UIの注釈19を読む">[注7]</a><a class="term-ref" id="term-ref-8" href="#term-8" aria-label="SwiftとSwiftUIの注釈7を読む">[注8]</a>の優秀さにも助けられ 見た目もモダンで Macらしいものに仕上がっていく ちょっとした編集ができればという試作が もっと使ってみたい道具へと変わっていきました</p>
-            <p>ただ モデルが動いて画面が整ってくると 今度は「気持ちよく触れるか」が気になります タイムライン<a class="term-ref" id="term-ref-9" href="#term-9" aria-label="タイムラインとキーの注釈8を読む">[注9]</a>を動かしたり 表情を調整したりするたびに待たされては 出先でさっと直したいという目的から遠ざかってしまいます</p>
-            <p>第1回では この使い心地を求めて GPU<a class="term-ref" id="term-ref-10" href="#term-10" aria-label="CPUとGPUの注釈9を読む">[注10]</a>だけでなく画面更新や計算の仕方まで見直した v0.1.0〜v0.13.0 の開発を振り返ります</p>
+            <p>始まりは VMD<a class="term-ref" id="term-ref-4" href="#term-4" aria-label="VMDとPMXの注釈4を読む">[注4]</a>編集ソフトそのものではありませんでした 当初はCodex<a class="term-ref" id="term-ref-5" href="#term-5" aria-label="Codexの注釈5を読む">[注5]</a>を使い MikuMikuDayo向けのエフェクト<a class="term-ref" id="term-ref-6" href="#term-6" aria-label="エフェクトとHLSLの注釈6を読む">[注6]</a>をHLSLで開発していました その途中で「Macでも簡単にVMDを編集できるようになるのでは」と考え 試作してみたのです</p>
+            <p>すると 思っていた以上のレベルのソフトができました SwiftとSwiftUI<a class="term-ref" id="term-ref-7" href="#term-7" aria-label="SwiftとSwiftUIの注釈7を読む">[注7]</a>の優秀さにも助けられ 見た目もモダンで Macらしいものに仕上がっていく ちょっとした編集ができればという試作が もっと使ってみたい道具へと変わっていきました</p>
+            <p>ただ モデルが動いて画面が整ってくると 今度は「気持ちよく触れるか」が気になります タイムライン<a class="term-ref" id="term-ref-8" href="#term-8" aria-label="タイムラインとキーの注釈8を読む">[注8]</a>を動かしたり 表情を調整したりするたびに待たされては 出先でさっと直したいという目的から遠ざかってしまいます</p>
+            <p>第1回では この使い心地を求めて GPU<a class="term-ref" id="term-ref-9" href="#term-9" aria-label="CPUとGPUの注釈9を読む">[注9]</a>だけでなく画面更新や計算の仕方まで見直した v0.1.0〜v0.13.0 の開発を振り返ります</p>
           </section>
           <section id="comparison">
             <h2>同じMMDの素材でも 動かし方はひとつではない</h2>
-            <p>MikuMikuDance（MMD）は モデルやモーションを組み合わせて映像を制作するためのWindows向けソフトです 公式配布にはDirectX 9<a class="term-ref" id="term-ref-11" href="#term-11" aria-label="DirectX 9とMetalの注釈10を読む">[注11]</a>版があります 一方 MacでもMMDの素材を扱うため 異なる技術基盤で動く互換ソフトが開発されてきました <a href="https://sites.google.com/view/vpvp/">MMD公式配布ページ</a></p>
-            <p>例えば nanoem はmacOSを含む複数の環境を対象とし Metalなどの描画基盤を使うMMD互換実装です モデルのスキニング<a class="term-ref" id="term-ref-12" href="#term-12" aria-label="スキニングと頂点の注釈11を読む">[注12]</a> つまりボーンの動きを頂点に反映する計算をGPUに分散する設定も用意されています ただし 公式マニュアルでは物理演算<a class="term-ref" id="term-ref-13" href="#term-13" aria-label="物理演算の注釈12を読む">[注13]</a>などはその対象外で 条件によってCPU処理になることも説明されています <a href="https://nanoem.readthedocs.io/ja/latest/preference.html">nanoem公式資料</a></p>
+            <p>MikuMikuDance（MMD）は モデルやモーションを組み合わせて映像を制作するためのWindows向けソフトです 公式配布にはDirectX 9<a class="term-ref" id="term-ref-10" href="#term-10" aria-label="DirectX 9とMetalの注釈10を読む">[注10]</a>版があります 一方 MacでもMMDの素材を扱うため 異なる技術基盤で動く互換ソフトが開発されてきました <a href="https://sites.google.com/view/vpvp/">MMD公式配布ページ</a></p>
+            <p>例えば nanoem はmacOSを含む複数の環境を対象とし Metalなどの描画基盤を使うMMD互換実装です モデルのスキニング<a class="term-ref" id="term-ref-11" href="#term-11" aria-label="スキニングと頂点の注釈11を読む">[注11]</a> つまりボーンの動きを頂点に反映する計算をGPUに分散する設定も用意されています ただし 公式マニュアルでは物理演算<a class="term-ref" id="term-ref-12" href="#term-12" aria-label="物理演算の注釈12を読む">[注12]</a>などはその対象外で 条件によってCPU処理になることも説明されています <a href="https://nanoem.readthedocs.io/ja/latest/preference.html">nanoem公式資料</a></p>
             <p>VvfMでも向き合うことになったのは この役割分担でした <strong>GPUで画面を描くことと モデルを変形させる計算をGPUで行うことは別</strong>です どの処理をどこで行い 毎フレーム何を更新するか そこにはソフトごとの工夫があります</p>
             <p>ここでMMDやnanoemと速さを競うつもりはありません MMDの内部処理の分担は 今回確認した公式資料だけでは判断できないからです 比べたいのは実装の考え方 そして VvfM自身のどこに待ち時間があったのかです</p>
           </section>
           <section id="metal">
             <h2>動いているのに 操作すると重い</h2>
-            <p>VvfMは v0.1.0 からmacOSネイティブ<a class="term-ref" id="term-ref-14" href="#term-14" aria-label="macOSネイティブの注釈13を読む">[注14]</a>の画面とMetalによる描画を採用し v0.2.0 ではGPUスキニングも導入していました 早い段階からGPUを使っていたのです</p>
-            <p>それでも 機能を増やして大きなデータを扱うと 画面が動くことと快適に操作できることの間に差が出てきました v0.6.0 の開発記録には 約19.7万頂点のデータで<strong>描画FPS<a class="term-ref" id="term-ref-15" href="#term-15" aria-label="FPSとフレームとミリ秒の注釈14を読む">[注15]</a>と画面操作の応答が一致しない</strong>状況が残っています</p>
-            <p>クラッシュログ<a class="term-ref" id="term-ref-16" href="#term-16" aria-label="クラッシュログと再帰処理とヒープメモリの注釈15を読む">[注16]</a>を調べると 画面更新に関わる再帰的な処理と 約4.3 GBまで膨らんだヒープメモリが確認されました モデルを描く以外にも アプリの中では多くの仕事が走っていたのです</p>
+            <p>VvfMは v0.1.0 からmacOSネイティブ<a class="term-ref" id="term-ref-13" href="#term-13" aria-label="macOSネイティブの注釈13を読む">[注13]</a>の画面とMetalによる描画を採用し v0.2.0 ではGPUスキニングも導入していました 早い段階からGPUを使っていたのです</p>
+            <p>それでも 機能を増やして大きなデータを扱うと 画面が動くことと快適に操作できることの間に差が出てきました v0.6.0 の開発記録には 約19.7万頂点のデータで<strong>描画FPS<a class="term-ref" id="term-ref-14" href="#term-14" aria-label="FPSとフレームとミリ秒の注釈14を読む">[注14]</a>と画面操作の応答が一致しない</strong>状況が残っています</p>
+            <p>クラッシュログ<a class="term-ref" id="term-ref-15" href="#term-15" aria-label="クラッシュログと再帰処理とヒープメモリの注釈15を読む">[注15]</a>を調べると 画面更新に関わる再帰的な処理と 約4.3 GBまで膨らんだヒープメモリが確認されました モデルを描く以外にも アプリの中では多くの仕事が走っていたのです</p>
             <p>見つけた貫通を直したい 表情を少し変えたい そんな操作を軽快にするには GPUの描画だけでなく CPU側の姿勢計算や画面部品の更新にも目を向ける必要がありました</p>
           </section>
           <section id="timeline">
             <h2>毎回すべてを計算しなくてもよかった</h2>
-            <p>v0.6.1 では IK<a class="term-ref" id="term-ref-17" href="#term-17" aria-label="IKの注釈16を読む">[注17]</a>やボーンの計算結果を再利用し 影響を受ける範囲の更新を見直しました タイムラインも すべてのキーを毎回扱う構造から 表示範囲を中心に描画する構造へ変更しています</p>
+            <p>v0.6.1 では IK<a class="term-ref" id="term-ref-16" href="#term-16" aria-label="IKの注釈16を読む">[注16]</a>やボーンの計算結果を再利用し 影響を受ける範囲の更新を見直しました タイムラインも すべてのキーを毎回扱う構造から 表示範囲を中心に描画する構造へ変更しています</p>
             <p>ここで一度立ち止まったのは <strong>毎回すべてを更新する必要があるのか</strong>という点でした 見えていないキーまで同じように扱っていないか 変わっていない計算を繰り返していないか 処理する量そのものを減らすことも 使い心地につながります</p>
           </section>
           <section id="measurement">
@@ -137,15 +137,15 @@
           <section id="paths">
             <h2>GPUとCPU それぞれに経路を用意する</h2>
             <p>そこで v0.13.0 では PMXモデルを読み込む段階で 各モーフが頂点に与える影響を整理するようにしました 再生のたびに全頂点を初期化し すべてのモーフを展開し直すよりも 最初に準備できることを済ませておく という考え方です</p>
-            <p>対応するApple GPU向けには Metal compute<a class="term-ref" id="term-ref-18" href="#term-18" aria-label="Metal computeとCPU互換経路と疎更新の注釈17を読む">[注18]</a>で頂点ごとのモーフ計算を行う経路を用意 毎フレームCPUからGPUへ渡す情報を モーフの適用量に絞りました</p>
-            <p>一方 CPU互換経路では 前フレームから変化した量を 影響を受ける頂点に反映します さらにバッファ<a class="term-ref" id="term-ref-19" href="#term-19" aria-label="バッファと共有メモリと同期の注釈18を読む">[注19]</a>を複数用意し GPUが描画中のデータをCPU側が上書きしないようにしました 共有メモリを使う環境でも CPUとGPUが同じデータにいつアクセスするかという調整は必要です <a href="https://developer.apple.com/documentation/metal/synchronizing-cpu-and-gpu-work">Appleの同期に関する資料</a></p>
+            <p>対応するApple GPU向けには Metal compute<a class="term-ref" id="term-ref-17" href="#term-17" aria-label="Metal computeとCPU互換経路と疎更新の注釈17を読む">[注17]</a>で頂点ごとのモーフ計算を行う経路を用意 毎フレームCPUからGPUへ渡す情報を モーフの適用量に絞りました</p>
+            <p>一方 CPU互換経路では 前フレームから変化した量を 影響を受ける頂点に反映します さらにバッファ<a class="term-ref" id="term-ref-18" href="#term-18" aria-label="バッファと共有メモリと同期の注釈18を読む">[注18]</a>を複数用意し GPUが描画中のデータをCPU側が上書きしないようにしました 共有メモリを使う環境でも CPUとGPUが同じデータにいつアクセスするかという調整は必要です <a href="https://developer.apple.com/documentation/metal/synchronizing-cpu-and-gpu-work">Appleの同期に関する資料</a></p>
             <p>なお GPU経路について「変更された頂点だけを計算する」とは限りません 変更範囲を絞る仕組みとして開発記録に明記されているのは CPU互換経路です</p>
           </section>
           <section id="results">
             <h2>数字が示すものと まだ示せないもの</h2>
             <p>v0.13.0 の記録では 196,740頂点・1,132モーフキーのデータを使い 自動GPU経路で描画 <strong>51.1〜56.7 FPS</strong> 再生更新 <strong>42.6〜47.0 FPS</strong>が記録されています CPU疎更新経路では それぞれ <strong>49.0 FPS</strong> <strong>36.4 FPS</strong>でした</p>
             <p>描画FPSと再生更新FPSは別の指標です また 当時の記録には機種 解像度 反復回数など 比較に必要な条件がすべて記されているわけではありません この数字から 他のソフトとの優劣や 現在のすべてのMacでの性能を判断することはできません</p>
-            <p>この初期開発で得た手がかりは <strong>重さを感じたら 何を どれだけ どの頻度で処理しているかを測る</strong>ことでした UI CPU GPUの役割とデータの流れを少しずつ見直す その積み重ねが Macで気軽に編集するための土台になっています</p>
+            <p>この初期開発で得た手がかりは <strong>重さを感じたら 何を どれだけ どの頻度で処理しているかを測る</strong>ことでした UI<a class="term-ref" id="term-ref-19" href="#term-19" aria-label="UIの注釈19を読む">[注19]</a> CPU GPUの役割とデータの流れを少しずつ見直す その積み重ねが Macで気軽に編集するための土台になっています</p>
           </section>
           <section id="for-mac-users">
             <h2>出先のMacで その「ちょっと」を直せるように</h2>
@@ -182,56 +182,56 @@
                 <dd>エフェクトは光や質感やぼけなどの見た目を作る効果です HLSLは そうした描画や計算の処理をGPUに伝えるためのプログラミング言語の一つです<br/><a class="term-back" href="#term-ref-6" aria-label="注6の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-7" tabindex="-1">
-                <dt>注7　UI</dt>
-                <dd>ユーザーが見たり操作したりする画面やボタンなどを指します 画面内の映像が滑らかでも ボタンなどの反応が遅いことはあります<br/><a class="term-back" href="#term-ref-7" aria-label="注7の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注7　SwiftとSwiftUI</dt>
+                <dd>Swiftはアプリを作るためのプログラミング言語です SwiftUIは ボタンや一覧などの画面部品を組み立てるためのAppleの仕組みです<br/><a class="term-back" href="#term-ref-7" aria-label="注7の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-8" tabindex="-1">
-                <dt>注8　SwiftとSwiftUI</dt>
-                <dd>Swiftはアプリを作るためのプログラミング言語です SwiftUIは ボタンや一覧などの画面部品を組み立てるためのAppleの仕組みです<br/><a class="term-back" href="#term-ref-8" aria-label="注8の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注8　タイムラインとキー</dt>
+                <dd>動きや表情を時間に沿って編集する場所がタイムラインです キーは 特定の時点での位置や表情などを記録した目印です<br/><a class="term-back" href="#term-ref-8" aria-label="注8の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-9" tabindex="-1">
-                <dt>注9　タイムラインとキー</dt>
-                <dd>動きや表情を時間に沿って編集する場所がタイムラインです キーは 特定の時点での位置や表情などを記録した目印です<br/><a class="term-back" href="#term-ref-9" aria-label="注9の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注9　CPUとGPU</dt>
+                <dd>CPUはアプリの進行やさまざまな計算を担う処理装置 GPUは描画や大量の似た計算をまとめて処理するのが得意な装置です GPUを使っていても CPU側の準備で待ち時間が生じることがあります<br/><a class="term-back" href="#term-ref-9" aria-label="注9の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-10" tabindex="-1">
-                <dt>注10　CPUとGPU</dt>
-                <dd>CPUはアプリの進行やさまざまな計算を担う処理装置 GPUは描画や大量の似た計算をまとめて処理するのが得意な装置です GPUを使っていても CPU側の準備で待ち時間が生じることがあります<br/><a class="term-back" href="#term-ref-10" aria-label="注10の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注10　DirectX 9とMetal</dt>
+                <dd>どちらもアプリがGPUなどを使うための基盤です DirectX 9はWindows向けの世代の一つ MetalはAppleのOS向けです 同じ素材を扱えても 内部の動かし方は異なります<br/><a class="term-back" href="#term-ref-10" aria-label="注10の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-11" tabindex="-1">
-                <dt>注11　DirectX 9とMetal</dt>
-                <dd>どちらもアプリがGPUなどを使うための基盤です DirectX 9はWindows向けの世代の一つ MetalはAppleのOS向けです 同じ素材を扱えても 内部の動かし方は異なります<br/><a class="term-back" href="#term-ref-11" aria-label="注11の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注11　スキニングと頂点</dt>
+                <dd>頂点は3Dモデルの表面を形作る点です スキニングは ボーンの動きに合わせてそれらの点を動かし 腕や体の形を変える計算です<br/><a class="term-back" href="#term-ref-11" aria-label="注11の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-12" tabindex="-1">
-                <dt>注12　スキニングと頂点</dt>
-                <dd>頂点は3Dモデルの表面を形作る点です スキニングは ボーンの動きに合わせてそれらの点を動かし 腕や体の形を変える計算です<br/><a class="term-back" href="#term-ref-12" aria-label="注12の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注12　物理演算</dt>
+                <dd>重力や揺れや衝突などを計算し 髪や服などの動きを作る処理です<br/><a class="term-back" href="#term-ref-12" aria-label="注12の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-13" tabindex="-1">
-                <dt>注13　物理演算</dt>
-                <dd>重力や揺れや衝突などを計算し 髪や服などの動きを作る処理です<br/><a class="term-back" href="#term-ref-13" aria-label="注13の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注13　macOSネイティブ</dt>
+                <dd>macOS向けの仕組みを使って直接動くように作られていることです それだけで処理速度が保証されるという意味ではありません<br/><a class="term-back" href="#term-ref-13" aria-label="注13の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-14" tabindex="-1">
-                <dt>注14　macOSネイティブ</dt>
-                <dd>macOS向けの仕組みを使って直接動くように作られていることです それだけで処理速度が保証されるという意味ではありません<br/><a class="term-back" href="#term-ref-14" aria-label="注14の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注14　FPSとフレームとミリ秒</dt>
+                <dd>フレームは映像の一つの時点や画像 FPSは1秒あたりの回数です この記事では描画の回数と 再生状態を更新する回数を区別しています ミリ秒は1000分の1秒で 29.14ミリ秒は約0.029秒です<br/><a class="term-back" href="#term-ref-14" aria-label="注14の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-15" tabindex="-1">
-                <dt>注15　FPSとフレームとミリ秒</dt>
-                <dd>フレームは映像の一つの時点や画像 FPSは1秒あたりの回数です この記事では描画の回数と 再生状態を更新する回数を区別しています ミリ秒は1000分の1秒で 29.14ミリ秒は約0.029秒です<br/><a class="term-back" href="#term-ref-15" aria-label="注15の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注15　クラッシュログと再帰処理とヒープメモリ</dt>
+                <dd>クラッシュログはアプリが異常終了したときの記録です 再帰処理は処理が自分自身を呼び出す仕組みで それ自体が不具合とは限りません ヒープメモリは アプリが必要に応じて確保するデータの作業場所です<br/><a class="term-back" href="#term-ref-15" aria-label="注15の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-16" tabindex="-1">
-                <dt>注16　クラッシュログと再帰処理とヒープメモリ</dt>
-                <dd>クラッシュログはアプリが異常終了したときの記録です 再帰処理は処理が自分自身を呼び出す仕組みで それ自体が不具合とは限りません ヒープメモリは アプリが必要に応じて確保するデータの作業場所です<br/><a class="term-back" href="#term-ref-16" aria-label="注16の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注16　IK</dt>
+                <dd>手先や足先などの位置に合わせて 途中の腕や脚のボーンの向きを求める仕組みです 足を地面につけたまま体を動かす場面などで役立ちます<br/><a class="term-back" href="#term-ref-16" aria-label="注16の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-17" tabindex="-1">
-                <dt>注17　IK</dt>
-                <dd>手先や足先などの位置に合わせて 途中の腕や脚のボーンの向きを求める仕組みです 足を地面につけたまま体を動かす場面などで役立ちます<br/><a class="term-back" href="#term-ref-17" aria-label="注17の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注17　Metal computeとCPU互換経路と疎更新</dt>
+                <dd>Metal computeは GPUを画像の描画以外の計算にも使う仕組みです CPU互換経路はCPU側で計算する別の手順で 疎更新は全体を作り直さず 影響する部分を中心に更新することです<br/><a class="term-back" href="#term-ref-17" aria-label="注17の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-18" tabindex="-1">
-                <dt>注18　Metal computeとCPU互換経路と疎更新</dt>
-                <dd>Metal computeは GPUを画像の描画以外の計算にも使う仕組みです CPU互換経路はCPU側で計算する別の手順で 疎更新は全体を作り直さず 影響する部分を中心に更新することです<br/><a class="term-back" href="#term-ref-18" aria-label="注18の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注18　バッファと共有メモリと同期</dt>
+                <dd>バッファは処理に使うデータを置く領域です 共有メモリではCPUとGPUが同じデータを利用できますが 書き換え中に相手が読まないよう タイミングを調整する同期が必要です<br/><a class="term-back" href="#term-ref-18" aria-label="注18の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-19" tabindex="-1">
-                <dt>注19　バッファと共有メモリと同期</dt>
-                <dd>バッファは処理に使うデータを置く領域です 共有メモリではCPUとGPUが同じデータを利用できますが 書き換え中に相手が読まないよう タイミングを調整する同期が必要です<br/><a class="term-back" href="#term-ref-19" aria-label="注19の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注19　UI</dt>
+                <dd>ユーザーが見たり操作したりする画面やボタンなどを指します 画面内の映像が滑らかでも ボタンなどの反応が遅いことはあります<br/><a class="term-back" href="#term-ref-19" aria-label="注19の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
             </dl>
           </section>
