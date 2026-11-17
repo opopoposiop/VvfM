@@ -20,15 +20,16 @@
       /* 本文から読める用語注釈 */
       .term-ref{display:inline-block;margin-inline:.2em;font-size:.8em;line-height:1.5;text-decoration:underline;text-underline-offset:.2em}
       .term-ref:focus-visible,.term-back:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
-      .column-glossary{margin-top:48px;padding-top:24px;border-top:1px solid #d2d2d7}
-      .column-glossary dl{margin:0}
-      .column-glossary .term-entry{padding-block:20px;border-bottom:1px solid #d2d2d7;scroll-margin-top:100px;overflow-wrap:anywhere}
-      .column-glossary dt{font-weight:600;line-height:1.6}
-      .column-glossary dd{margin:8px 0 0;line-height:1.9}
+      .column-glossary{margin-top:32px;padding-top:20px;border-top:1px solid #d2d2d7}
+      .column-glossary dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:0}
+      .column-glossary .term-entry{padding-block:12px;border-bottom:1px solid #d2d2d7;scroll-margin-top:100px;overflow-wrap:anywhere}
+      .column-glossary dt{font-size:15px;font-weight:600;line-height:1.5}
+      .column-glossary dd{margin:5px 0 0;font-size:14px;line-height:1.7}
       .column-glossary .term-entry:target{background:#f5f5f7;border-radius:8px}
-      .term-back{display:inline-block;margin-top:8px;min-height:24px}
+      .term-back{display:inline-block;margin-left:8px;min-height:24px;font-size:13px}
       .term-ref{scroll-margin-top:100px}
-      @media(max-width:650px){.column-glossary{margin-top:32px}.term-ref,.term-back{padding-block:4px}}
+      @media(max-width:800px){.column-glossary dl{grid-template-columns:1fr}}
+      @media(max-width:650px){.column-glossary{margin-top:24px}.term-ref,.term-back{padding-block:4px}}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "第2回 Codexと追ったSECounter問題｜VvfM開発史", "description": "20体のPMXモデルを再生すると途中から遅くなる 画面収録とCodexとの対話を出発点に 仮説 計測 対照実験を重ね 実用上の解決へ進んだ開発記録", "url": "https://opopoposiop.github.io/VvfM/development-02.html", "datePublished": "2026-11-17", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}, "dateModified": "2026-11-17"}</script>
   </head>
@@ -89,21 +90,21 @@
           <section id="video">
             <h2>始まりは「だんだん遅くなる」という画面収録</h2>
             <p>モデルが動くようになっても それだけで快適に使えるわけではありません 第1回では 不要な再計算を減らすことで使い心地を改善した過程を紹介しました ところが 開発を続けると 処理を軽くするだけでは説明しにくい問題に出会います</p>
-            <p>20体のPMX<a class="term-ref" id="term-ref-2" href="#term-2" aria-label="PMXとVMDの注釈2を読む">[注2]</a>モデルを再生すると 最初は動いているのに 時間がたつにつれてFPS<a class="term-ref" id="term-ref-3" href="#term-3" aria-label="FPSとフレームの注釈3を読む">[注3]</a>が落ちていく 2026年9月24日 この様子を画面収録にして Codexへ調査を依頼しました</p>
+            <p>20体のPMXモデルを再生すると 最初は動いているのに 時間がたつにつれてFPS<a class="term-ref" id="term-ref-2" href="#term-2" aria-label="FPSとフレームの注釈2を読む">[注2]</a>が落ちていく 2026年9月24日 この様子を画面収録にして Codexへ調査を依頼しました</p>
             <p>「重い」という言葉だけでは 同じ場面が常に重いのか 時間とともに悪くなるのかが伝わりません 動画に加えて 再現に使うプロジェクトも渡し まず改善計画を考えるところから始めました</p>
-            <p>今回は この調査中に「SECounter問題<a class="term-ref" id="term-ref-4" href="#term-4" aria-label="SECounterとSE選択の注釈4を読む">[注4]</a>」と呼んでいた性能低下を題材に Codexと何を試し 何を確かめたのかを振り返ります</p>
+            <p>今回は この調査中に「SECounter問題<a class="term-ref" id="term-ref-3" href="#term-3" aria-label="SECounterとSE選択の注釈3を読む">[注3]</a>」と呼んでいた性能低下を題材に Codexと何を試し 何を確かめたのかを振り返ります</p>
           </section>
           <section id="pause">
             <h2>一時停止すると回復する でもまた遅くなる</h2>
             <p>9月26日には もう一つの観察を伝えました FPSが下がった状態で一時停止し 再生を再開すると 一時的にFPSが上がるのです</p>
             <p>一時停止しただけでは モデルの頂点数は減りません 再開時の処理や描画内容も調べる必要はありますが 単にモデルが多いからという説明だけでは足りなくなりました</p>
-            <p>動画を渡せば 条件がすべて伝わるわけでもありません Codexから録画時のバージョンを確認され 対象ビルド<a class="term-ref" id="term-ref-5" href="#term-5" aria-label="バージョンとビルドの注釈5を読む">[注5]</a>を伝えたこともありました 別の試行では 物理演算が120 Hz<a class="term-ref" id="term-ref-6" href="#term-6" aria-label="物理演算と120 Hzの注釈6を読む">[注6]</a>であることを補足し 仮置きされていた条件を訂正しています</p>
+            <p>動画を渡せば 条件がすべて伝わるわけでもありません Codexから録画時のバージョンを確認され 対象ビルド<a class="term-ref" id="term-ref-4" href="#term-4" aria-label="バージョンとビルドの注釈4を読む">[注4]</a>を伝えたこともありました 別の試行では 物理演算が120 Hz<a class="term-ref" id="term-ref-5" href="#term-5" aria-label="120 Hzの注釈5を読む">[注5]</a>であることを補足し 仮置きされていた条件を訂正しています</p>
             <p>人が見つけた違和感を AIと検証できる形にする そのためには 症状だけでなく 実際に使っていた設定を何度も突き合わせる必要がありました</p>
           </section>
           <section id="hypothesis">
             <h2>約24秒という手がかりと 断定できないこと</h2>
-            <p>調査は GPU<a class="term-ref" id="term-ref-7" href="#term-7" aria-label="CPUとGPUの注釈7を読む">[注7]</a>の処理時間や性能状態の変化へと進みました 保存されたファームウェアの静的解析<a class="term-ref" id="term-ref-8" href="#term-8" aria-label="ファームウェアと静的解析の注釈8を読む">[注8]</a>などから 内部のカウンタと考えられるSECounterにも着目しています</p>
-            <p>当時の解析では しきい値<a class="term-ref" id="term-ref-9" href="#term-9" aria-label="しきい値とカウンタの注釈9を読む">[注9]</a>や更新周期の候補から約23.33秒という時間が計算されました 観測していた約24秒後の変化に近い数字です ただ 近いからといって 原因が確定するわけではありません</p>
+            <p>調査は GPU<a class="term-ref" id="term-ref-6" href="#term-6" aria-label="CPUとGPUの注釈6を読む">[注6]</a>の処理時間や性能状態の変化へと進みました 保存されたファームウェアの静的解析<a class="term-ref" id="term-ref-7" href="#term-7" aria-label="ファームウェアと静的解析の注釈7を読む">[注7]</a>などから 内部のカウンタと考えられるSECounterにも着目しています</p>
+            <p>当時の解析では しきい値<a class="term-ref" id="term-ref-8" href="#term-8" aria-label="しきい値とカウンタの注釈8を読む">[注8]</a>や更新周期の候補から約23.33秒という時間が計算されました 観測していた約24秒後の変化に近い数字です ただ 近いからといって 原因が確定するわけではありません</p>
             <p>そこで 実際のGPU負荷に関係なくSECounterの累積が原因だと結論づけてよいのかを問い直しました 答えは その時点では断定できないというものでした</p>
             <p>一定の負荷条件を満たす間だけ値が増える仕組みでも 同じ条件なら似た時間に変化が起きます 時間の再現性だけでは 負荷に無関係なタイマーと 負荷に依存する制御を区別できません</p>
             <p>実行中のSECounter値や その入力を直接読み取ったわけではありません Appleの公式情報から内部仕様を確定できたわけでもありません 本稿の「SECounter問題」は調査中の呼び名であり Appleが公式に認定した不具合名ではありません</p>
@@ -111,20 +112,20 @@
           <section id="trials">
             <h2>提案された方法を試し 効かなければ戻る</h2>
             <p>調査の途中では 複数の対策候補を試しました 再生活動を通知する方法は 持続的な改善にはつながりませんでした GPUへの処理提出を一時的に止めると回復する試行はあっても 再開後に再発しました</p>
-            <p>CAMetalDisplayLink<a class="term-ref" id="term-ref-10" href="#term-10" aria-label="CAMetalDisplayLinkの注釈10を読む">[注10]</a>を使う試行でも 対象の状態への移行は残りました CPU側の先行処理には部分的な改善が見られましたが それだけで問題がなくなったわけではありません</p>
+            <p>CAMetalDisplayLink<a class="term-ref" id="term-ref-9" href="#term-9" aria-label="CAMetalDisplayLinkの注釈9を読む">[注9]</a>を使う試行でも 対象の状態への移行は残りました CPU側の先行処理には部分的な改善が見られましたが それだけで問題がなくなったわけではありません</p>
             <p>コードが書けたことと 問題が解決したことは別です 効果が再現しない案は採用せず 試した条件と結果を残しました 人間側からも 先行事例を調べることや VvfMの性能を落とさずに回避する方法を再検討することを繰り返し依頼しています</p>
             <p>Codexに任せて待つだけではなく 観察を伝え 仮説を問い直し 次の実験を選ぶ そのやり取りが続きました</p>
           </section>
           <section id="compute">
             <h2>空のコマンドと 実際に計算する処理の違い</h2>
-            <p>突破口になった試行では 追加処理なし 空のコマンドバッファ<a class="term-ref" id="term-ref-11" href="#term-11" aria-label="コマンドバッファと補助computeの注釈11を読む">[注11]</a> 有限の補助computeという三つを比較しました computeはGPUに計算を実行させる処理です</p>
+            <p>突破口になった試行では 追加処理なし 空のコマンドバッファ<a class="term-ref" id="term-ref-10" href="#term-10" aria-label="コマンドバッファと補助computeの注釈10を読む">[注10]</a> 有限の補助computeという三つを比較しました computeはGPUに計算を実行させる処理です</p>
             <p>この補助computeは モデルや映像の内容を増やすためではなく 性能状態への影響を調べるために追加したものでした 空のコマンドバッファを送るだけでは改善しなかった一方 再生開始時から補助computeを動かした試行では 90秒間 対象の状態への移行を観測しませんでした</p>
             <p>始めるタイミングにも違いがありました 計測記録で「SE選択」と呼んでいる状態への移行が起きた後に補助computeを始めても その状態は解除できませんでした 少なくともこの条件では 低下を防ぐことと 起きた低下を戻すことは同じではなかったのです</p>
             <p>ただし カウンタの増加が止まったことを直接証明したわけではありません 確認できたのは 追加処理の有無と開始時点によって 観測される性能や状態が変わったという結果です</p>
           </section>
           <section id="comparison">
             <h2>同じビルドで OFFとONを入れ替えてみる</h2>
-            <p>9月28日 試作結果を受けて 再生開始時から補助computeを動かす方式を正式採用するよう依頼しました v0.55.34／build 370では通常のアプリに組み込み 同じビルドでOFF → ON → ON → OFF<a class="term-ref" id="term-ref-12" href="#term-12" aria-label="対照実験とABBA順の注釈12を読む">[注12]</a>の順に比較しています</p>
+            <p>9月28日 試作結果を受けて 再生開始時から補助computeを動かす方式を正式採用するよう依頼しました v0.55.34／build 370では通常のアプリに組み込み 同じビルドでOFF → ON → ON → OFF<a class="term-ref" id="term-ref-11" href="#term-11" aria-label="対照実験とABBA順の注釈11を読む">[注11]</a>の順に比較しています</p>
             <p>各試行は90秒 次の表は後半の60〜85秒の記録です FPSだけでなく GPU処理時間と 表示に使う姿勢の遅れも確認しました</p>
             <div class="column-table-scroll" role="region" aria-label="build 370の比較結果" tabindex="0">
               <table>
@@ -138,15 +139,15 @@
                 </tbody>
               </table>
             </div>
-            <p>「姿勢年齢<a class="term-ref" id="term-ref-13" href="#term-13" aria-label="姿勢年齢とp95とmsの注釈13を読む">[注13]</a>」は 表示に使うモデルの姿勢がどれほど遅れているかを見るための指標です p95は測定値の95％がその値以下に収まる水準を示します GPU処理時間とFPSは別の指標なので 単純な逆数としては扱いません</p>
+            <p>「姿勢年齢<a class="term-ref" id="term-ref-12" href="#term-12" aria-label="姿勢年齢とp95とmsの注釈12を読む">[注12]</a>」は 表示に使うモデルの姿勢がどれほど遅れているかを見るための指標です p95は測定値の95％がその値以下に収まる水準を示します GPU処理時間とFPSは別の指標なので 単純な逆数としては扱いません</p>
             <p>OFFの2試行では約23〜24秒後にSE選択が観測され ONの2試行では90秒の範囲で観測されませんでした 対策の効果を 同じビルドの切り替えで確かめられたことが大きな前進でした</p>
             <p>これは当時の特定条件での少数の比較です 全Apple Silicon機や すべてのモデル構成で同じ結果になるとはいえません 当時の記録では600秒の耐久確認なども未確認として残しています</p>
           </section>
           <section id="power">
             <h2>速さが戻っても 電力と熱は無視できない</h2>
-            <p>追加の計算にはコストがあります 同じ比較で記録されたGPUモデル電力<a class="term-ref" id="term-ref-14" href="#term-14" aria-label="GPUモデル電力とWの注釈14を読む">[注14]</a>は OFF時の約4.2〜4.8 Wに対し ON時は約15.6〜15.8 Wでした</p>
+            <p>追加の計算にはコストがあります 同じ比較で記録されたGPUモデル電力<a class="term-ref" id="term-ref-13" href="#term-13" aria-label="GPUモデル電力とWの注釈13を読む">[注13]</a>は OFF時の約4.2〜4.8 Wに対し ON時は約15.6〜15.8 Wでした</p>
             <p>これはMac全体の消費電力ではありません 補助computeそのものの電力と 高い性能状態を維持したことによる電力も この測定だけでは分離できません それでも 性能と電力の変化は一緒に見る必要がありました</p>
-            <p>そこで熱状態がfair<a class="term-ref" id="term-ref-15" href="#term-15" aria-label="熱状態と状態注入テストの注釈15を読む">[注15]</a>までは継続し seriousになったら補助computeを止めるよう変更を依頼しました 続くbuild 371では nominalとfairで継続 seriousとcriticalで停止する動作になっています</p>
+            <p>そこで熱状態がfair<a class="term-ref" id="term-ref-14" href="#term-14" aria-label="熱状態と状態注入テストの注釈14を読む">[注14]</a>までは継続し seriousになったら補助computeを止めるよう変更を依頼しました 続くbuild 371では nominalとfairで継続 seriousとcriticalで停止する動作になっています</p>
             <p>熱状態の遷移は状態を注入するテストで確認しました 実機を意図的に加熱してすべての境界を確かめた試験ではありません また ここで紹介するのは当時の実装であり 現行版の全仕様を説明するものではありません</p>
             <p>どこまで性能維持を優先するか どの状態で追加処理を止めるか 採否と許容範囲を決める場面には 人間の判断が残りました</p>
           </section>
@@ -155,11 +156,11 @@
             <p>その後もCPU側の先行準備などを組み合わせ 調査結果を論文として整理しました 査読では 元データと説明を照合し 観測された現象の時間関係を修正した箇所もあります</p>
             <p>一度効果が出た対策でも 理由の説明まで正しいとは限りません Codexの回答や以前の報告を結論として固定せず データに戻って見直しました</p>
             <p>現在 開発者としては この問題は実用上解決していると評価しています 一方で SECounterの内部仕様や 性能状態の変化を生む機構について 公式情報による確定的な説明が得られたわけではありません</p>
-            <p>当時の90秒比較が示す効果と その後の利用上の評価は分けて記録しておきます 公開されているSustained Execution Mode<a class="term-ref" id="term-ref-16" href="#term-16" aria-label="Sustained Execution Modeの注釈16を読む">[注16]</a>と 内部SECounterや計測上のSE選択が同じものだとも断定していません</p>
+            <p>当時の90秒比較が示す効果と その後の利用上の評価は分けて記録しておきます 公開されているSustained Execution Mode<a class="term-ref" id="term-ref-15" href="#term-15" aria-label="Sustained Execution Modeの注釈15を読む">[注15]</a>と 内部SECounterや計測上のSE選択が同じものだとも断定していません</p>
           </section>
           <section id="vibe">
             <h2>バイブコーディングで 人が手放さなかったもの</h2>
-            <p>VvfMでは 作りたい機能や困った症状を言葉で伝え Codexと実装や検証を進めてきました この進め方をバイブコーディング<a class="term-ref" id="term-ref-17" href="#term-17" aria-label="バイブコーディングの注釈17を読む">[注17]</a>と呼ぶとしても 今回の記録に残っているのは 観察と測定を何度もやり直す過程です</p>
+            <p>VvfMでは 作りたい機能や困った症状を言葉で伝え Codexと実装や検証を進めてきました この進め方をバイブコーディング<a class="term-ref" id="term-ref-16" href="#term-16" aria-label="バイブコーディングの注釈16を読む">[注16]</a>と呼ぶとしても 今回の記録に残っているのは 観察と測定を何度もやり直す過程です</p>
             <p>人が動画の違和感を示す 再生条件を補足し AIの仮定を訂正する Codexと仮説を整理して実験し 改善しない案は退ける 最後に性能と電力を見て 採用する範囲を決める</p>
             <p>最初の「だんだん遅くなる」という言葉は 動画とプロジェクト 条件の確認 計測 対照実験を通して 対処できる問題になっていきました</p>
             <p>欲しかったのは コードが増えることではありません 手元のMacで モデルの動きを安心して確認できることです 使う人の観察を検証できる形へ変え 結果を見て判断を積み重ねる その作業も VvfMをCodexと作ることの一部でした</p>
@@ -170,71 +171,67 @@
             <dl>
               <div class="term-entry" id="term-1" tabindex="-1">
                 <dt>注1　Codex</dt>
-                <dd>コードの作成や調査などを支援するOpenAIのAIです この開発では 人が症状や条件を伝え 実装や測定結果を確かめながら利用しています<br/><a class="term-back" href="#term-ref-1" aria-label="注1の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dd>コードの作成や調査などを支援するOpenAIのAIです この開発では 人が症状や条件を伝え 実装や測定結果を確かめながら利用しています <a class="term-back" href="#term-ref-1" aria-label="注1の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-2" tabindex="-1">
-                <dt>注2　PMXとVMD</dt>
-                <dd>PMXはモデルの形や材質やボーンなどを保存する形式 VMDは主にそのモデルを動かすための動きや表情を保存する形式です<br/><a class="term-back" href="#term-ref-2" aria-label="注2の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注2　FPSとフレーム</dt>
+                <dd>FPSは1秒あたりに表示や更新が行われる回数です フレームは映像の一つの時点や画像を指します 数値が高いほど滑らかさの目安になりますが 処理の遅れや操作の反応も別に見る必要があります <a class="term-back" href="#term-ref-2" aria-label="注2の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-3" tabindex="-1">
-                <dt>注3　FPSとフレーム</dt>
-                <dd>FPSは1秒あたりに表示や更新が行われる回数です フレームは映像の一つの時点や画像を指します 数値が高いほど滑らかさの目安になりますが 処理の遅れや操作の反応も別に見る必要があります<br/><a class="term-back" href="#term-ref-3" aria-label="注3の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注3　SECounterとSE選択</dt>
+                <dd>SECounterは調査で着目した内部カウンタと考えられる名称です SE選択は計測記録で使った状態の呼び名です どちらも公式仕様が確認できた説明ではなく 本稿の問題名もApple公式の不具合名ではありません <a class="term-back" href="#term-ref-3" aria-label="注3の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-4" tabindex="-1">
-                <dt>注4　SECounterとSE選択</dt>
-                <dd>SECounterは調査で着目した内部カウンタと考えられる名称です SE選択は計測記録で使った状態の呼び名です どちらも公式仕様が確認できた説明ではなく 本稿の問題名もApple公式の不具合名ではありません<br/><a class="term-back" href="#term-ref-4" aria-label="注4の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注4　バージョンとビルド</dt>
+                <dd>バージョンはアプリの版を表す番号です ビルドはコードから作った実行可能なアプリや その作成版を指します 同じビルドで設定だけを変えると コードの違いによる影響を減らして比較できます <a class="term-back" href="#term-ref-4" aria-label="注4の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-5" tabindex="-1">
-                <dt>注5　バージョンとビルド</dt>
-                <dd>バージョンはアプリの版を表す番号です ビルドはコードから作った実行可能なアプリや その作成版を指します 同じビルドで設定だけを変えると コードの違いによる影響を減らして比較できます<br/><a class="term-back" href="#term-ref-5" aria-label="注5の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注5　120 Hz</dt>
+                <dd>ここでの120 Hzは1秒に120回の計算更新を行う設定を表し 画面が120 FPSで表示されたという意味ではありません <a class="term-back" href="#term-ref-5" aria-label="注5の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-6" tabindex="-1">
-                <dt>注6　物理演算と120 Hz</dt>
-                <dd>物理演算は重力や揺れや衝突などを計算する処理です ここでの120 Hzは1秒に120回の計算更新を行う設定を表し 画面が120 FPSで表示されたという意味ではありません<br/><a class="term-back" href="#term-ref-6" aria-label="注6の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注6　CPUとGPU</dt>
+                <dd>CPUはアプリの進行やさまざまな計算を担い GPUは描画や大量の似た計算を得意とします 本稿では GPUそのものの処理だけでなく CPU側の準備も調べています <a class="term-back" href="#term-ref-6" aria-label="注6の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-7" tabindex="-1">
-                <dt>注7　CPUとGPU</dt>
-                <dd>CPUはアプリの進行やさまざまな計算を担い GPUは描画や大量の似た計算を得意とします 本稿では GPUそのものの処理だけでなく CPU側の準備も調べています<br/><a class="term-back" href="#term-ref-7" aria-label="注7の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注7　ファームウェアと静的解析</dt>
+                <dd>ファームウェアは機器を制御するためのソフトです 静的解析は そのデータやコードを実行せずに調べる方法です 候補となる仕組みは探せますが 実際に動作中の値を直接測ったことにはなりません <a class="term-back" href="#term-ref-7" aria-label="注7の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-8" tabindex="-1">
-                <dt>注8　ファームウェアと静的解析</dt>
-                <dd>ファームウェアは機器を制御するためのソフトです 静的解析は そのデータやコードを実行せずに調べる方法です 候補となる仕組みは探せますが 実際に動作中の値を直接測ったことにはなりません<br/><a class="term-back" href="#term-ref-8" aria-label="注8の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注8　しきい値とカウンタ</dt>
+                <dd>しきい値は動作の切り替えなどを判断する境目の値です カウンタは回数や量を数えるための値で 何を条件に増えるかが分からなければ 時間だけを数えているとはいえません <a class="term-back" href="#term-ref-8" aria-label="注8の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-9" tabindex="-1">
-                <dt>注9　しきい値とカウンタ</dt>
-                <dd>しきい値は動作の切り替えなどを判断する境目の値です カウンタは回数や量を数えるための値で 何を条件に増えるかが分からなければ 時間だけを数えているとはいえません<br/><a class="term-back" href="#term-ref-9" aria-label="注9の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注9　CAMetalDisplayLink</dt>
+                <dd>画面に表示するタイミングに合わせて Metalの描画を準備するためのAppleの仕組みです 使うだけでGPUの性能低下が解消するというものではありません <a class="term-back" href="#term-ref-9" aria-label="注9の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-10" tabindex="-1">
-                <dt>注10　CAMetalDisplayLink</dt>
-                <dd>画面に表示するタイミングに合わせて Metalの描画を準備するためのAppleの仕組みです 使うだけでGPUの性能低下が解消するというものではありません<br/><a class="term-back" href="#term-ref-10" aria-label="注10の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注10　コマンドバッファと補助compute</dt>
+                <dd>コマンドバッファはGPUへ実行してほしい処理をまとめたものです 空のものを送る場合と 実際の計算をさせる補助computeでは GPUが行う仕事が異なります 有限とは処理量に限りがあることです <a class="term-back" href="#term-ref-10" aria-label="注10の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-11" tabindex="-1">
-                <dt>注11　コマンドバッファと補助compute</dt>
-                <dd>コマンドバッファはGPUへ実行してほしい処理をまとめたものです 空のものを送る場合と 実際の計算をさせる補助computeでは GPUが行う仕事が異なります 有限とは処理量に限りがあることです<br/><a class="term-back" href="#term-ref-11" aria-label="注11の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注11　対照実験とABBA順</dt>
+                <dd>対策なしと対策ありを 同じ条件にできるだけ揃えて比べるのが対照実験です OFFをA ONをBとすると この順番はABBAです 順番による偏りを調べる助けになりますが 少数の試験だけですべての影響を除けるわけではありません <a class="term-back" href="#term-ref-11" aria-label="注11の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-12" tabindex="-1">
-                <dt>注12　対照実験とABBA順</dt>
-                <dd>対策なしと対策ありを 同じ条件にできるだけ揃えて比べるのが対照実験です OFFをA ONをBとすると この順番はABBAです 順番による偏りを調べる助けになりますが 少数の試験だけですべての影響を除けるわけではありません<br/><a class="term-back" href="#term-ref-12" aria-label="注12の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注12　姿勢年齢とp95とms</dt>
+                <dd>姿勢年齢は 画面に使うモデルの姿勢がどれだけ古いかを見る指標です p95は値を小さい順に並べたとき95％の位置にある水準で 平均でも最大でもありません msはミリ秒で1000分の1秒です <a class="term-back" href="#term-ref-12" aria-label="注12の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-13" tabindex="-1">
-                <dt>注13　姿勢年齢とp95とms</dt>
-                <dd>姿勢年齢は 画面に使うモデルの姿勢がどれだけ古いかを見る指標です p95は値を小さい順に並べたとき95％の位置にある水準で 平均でも最大でもありません msはミリ秒で1000分の1秒です<br/><a class="term-back" href="#term-ref-13" aria-label="注13の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注13　GPUモデル電力とW</dt>
+                <dd>ここでは計測記録上のGPUについての電力指標を指します Mac全体の実測消費電力ではありません Wはワットという電力の単位です この値だけで補助処理の電力を切り分けることはできません <a class="term-back" href="#term-ref-13" aria-label="注13の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-14" tabindex="-1">
-                <dt>注14　GPUモデル電力とW</dt>
-                <dd>ここでは計測記録上のGPUについての電力指標を指します Mac全体の実測消費電力ではありません Wはワットという電力の単位です この値だけで補助処理の電力を切り分けることはできません<br/><a class="term-back" href="#term-ref-14" aria-label="注14の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注14　熱状態と状態注入テスト</dt>
+                <dd>nominalは通常 fairはやや高い seriousは高い criticalは非常に高い熱状態を表すOSの区分です 固定の温度そのものではありません 状態注入テストは 各状態を模擬してアプリの反応を調べる方法で 実機をその温度まで加熱した試験とは異なります <a class="term-back" href="#term-ref-14" aria-label="注14の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-15" tabindex="-1">
-                <dt>注15　熱状態と状態注入テスト</dt>
-                <dd>nominalは通常 fairはやや高い seriousは高い criticalは非常に高い熱状態を表すOSの区分です 固定の温度そのものではありません 状態注入テストは 各状態を模擬してアプリの反応を調べる方法で 実機をその温度まで加熱した試験とは異なります<br/><a class="term-back" href="#term-ref-15" aria-label="注15の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注15　Sustained Execution Mode</dt>
+                <dd>Appleが公開している 継続的な処理の実行に関するモードの名称です 名称が似ていても 本稿で推定した内部SECounterやSE選択と同一の仕組みだとは確認できていません <a class="term-back" href="#term-ref-15" aria-label="注15の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
               <div class="term-entry" id="term-16" tabindex="-1">
-                <dt>注16　Sustained Execution Mode</dt>
-                <dd>Appleが公開している 継続的な処理の実行に関するモードの名称です 名称が似ていても 本稿で推定した内部SECounterやSE選択と同一の仕組みだとは確認できていません<br/><a class="term-back" href="#term-ref-16" aria-label="注16の本文へ戻る">本文へ戻る ↑</a></dd>
-              </div>
-              <div class="term-entry" id="term-17" tabindex="-1">
-                <dt>注17　バイブコーディング</dt>
-                <dd>作りたいものを自然な言葉でAIに伝え コードの生成や修正を進める開発の呼び方です 本稿ではAIの提案を無条件に採用せず 人が観察と検証と採否の判断を行った過程を紹介しています<br/><a class="term-back" href="#term-ref-17" aria-label="注17の本文へ戻る">本文へ戻る ↑</a></dd>
+                <dt>注16　バイブコーディング</dt>
+                <dd>作りたいものを自然な言葉でAIに伝え コードの生成や修正を進める開発の呼び方です 本稿ではAIの提案を無条件に採用せず 人が観察と検証と採否の判断を行った過程を紹介しています <a class="term-back" href="#term-ref-16" aria-label="注16の本文へ戻る">本文へ戻る ↑</a></dd>
               </div>
             </dl>
           </section>
