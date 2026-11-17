@@ -61,7 +61,7 @@
           <p class="eyebrow">DEVELOPMENT STORY · 02</p>
           <h1>20体のVMD再生が<br/>なぜ途中から遅くなるのか</h1>
           <p class="lead">Codexと追ったSECounter問題と<br/>実用上の解決まで</p>
-          <p class="column-meta">VvfM開発史 第2回 · 2026年9月の検証を振り返る · 2026年11月17日</p>
+          <p class="column-meta">VvfM開発史 第2回 · 検証を振り返る</p>
         </header>
       </div>
       <div class="guide-layout wrap column-layout">
@@ -90,13 +90,13 @@
           <section id="video">
             <h2>始まりは「だんだん遅くなる」という画面収録</h2>
             <p>モデルが動くようになっても それだけで快適に使えるわけではありません 第1回では 不要な再計算を減らすことで使い心地を改善した過程を紹介しました ところが 開発を続けると 処理を軽くするだけでは説明しにくい問題に出会います</p>
-            <p>20体のPMXモデルを再生すると 最初は動いているのに 時間がたつにつれてFPS<a class="term-ref" id="term-ref-2" href="#term-2" aria-label="FPSとフレームの注釈2を読む">[注2]</a>が落ちていく 2026年9月24日 この様子を画面収録にして Codexへ調査を依頼しました</p>
+            <p>20体のPMXモデルを再生すると 最初は動いているのに 時間がたつにつれてFPS<a class="term-ref" id="term-ref-2" href="#term-2" aria-label="FPSとフレームの注釈2を読む">[注2]</a>が落ちていく この様子を画面収録にして Codexへ調査を依頼しました</p>
             <p>「重い」という言葉だけでは 同じ場面が常に重いのか 時間とともに悪くなるのかが伝わりません 動画に加えて 再現に使うプロジェクトも渡し まず改善計画を考えるところから始めました</p>
             <p>今回は この調査中に「SECounter問題<a class="term-ref" id="term-ref-3" href="#term-3" aria-label="SECounterとSE選択の注釈3を読む">[注3]</a>」と呼んでいた性能低下を題材に Codexと何を試し 何を確かめたのかを振り返ります</p>
           </section>
           <section id="pause">
             <h2>一時停止すると回復する でもまた遅くなる</h2>
-            <p>9月26日には もう一つの観察を伝えました FPSが下がった状態で一時停止し 再生を再開すると 一時的にFPSが上がるのです</p>
+            <p>その後 もう一つの観察を伝えました FPSが下がった状態で一時停止し 再生を再開すると 一時的にFPSが上がるのです</p>
             <p>一時停止しただけでは モデルの頂点数は減りません 再開時の処理や描画内容も調べる必要はありますが 単にモデルが多いからという説明だけでは足りなくなりました</p>
             <p>動画を渡せば 条件がすべて伝わるわけでもありません Codexから録画時のバージョンを確認され 対象ビルド<a class="term-ref" id="term-ref-4" href="#term-4" aria-label="バージョンとビルドの注釈4を読む">[注4]</a>を伝えたこともありました 別の試行では 物理演算が120 Hz<a class="term-ref" id="term-ref-5" href="#term-5" aria-label="120 Hzの注釈5を読む">[注5]</a>であることを補足し 仮置きされていた条件を訂正しています</p>
             <p>人が見つけた違和感を AIと検証できる形にする そのためには 症状だけでなく 実際に使っていた設定を何度も突き合わせる必要がありました</p>
@@ -125,7 +125,7 @@
           </section>
           <section id="comparison">
             <h2>同じビルドで OFFとONを入れ替えてみる</h2>
-            <p>9月28日 試作結果を受けて 再生開始時から補助computeを動かす方式を正式採用するよう依頼しました v0.55.34／build 370では通常のアプリに組み込み 同じビルドでOFF → ON → ON → OFF<a class="term-ref" id="term-ref-11" href="#term-11" aria-label="対照実験とABBA順の注釈11を読む">[注11]</a>の順に比較しています</p>
+            <p>試作結果を受けて 再生開始時から補助computeを動かす方式を正式採用するよう依頼しました v0.55.34／build 370では通常のアプリに組み込み 同じビルドでOFF → ON → ON → OFF<a class="term-ref" id="term-ref-11" href="#term-11" aria-label="対照実験とABBA順の注釈11を読む">[注11]</a>の順に比較しています</p>
             <p>各試行は90秒 次の表は後半の60〜85秒の記録です FPSだけでなく GPU処理時間と 表示に使う姿勢の遅れも確認しました</p>
             <div class="column-table-scroll" role="region" aria-label="build 370の比較結果" tabindex="0">
               <table>
