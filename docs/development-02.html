@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="J-O5AVknDOoGeZmMIt8It_xiSTIsqs5Ke5Kr5aalyoA" name="google-site-verification"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>第2回 Codexと追ったSECounter問題｜VvfM開発史</title>
+    <meta content="20体のPMXモデルを再生すると途中から遅くなる 画面収録とCodexとの対話を出発点に 仮説 計測 対照実験を重ね 実用上の解決へ進んだ開発記録" name="description"/>
+    <link href="https://opopoposiop.github.io/VvfM/development-02.html" rel="canonical"/>
+    <meta content="article" property="og:type"/>
+    <meta content="ja_JP" property="og:locale"/>
+    <meta content="第2回 Codexと追ったSECounter問題｜VvfM開発史" property="og:title"/>
+    <meta content="20体のPMXモデルを再生すると途中から遅くなる 画面収録とCodexとの対話を出発点に 仮説 計測 対照実験を重ね 実用上の解決へ進んだ開発記録" property="og:description"/>
+    <meta content="https://opopoposiop.github.io/VvfM/development-02.html" property="og:url"/>
+    <meta content="https://opopoposiop.github.io/VvfM/images/vvfm-eyecatch.jpg" property="og:image"/>
+    <meta content="summary_large_image" name="twitter:card"/>
+    <link href="style.css" rel="stylesheet"/>
+    <link href="guide.css" rel="stylesheet"/>
+    <style>.column-hero{background:#000;color:#f5f5f7}.column-hero .eyebrow,.column-hero .guide-note{color:#a1a1a6}.column-hero .lead{max-width:900px}.column-layout{padding-top:48px}.column-article p{margin-block:0 1.5em}.column-article h2{line-height:1.45}.column-layout .guide-toc li{padding-block:6px}.column-layout .guide-toc a{display:block;padding-block:0}.column-meta{font-size:14px;color:#a1a1a6}@media(max-width:650px){.column-layout{padding-top:24px}}.column-series{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:20px;font-size:14px}.column-series-title{font-weight:600}.column-series ol{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}.column-series a,.column-series [aria-disabled="true"]{display:block;padding:9px 14px;border-radius:10px;background:#f5f5f7}.column-series a[aria-current="page"]{font-weight:600}.column-series [aria-disabled="true"]{color:#76767b;cursor:default}.column-table-scroll{max-width:100%;overflow-x:auto;margin-block:24px}.column-table-scroll table{width:100%;border-collapse:collapse;font-size:14px;white-space:nowrap}.column-table-scroll caption{text-align:left;white-space:normal;color:#515154;padding-bottom:12px}.column-table-scroll th,.column-table-scroll td{padding:12px;border-bottom:1px solid #d2d2d7;text-align:right}.column-table-scroll th:first-child,.column-table-scroll td:nth-child(2){text-align:left}.column-table-scroll thead{background:#f5f5f7}.column-table-scroll:focus-visible{outline:2px solid #0071e3;outline-offset:3px}</style>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "第2回 Codexと追ったSECounter問題｜VvfM開発史", "description": "20体のPMXモデルを再生すると途中から遅くなる 画面収録とCodexとの対話を出発点に 仮説 計測 対照実験を重ね 実用上の解決へ進んだ開発記録", "url": "https://opopoposiop.github.io/VvfM/development-02.html", "datePublished": "2026-11-17", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}, "dateModified": "2026-11-17"}</script>
+  </head>
+  <body class="guide-page">
+    <a class="skip" href="#main">本文へ移動</a>
+    <header class="header wrap">
+      <a aria-label="VvfM ホーム" class="brand" href="./">VvfM<span>VMD Viewer for Mac</span></a>
+      <nav aria-label="メインナビゲーション">
+        <a href="./#features">できること</a>
+        <a href="getting-started.html">始め方</a>
+        <a href="toonshader-hq.html">HQエフェクト</a>
+        <a href="video-export.html">動画出力</a>
+        <a href="./#faq">FAQ</a>
+        <a href="https://github.com/opopoposiop/VvfM">GitHub ↗</a>
+      </nav>
+    </header>
+    <main id="main">
+      <nav class="column-series wrap" aria-label="開発史コラム">
+        <span class="column-series-title">開発史コラム</span>
+        <ol>
+          <li><a href="development-01.html">第1回 GPUだけでは解決しなかった</a></li>
+          <li><a href="development-02.html" aria-current="page">第2回 Codexと追ったSECounter問題</a></li>
+          <li><span aria-disabled="true">第3回 fxdayoとMSL変換 · 公開予定</span></li>
+          <li><span aria-disabled="true">第4回 ToonShader HQ · 公開予定</span></li>
+        </ol>
+      </nav>
+      <div class="column-hero">
+        <header class="guide-intro wrap">
+          <p class="eyebrow">DEVELOPMENT STORY · 02</p>
+          <h1>20体の再生が<br/>なぜ途中から遅くなるのか</h1>
+          <p class="lead">Codexと追ったSECounter問題と<br/>実用上の解決まで</p>
+          <p class="column-meta">VvfM開発史 第2回 · 2026年9月の検証を振り返る · 2026年11月17日</p>
+        </header>
+      </div>
+      <div class="guide-layout wrap column-layout">
+        <aside>
+          <nav aria-label="このページの目次" class="guide-toc">
+            <strong>第2回の目次</strong>
+            <ol>
+              <li><a href="#video">始まりは「だんだん遅くなる」という画面収録</a></li>
+              <li><a href="#pause">一時停止すると回復する でもまた遅くなる</a></li>
+              <li><a href="#hypothesis">約24秒という手がかりと 断定できないこと</a></li>
+              <li><a href="#trials">提案された方法を試し 効かなければ戻る</a></li>
+              <li><a href="#compute">空のコマンドと 実際に計算する処理の違い</a></li>
+              <li><a href="#comparison">同じビルドで OFFとONを入れ替えてみる</a></li>
+              <li><a href="#power">速さが戻っても 電力と熱は無視できない</a></li>
+              <li><a href="#resolution">実用上の解決と 原因の確定は分けておく</a></li>
+              <li><a href="#vibe">バイブコーディングで 人が手放さなかったもの</a></li>
+            </ol>
+          </nav>
+        </aside>
+        <article class="guide-content column-article">
+          <div class="guide-callout">
+            <p>最初は動くのに 途中から遅くなる 一時停止すると回復するけれど また遅くなる</p>
+            <p>この画面上の違和感から Codexとの調査が始まりました 内部機構についての仮説と 対策が効いたという観測を分けながら 実用上の解決へ進んだ記録です</p>
+          </div>
+          <section id="video">
+            <h2>始まりは「だんだん遅くなる」という画面収録</h2>
+            <p>モデルが動くようになっても それだけで快適に使えるわけではありません 第1回では 不要な再計算を減らすことで使い心地を改善した過程を紹介しました ところが 開発を続けると 処理を軽くするだけでは説明しにくい問題に出会います</p>
+            <p>20体のPMXモデルを再生すると 最初は動いているのに 時間がたつにつれてFPSが落ちていく 2026年9月24日 この様子を画面収録にして Codexへ調査を依頼しました</p>
+            <p>「重い」という言葉だけでは 同じ場面が常に重いのか 時間とともに悪くなるのかが伝わりません 動画に加えて 再現に使うプロジェクトも渡し まず改善計画を考えるところから始めました</p>
+            <p>今回は この調査中に「SECounter問題」と呼んでいた性能低下を題材に Codexと何を試し 何を確かめたのかを振り返ります</p>
+          </section>
+          <section id="pause">
+            <h2>一時停止すると回復する でもまた遅くなる</h2>
+            <p>9月26日には もう一つの観察を伝えました FPSが下がった状態で一時停止し 再生を再開すると 一時的にFPSが上がるのです</p>
+            <p>一時停止しただけでは モデルの頂点数は減りません 再開時の処理や描画内容も調べる必要はありますが 単にモデルが多いからという説明だけでは足りなくなりました</p>
+            <p>動画を渡せば 条件がすべて伝わるわけでもありません Codexから録画時のバージョンを確認され 対象ビルドを伝えたこともありました 別の試行では 物理演算が120 Hzであることを補足し 仮置きされていた条件を訂正しています</p>
+            <p>人が見つけた違和感を AIと検証できる形にする そのためには 症状だけでなく 実際に使っていた設定を何度も突き合わせる必要がありました</p>
+          </section>
+          <section id="hypothesis">
+            <h2>約24秒という手がかりと 断定できないこと</h2>
+            <p>調査は GPUの処理時間や性能状態の変化へと進みました 保存されたファームウェアの静的解析などから 内部のカウンタと考えられるSECounterにも着目しています</p>
+            <p>当時の解析では しきい値や更新周期の候補から約23.33秒という時間が計算されました 観測していた約24秒後の変化に近い数字です ただ 近いからといって 原因が確定するわけではありません</p>
+            <p>そこで 実際のGPU負荷に関係なくSECounterの累積が原因だと結論づけてよいのかを問い直しました 答えは その時点では断定できないというものでした</p>
+            <p>一定の負荷条件を満たす間だけ値が増える仕組みでも 同じ条件なら似た時間に変化が起きます 時間の再現性だけでは 負荷に無関係なタイマーと 負荷に依存する制御を区別できません</p>
+            <p>実行中のSECounter値や その入力を直接読み取ったわけではありません Appleの公式情報から内部仕様を確定できたわけでもありません 本稿の「SECounter問題」は調査中の呼び名であり Appleが公式に認定した不具合名ではありません</p>
+          </section>
+          <section id="trials">
+            <h2>提案された方法を試し 効かなければ戻る</h2>
+            <p>調査の途中では 複数の対策候補を試しました 再生活動を通知する方法は 持続的な改善にはつながりませんでした GPUへの処理提出を一時的に止めると回復する試行はあっても 再開後に再発しました</p>
+            <p>CAMetalDisplayLinkを使う試行でも 対象の状態への移行は残りました CPU側の先行処理には部分的な改善が見られましたが それだけで問題がなくなったわけではありません</p>
+            <p>コードが書けたことと 問題が解決したことは別です 効果が再現しない案は採用せず 試した条件と結果を残しました 人間側からも 先行事例を調べることや VvfMの性能を落とさずに回避する方法を再検討することを繰り返し依頼しています</p>
+            <p>Codexに任せて待つだけではなく 観察を伝え 仮説を問い直し 次の実験を選ぶ そのやり取りが続きました</p>
+          </section>
+          <section id="compute">
+            <h2>空のコマンドと 実際に計算する処理の違い</h2>
+            <p>突破口になった試行では 追加処理なし 空のコマンドバッファ 有限の補助computeという三つを比較しました computeはGPUに計算を実行させる処理です</p>
+            <p>この補助computeは モデルや映像の内容を増やすためではなく 性能状態への影響を調べるために追加したものでした 空のコマンドバッファを送るだけでは改善しなかった一方 再生開始時から補助computeを動かした試行では 90秒間 対象の状態への移行を観測しませんでした</p>
+            <p>始めるタイミングにも違いがありました 計測記録で「SE選択」と呼んでいる状態への移行が起きた後に補助computeを始めても その状態は解除できませんでした 少なくともこの条件では 低下を防ぐことと 起きた低下を戻すことは同じではなかったのです</p>
+            <p>ただし カウンタの増加が止まったことを直接証明したわけではありません 確認できたのは 追加処理の有無と開始時点によって 観測される性能や状態が変わったという結果です</p>
+          </section>
+          <section id="comparison">
+            <h2>同じビルドで OFFとONを入れ替えてみる</h2>
+            <p>9月28日 試作結果を受けて 再生開始時から補助computeを動かす方式を正式採用するよう依頼しました v0.55.34／build 370では通常のアプリに組み込み 同じビルドでOFF → ON → ON → OFFの順に比較しています</p>
+            <p>各試行は90秒 次の表は後半の60〜85秒の記録です FPSだけでなく GPU処理時間と 表示に使う姿勢の遅れも確認しました</p>
+            <div class="column-table-scroll" role="region" aria-label="build 370の比較結果" tabindex="0">
+              <table>
+                <caption>build 370 · 各90秒の試行のうち60〜85秒を集計</caption>
+                <thead><tr><th scope="col">試行</th><th scope="col">対策</th><th scope="col">FPS</th><th scope="col">GPU処理時間</th><th scope="col">姿勢年齢 p95</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">1</th><td>OFF</td><td>13.617</td><td>55.958 ms</td><td>4.254 frame</td></tr>
+                  <tr><th scope="row">2</th><td>ON</td><td>29.134</td><td>18.949 ms</td><td>1.868 frame</td></tr>
+                  <tr><th scope="row">3</th><td>ON</td><td>28.938</td><td>18.926 ms</td><td>1.864 frame</td></tr>
+                  <tr><th scope="row">4</th><td>OFF</td><td>17.301</td><td>40.556 ms</td><td>3.276 frame</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>「姿勢年齢」は 表示に使うモデルの姿勢がどれほど遅れているかを見るための指標です p95は測定値の95％がその値以下に収まる水準を示します GPU処理時間とFPSは別の指標なので 単純な逆数としては扱いません</p>
+            <p>OFFの2試行では約23〜24秒後にSE選択が観測され ONの2試行では90秒の範囲で観測されませんでした 対策の効果を 同じビルドの切り替えで確かめられたことが大きな前進でした</p>
+            <p>これは当時の特定条件での少数の比較です 全Apple Silicon機や すべてのモデル構成で同じ結果になるとはいえません 当時の記録では600秒の耐久確認なども未確認として残しています</p>
+          </section>
+          <section id="power">
+            <h2>速さが戻っても 電力と熱は無視できない</h2>
+            <p>追加の計算にはコストがあります 同じ比較で記録されたGPUモデル電力は OFF時の約4.2〜4.8 Wに対し ON時は約15.6〜15.8 Wでした</p>
+            <p>これはMac全体の消費電力ではありません 補助computeそのものの電力と 高い性能状態を維持したことによる電力も この測定だけでは分離できません それでも 性能と電力の変化は一緒に見る必要がありました</p>
+            <p>そこで熱状態がfairまでは継続し seriousになったら補助computeを止めるよう変更を依頼しました 続くbuild 371では nominalとfairで継続 seriousとcriticalで停止する動作になっています</p>
+            <p>熱状態の遷移は状態を注入するテストで確認しました 実機を意図的に加熱してすべての境界を確かめた試験ではありません また ここで紹介するのは当時の実装であり 現行版の全仕様を説明するものではありません</p>
+            <p>どこまで性能維持を優先するか どの状態で追加処理を止めるか 採否と許容範囲を決める場面には 人間の判断が残りました</p>
+          </section>
+          <section id="resolution">
+            <h2>実用上の解決と 原因の確定は分けておく</h2>
+            <p>その後もCPU側の先行準備などを組み合わせ 調査結果を論文として整理しました 査読では 元データと説明を照合し 観測された現象の時間関係を修正した箇所もあります</p>
+            <p>一度効果が出た対策でも 理由の説明まで正しいとは限りません Codexの回答や以前の報告を結論として固定せず データに戻って見直しました</p>
+            <p>現在 開発者としては この問題は実用上解決していると評価しています 一方で SECounterの内部仕様や 性能状態の変化を生む機構について 公式情報による確定的な説明が得られたわけではありません</p>
+            <p>当時の90秒比較が示す効果と その後の利用上の評価は分けて記録しておきます 公開されているSustained Execution Modeと 内部SECounterや計測上のSE選択が同じものだとも断定していません</p>
+          </section>
+          <section id="vibe">
+            <h2>バイブコーディングで 人が手放さなかったもの</h2>
+            <p>VvfMでは 作りたい機能や困った症状を言葉で伝え Codexと実装や検証を進めてきました この進め方をバイブコーディングと呼ぶとしても 今回の記録に残っているのは 観察と測定を何度もやり直す過程です</p>
+            <p>人が動画の違和感を示す 再生条件を補足し AIの仮定を訂正する Codexと仮説を整理して実験し 改善しない案は退ける 最後に性能と電力を見て 採用する範囲を決める</p>
+            <p>最初の「だんだん遅くなる」という言葉は 動画とプロジェクト 条件の確認 計測 対照実験を通して 対処できる問題になっていきました</p>
+            <p>欲しかったのは コードが増えることではありません 手元のMacで モデルの動きを安心して確認できることです 使う人の観察を検証できる形へ変え 結果を見て判断を積み重ねる その作業も VvfMをCodexと作ることの一部でした</p>
+          </section>
+          <section aria-labelledby="sources-title">
+            <h2 id="sources-title">このコラムの記録について</h2>
+            <p>2026年9月24日〜28日の開発時の会話と 保存された検証論文・測定記録を基に構成しています 動画については当時の添付記録と会話を参照しており 本稿の編集時に元動画を再視聴したものではありません</p>
+            <p>比較表は当時のbuild 370の記録です 機種 OS 解像度 電源条件をすべて揃えた再現手順として掲載するものではなく 開発中にどのように比較したかを示しています 「実用上解決」は2026年11月17日時点の開発者の評価です</p>
+          </section>
+          <section class="guide-next">
+            <h2>開発史を続けて読む</h2>
+            <p><a href="development-01.html">第1回 GPUだけでは解決しなかった →</a></p>
+            <p>第3回はfxdayoとMSL変換 第4回はToonShader HQを予定しています</p>
+            <p><a href="./#development-stories">トップページの開発史へ戻る →</a></p>
+            <p><a href="getting-started.html">MacでMMDを始めるガイド →</a></p>
+          </section>
+        </article>
+      </div>
+    </main>
+    <footer class="wrap">
+      <p><strong>VMD Viewer for Mac / VvfM</strong></p>
+      <p><a href="./">ホーム</a> · <a href="https://github.com/opopoposiop/VvfM">GitHub</a></p>
+    </footer>
+  </body>
+</html>
