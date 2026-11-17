@@ -1,2 +1,161 @@
 <!DOCTYPE html>
-<html lang="ja"><head><meta charset="utf-8"/><meta content="J-O5AVknDOoGeZmMIt8It_xiSTIsqs5Ke5Kr5aalyoA" name="google-site-verification"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>第1回 GPUだけでは解決しなかった｜VvfM開発史</title><meta content="MikuMikuDayoのエフェクト開発から生まれたVvfM 出先のMacでVMDを編集したいという思いと 初期の性能改善を振り返る開発コラム" name="description"/><link href="https://opopoposiop.github.io/VvfM/development-01.html" rel="canonical"/><meta content="article" property="og:type"/><meta content="ja_JP" property="og:locale"/><meta content="第1回 GPUだけでは解決しなかった｜VvfM開発史" property="og:title"/><meta content="MikuMikuDayoのエフェクト開発から生まれたVvfM 出先のMacでVMDを編集したいという思いと 初期の性能改善を振り返る開発コラム" property="og:description"/><meta content="https://opopoposiop.github.io/VvfM/development-01.html" property="og:url"/><meta content="https://opopoposiop.github.io/VvfM/images/vvfm-eyecatch.jpg" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><link href="style.css" rel="stylesheet"/><link href="guide.css" rel="stylesheet"/><style>.column-hero{background:#000;color:#f5f5f7}.column-hero .eyebrow,.column-hero .guide-note{color:#a1a1a6}.column-hero .lead{max-width:900px}.column-layout{padding-top:48px}.column-article p{margin-block:0 1.5em}.column-article h2{line-height:1.45}.column-layout .guide-toc li{padding-block:6px}.column-layout .guide-toc a{display:block;padding-block:0}.column-meta{font-size:14px;color:#a1a1a6}@media(max-width:650px){.column-layout{padding-top:24px}}.column-series{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:20px;font-size:14px}.column-series-title{font-weight:600}.column-series ol{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}.column-series a,.column-series [aria-disabled="true"]{display:block;padding:9px 14px;border-radius:10px;background:#f5f5f7}.column-series a[aria-current="page"]{font-weight:600}.column-series [aria-disabled="true"]{color:#76767b;cursor:default}</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "第1回 GPUだけでは解決しなかった｜VvfM開発史", "description": "MikuMikuDayoのエフェクト開発から生まれたVvfM 出先のMacでVMDを編集したいという思いと 初期の性能改善を振り返る開発コラム", "url": "https://opopoposiop.github.io/VvfM/development-01.html", "datePublished": "2026-11-17", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}, "dateModified": "2026-11-17"}</script></head><body class="guide-page"><a class="skip" href="#main">本文へ移動</a><header class="header wrap"><a aria-label="VvfM ホーム" class="brand" href="./">VvfM<span>VMD Viewer for Mac</span></a><nav aria-label="メインナビゲーション"><a href="./#features">できること</a><a href="getting-started.html">始め方</a><a href="toonshader-hq.html">HQエフェクト</a><a href="video-export.html">動画出力</a><a href="./#faq">FAQ</a><a href="https://github.com/opopoposiop/VvfM">GitHub ↗</a></nav></header><main id="main"><nav class="column-series wrap" aria-label="開発史コラム"><span class="column-series-title">開発史コラム</span><ol><li><a href="development-01.html" aria-current="page">第1回 GPUだけでは解決しなかった</a></li><li><span aria-disabled="true">第2回 公開予定</span></li></ol></nav><div class="column-hero"><header class="guide-intro wrap"><p class="eyebrow">DEVELOPMENT STORY · 01</p><h1>GPUだけでは<br/>解決しなかった</h1><p class="lead">MacでMMDを軽快に動かすために<br/>何を測り 何を変えたのか</p><p class="column-meta">VvfM開発史 第1回 · v0.1.0〜v0.13.0 · 2026年11月17日</p></header></div><div class="guide-layout wrap column-layout"><aside><nav aria-label="このページの目次" class="guide-toc"><strong>第1回の目次</strong><ol><li><a href="#origin">エフェクトを作っていたら Macのアプリができた</a></li><li><a href="#comparison">同じMMDの素材でも 動かし方はひとつではない</a></li><li><a href="#metal">動いているのに 操作すると重い</a></li><li><a href="#timeline">毎回すべてを計算しなくてもよかった</a></li><li><a href="#measurement">19万頂点のうち 実際に変わっていたのは約3％</a></li><li><a href="#paths">GPUとCPU それぞれに経路を用意する</a></li><li><a href="#results">数字が示すものと まだ示せないもの</a></li><li><a href="#for-mac-users">出先のMacで その「ちょっと」を直せるように</a></li></ol></nav></aside><article class="guide-content column-article"><div class="guide-callout"><p>「モデルのボーンが貫通しているのを見つけてしまった！」「あのモーフを使えばよかった！」</p><p>でも 出先にはMacしかない リモートデスクトップも なぜか画面が来ない</p><p>MMDで作品を作っていると こんなふうに「今ここだけ直したい」と思うことがあります 手元のMacで少し編集できたら そのための道具として育ってきたのが VMD Viewer for Mac（VvfM）です</p></div><section id="origin"><h2>エフェクトを作っていたら Macのアプリができた</h2><p>始まりは VMD編集ソフトそのものではありませんでした 当初はCodexを使い MikuMikuDayo向けのエフェクトをHLSLで開発していました その途中で「Macでも簡単にVMDを編集できるようになるのでは」と考え 試作してみたのです</p><p>すると 思っていた以上のレベルのソフトができました SwiftとSwiftUIの優秀さにも助けられ 見た目もモダンで Macらしいものに仕上がっていく ちょっとした編集ができればという試作が もっと使ってみたい道具へと変わっていきました</p><p>ただ モデルが動いて画面が整ってくると 今度は「気持ちよく触れるか」が気になります タイムラインを動かしたり 表情を調整したりするたびに待たされては 出先でさっと直したいという目的から遠ざかってしまいます</p><p>第1回では この使い心地を求めて GPUだけでなく画面更新や計算の仕方まで見直した v0.1.0〜v0.13.0 の開発を振り返ります</p></section><section id="comparison"><h2>同じMMDの素材でも 動かし方はひとつではない</h2><p>MikuMikuDance（MMD）は モデルやモーションを組み合わせて映像を制作するためのWindows向けソフトです 公式配布にはDirectX 9版があります 一方 MacでもMMDの素材を扱うため 異なる技術基盤で動く互換ソフトが開発されてきました <a href="https://sites.google.com/view/vpvp/">MMD公式配布ページ</a></p><p>例えば nanoem はmacOSを含む複数の環境を対象とし Metalなどの描画基盤を使うMMD互換実装です モデルのスキニング つまりボーンの動きを頂点に反映する計算をGPUに分散する設定も用意されています ただし 公式マニュアルでは物理演算などはその対象外で 条件によってCPU処理になることも説明されています <a href="https://nanoem.readthedocs.io/ja/latest/preference.html">nanoem公式資料</a></p><p>VvfMでも向き合うことになったのは この役割分担でした <strong>GPUで画面を描くことと モデルを変形させる計算をGPUで行うことは別</strong>です どの処理をどこで行い 毎フレーム何を更新するか そこにはソフトごとの工夫があります</p><p>ここでMMDやnanoemと速さを競うつもりはありません MMDの内部処理の分担は 今回確認した公式資料だけでは判断できないからです 比べたいのは実装の考え方 そして VvfM自身のどこに待ち時間があったのかです</p></section><section id="metal"><h2>動いているのに 操作すると重い</h2><p>VvfMは v0.1.0 からmacOSネイティブの画面とMetalによる描画を採用し v0.2.0 ではGPUスキニングも導入していました 早い段階からGPUを使っていたのです</p><p>それでも 機能を増やして大きなデータを扱うと 画面が動くことと快適に操作できることの間に差が出てきました v0.6.0 の開発記録には 約19.7万頂点のデータで<strong>描画FPSと画面操作の応答が一致しない</strong>状況が残っています</p><p>クラッシュログを調べると 画面更新に関わる再帰的な処理と 約4.3 GBまで膨らんだヒープメモリが確認されました モデルを描く以外にも アプリの中では多くの仕事が走っていたのです</p><p>見つけた貫通を直したい 表情を少し変えたい そんな操作を軽快にするには GPUの描画だけでなく CPU側の姿勢計算や画面部品の更新にも目を向ける必要がありました</p></section><section id="timeline"><h2>毎回すべてを計算しなくてもよかった</h2><p>v0.6.1 では IKやボーンの計算結果を再利用し 影響を受ける範囲の更新を見直しました タイムラインも すべてのキーを毎回扱う構造から 表示範囲を中心に描画する構造へ変更しています</p><p>ここで一度立ち止まったのは <strong>毎回すべてを更新する必要があるのか</strong>という点でした 見えていないキーまで同じように扱っていないか 変わっていない計算を繰り返していないか 処理する量そのものを減らすことも 使い心地につながります</p></section><section id="measurement"><h2>19万頂点のうち 実際に変わっていたのは約3％</h2><p>「あのモーフを使えばよかった」と思ったときに すぐ試せるようにしたい 表情などを変えるモーフは VvfMで扱いたかった大切な機能のひとつです v0.12.1 では その処理にどれだけ時間がかかっているかを測りました</p><p>開発記録によると 196,740頂点のデータでモーフが変化するフレームでは 全頂点の再構築に平均 <strong>29.14ミリ秒</strong>かかっていました 一方 実際に変更対象となったのは平均 <strong>6,423頂点</strong> 全体の約 <strong>3.3％</strong>でした</p><p>動かしたいのは一部なのに 変化していない多くの頂点も毎回処理していました この数字を見ると 調べるべき場所がはっきりしてきます GPUの性能だけを気にする前に データの準備と更新の方法を変えられそうだったのです</p></section><section id="paths"><h2>GPUとCPU それぞれに経路を用意する</h2><p>そこで v0.13.0 では PMXモデルを読み込む段階で 各モーフが頂点に与える影響を整理するようにしました 再生のたびに全頂点を初期化し すべてのモーフを展開し直すよりも 最初に準備できることを済ませておく という考え方です</p><p>対応するApple GPU向けには Metal computeで頂点ごとのモーフ計算を行う経路を用意 毎フレームCPUからGPUへ渡す情報を モーフの適用量に絞りました</p><p>一方 CPU互換経路では 前フレームから変化した量を 影響を受ける頂点に反映します さらにバッファを複数用意し GPUが描画中のデータをCPU側が上書きしないようにしました 共有メモリを使う環境でも CPUとGPUが同じデータにいつアクセスするかという調整は必要です <a href="https://developer.apple.com/documentation/metal/synchronizing-cpu-and-gpu-work">Appleの同期に関する資料</a></p><p>なお GPU経路について「変更された頂点だけを計算する」とは限りません 変更範囲を絞る仕組みとして開発記録に明記されているのは CPU互換経路です</p></section><section id="results"><h2>数字が示すものと まだ示せないもの</h2><p>v0.13.0 の記録では 196,740頂点・1,132モーフキーのデータを使い 自動GPU経路で描画 <strong>51.1〜56.7 FPS</strong> 再生更新 <strong>42.6〜47.0 FPS</strong>が記録されています CPU疎更新経路では それぞれ <strong>49.0 FPS</strong> <strong>36.4 FPS</strong>でした</p><p>描画FPSと再生更新FPSは別の指標です また 当時の記録には機種 解像度 反復回数など 比較に必要な条件がすべて記されているわけではありません この数字から 他のソフトとの優劣や 現在のすべてのMacでの性能を判断することはできません</p><p>この初期開発で得た手がかりは <strong>重さを感じたら 何を どれだけ どの頻度で処理しているかを測る</strong>ことでした UI CPU GPUの役割とデータの流れを少しずつ見直す その積み重ねが Macで気軽に編集するための土台になっています</p></section><section id="for-mac-users"><h2>出先のMacで その「ちょっと」を直せるように</h2><p>MikuMikuDayo向けのエフェクト開発から始まった試作が 想像以上にMacらしいソフトになった その驚きが VvfMを育てていくきっかけになりました</p><p>大げさな作業を始めたいわけではなく 見つけてしまった貫通を直したい あの表情を試したい そんなときに 手元のMacで続きを触れるようにしたいのです</p><p>MacでMMDを楽しみたいというのは ニッチな願いかもしれません それでも 同じ「MMDあるある」に出会ったあなたへ VMD Viewer for Macを届けたいと思っています</p></section><section aria-label="資料と検証範囲"><p class="guide-note">開発のきっかけとコンセプトは開発者本人の説明に基づきます 技術的な経緯と数値は VvfM 開発版 v0.1.0〜v0.13.0 の CHANGELOG に基づいています 数値は当時の特定データでの記録で 現行版の性能や互換性を保証するものではありません</p></section><section class="guide-next"><h2>VvfMで作品づくりを始める</h2><p><a href="getting-started.html">MacでMMDを始めるガイド →</a></p><p><a href="./#community-works">VvfMを利用した作品を見る →</a></p><p><a href="./#development-stories">トップページの開発史へ戻る →</a></p></section></article></div></main><footer class="wrap"><p><strong>VMD Viewer for Mac / VvfM</strong></p><p><a href="./">ホーム</a> · <a href="https://github.com/opopoposiop/VvfM">GitHub</a></p></footer></body></html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="J-O5AVknDOoGeZmMIt8It_xiSTIsqs5Ke5Kr5aalyoA" name="google-site-verification"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>第1回 GPUだけでは解決しなかった｜VvfM開発史</title>
+    <meta content="MikuMikuDayoのエフェクト開発から生まれたVvfM 出先のMacでVMDを編集したいという思いと 初期の性能改善を振り返る開発コラム" name="description"/>
+    <link href="https://opopoposiop.github.io/VvfM/development-01.html" rel="canonical"/>
+    <meta content="article" property="og:type"/>
+    <meta content="ja_JP" property="og:locale"/>
+    <meta content="第1回 GPUだけでは解決しなかった｜VvfM開発史" property="og:title"/>
+    <meta content="MikuMikuDayoのエフェクト開発から生まれたVvfM 出先のMacでVMDを編集したいという思いと 初期の性能改善を振り返る開発コラム" property="og:description"/>
+    <meta content="https://opopoposiop.github.io/VvfM/development-01.html" property="og:url"/>
+    <meta content="https://opopoposiop.github.io/VvfM/images/vvfm-eyecatch.jpg" property="og:image"/>
+    <meta content="summary_large_image" name="twitter:card"/>
+    <link href="style.css" rel="stylesheet"/>
+    <link href="guide.css" rel="stylesheet"/>
+    <style>.column-hero{background:#000;color:#f5f5f7}.column-hero .eyebrow,.column-hero .guide-note{color:#a1a1a6}.column-hero .lead{max-width:900px}.column-layout{padding-top:48px}.column-article p{margin-block:0 1.5em}.column-article h2{line-height:1.45}.column-layout .guide-toc li{padding-block:6px}.column-layout .guide-toc a{display:block;padding-block:0}.column-meta{font-size:14px;color:#a1a1a6}@media(max-width:650px){.column-layout{padding-top:24px}}.column-series{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:20px;font-size:14px}.column-series-title{font-weight:600}.column-series ol{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}.column-series a,.column-series [aria-disabled="true"]{display:block;padding:9px 14px;border-radius:10px;background:#f5f5f7}.column-series a[aria-current="page"]{font-weight:600}.column-series [aria-disabled="true"]{color:#76767b;cursor:default}</style>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "第1回 GPUだけでは解決しなかった｜VvfM開発史", "description": "MikuMikuDayoのエフェクト開発から生まれたVvfM 出先のMacでVMDを編集したいという思いと 初期の性能改善を振り返る開発コラム", "url": "https://opopoposiop.github.io/VvfM/development-01.html", "datePublished": "2026-11-17", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}, "dateModified": "2026-11-17"}</script>
+  </head>
+  <body class="guide-page">
+    <a class="skip" href="#main">本文へ移動</a>
+    <header class="header wrap">
+      <a aria-label="VvfM ホーム" class="brand" href="./">VvfM<span>VMD Viewer for Mac</span></a>
+      <nav aria-label="メインナビゲーション">
+        <a href="./#features">できること</a>
+        <a href="getting-started.html">始め方</a>
+        <a href="toonshader-hq.html">HQエフェクト</a>
+        <a href="video-export.html">動画出力</a>
+        <a href="./#faq">FAQ</a>
+        <a href="https://github.com/opopoposiop/VvfM">GitHub ↗</a>
+      </nav>
+    </header>
+    <main id="main">
+      <nav class="column-series wrap" aria-label="開発史コラム">
+        <span class="column-series-title">開発史コラム</span>
+        <ol>
+          <li>
+            <a href="development-01.html" aria-current="page">第1回 GPUだけでは解決しなかった</a>
+          </li>
+          <li>
+            <span aria-disabled="true">第2回 公開予定</span>
+          </li>
+        </ol>
+      </nav>
+      <div class="column-hero">
+        <header class="guide-intro wrap">
+          <p class="eyebrow">DEVELOPMENT STORY · 01</p>
+          <h1>GPUだけでは<br/>解決しなかった</h1>
+          <p class="lead">MacでMMDを軽快に動かすために<br/>何を測り 何を変えたのか</p>
+          <p class="column-meta">VvfM開発史 第1回 · v0.1.0〜v0.13.0 · 2026年11月17日</p>
+        </header>
+      </div>
+      <div class="guide-layout wrap column-layout">
+        <aside>
+          <nav aria-label="このページの目次" class="guide-toc">
+            <strong>第1回の目次</strong>
+            <ol>
+              <li>
+                <a href="#origin">エフェクトを作っていたら Macのアプリができた</a>
+              </li>
+              <li>
+                <a href="#comparison">同じMMDの素材でも 動かし方はひとつではない</a>
+              </li>
+              <li>
+                <a href="#metal">動いているのに 操作すると重い</a>
+              </li>
+              <li>
+                <a href="#timeline">毎回すべてを計算しなくてもよかった</a>
+              </li>
+              <li>
+                <a href="#measurement">19万頂点のうち 実際に変わっていたのは約3％</a>
+              </li>
+              <li>
+                <a href="#paths">GPUとCPU それぞれに経路を用意する</a>
+              </li>
+              <li>
+                <a href="#results">数字が示すものと まだ示せないもの</a>
+              </li>
+              <li>
+                <a href="#for-mac-users">出先のMacで その「ちょっと」を直せるように</a>
+              </li>
+            </ol>
+          </nav>
+        </aside>
+        <article class="guide-content column-article">
+          <div class="guide-callout">
+            <p>「モデルのボーンが貫通しているのを見つけてしまった！」「あのモーフを使えばよかった！」</p>
+            <p>でも 出先にはMacしかない リモートデスクトップも なぜか画面が来ない</p>
+            <p>MMDで作品を作っていると こんなふうに「今ここだけ直したい」と思うことがあります 手元のMacで少し編集できたら そのための道具として育ってきたのが VMD Viewer for Mac（VvfM）です</p>
+          </div>
+          <section id="origin">
+            <h2>エフェクトを作っていたら Macのアプリができた</h2>
+            <p>始まりは VMD編集ソフトそのものではありませんでした 当初はCodexを使い MikuMikuDayo向けのエフェクトをHLSLで開発していました その途中で「Macでも簡単にVMDを編集できるようになるのでは」と考え 試作してみたのです</p>
+            <p>すると 思っていた以上のレベルのソフトができました SwiftとSwiftUIの優秀さにも助けられ 見た目もモダンで Macらしいものに仕上がっていく ちょっとした編集ができればという試作が もっと使ってみたい道具へと変わっていきました</p>
+            <p>ただ モデルが動いて画面が整ってくると 今度は「気持ちよく触れるか」が気になります タイムラインを動かしたり 表情を調整したりするたびに待たされては 出先でさっと直したいという目的から遠ざかってしまいます</p>
+            <p>第1回では この使い心地を求めて GPUだけでなく画面更新や計算の仕方まで見直した v0.1.0〜v0.13.0 の開発を振り返ります</p>
+          </section>
+          <section id="comparison">
+            <h2>同じMMDの素材でも 動かし方はひとつではない</h2>
+            <p>MikuMikuDance（MMD）は モデルやモーションを組み合わせて映像を制作するためのWindows向けソフトです 公式配布にはDirectX 9版があります 一方 MacでもMMDの素材を扱うため 異なる技術基盤で動く互換ソフトが開発されてきました <a href="https://sites.google.com/view/vpvp/">MMD公式配布ページ</a></p>
+            <p>例えば nanoem はmacOSを含む複数の環境を対象とし Metalなどの描画基盤を使うMMD互換実装です モデルのスキニング つまりボーンの動きを頂点に反映する計算をGPUに分散する設定も用意されています ただし 公式マニュアルでは物理演算などはその対象外で 条件によってCPU処理になることも説明されています <a href="https://nanoem.readthedocs.io/ja/latest/preference.html">nanoem公式資料</a></p>
+            <p>VvfMでも向き合うことになったのは この役割分担でした <strong>GPUで画面を描くことと モデルを変形させる計算をGPUで行うことは別</strong>です どの処理をどこで行い 毎フレーム何を更新するか そこにはソフトごとの工夫があります</p>
+            <p>ここでMMDやnanoemと速さを競うつもりはありません MMDの内部処理の分担は 今回確認した公式資料だけでは判断できないからです 比べたいのは実装の考え方 そして VvfM自身のどこに待ち時間があったのかです</p>
+          </section>
+          <section id="metal">
+            <h2>動いているのに 操作すると重い</h2>
+            <p>VvfMは v0.1.0 からmacOSネイティブの画面とMetalによる描画を採用し v0.2.0 ではGPUスキニングも導入していました 早い段階からGPUを使っていたのです</p>
+            <p>それでも 機能を増やして大きなデータを扱うと 画面が動くことと快適に操作できることの間に差が出てきました v0.6.0 の開発記録には 約19.7万頂点のデータで<strong>描画FPSと画面操作の応答が一致しない</strong>状況が残っています</p>
+            <p>クラッシュログを調べると 画面更新に関わる再帰的な処理と 約4.3 GBまで膨らんだヒープメモリが確認されました モデルを描く以外にも アプリの中では多くの仕事が走っていたのです</p>
+            <p>見つけた貫通を直したい 表情を少し変えたい そんな操作を軽快にするには GPUの描画だけでなく CPU側の姿勢計算や画面部品の更新にも目を向ける必要がありました</p>
+          </section>
+          <section id="timeline">
+            <h2>毎回すべてを計算しなくてもよかった</h2>
+            <p>v0.6.1 では IKやボーンの計算結果を再利用し 影響を受ける範囲の更新を見直しました タイムラインも すべてのキーを毎回扱う構造から 表示範囲を中心に描画する構造へ変更しています</p>
+            <p>ここで一度立ち止まったのは <strong>毎回すべてを更新する必要があるのか</strong>という点でした 見えていないキーまで同じように扱っていないか 変わっていない計算を繰り返していないか 処理する量そのものを減らすことも 使い心地につながります</p>
+          </section>
+          <section id="measurement">
+            <h2>19万頂点のうち 実際に変わっていたのは約3％</h2>
+            <p>「あのモーフを使えばよかった」と思ったときに すぐ試せるようにしたい 表情などを変えるモーフは VvfMで扱いたかった大切な機能のひとつです v0.12.1 では その処理にどれだけ時間がかかっているかを測りました</p>
+            <p>開発記録によると 196,740頂点のデータでモーフが変化するフレームでは 全頂点の再構築に平均 <strong>29.14ミリ秒</strong>かかっていました 一方 実際に変更対象となったのは平均 <strong>6,423頂点</strong> 全体の約 <strong>3.3％</strong>でした</p>
+            <p>動かしたいのは一部なのに 変化していない多くの頂点も毎回処理していました この数字を見ると 調べるべき場所がはっきりしてきます GPUの性能だけを気にする前に データの準備と更新の方法を変えられそうだったのです</p>
+          </section>
+          <section id="paths">
+            <h2>GPUとCPU それぞれに経路を用意する</h2>
+            <p>そこで v0.13.0 では PMXモデルを読み込む段階で 各モーフが頂点に与える影響を整理するようにしました 再生のたびに全頂点を初期化し すべてのモーフを展開し直すよりも 最初に準備できることを済ませておく という考え方です</p>
+            <p>対応するApple GPU向けには Metal computeで頂点ごとのモーフ計算を行う経路を用意 毎フレームCPUからGPUへ渡す情報を モーフの適用量に絞りました</p>
+            <p>一方 CPU互換経路では 前フレームから変化した量を 影響を受ける頂点に反映します さらにバッファを複数用意し GPUが描画中のデータをCPU側が上書きしないようにしました 共有メモリを使う環境でも CPUとGPUが同じデータにいつアクセスするかという調整は必要です <a href="https://developer.apple.com/documentation/metal/synchronizing-cpu-and-gpu-work">Appleの同期に関する資料</a></p>
+            <p>なお GPU経路について「変更された頂点だけを計算する」とは限りません 変更範囲を絞る仕組みとして開発記録に明記されているのは CPU互換経路です</p>
+          </section>
+          <section id="results">
+            <h2>数字が示すものと まだ示せないもの</h2>
+            <p>v0.13.0 の記録では 196,740頂点・1,132モーフキーのデータを使い 自動GPU経路で描画 <strong>51.1〜56.7 FPS</strong> 再生更新 <strong>42.6〜47.0 FPS</strong>が記録されています CPU疎更新経路では それぞれ <strong>49.0 FPS</strong> <strong>36.4 FPS</strong>でした</p>
+            <p>描画FPSと再生更新FPSは別の指標です また 当時の記録には機種 解像度 反復回数など 比較に必要な条件がすべて記されているわけではありません この数字から 他のソフトとの優劣や 現在のすべてのMacでの性能を判断することはできません</p>
+            <p>この初期開発で得た手がかりは <strong>重さを感じたら 何を どれだけ どの頻度で処理しているかを測る</strong>ことでした UI CPU GPUの役割とデータの流れを少しずつ見直す その積み重ねが Macで気軽に編集するための土台になっています</p>
+          </section>
+          <section id="for-mac-users">
+            <h2>出先のMacで その「ちょっと」を直せるように</h2>
+            <p>MikuMikuDayo向けのエフェクト開発から始まった試作が 想像以上にMacらしいソフトになった その驚きが VvfMを育てていくきっかけになりました</p>
+            <p>大げさな作業を始めたいわけではなく 見つけてしまった貫通を直したい あの表情を試したい そんなときに 手元のMacで続きを触れるようにしたいのです</p>
+            <p>MacでMMDを楽しみたいというのは ニッチな願いかもしれません それでも 同じ「MMDあるある」に出会ったあなたへ VMD Viewer for Macを届けたいと思っています</p>
+          </section>
+          <section aria-label="資料と検証範囲">
+            <p class="guide-note">開発のきっかけとコンセプトは開発者本人の説明に基づきます 技術的な経緯と数値は VvfM 開発版 v0.1.0〜v0.13.0 の CHANGELOG に基づいています 数値は当時の特定データでの記録で 現行版の性能や互換性を保証するものではありません</p>
+          </section>
+          <section class="guide-next">
+            <h2>VvfMで作品づくりを始める</h2>
+            <p><a href="getting-started.html">MacでMMDを始めるガイド →</a></p>
+            <p><a href="./#community-works">VvfMを利用した作品を見る →</a></p>
+            <p><a href="./#development-stories">トップページの開発史へ戻る →</a></p>
+          </section>
+        </article>
+      </div>
+    </main>
+    <footer class="wrap">
+      <p><strong>VMD Viewer for Mac / VvfM</strong></p>
+      <p><a href="./">ホーム</a> · <a href="https://github.com/opopoposiop/VvfM">GitHub</a></p>
+    </footer>
+  </body>
+</html>
