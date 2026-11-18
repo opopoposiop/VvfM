@@ -31,6 +31,15 @@
       .term-ref{scroll-margin-top:100px}
       @media(max-width:800px){.column-glossary dl{grid-template-columns:1fr}}
       @media(max-width:650px){.column-glossary{margin-top:24px}.term-ref,.term-back{padding-block:4px}}
+    
+      /* 記事の補足は用語解説と分けて文末へ */
+      .column-notes{margin-top:32px;padding-top:20px;border-top:1px solid #d2d2d7}
+      .column-notes ol{margin:0;padding-left:1.6em}
+      .column-notes li{padding:8px 0;font-size:14px;line-height:1.7;overflow-wrap:anywhere;scroll-margin-top:100px}
+      .note-ref{white-space:nowrap;font-size:.8em;margin-inline:.25em;text-underline-offset:.2em;scroll-margin-top:100px}
+      .note-ref:focus-visible,.note-back:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      .note-back{display:inline-block;margin-left:8px;padding-block:4px;font-size:13px}
+      .column-notes li:target{background:#f5f5f7}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "第1回 GPUだけでは解決しなかった｜VvfM開発史", "description": "MikuMikuDayoのエフェクト開発から生まれたVvfM 出先のMacでVMDを編集したいという思いと 初期の性能改善を振り返る開発コラム", "url": "https://opopoposiop.github.io/VvfM/development-01.html", "datePublished": "2026-11-17", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}, "dateModified": "2026-11-18", "image": "https://opopoposiop.github.io/VvfM/images/columns/story-01-handdrawn.webp"}</script>
   </head>
@@ -99,6 +108,7 @@
                 <a href="#for-mac-users">出先のMacで その「ちょっと」を直せるように</a>
               </li>
               <li><a href="#glossary">用語解説</a></li>
+            <li><a href="#notes">注記</a></li>
             </ol>
           </nav>
         </aside>
@@ -120,7 +130,7 @@
             <p>MikuMikuDance（MMD）は モデルやモーションを組み合わせて映像を制作するためのWindows向けソフトです 公式配布にはDirectX 9<a class="term-ref" id="term-ref-5" href="#term-5" aria-label="DirectX 9とMetalの注釈5を読む">[注5]</a>版があります 一方 MacでもMMDの素材を扱うため 異なる技術基盤で動く互換ソフトが開発されてきました <a href="https://sites.google.com/view/vpvp/">MMD公式配布ページ</a></p>
             <p>例えば nanoem はmacOSを含む複数の環境を対象とし Metalなどの描画基盤を使うMMD互換実装です モデルのスキニング<a class="term-ref" id="term-ref-6" href="#term-6" aria-label="スキニングと頂点の注釈6を読む">[注6]</a> つまりボーンの動きを頂点に反映する計算をGPUに分散する設定も用意されています ただし 公式マニュアルでは物理演算などはその対象外で 条件によってCPU処理になることも説明されています <a href="https://nanoem.readthedocs.io/ja/latest/preference.html">nanoem公式資料</a></p>
             <p>VvfMでも向き合うことになったのは この役割分担でした <strong>GPUで画面を描くことと モデルを変形させる計算をGPUで行うことは別</strong>です どの処理をどこで行い 毎フレーム何を更新するか そこにはソフトごとの工夫があります</p>
-            <p>ここでMMDやnanoemと速さを競うつもりはありません MMDの内部処理の分担は 今回確認した公式資料だけでは判断できないからです 比べたいのは実装の考え方 そして VvfM自身のどこに待ち時間があったのかです</p>
+            <p>比べたいのは実装の考え方 そして VvfM自身のどこに待ち時間があったのかです<a class="note-ref" id="note-ref-1" href="#note-1" aria-label="文末の注記1を読む">[注記1]</a></p>
           </section>
           <section id="metal">
             <h2>動いているのに 操作すると重い</h2>
@@ -151,12 +161,12 @@
             <p>そこで v0.13.0 では PMXモデルを読み込む段階で 各モーフが頂点に与える影響を整理するようにしました 再生のたびに全頂点を初期化し すべてのモーフを展開し直すよりも 最初に準備できることを済ませておく という考え方です</p>
             <p>対応するApple GPU向けには Metal compute<a class="term-ref" id="term-ref-10" href="#term-10" aria-label="Metal computeとCPU互換経路と疎更新の注釈10を読む">[注10]</a>で頂点ごとのモーフ計算を行う経路を用意 毎フレームCPUからGPUへ渡す情報を モーフの適用量に絞りました</p>
             <p>一方 CPU互換経路では 前フレームから変化した量を 影響を受ける頂点に反映します さらにバッファ<a class="term-ref" id="term-ref-11" href="#term-11" aria-label="バッファと共有メモリと同期の注釈11を読む">[注11]</a>を複数用意し GPUが描画中のデータをCPU側が上書きしないようにしました 共有メモリを使う環境でも CPUとGPUが同じデータにいつアクセスするかという調整は必要です <a href="https://developer.apple.com/documentation/metal/synchronizing-cpu-and-gpu-work">Appleの同期に関する資料</a></p>
-            <p>なお GPU経路について「変更された頂点だけを計算する」とは限りません 変更範囲を絞る仕組みとして開発記録に明記されているのは CPU互換経路です</p>
+            <p>変更範囲を絞るCPU互換経路と GPUで計算する経路は分けて考えています<a class="note-ref" id="note-ref-2" href="#note-2" aria-label="文末の注記2を読む">[注記2]</a></p>
           </section>
           <section id="results">
             <h2>数字が示すものと まだ示せないもの</h2>
             <p>v0.13.0 の記録では 196,740頂点・1,132モーフキーのデータを使い 自動GPU経路で描画 <strong>51.1〜56.7 FPS</strong> 再生更新 <strong>42.6〜47.0 FPS</strong>が記録されています CPU疎更新経路では それぞれ <strong>49.0 FPS</strong> <strong>36.4 FPS</strong>でした</p>
-            <p>描画FPSと再生更新FPSは別の指標です また 当時の記録には機種 解像度 反復回数など 比較に必要な条件がすべて記されているわけではありません この数字から 他のソフトとの優劣や 現在のすべてのMacでの性能を判断することはできません</p>
+            <p>描画FPSと再生更新FPSは別の指標です 数字は当時の検証条件で得た記録として読みます<a class="note-ref" id="note-ref-3" href="#note-3" aria-label="文末の注記3を読む">[注記3]</a></p>
             <p>この初期開発で得た手がかりは <strong>重さを感じたら 何を どれだけ どの頻度で処理しているかを測る</strong>ことでした UI<a class="term-ref" id="term-ref-12" href="#term-12" aria-label="UIの注釈12を読む">[注12]</a> CPU GPUの役割とデータの流れを少しずつ見直す その積み重ねが Macで気軽に編集するための土台になっています</p>
           </section>
           <section id="for-mac-users">
@@ -219,7 +229,15 @@
               </div>
             </dl>
           </section>
-          <section class="guide-next">
+               <section class="column-notes" id="notes" aria-labelledby="notes-title">
+      <h2 id="notes-title">注記</h2>
+      <ol>
+       <li id="note-1" tabindex="-1">ここでMMDやnanoemと速さを競うつもりはありません MMDの内部処理の分担は 今回確認した公式資料だけでは判断できないからです 比べたいのは実装の考え方 そして VvfM自身のどこに待ち時間があったのかです <a class="note-back" href="#note-ref-1" aria-label="注記1の本文へ戻る">本文へ戻る ↑</a></li>
+       <li id="note-2" tabindex="-1">なお GPU経路について「変更された頂点だけを計算する」とは限りません 変更範囲を絞る仕組みとして開発記録に明記されているのは CPU互換経路です <a class="note-back" href="#note-ref-2" aria-label="注記2の本文へ戻る">本文へ戻る ↑</a></li>
+       <li id="note-3" tabindex="-1">描画FPSと再生更新FPSは別の指標です また 当時の記録には機種 解像度 反復回数など 比較に必要な条件がすべて記されているわけではありません この数字から 他のソフトとの優劣や 現在のすべてのMacでの性能を判断することはできません <a class="note-back" href="#note-ref-3" aria-label="注記3の本文へ戻る">本文へ戻る ↑</a></li>
+      </ol>
+     </section>
+<section class="guide-next">
             <h2>VvfMで作品づくりを始める</h2>
             <p><a href="getting-started.html">MacでMMDを始めるガイド →</a></p>
             <p><a href="./#community-works">VvfMを利用した作品を見る →</a></p>
@@ -234,4 +252,5 @@
     </footer>
   </body>
 </html>
+
 
