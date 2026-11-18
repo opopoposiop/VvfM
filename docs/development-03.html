@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="J-O5AVknDOoGeZmMIt8It_xiSTIsqs5Ke5Kr5aalyoA" name="google-site-verification"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>第3回 エフェクトを作る楽しさをMacにも｜VvfM開発史</title>
+    <meta content="ユーザーが自分でエフェクトを作る入口をMacにも .fxdayoの採用理由とHLSLからMSLへの変換 MotionBlurで原文実行を確かめた開発記録" name="description"/>
+    <link href="https://opopoposiop.github.io/VvfM/development-03.html" rel="canonical"/>
+    <meta content="article" property="og:type"/>
+    <meta content="ja_JP" property="og:locale"/>
+    <meta content="第3回 エフェクトを作る楽しさをMacにも｜VvfM開発史" property="og:title"/>
+    <meta content="ユーザーが自分でエフェクトを作る入口をMacにも .fxdayoの採用理由とHLSLからMSLへの変換 MotionBlurで原文実行を確かめた開発記録" property="og:description"/>
+    <meta content="https://opopoposiop.github.io/VvfM/development-03.html" property="og:url"/>
+    <meta content="https://opopoposiop.github.io/VvfM/images/vvfm-eyecatch.jpg" property="og:image"/>
+    <meta content="summary_large_image" name="twitter:card"/>
+    <link href="style.css" rel="stylesheet"/>
+    <link href="guide.css" rel="stylesheet"/>
+    <style>.column-hero{background:#000;color:#f5f5f7}.column-hero .eyebrow,.column-hero .guide-note{color:#a1a1a6}.column-hero .lead{max-width:900px}.column-layout{padding-top:48px}.column-article p{margin-block:0 1.5em}.column-article h2{line-height:1.45}.column-layout .guide-toc li{padding-block:6px}.column-layout .guide-toc a{display:block;padding-block:0}.column-meta{font-size:14px;color:#a1a1a6}@media(max-width:650px){.column-layout{padding-top:24px}}.column-series{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:20px;font-size:14px}.column-series-title{font-weight:600}.column-series ol{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}.column-series a,.column-series [aria-disabled="true"]{display:block;padding:9px 14px;border-radius:10px;background:#f5f5f7}.column-series a[aria-current="page"]{font-weight:600}.column-series [aria-disabled="true"]{color:#76767b;cursor:default}.column-table-scroll{max-width:100%;overflow-x:auto;margin-block:24px}.column-table-scroll table{width:100%;border-collapse:collapse;font-size:14px;white-space:nowrap}.column-table-scroll caption{text-align:left;white-space:normal;color:#515154;padding-bottom:12px}.column-table-scroll th,.column-table-scroll td{padding:12px;border-bottom:1px solid #d2d2d7;text-align:right}.column-table-scroll th:first-child,.column-table-scroll td:nth-child(2){text-align:left}.column-table-scroll thead{background:#f5f5f7}.column-table-scroll:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      /* 本文から読める用語注釈 */
+      .term-ref{display:inline-block;margin-inline:.2em;font-size:.8em;line-height:1.5;text-decoration:underline;text-underline-offset:.2em}
+      .term-ref:focus-visible,.term-back:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      .column-glossary{margin-top:32px;padding-top:20px;border-top:1px solid #d2d2d7}
+      .column-glossary dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:0}
+      .column-glossary .term-entry{padding-block:12px;border-bottom:1px solid #d2d2d7;scroll-margin-top:100px;overflow-wrap:anywhere}
+      .column-glossary dt{font-size:15px;font-weight:600;line-height:1.5}
+      .column-glossary dd{margin:5px 0 0;font-size:14px;line-height:1.7}
+      .column-glossary .term-entry:target{background:#f5f5f7;border-radius:8px}
+      .term-back{display:inline-block;margin-left:8px;min-height:24px;font-size:13px}
+      .term-ref{scroll-margin-top:100px}
+      @media(max-width:800px){.column-glossary dl{grid-template-columns:1fr}}
+      @media(max-width:650px){.column-glossary{margin-top:24px}.term-ref,.term-back{padding-block:4px}}
+      .column-pipeline{white-space:pre-wrap;overflow-wrap:anywhere;padding:24px;border-radius:16px;background:#f5f5f7;font-size:15px;line-height:1.8}
+      .column-upcoming{color:#76767b}
+    </style>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "第3回 エフェクトを作る楽しさをMacにも｜VvfM開発史", "description": "ユーザーが自分でエフェクトを作る入口をMacにも .fxdayoの採用理由とHLSLからMSLへの変換 MotionBlurで原文実行を確かめた開発記録", "url": "https://opopoposiop.github.io/VvfM/development-03.html", "datePublished": "2026-11-18", "dateModified": "2026-11-18", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}}</script>
+  </head>
+  <body class="guide-page">
+    <a class="skip" href="#main">本文へ移動</a>
+    <header class="header wrap">
+      <a aria-label="VvfM ホーム" class="brand" href="./">VvfM<span>VMD Viewer for Mac</span></a>
+      <nav aria-label="メインナビゲーション">
+        <a href="./#features">できること</a>
+        <a href="getting-started.html">始め方</a>
+        <a href="toonshader-hq.html">HQエフェクト</a>
+        <a href="video-export.html">動画出力</a>
+        <a href="./#faq">FAQ</a>
+        <a href="https://github.com/opopoposiop/VvfM">GitHub ↗</a>
+      </nav>
+    </header>
+    <main id="main">
+      <nav class="column-series wrap" aria-label="開発史コラム">
+        <span class="column-series-title">開発史コラム</span>
+        <ol>
+          <li><a href="development-01.html">第1回 GPUだけでは解決しなかった</a></li>
+          <li><a href="development-02.html">第2回 Codexと追ったSECounter問題</a></li>
+          <li><a href="development-03.html" aria-current="page">第3回 fxdayoとMSL変換</a></li>
+          <li><span aria-disabled="true">第4回 ToonShader HQ · 公開予定</span></li>
+        </ol>
+      </nav>
+      <div class="column-hero">
+        <header class="guide-intro wrap">
+          <p class="eyebrow">DEVELOPMENT STORY · 03</p>
+          <h1>エフェクトを作る楽しさを<br/>Macにも</h1>
+          <p class="lead">.fxdayoとMetalをつないだ理由</p>
+          <p class="column-meta">VvfM開発史 第3回 · エフェクト制作の入口をひらく</p>
+        </header>
+      </div>
+      <div class="guide-layout wrap column-layout">
+        <aside>
+          <nav aria-label="このページの目次" class="guide-toc">
+            <strong>第3回の目次</strong>
+            <ol>
+              <li><a href="#culture">MMDの表現は誰が広げてきたのか</a></li>
+              <li><a href="#origin">出発点はMikuMikuDayo向けのエフェクト作り</a></li>
+              <li><a href="#reference">公開されている知識から始める</a></li>
+              <li><a href="#metal">HLSLをMetalへつなぐ</a></li>
+              <li><a href="#runtime">個別の対応から原文を読む仕組みへ</a></li>
+              <li><a href="#verification">名前を変えても同じ　式を変えれば変わる</a></li>
+              <li><a href="#history">難しかったのは前のフレームを渡すこと</a></li>
+              <li><a href="#scope">できる範囲を伝えながら広げていく</a></li>
+              <li><a href="#glossary">技術用語の短い補足</a></li>
+            </ol>
+          </nav>
+        </aside>
+        <article class="guide-content column-article">
+          <section id="culture">
+            <h2>MMDの表現は誰が広げてきたのか</h2>
+            <p>同じモデルと同じモーションでも エフェクトを変えると作品の印象は大きく変わります 光のにじみや陰影を調整して 自分の欲しい画に近づけていく MMDで作品を作っていると その楽しさはよくわかると思います</p>
+            <p>その表現の広がりを支えた存在が MikuMikuEffect いわゆるMMEです MMD本体の作者である樋口M氏とは別に 舞力介入P氏が開発した外部拡張でした 作者自身の説明でも MMDの内部実装に強く依存する仕組みとして紹介されています</p>
+            <p>私がここで注目したいのは 機能が増えたことに加えて ユーザーがエフェクトを作り ほかのユーザーが作品で使えるようになったことです アプリの更新を待つだけでなく 作り手の工夫によって表現を増やせる VvfMにも そうした入口を用意したいと考えました</p>
+          </section>
+          <section id="origin">
+            <h2>出発点はMikuMikuDayo向けのエフェクト作り</h2>
+            <p>そもそもVvfMの開発を始める前 私はCodexを使い <a href="https://github.com/pennennennennennenem">サンドマン氏のMikuMikuDayo</a>向けにHLSL<a class="term-ref" id="term-ref-1" href="#term-1" aria-label="HLSL／MSLの注釈1を読む">[注1]</a>でエフェクトを作っていました そこから Macでも簡単なVMD編集ができるのではないかと試作したのが VvfMにつながっています</p>
+            <p>VvfMにはToonShader HQによるリッチな描画があります 用意された設定を調整するだけでも 作品の雰囲気を変えられます ただ その先で「こんな効果も作りたい」と思った人が 自分で処理を書き足すための仕組みはありませんでした</p>
+            <p>自分がMikuMikuDayoで経験したエフェクト作りを VvfMでも試せるようにしたい Macで使う人にも エフェクトを受け取る側だけでなく 作る側へ踏み出す道を残したい そのために選んだのが .fxdayoです</p>
+          </section>
+          <section id="reference">
+            <h2>公開されている知識から始める</h2>
+            <p>MikuMikuDayoには <a href="https://github.com/pennennennennennenem/MikuMikuDayo/blob/main/tutorial/fxdayo.md">エフェクト制作のチュートリアル</a>と <a href="https://pennennennennennenem.github.io/MikuMikuDayo/docs/html/module___y_r_z_fx.html">リファレンス</a>があります</p>
+            <p>.fxdayoは 画面の色を変える計算だけを書くものではありません どの画像やデータを読み どこへ結果を書き どの順番で処理するかも定義します 公開された資料をたどりながら その仕組みを学べることは大きな利点でした</p>
+            <p>もちろん 読めばすぐに誰でも作れるという話ではありません シェーダー<a class="term-ref" id="term-ref-2" href="#term-2" aria-label="シェーダーの注釈2を読む">[注2]</a>や3DCGの処理を理解する必要はあります それでも VvfMだけの独自形式を一から覚えてもらうより すでにある知識や制作経験を活かせる形にしたいと考えました</p>
+            <p>MikuMikuDayo向けに学んだことを VvfM向けの制作にも活かす 両方に向けたエフェクト作りへつなげることが 採用の狙いです 同じファイルが無条件に両方で動くという意味ではなく そのための共通の出発点を持つという考え方です</p>
+          </section>
+          <section id="metal">
+            <h2>HLSLをMetalへつなぐ</h2>
+            <p>ここでMacとの違いが出てきます MikuMikuDayoのエフェクトで使うHLSLと VvfMが描画に使うMetal<a class="term-ref" id="term-ref-3" href="#term-3" aria-label="Metalの注釈3を読む">[注3]</a>では GPUへ処理を伝える仕組みが違います</p>
+            <p>AppleもMetal shader converterを提供しています Windows系のシェーダー資産をMetalへ持ち込むための技術があることは Macでの実現を考える背景の一つでした ただし VvfMで採用した経路は このApple製ツールによる変換とは別のものです</p>
+            <p>VvfMでは .fxdayoの定義をJsonnet<a class="term-ref" id="term-ref-4" href="#term-4" aria-label="Jsonnetの注釈4を読む">[注4]</a>で評価し 処理内容を検査したうえで シェーダー部分を次の順に変換します</p>
+            <pre class="column-pipeline" aria-label="シェーダー変換の流れ"><code>HLSL
+  ↓ DXCで変換
+SPIR-V
+  ↓ SPIRV-Crossで変換
+MSL
+  ↓ Metalでコンパイルして実行
+MacのGPUで描画</code></pre>
+            <p>HLSLとMSLは GPUに仕事を指示するための言語です SPIR-Vは その間をつなぐ中間形式と考えるとわかりやすいと思います <a href="https://github.com/KhronosGroup/SPIRV-Cross">SPIRV-Cross</a>が この中間形式からMSLを生成します</p>
+            <p>一方 <a href="https://developer.apple.com/metal/shader-converter/">AppleのMetal shader converter</a>は DXILからMetalのライブラリを生成する経路です 「Appleの変換ツールでHLSLをMSLにした」と書くと 今回の実装とは違う説明になってしまいます</p>
+            <p>コンパイル<a class="term-ref" id="term-ref-5" href="#term-5" aria-label="コンパイルの注釈5を読む">[注5]</a>などの変換に必要なツールはアプリに同梱する形にしました 使う人が別途Homebrewなどで開発環境をそろえることは前提にしていません</p>
+          </section>
+          <section id="runtime">
+            <h2>個別の対応から原文を読む仕組みへ</h2>
+            <p>.fxdayo対応には 二つの経路があります</p>
+            <p>一つは 確認済みのエフェクトとモデルの組み合わせを VvfM側で用意したMetal処理へ接続する方式です 対応する原文やコントローラーの条件を照合する専用の実装であり 新しいエフェクト名を付ければ何でも動くわけではありません</p>
+            <p>もう一つが エフェクトの原文を読み そこに書かれた処理を変換して実行する方式です ユーザーが自分で処理を書ける基盤を目指すうえで 重要になるのはこちらでした</p>
+            <p>v0.56.16／build402では 条件を絞った原文実行を実機で確認しています 原文だけでなく 参照している定義もまとめて取り込み 処理順やデータの型などを検査してからMetalへ渡します 元のソースと 変換後に生成したシェーダーは別に扱います</p>
+            <p>ここで目指したのは ファイル名から既知の効果を選ぶことではなく 原文に書かれた計算が結果に反映される状態です その違いを確かめるために使ったのが MotionBlurでした</p>
+          </section>
+          <section id="verification">
+            <h2>名前を変えても同じ　式を変えれば変わる</h2>
+            <p>MotionBlurの検証では まずファイル名や処理の名前を変えました 名前が変わっても 結果はバイト単位で一致しました</p>
+            <p>次に ShutterTimeを使う式の係数を半分にしました すると 計算された速度も半分になり 最終画像も変化しました 元のプログラムへ戻すと 結果も元に戻りました</p>
+            <p>この順序には意味があります 名前だけを見て内部の専用処理へ振り分けているなら 原文の式を書き換えても 狙った変化が出るとは限りません 名前の変更には影響されず 計算の変更には反応することを確認して 原文から結果へつながる経路を確かめたのです</p>
+            <p>この検証は Apple M2 Maxと1024×576の画面を使い 二つのモデルを置いた限定的な条件で行いました 7つのパスからなる元の処理を実行した結果です パスとは 画像やデータを受け取り 一段階の処理結果を作る単位です</p>
+            <p>ただし この結果だけでMikuMikuDayoと完全に同じ画が出ると証明できたわけではありません 当時の記録でも Dayoとの画像比較や正式な性能評価は未検証として分けています 原文が実行できることと 元の環境と同じ映像になることは それぞれ確かめる必要があります</p>
+          </section>
+          <section id="history">
+            <h2>難しかったのは前のフレームを渡すこと</h2>
+            <p>シェーダーの言語を変換できても それだけではエフェクトは完成しません 処理が必要とする情報を VvfM側から正しく渡す必要があります</p>
+            <p>MotionBlurなら 今のモデルの位置だけでなく 前の位置も必要です 前回の情報を現在の情報で上書きしてしまえば 動いた量を正しく計算できません</p>
+            <p>実装では モーフやボーンなどを反映したモデルの情報を渡し 前回の頂点位置が現在のフレームで書き換わっていないかも GPUから値を読み戻して確認しました さらに 単に描画を依頼しただけのフレームを「表示できた前回」として扱わないようにしています GPU処理の成功と実際の表示を確認してから 履歴を更新する仕組みです</p>
+            <p>シークや画面サイズの変更では それまでの履歴をそのまま使えないこともあります ライブ再生と動画書き出しでも 履歴を共有してしまわないよう分けています</p>
+            <p>言語の翻訳に加えて その計算が前提にしている時間や画面やモデルの状態をそろえる この部分も .fxdayoをMacで動かすための仕事でした</p>
+          </section>
+          <section id="scope">
+            <h2>できる範囲を伝えながら広げていく</h2>
+            <p>最初の原文実行には かなり厳しい条件がありました ToonShader HQの指定構成や不透明材質などを対象にし AAやDoFなどは無効にして検証しています MotionBlurの元の計算には端の余り領域を扱うための条件が足りず 当時の実装では1920×1080や3840×2160を拒否していました これはv0.56.16時点の記録であり 現在の全エフェクトの解像度制限を示すものではありません</p>
+            <p>その後も 原文を扱う範囲や コントローラーや処理順の扱いは拡張されています 一方で 任意のMME用.fxや すべての.fxdayoをそのまま使えると案内する段階ではありません 現在の条件は <a href="https://github.com/opopoposiop/VvfM/blob/main/docs/fxdayo/README.md">VvfMの.fxdayo開発者向け資料</a>と アプリの読込状況で確認する形にしています</p>
+            <p>エフェクトを作って試す人にとって 使える範囲がわかることは大切です 動かなかったときに 原文の問題なのか まだVvfMで扱えない機能なのかを切り分けられれば 次に試すことを決めやすくなります</p>
+            <p>VvfM側にも <a href="https://github.com/opopoposiop/VvfM/blob/main/docs/fxdayo/examples/README.md">単純な露出調整やモーフ制御から始める教材</a>を用意しています 教材にも対象版と検証範囲があり 任意の原文やDayoとの画像一致を保証するものではありませんが 小さな変更とその結果を確かめる入口にはなります</p>
+            <p>自分で少し変えてみる 欲しかった見た目に近づける その工夫を誰かの作品でも使ってもらう</p>
+            <p>MMDで育ってきたその楽しさを Macで使うVvfMにもつなげたい .fxdayoの実行環境は そのために作り始めた仕組みです</p>
+          </section>
+          <section class="column-glossary" id="glossary" aria-labelledby="glossary-title">
+            <h2 id="glossary-title">技術用語の短い補足</h2>
+            <p>本文の［注］から説明へ移動できます 「本文へ戻る」で続きを読めます</p>
+            <dl>
+              <div class="term-entry" id="term-1" tabindex="-1">
+                <dt>注1　HLSL／MSL</dt>
+                <dd>シェーダーを書く言語 MSLはMetal Shading Languageの略 <a class="term-back" href="#term-ref-1" aria-label="注1の本文へ戻る">本文へ戻る ↑</a></dd>
+              </div>
+              <div class="term-entry" id="term-2" tabindex="-1">
+                <dt>注2　シェーダー</dt>
+                <dd>GPUで色や形などを計算するプログラム <a class="term-back" href="#term-ref-2" aria-label="注2の本文へ戻る">本文へ戻る ↑</a></dd>
+              </div>
+              <div class="term-entry" id="term-3" tabindex="-1">
+                <dt>注3　Metal</dt>
+                <dd>Appleの環境でGPUによる描画や計算を行うための仕組み <a class="term-back" href="#term-ref-3" aria-label="注3の本文へ戻る">本文へ戻る ↑</a></dd>
+              </div>
+              <div class="term-entry" id="term-4" tabindex="-1">
+                <dt>注4　Jsonnet</dt>
+                <dd>.fxdayoの処理構成などの定義を評価するために使う言語 <a class="term-back" href="#term-ref-4" aria-label="注4の本文へ戻る">本文へ戻る ↑</a></dd>
+              </div>
+              <div class="term-entry" id="term-5" tabindex="-1">
+                <dt>注5　コンパイル</dt>
+                <dd>プログラムを実行できる形へ変換する処理 <a class="term-back" href="#term-ref-5" aria-label="注5の本文へ戻る">本文へ戻る ↑</a></dd>
+              </div>
+            </dl>
+          </section>
+          <section class="guide-next">
+            <h2>開発史を続けて読む</h2>
+            <p><a href="development-01.html">第1回 GPUだけでは解決しなかった →</a></p>
+            <p><a href="development-02.html">第2回 Codexと追ったSECounter問題 →</a></p>
+            <p><span aria-disabled="true" class="column-upcoming">第4回 ToonShader HQ · 公開予定</span></p>
+            <p><a href="./#development-stories">トップページの開発史へ戻る →</a></p>
+          </section>
+        </article>
+      </div>
+    </main>
+    <footer class="wrap">
+      <p><strong>VMD Viewer for Mac / VvfM</strong></p>
+      <p><a href="./">ホーム</a> · <a href="https://github.com/opopoposiop/VvfM">GitHub</a></p>
+    </footer>
+  </body>
+</html>
+
