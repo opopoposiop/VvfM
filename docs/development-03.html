@@ -33,6 +33,15 @@
       @media(max-width:650px){.column-glossary{margin-top:24px}.term-ref,.term-back{padding-block:4px}}
       .column-pipeline{white-space:pre-wrap;overflow-wrap:anywhere;padding:24px;border-radius:16px;background:#f5f5f7;font-size:15px;line-height:1.8}
       .column-upcoming{color:#76767b}
+    
+      /* 記事の補足は用語解説と分けて文末へ */
+      .column-notes{margin-top:32px;padding-top:20px;border-top:1px solid #d2d2d7}
+      .column-notes ol{margin:0;padding-left:1.6em}
+      .column-notes li{padding:8px 0;font-size:14px;line-height:1.7;overflow-wrap:anywhere;scroll-margin-top:100px}
+      .note-ref{white-space:nowrap;font-size:.8em;margin-inline:.25em;text-underline-offset:.2em;scroll-margin-top:100px}
+      .note-ref:focus-visible,.note-back:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      .note-back{display:inline-block;margin-left:8px;padding-block:4px;font-size:13px}
+      .column-notes li:target{background:#f5f5f7}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "第3回 エフェクトを作る楽しさをMacにも｜VvfM開発史", "description": "ユーザーが自分でエフェクトを作る入口をMacにも .fxdayoの採用理由とHLSLからMSLへの変換 MotionBlurで原文実行を確かめた開発記録", "url": "https://opopoposiop.github.io/VvfM/development-03.html", "datePublished": "2026-11-18", "dateModified": "2026-11-18", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}, "image": "https://opopoposiop.github.io/VvfM/images/columns/story-03-handdrawn.webp"}</script>
   </head>
@@ -85,6 +94,7 @@
               <li><a href="#history">難しかったのは前のフレームを渡すこと</a></li>
               <li><a href="#scope">できる範囲を伝えながら広げていく</a></li>
               <li><a href="#glossary">用語解説</a></li>
+            <li><a href="#notes">注記</a></li>
             </ol>
           </nav>
         </aside>
@@ -121,7 +131,7 @@ MSL
   ↓ Metalでコンパイルして実行
 MacのGPUで描画</code></pre>
             <p>HLSLとMSLは GPUに仕事を指示するための言語です SPIR-Vは その間をつなぐ中間形式と考えるとわかりやすいと思います <a href="https://github.com/KhronosGroup/SPIRV-Cross">SPIRV-Cross</a>が この中間形式からMSLを生成します</p>
-            <p>一方 <a href="https://developer.apple.com/metal/shader-converter/">AppleのMetal shader converter</a>は DXILからMetalのライブラリを生成する経路です 「Appleの変換ツールでHLSLをMSLにした」と書くと 今回の実装とは違う説明になってしまいます</p>
+            <p>今回用いたのは DXCとSPIRV-Crossを組み合わせる変換経路です<a class="note-ref" id="note-ref-1" href="#note-1" aria-label="文末の注記1を読む">[注記1]</a></p>
             <p>コンパイル<a class="term-ref" id="term-ref-5" href="#term-5" aria-label="コンパイルの注釈5を読む">[注5]</a>などの変換に必要なツールはアプリに同梱する形にしました 使う人が別途Homebrewなどで開発環境をそろえることは前提にしていません</p>
           </section>
           <section id="runtime">
@@ -138,7 +148,7 @@ MacのGPUで描画</code></pre>
             <p>次に ShutterTimeを使う式の係数を半分にしました すると 計算された速度も半分になり 最終画像も変化しました 元のプログラムへ戻すと 結果も元に戻りました</p>
             <p>この順序には意味があります 名前だけを見て内部の専用処理へ振り分けているなら 原文の式を書き換えても 狙った変化が出るとは限りません 名前の変更には影響されず 計算の変更には反応することを確認して 原文から結果へつながる経路を確かめたのです</p>
             <p>この検証は Apple M2 Maxと1024×576の画面を使い 二つのモデルを置いた限定的な条件で行いました 7つのパスからなる元の処理を実行した結果です パスとは 画像やデータを受け取り 一段階の処理結果を作る単位です</p>
-            <p>ただし この結果だけでMikuMikuDayoと完全に同じ画が出ると証明できたわけではありません 当時の記録でも Dayoとの画像比較や正式な性能評価は未検証として分けています 原文が実行できることと 元の環境と同じ映像になることは それぞれ確かめる必要があります</p>
+            <p>原文が実行できることと 元の環境と同じ映像になることは それぞれ確かめる必要があります<a class="note-ref" id="note-ref-2" href="#note-2" aria-label="文末の注記2を読む">[注記2]</a></p>
           </section>
           <section id="history">
             <h2>難しかったのは前のフレームを渡すこと</h2>
@@ -153,7 +163,7 @@ MacのGPUで描画</code></pre>
             <p>最初の原文実行には かなり厳しい条件がありました ToonShader HQの指定構成や不透明材質などを対象にし AAやDoFなどは無効にして検証しています MotionBlurの元の計算には端の余り領域を扱うための条件が足りず 当時の実装では1920×1080や3840×2160を拒否していました これはv0.56.16時点の記録であり 現在の全エフェクトの解像度制限を示すものではありません</p>
             <p>その後も 原文を扱う範囲や コントローラーや処理順の扱いは拡張されています 一方で 任意のMME用.fxや すべての.fxdayoをそのまま使えると案内する段階ではありません 現在の条件は <a href="https://github.com/opopoposiop/VvfM/blob/main/docs/fxdayo/README.md">VvfMの.fxdayo開発者向け資料</a>と アプリの読込状況で確認する形にしています</p>
             <p>エフェクトを作って試す人にとって 使える範囲がわかることは大切です 動かなかったときに 原文の問題なのか まだVvfMで扱えない機能なのかを切り分けられれば 次に試すことを決めやすくなります</p>
-            <p>VvfM側にも <a href="https://github.com/opopoposiop/VvfM/blob/main/docs/fxdayo/examples/README.md">単純な露出調整やモーフ制御から始める教材</a>を用意しています 教材にも対象版と検証範囲があり 任意の原文やDayoとの画像一致を保証するものではありませんが 小さな変更とその結果を確かめる入口にはなります</p>
+            <p>VvfM側にも <a href="https://github.com/opopoposiop/VvfM/blob/main/docs/fxdayo/examples/README.md">単純な露出調整やモーフ制御から始める教材</a>を用意しています 小さな変更とその結果を確かめる入口になります<a class="note-ref" id="note-ref-3" href="#note-3" aria-label="文末の注記3を読む">[注記3]</a></p>
             <p>自分で少し変えてみる 欲しかった見た目に近づける その工夫を誰かの作品でも使ってもらう</p>
             <p>MMDで育ってきたその楽しさを Macで使うVvfMにもつなげたい .fxdayoの実行環境は そのために作り始めた仕組みです</p>
             <figure class="guide-figure column-app-screen">
@@ -189,7 +199,15 @@ MacのGPUで描画</code></pre>
               </div>
             </dl>
           </section>
-          <section class="guide-next">
+               <section class="column-notes" id="notes" aria-labelledby="notes-title">
+      <h2 id="notes-title">注記</h2>
+      <ol>
+       <li id="note-1" tabindex="-1">一方 <a href="https://developer.apple.com/metal/shader-converter/">AppleのMetal shader converter</a>は DXILからMetalのライブラリを生成する経路です 「Appleの変換ツールでHLSLをMSLにした」と書くと 今回の実装とは違う説明になってしまいます <a class="note-back" href="#note-ref-1" aria-label="注記1の本文へ戻る">本文へ戻る ↑</a></li>
+       <li id="note-2" tabindex="-1">ただし この結果だけでMikuMikuDayoと完全に同じ画が出ると証明できたわけではありません 当時の記録でも Dayoとの画像比較や正式な性能評価は未検証として分けています 原文が実行できることと 元の環境と同じ映像になることは それぞれ確かめる必要があります <a class="note-back" href="#note-ref-2" aria-label="注記2の本文へ戻る">本文へ戻る ↑</a></li>
+       <li id="note-3" tabindex="-1">教材にも対象版と検証範囲があり 任意の原文やDayoとの画像一致を保証するものではありません <a class="note-back" href="#note-ref-3" aria-label="注記3の本文へ戻る">本文へ戻る ↑</a></li>
+      </ol>
+     </section>
+<section class="guide-next">
             <h2>開発史を続けて読む</h2>
             <p><a href="development-01.html">第1回 GPUだけでは解決しなかった →</a></p>
             <p><a href="development-02.html">第2回 20体のVMD再生がなぜ途中から遅くなるのか →</a></p>
@@ -205,4 +223,5 @@ MacのGPUで描画</code></pre>
     </footer>
   </body>
 </html>
+
 
