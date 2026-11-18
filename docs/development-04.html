@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="J-O5AVknDOoGeZmMIt8It_xiSTIsqs5Ke5Kr5aalyoA" name="google-site-verification"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   第4回 あのアニメのような陰影をMacで｜VvfM開発史
+  </title>
+  <meta content="ToonShader HQの源流とMetalで育てた描画 MikuMikuDayoや公開技術から学び 陰影の表現とリアルタイム再生を検証してきた開発記録" name="description"/>
+  <link href="https://opopoposiop.github.io/VvfM/development-04.html" rel="canonical"/>
+  <meta content="article" property="og:type"/>
+  <meta content="ja_JP" property="og:locale"/>
+  <meta content="第4回 あのアニメのような陰影をMacで｜VvfM開発史" property="og:title"/>
+  <meta content="ToonShader HQの源流とMetalで育てた描画 MikuMikuDayoや公開技術から学び 陰影の表現とリアルタイム再生を検証してきた開発記録" property="og:description"/>
+  <meta content="https://opopoposiop.github.io/VvfM/development-04.html" property="og:url"/>
+  <meta content="https://opopoposiop.github.io/VvfM/images/columns/story-04-handdrawn.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <link href="style.css" rel="stylesheet"/>
+  <link href="guide.css" rel="stylesheet"/>
+  <link href="column-visuals.css" rel="stylesheet"/>
+  <style>
+   .column-hero{background:#000;color:#f5f5f7}.column-hero .eyebrow,.column-hero .guide-note{color:#a1a1a6}.column-hero .lead{max-width:900px}.column-layout{padding-top:48px}.column-article p{margin-block:0 1.5em}.column-article h2{line-height:1.45}.column-layout .guide-toc li{padding-block:6px}.column-layout .guide-toc a{display:block;padding-block:0}.column-meta{font-size:14px;color:#a1a1a6}@media(max-width:650px){.column-layout{padding-top:24px}}.column-series{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:20px;font-size:14px}.column-series-title{font-weight:600}.column-series ol{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}.column-series a,.column-series [aria-disabled="true"]{display:block;padding:9px 14px;border-radius:10px;background:#f5f5f7}.column-series a[aria-current="page"]{font-weight:600}.column-series [aria-disabled="true"]{color:#76767b;cursor:default}.column-table-scroll{max-width:100%;overflow-x:auto;margin-block:24px}.column-table-scroll table{width:100%;border-collapse:collapse;font-size:14px;white-space:nowrap}.column-table-scroll caption{text-align:left;white-space:normal;color:#515154;padding-bottom:12px}.column-table-scroll th,.column-table-scroll td{padding:12px;border-bottom:1px solid #d2d2d7;text-align:right}.column-table-scroll th:first-child,.column-table-scroll td:nth-child(2){text-align:left}.column-table-scroll thead{background:#f5f5f7}.column-table-scroll:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      /* 本文から読める用語注釈 */
+      .term-ref{display:inline-block;margin-inline:.2em;font-size:.8em;line-height:1.5;text-decoration:underline;text-underline-offset:.2em}
+      .term-ref:focus-visible,.term-back:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      .column-glossary{margin-top:32px;padding-top:20px;border-top:1px solid #d2d2d7}
+      .column-glossary dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:0}
+      .column-glossary .term-entry{padding-block:12px;border-bottom:1px solid #d2d2d7;scroll-margin-top:100px;overflow-wrap:anywhere}
+      .column-glossary dt{font-size:15px;font-weight:600;line-height:1.5}
+      .column-glossary dd{margin:5px 0 0;font-size:14px;line-height:1.7}
+      .column-glossary .term-entry:target{background:#f5f5f7;border-radius:8px}
+      .term-back{display:inline-block;margin-left:8px;min-height:24px;font-size:13px}
+      .term-ref{scroll-margin-top:100px}
+      @media(max-width:800px){.column-glossary dl{grid-template-columns:1fr}}
+      @media(max-width:650px){.column-glossary{margin-top:24px}.term-ref,.term-back{padding-block:4px}}
+      .column-pipeline{white-space:pre-wrap;overflow-wrap:anywhere;padding:24px;border-radius:16px;background:#f5f5f7;font-size:15px;line-height:1.8}
+      .column-upcoming{color:#76767b}
+  </style>
+  <script type="application/ld+json">
+   {"@context": "https://schema.org", "@type": "Article", "headline": "第4回 あのアニメのような陰影をMacで｜VvfM開発史", "description": "ToonShader HQの源流とMetalで育てた描画 MikuMikuDayoや公開技術から学び 陰影の表現とリアルタイム再生を検証してきた開発記録", "url": "https://opopoposiop.github.io/VvfM/development-04.html", "datePublished": "2026-11-18", "dateModified": "2026-11-18", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}, "image": "https://opopoposiop.github.io/VvfM/images/columns/story-04-handdrawn.webp"}
+  </script>
+ </head>
+ <body class="guide-page">
+  <a class="skip" href="#main">
+   本文へ移動
+  </a>
+  <header class="header wrap">
+   <a aria-label="VvfM ホーム" class="brand" href="./">
+    VvfM
+    <span>
+     VMD Viewer for Mac
+    </span>
+   </a>
+   <nav aria-label="メインナビゲーション">
+    <a href="./#features">
+     できること
+    </a>
+    <a href="getting-started.html">
+     始め方
+    </a>
+    <a href="toonshader-hq.html">
+     HQエフェクト
+    </a>
+    <a href="video-export.html">
+     動画出力
+    </a>
+    <a href="./#faq">
+     FAQ
+    </a>
+    <a href="./#development-stories">
+     コラム
+    </a>
+    <a href="https://github.com/opopoposiop/VvfM">
+     GitHub ↗
+    </a>
+   </nav>
+  </header>
+  <main id="main">
+   <nav aria-label="開発史コラム" class="column-series wrap">
+    <span class="column-series-title">
+     開発史コラム
+    </span>
+    <ol>
+     <li>
+      <a href="development-01.html">
+       第1回 GPUだけでは解決しなかった
+      </a>
+     </li>
+     <li>
+      <a href="development-02.html">
+       第2回 20体のVMD再生がなぜ途中から遅くなるのか
+      </a>
+     </li>
+     <li>
+      <a href="development-03.html">
+       第3回 エフェクトを作る楽しさをMacにも
+      </a>
+     </li>
+     <li>
+      <a aria-current="page" href="development-04.html">
+       第4回 あのアニメのような陰影をMacで
+      </a>
+     </li>
+    </ol>
+   </nav>
+   <div class="column-hero">
+    <header class="guide-intro wrap">
+     <p class="eyebrow">
+      DEVELOPMENT STORY · 04
+     </p>
+     <h1>
+      あのアニメのような陰影をMacで
+     </h1>
+     <p class="lead">
+      ToonShader HQの源流とMetalで育てた描画
+     </p>
+     <p class="column-meta">
+      VvfM開発史 第4回
+     </p>
+    </header>
+    <figure class="column-eyecatch wrap">
+     <img alt="アニメ調の顔の陰影を色見本とMacで考える手描きイラスト" fetchpriority="high" height="941" src="images/columns/story-04-handdrawn.webp" width="1672"/>
+    </figure>
+   </div>
+   <div class="guide-layout wrap column-layout">
+    <aside>
+     <nav aria-label="このページの目次" class="guide-toc">
+      <strong>
+       第4回の目次
+      </strong>
+      <ol>
+       <li>
+        <a href="#origin">
+         始まりはMikuMikuDayoのエフェクトづくり
+        </a>
+       </li>
+       <li>
+        <a href="#shadow">
+         影は暗くするだけではない
+        </a>
+       </li>
+       <li>
+        <a href="#engines">
+         ゲームエンジンの知恵を小さなMacアプリへ
+        </a>
+       </li>
+       <li>
+        <a href="#metal">
+         Metalへ持ってくると何を考え直すのか
+        </a>
+       </li>
+       <li>
+        <a href="#performance">
+         光を足しても踊りを止めない
+        </a>
+       </li>
+       <li>
+        <a href="#verification">
+         止めた一枚ではなく踊っている顔を見る
+        </a>
+       </li>
+       <li>
+        <a href="#creation">
+         借りた知恵を自分の作品へ返す
+        </a>
+       </li>
+       <li>
+        <a href="#glossary">
+         用語解説
+        </a>
+       </li>
+       <li>
+        <a href="#references">
+         参考資料と謝辞
+        </a>
+       </li>
+      </ol>
+     </nav>
+    </aside>
+    <article class="guide-content column-article">
+     <section id="origin">
+      <h2>
+       始まりはMikuMikuDayoのエフェクトづくり
+      </h2>
+      <p>
+       モデルのボーンが貫通しているのを見つけてしまった あのモーフを使えばよかった でも出先で手元にあるのはMacだけ 頼みのリモートデスクトップもなぜか画面が来ない
+      </p>
+      <p>
+       そんなMMD制作の困りごとをMacでも少し解決できないか VvfMにはそのような出発点があります
+      </p>
+      <p>
+       ただし開発のきっかけをもう少し前までたどると 最初に作っていたのはMacのVMD編集アプリではありませんでした Codexと一緒にHLSLで取り組んでいたのは
+       <a href="https://github.com/pennennennennennenem">
+        MikuMikuDayo
+       </a>
+       向けのエフェクトです そこからMacで簡単なVMD編集もできるのではないかと試作してみたところ 思っていた以上にアプリらしいものができました SwiftとSwiftUIのおかげで見た目もモダンなMacらしい形になっていきました
+      </p>
+      <p>
+       今回の主役であるToonShader HQにもその頃からのつながりがあります 出発点は
+       <a href="https://github.com/opopoposiop/MMDayo_ToonShader">
+        MMDayo_ToonShader
+       </a>
+       その源流にはMikuMikuDayoのレンダラがあります
+      </p>
+      <p>
+       すでにある描画を読みながら影や輪郭の作り方を試す 自分が欲しい見え方へ少しずつ近づける その積み重ねがVvfMの内蔵描画を考える土台になりました
+      </p>
+      <p>
+       前回は外部の.fxdayoを使えるようにする仕組みを紹介しました 今回はそこから視点を変えて 学んだ表現をToonShader HQとしてどう育ててきたかを振り返ります
+      </p>
+     </section>
+     <section id="shadow">
+      <h2>
+       影は暗くするだけではない
+      </h2>
+      <p>
+       同じモデルとモーションでも影の色が変わると印象は変わります 肌が沈んで見えるか 髪の色が暗いところでも残るか 顔を動かしたときに表情が読み取りやすいか
+      </p>
+      <p>
+       アニメらしい絵を考えるときには影を何段階に分けるかだけでなく そこにどんな色を置くかも大切になります
+      </p>
+      <p>
+       ToonShader HQの影色Type2は ましまし氏の
+       <a href="https://note.com/mashimashi_note/n/n2c2144638054">
+        msToonCoordinator ver2.1
+       </a>
+       の考え方を参考にしています また目指す表現にはアプリ『ウマ娘 プリティーダービー』の見え方から受けた影響もあります
+      </p>
+      <p>
+       ここで参考元のつながりは少し丁寧に分けておきたいところです msToonCoordinatorの公開解説では影色の自動生成についてBLUE PROTOCOLの講演を 顔の法線制御についてはウマ娘の講演を参考として挙げています 影に何色を使うかという工夫と 顔のどこに影を出すかという工夫にはそれぞれの系譜があります
+      </p>
+      <p>
+       ToonShader HQではそうした考え方や表現から学びながら VvfMで使える形を考えてきました 特定の作品と同じ絵を再現する保証でも 参考元のすべての機能をそのまま移したという意味でもありません
+      </p>
+      <p>
+       陰影を変えて顔を見て 動かしてもう一度見る 最終的に確かめたいのは自分のモデルと作品で使いやすいかどうかです
+      </p>
+     </section>
+     <section id="engines">
+      <h2>
+       ゲームエンジンの知恵を小さなMacアプリへ
+      </h2>
+      <p>
+       参考にしているものはMMD周辺のエフェクトだけではありません Appleの公開技術情報に加えて Unreal EngineやUnityやBlenderなどの描画技術も手がかりにしています
+      </p>
+      <p>
+       光をにじませたい 背景をぼかして表情へ視線を集めたい 動いたときのちらつきを抑えたい
+      </p>
+      <p>
+       こうした課題について公開された情報を読み VvfMでも役立ちそうな考え方を探していきます 同じ名前の効果でも必要な情報や処理の順番は違います 大きなゲームエンジンで成立する仕組みをそのまま持ってくれば 小さなMacアプリでも同じように動くわけではありません
+      </p>
+      <p>
+       VvfMではモデルやモーションを読み込み 動きを確認しながら調整できることが大切です そのために必要な範囲を選び 他の効果との組合せやMacでの負荷を確かめる必要があります
+      </p>
+      <p>
+       公開技術を読むところから始まっても 最後には実際のモデルを再生して判断する その往復がToonShader HQの開発にもあります
+      </p>
+     </section>
+     <section id="metal">
+      <h2>
+       Metalへ持ってくると何を考え直すのか
+      </h2>
+      <p>
+       MacのGPUに描画や計算を実行させる窓口がMetalです ただMetalを使うだけで多くのエフェクトが自動的に軽くなるわけではありません どの情報を残してどこで次の処理に渡すかを決める必要があります
+      </p>
+      <p>
+       例として光のにじみを作るBloomを見てみます
+      </p>
+      <p>
+       明るいところを拾ってぼかす 言葉にすると単純ですが 照明で暗くなった完成色だけからは材質が本来持っている発光の意図を拾いにくいことがあります そこで通常の色とは別に発光の情報を用意してBloomへ渡しています
+      </p>
+      <p>
+       強い光の値を途中で失わないためにHDRという広い明るさの表現を使う 小さくした画像も使ってにじみを計算する 光を合成した結果を表示向けの明るさへ整える
+      </p>
+      <p>
+       こうした分担が一枚の絵の裏側にあります ここで説明したのはBloomを理解するための流れであり ToonShader HQ全体の処理順をそのまま並べたものではありません
+      </p>
+      <p>
+       さらに手前の材質は奥の光を適切に隠す必要があります 透過部分は透けた分を反映しなければなりません ピントが外れているものに後から鮮明な発光だけを重ねれば ぼけとのつながりがおかしくなります
+      </p>
+      <p>
+       実際に発光をDoFや時間方向の処理の後から足す案もありましたが そうした整合性を崩すため採用していません
+      </p>
+      <p>
+       一つの効果が描けることから 他の効果と一緒でも自然に動くことへ 組合せを考えると調べるべきことが増えていきます
+      </p>
+     </section>
+     <section id="performance">
+      <h2>
+       光を足しても踊りを止めない
+      </h2>
+      <p>
+       エフェクトが入った絵でもVMDを再生して確認したい そのためには見た目と一緒に処理の重さも調べる必要があります
+      </p>
+      <p>
+       v0.55.7では材質を描くシェーダーを見直しました 通常の材質で使わない機能まで扱うのではなく 使う機能の組合せに応じて必要な処理に絞った種類を事前に用意します 同時にまだ表示へ送れない描画について重複する準備をまとめました
+      </p>
+      <p>
+       材質順や透明度を変えたり物理計算を間引いたりして速度を稼ぐ変更ではありません 画質設定と解像度をそろえたまま不要な仕事を減らす取り組みです
+      </p>
+      <p>
+       比較には同じbuild325を使い最適化をOFFとONに切り替えました M2 MaxのMacで5モデル ToonShader HQとMetalFXを使い描画サイズは1758×742 40秒ずつの比較を順番を入れ替えながら5組行っています
+      </p>
+      <div aria-label="最適化OFFとONの計測比較" class="column-table-scroll" role="region" tabindex="0">
+       <table>
+        <thead>
+         <tr>
+          <th>
+           指標
+          </th>
+          <th>
+           最適化OFF
+          </th>
+          <th>
+           最適化ON
+          </th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+          <td>
+           GPU処理時間の代表値
+          </td>
+          <td>
+           7.411 ms
+          </td>
+          <td>
+           5.800 ms
+          </td>
+         </tr>
+         <tr>
+          <td>
+           実際に画面へ表示されたFPS
+          </td>
+          <td>
+           29.806
+          </td>
+          <td>
+           30.741
+          </td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+      <p>
+       GPU処理時間は約22%短くなりました 一方で実表示FPSの増加は約3%です
+      </p>
+      <p>
+       GPUが描き終わった瞬間に必ず画面へ出るわけではありません この検証では描画後の表示待ちも残っていました GPUの仕事が短くなっても再生全体が同じ割合で速くなるとは限らないことが分かります
+      </p>
+      <p>
+       またこの数値はシェーダーの事前準備と重複する描画準備の削減を一緒に有効にした結果です 片方だけで約22%改善したという記録ではありません 現行配布版のベンチマークやすべてのMacに共通する性能値でもありません
+      </p>
+      <p>
+       それでも5組すべてでGPU処理時間が短くなったことは確認できました 表示待ちやアプリ全体の応答性については別の回で扱います
+      </p>
+     </section>
+     <section id="verification">
+      <h2>
+       止めた一枚ではなく踊っている顔を見る
+      </h2>
+      <p>
+       静止画ではよさそうに見えても 踊り始めると影の境界が気になることがあります 顔には合っていても白い袖では違って見えることもあります
+      </p>
+      <p>
+       影の境界を調整した試作では 実モデルの頬と白い袖を追いながら48時点を比較しました 袖の変化は改善しましたが 頬では設定した採用条件に届きませんでした
+      </p>
+      <p>
+       一部分だけで良くなっても条件を満たさなければ見送る この候補は通常の陰影設定には採用していません なおこれは陰影の一部を切り分けた診断です テクスチャや物理を含む完成映像全体の画質保証とは区別しています
+      </p>
+      <p>
+       別のBloom高速化候補では 4Kのスクリーン動画を含む条件でGPU全体の処理時間が短くなりました 重い場面の傾向を見るp95という指標では5組の比較で約19.5%の短縮です
+      </p>
+      <p>
+       ただ完成動画を画像に戻して色を比較すると 同じ設定同士を比べたときの揺れより大きな差が出ました この候補はその検証時点では採用保留になっています
+      </p>
+      <p>
+       その差だけで映像が明確に悪くなったと断定することはできません それでも見た目を保つ条件が確認できないまま速度だけで採用するわけにはいきません
+      </p>
+      <p>
+       欲しいのは速い数字だけでなく その速さで安心して作品を調整できることです
+      </p>
+     </section>
+     <section id="creation">
+      <h2>
+       借りた知恵を自分の作品へ返す
+      </h2>
+      <p>
+       ToonShader HQは一つの資料だけから生まれたものではありません MikuMikuDayoのレンダラを出発点に MMDのエフェクト制作者が公開してきた工夫や ゲームと映像の分野で共有されている技術から学んできました
+      </p>
+      <p>
+       その先にあるのはMacでも自分の作品の見え方を試せることです 顔の影を整えたいカットもあれば ステージの光を見せたいカットもあります 背景をぼかした方が伝わる表情もあります
+      </p>
+      <p>
+       まず同じ構図で効果を切り替える 次に短い区間を再生して動いている表情を見る 最後に短い動画を書き出して光やピントを確かめる
+      </p>
+      <p>
+       モデル数も解像度も物理設定も違えば必要な処理は変わります すべての効果を最大にして必ず60 FPSで再生できるという話でも MMDやMMEとまったく同じ絵を保証する仕組みでもありません
+      </p>
+      <p>
+       それでも手元のMacで試して直せる場所があれば あのモーフを使えばよかったという場面からもう一歩進めます
+      </p>
+      <p>
+       きれいな一枚を描くところから その絵のまま踊りを確認して作品を仕上げるところへ ToonShader HQはそのための取り組みです
+      </p>
+     </section>
+     <section class="column-glossary" id="glossary">
+      <h2>
+       用語解説
+      </h2>
+      <dl>
+       <div class="term-entry">
+        <dt>
+         HLSL／シェーダー
+        </dt>
+        <dd>
+         HLSLはGPUで動く描画プログラムを書く言語の一つ　シェーダーは色や陰影などを計算するプログラム
+        </dd>
+       </div>
+       <div class="term-entry">
+        <dt>
+         Metal／GPU
+        </dt>
+        <dd>
+         MetalはAppleのGPUを使って描画や計算を行うための仕組み　GPUは多くの画素や頂点の計算を並列に進める処理装置
+        </dd>
+       </div>
+       <div class="term-entry">
+        <dt>
+         法線
+        </dt>
+        <dd>
+         面がどちらを向いているかを表す情報　光との関係から陰影を決めるときに使う
+        </dd>
+       </div>
+       <div class="term-entry">
+        <dt>
+         HDR／Tonemapper
+        </dt>
+        <dd>
+         HDRは強い光まで扱うための広い明るさの表現　Tonemapperはそれを表示向けの明るさへ整える処理
+        </dd>
+       </div>
+       <div class="term-entry">
+        <dt>
+         MetalFX
+        </dt>
+        <dd>
+         画面を再構成するAppleの技術　VvfMでは輪郭のちらつき対策や内部描画解像度の調整に利用
+        </dd>
+       </div>
+       <div class="term-entry">
+        <dt>
+         実表示FPS／p95
+        </dt>
+        <dd>
+         実表示FPSは実際に画面へ出た画像の頻度　p95は計測値を小さい順に並べたとき95%付近の値で重い場面の傾向を見る指標
+        </dd>
+       </div>
+      </dl>
+     </section>
+     <section id="references">
+      <h2>
+       参考資料と謝辞
+      </h2>
+      <ul>
+       <li>
+        <a href="https://github.com/opopoposiop/MMDayo_ToonShader">
+         MMDayo_ToonShader
+        </a>
+        と
+        <a href="https://github.com/opopoposiop/MMDayo_ToonShader/blob/master/NOTICE.md">
+         NOTICE
+        </a>
+       </li>
+       <li>
+        <a href="https://github.com/pennennennennennenem/MikuMikuDayo">
+         MikuMikuDayo
+        </a>
+       </li>
+       <li>
+        ましまし氏
+        <a href="https://note.com/mashimashi_note/n/n2c2144638054">
+         msToonCoordinator ver2.1
+        </a>
+       </li>
+       <li>
+        <a href="https://cedec.cesa.or.jp/2021/session/detail/s605da5b7ddab8.html">
+         BLUE PROTOCOLにおけるアニメ表現技法について　実装編
+        </a>
+       </li>
+       <li>
+        <a href="https://www.youtube.com/watch?v=T2iI9hbNqLI&amp;t=843s">
+         ウマ娘 プリティーダービー 3DCGキャラクター事例
+        </a>
+       </li>
+      </ul>
+      <p>
+       公開されている資料と制作上の工夫に感謝します 参考元とVvfMの実装はそれぞれ独立したものであり 各プロジェクトや作品による公式の承認や互換性の保証を示すものではありません
+      </p>
+     </section>
+     <section class="guide-next">
+      <h2>
+       開発史を続けて読む
+      </h2>
+      <p>
+       <a href="development-03.html">
+        第3回 エフェクトを作る楽しさをMacにも →
+       </a>
+      </p>
+      <p>
+       <a href="toonshader-hq.html">
+        ToonShader HQの使い方 →
+       </a>
+      </p>
+      <p>
+       <a href="./#development-stories">
+        トップページの開発史へ戻る →
+       </a>
+      </p>
+     </section>
+    </article>
+   </div>
+  </main>
+  <footer class="wrap">
+   <p>
+    <strong>
+     VMD Viewer for Mac / VvfM
+    </strong>
+   </p>
+   <p>
+    <a href="./">
+     ホーム
+    </a>
+    ·
+    <a href="https://github.com/opopoposiop/VvfM">
+     GitHub
+    </a>
+   </p>
+  </footer>
+ </body>
+</html>
