@@ -2,7 +2,7 @@
 
 # MacでMMD動画制作｜VMD Viewer for Mac（VvfM）
 
-[アプリをダウンロード（ZIP）](https://github.com/opopoposiop/VvfM/releases/download/v0.58.25/VMD.Viewer.app.zip)｜[リリース詳細](https://github.com/opopoposiop/VvfM/releases/tag/v0.58.25)｜[導入・初回起動](GUIDE.md#導入と起動)｜[スペックシート](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)
+[アプリをダウンロード（ZIP）](https://github.com/opopoposiop/VvfM/releases/download/v0.58.29/VMD.Viewer.app.zip)｜[リリース詳細](https://github.com/opopoposiop/VvfM/releases/tag/v0.58.29)｜[導入・初回起動](GUIDE.md#導入と起動)｜[スペックシート](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)
 
 [EULA 日本語原本](Licenses/VMDViewer-EULA-ja.md)｜[English](Licenses/VMDViewer-EULA-en.md)
 
@@ -20,18 +20,14 @@
 
 ![VvfM v0.58.4／build569のメイン画面](images/v0.58.4-build569/01-overview.png)
 
-## v0.58.25の更新内容
+## v0.58.29の更新内容
 
-- **モーフキーのドラッグ**：マウスを離す直前の移動もキーのフレームと重みに反映し、1回のドラッグを1回のUndoで戻せるようにしました。途中でモデルや行構成が変わると元の編集を終了し、別のキーの誤編集を防ぎます。
-- **タイムラインのシークとズーム**：フレームバーを同じ位置で離したときに二重シークで再生位置が戻る問題と、縦スクロールバーが表示されているとズーム後の位置がずれる問題を修正しました。
-- **再生・編集の応答性**：再生ヘッドの移動や横スクロールでモーフ一覧・目盛りを描き直す処理と、表示前に置き換わる姿勢データの走査を削減しました。大型VMDの連続モーフ編集でも重複通知を省き、指を離してから表情が画面に反映されるまでの待ちを短縮しました。
-- **モデル別の局所照明**：局所光の色と照射先を指定できるようにしました。同じPMXを複数配置しても1体だけを照らせ、対象モデルの削除をUndoすると照明の割り当ても戻ります。
-- **ToonShader HQの材質表現**：材質ごとにリムライトを出す範囲と段階陰影の色を画像で指定できるようにしました。輪郭線には追加UVに格納した法線を使えます。
-- **瞳のハイライト**：専用画像の位置・大きさ・表示量をキーフレームで調整できるようにしました。モデルに専用モーフがある場合は、左右の瞳に割り当ててVMDキーとして登録できます。
-- **発光面のBloom**：ペンライトや瞳の周囲に光のにじみを残しながら、発光面の中心に元の色をどれだけ残すかを材質ごとに調整できるようにしました。
-- **腕と衣装の接触補正**：指定したフレーム範囲で腕のめり込みを抑える補正を計算し、結果を確認してから上腕・ひじ・手首の編集レイヤーに一括適用できるようにしました。
-- **動画合成用の書き出し**：ToonShader HQの単一露光では、完成MOVと同時に、映像の各フレームに対応する人物別の16 bit PNGマスクと線形深度EXRを書き出せるようにしました。
-- **描画・書き出しの負荷**：局所霧が届かない画素の計算を省き、霧が画面の一部にある場面のGPU負荷を軽減しました。ToonShader HQの動画書き出しでも、Bloomオン・輪郭オフのときに不要な画像データの転送を削減しました。
+- **固定24／30 fpsの再生**　通常再生の表示間隔を整えました。一時停止からの再開も速くなり、再開を待つ間にウインドウ幅を変えても再生を続けられます。固定24 fpsの短いループ向けの追加設定は既定でオフです。
+- **床反射の再生**　ToonShader HQでMMDayo SSRを単独使用し、AAオフ・全モデル物理オフ・60 fps上限にした場合の描画を改善しました。M2 Maxの内蔵120 Hz画面でStage07を1080p再生した比較では、実表示が約39 fpsから60 fpsになりました。
+- **編集と材質調整**　HQエフェクトにキーがある作品でもコマ送りを反映し、停止中の視点操作は表示中のカメラ位置から始まります。大型PMXでは複数材質へのノード一括適用の待ち時間を短縮しました。
+- **保存と読み込み**　未保存の作品から別の作品を開くときに、保存・破棄・キャンセルを選べます。VMDの保存エラーには原因のトラック・フレーム・項目が表示されます。PMXのテクスチャ再読込や大規模なロープの物理演算も修正しました。
+
+[版ごとの更新履歴](CHANGELOG.md)
 
 ## 主な機能
 
@@ -47,7 +43,7 @@
 
 macOS 14以降のMetal対応Mac(M2以降)が必要です。Intel CPU搭載のMacでは動作しません。
 
-配布アプリは [ZIP](https://github.com/opopoposiop/VvfM/releases/download/v0.58.25/VMD.Viewer.app.zip) からダウンロードできます。ZIPを展開してアプリを取り出し、[GUIDEの「導入と起動」](GUIDE.md#導入と起動) に従って起動してください。配布ファイル名は `VMD.Viewer.app.zip` です。過去の版やリリース情報は [Releases](https://github.com/opopoposiop/VvfM/releases) を参照してください。
+配布アプリは [ZIP](https://github.com/opopoposiop/VvfM/releases/download/v0.58.29/VMD.Viewer.app.zip) からダウンロードできます。ZIPを展開してアプリを取り出し、[GUIDEの「導入と起動」](GUIDE.md#導入と起動) に従って起動してください。配布ファイル名は `VMD.Viewer.app.zip` です。過去の版やリリース情報は [Releases](https://github.com/opopoposiop/VvfM/releases) を参照してください。
 
 モデル・モーション・音源は、利用許諾を確認したものを別途用意します。
 
