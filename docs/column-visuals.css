@@ -12,3 +12,9 @@
 .story-thumbnail:hover img{transform:scale(1.025)}
 @media(max-width:760px){.column-eyecatch{padding-bottom:24px}.column-eyecatch img{border-radius:12px}.column-app-screen{padding:8px}.column-eyecatch figcaption{text-align:left}#development-stories .cards{gap:38px}}
 @media(prefers-reduced-motion:reduce){.story-thumbnail img{transition:none}.story-thumbnail:hover img{transform:none}}
+
+/* Introductory workflow illustrations use the same editorial visual language */
+#features .cards{gap:28px}
+.usage-illustration{display:block;width:100%;height:auto;aspect-ratio:1672/941;object-fit:contain;margin:0 0 20px;border-radius:16px;background:#faf6ef}
+#features .usage-illustration-note{font-size:12px;color:var(--muted);margin:18px 0 0;text-align:right}
+@media(max-width:760px){#features .cards{gap:36px}.usage-illustration{margin-bottom:16px;border-radius:12px}#features .usage-illustration-note{text-align:left}}
