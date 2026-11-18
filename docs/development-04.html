@@ -36,7 +36,16 @@
       @media(max-width:650px){.column-glossary{margin-top:24px}.term-ref,.term-back{padding-block:4px}}
       .column-pipeline{white-space:pre-wrap;overflow-wrap:anywhere;padding:24px;border-radius:16px;background:#f5f5f7;font-size:15px;line-height:1.8}
       .column-upcoming{color:#76767b}
-  </style>
+  
+      /* 記事の補足は用語解説と分けて文末へ */
+      .column-notes{margin-top:32px;padding-top:20px;border-top:1px solid #d2d2d7}
+      .column-notes ol{margin:0;padding-left:1.6em}
+      .column-notes li{padding:8px 0;font-size:14px;line-height:1.7;overflow-wrap:anywhere;scroll-margin-top:100px}
+      .note-ref{white-space:nowrap;font-size:.8em;margin-inline:.25em;text-underline-offset:.2em;scroll-margin-top:100px}
+      .note-ref:focus-visible,.note-back:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      .note-back{display:inline-block;margin-left:8px;padding-block:4px;font-size:13px}
+      .column-notes li:target{background:#f5f5f7}
+    </style>
   <script type="application/ld+json">
    {"@context": "https://schema.org", "@type": "Article", "headline": "第4回 あのアニメのような陰影をMacで｜VvfM開発史", "description": "ToonShader HQの源流とMetalで育てた描画 MikuMikuDayoや公開技術から学び 陰影の表現とリアルタイム再生を検証してきた開発記録", "url": "https://opopoposiop.github.io/VvfM/development-04.html", "datePublished": "2026-11-18", "dateModified": "2026-11-18", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}, "image": "https://opopoposiop.github.io/VvfM/images/columns/story-04-handdrawn.webp"}
   </script>
@@ -175,7 +184,8 @@
          参考資料と謝辞
         </a>
        </li>
-      </ol>
+      <li><a href="#notes">注記</a></li>
+            </ol>
      </nav>
     </aside>
     <article class="guide-content column-article">
@@ -230,9 +240,7 @@
       <p>
        ここで参考元のつながりは少し丁寧に分けておきたいところです msToonCoordinatorの公開解説では影色の自動生成についてBLUE PROTOCOLの講演を 顔の法線制御についてはウマ娘の講演を参考として挙げています 影に何色を使うかという工夫と 顔のどこに影を出すかという工夫にはそれぞれの系譜があります
       </p>
-      <p>
-       ToonShader HQではそうした考え方や表現から学びながら VvfMで使える形を考えてきました 特定の作品と同じ絵を再現する保証でも 参考元のすべての機能をそのまま移したという意味でもありません
-      </p>
+      <p>ToonShader HQではそうした考え方や表現から学びながら VvfMで使える形を考えてきました<a class="note-ref" id="note-ref-1" href="#note-1" aria-label="文末の注記1を読む">[注記1]</a></p>
       <p>
        陰影を変えて顔を見て 動かしてもう一度見る 最終的に確かめたいのは自分のモデルと作品で使いやすいかどうかです
       </p>
@@ -273,9 +281,7 @@
       <p>
        強い光の値を途中で失わないためにHDRという広い明るさの表現を使う 小さくした画像も使ってにじみを計算する 光を合成した結果を表示向けの明るさへ整える
       </p>
-      <p>
-       こうした分担が一枚の絵の裏側にあります ここで説明したのはBloomを理解するための流れであり ToonShader HQ全体の処理順をそのまま並べたものではありません
-      </p>
+      <p>こうした分担が一枚の絵の裏側にあります<a class="note-ref" id="note-ref-2" href="#note-2" aria-label="文末の注記2を読む">[注記2]</a></p>
       <p>
        さらに手前の材質は奥の光を適切に隠す必要があります 透過部分は透けた分を反映しなければなりません ピントが外れているものに後から鮮明な発光だけを重ねれば ぼけとのつながりがおかしくなります
       </p>
@@ -349,9 +355,7 @@
       <p>
        GPUが描き終わった瞬間に必ず画面へ出るわけではありません この検証では描画後の表示待ちも残っていました GPUの仕事が短くなっても再生全体が同じ割合で速くなるとは限らないことが分かります
       </p>
-      <p>
-       またこの数値はシェーダーの事前準備と重複する描画準備の削減を一緒に有効にした結果です 片方だけで約22%改善したという記録ではありません 現行配布版のベンチマークやすべてのMacに共通する性能値でもありません
-      </p>
+      <p>この比較は 二つの最適化を一緒に有効にした当時の検証です<a class="note-ref" id="note-ref-3" href="#note-3" aria-label="文末の注記3を読む">[注記3]</a></p>
       <p>
        それでも5組すべてでGPU処理時間が短くなったことは確認できました 表示待ちやアプリ全体の応答性については別の回で扱います
       </p>
@@ -366,9 +370,7 @@
       <p>
        影の境界を調整した試作では 実モデルの頬と白い袖を追いながら48時点を比較しました 袖の変化は改善しましたが 頬では設定した採用条件に届きませんでした
       </p>
-      <p>
-       一部分だけで良くなっても条件を満たさなければ見送る この候補は通常の陰影設定には採用していません なおこれは陰影の一部を切り分けた診断です テクスチャや物理を含む完成映像全体の画質保証とは区別しています
-      </p>
+      <p>一部分だけで良くなっても条件を満たさなければ見送る この候補は通常の陰影設定には採用していません<a class="note-ref" id="note-ref-4" href="#note-4" aria-label="文末の注記4を読む">[注記4]</a></p>
       <p>
        別のBloom高速化候補では 4Kのスクリーン動画を含む条件でGPU全体の処理時間が短くなりました 重い場面の傾向を見るp95という指標では5組の比較で約19.5%の短縮です
       </p>
@@ -395,9 +397,7 @@
       <p>
        まず同じ構図で効果を切り替える 次に短い区間を再生して動いている表情を見る 最後に短い動画を書き出して光やピントを確かめる
       </p>
-      <p>
-       モデル数も解像度も物理設定も違えば必要な処理は変わります すべての効果を最大にして必ず60 FPSで再生できるという話でも MMDやMMEとまったく同じ絵を保証する仕組みでもありません
-      </p>
+      <p>モデル数も解像度も物理設定も違えば必要な処理は変わります<a class="note-ref" id="note-ref-5" href="#note-5" aria-label="文末の注記5を読む">[注記5]</a></p>
       <p>
        それでも手元のMacで試して直せる場所があれば あのモーフを使えばよかったという場面からもう一歩進めます
       </p>
@@ -496,11 +496,20 @@
         </a>
        </li>
       </ul>
-      <p>
-       公開されている資料と制作上の工夫に感謝します 参考元とVvfMの実装はそれぞれ独立したものであり 各プロジェクトや作品による公式の承認や互換性の保証を示すものではありません
-      </p>
+      <p>公開されている資料と制作上の工夫に感謝します<a class="note-ref" id="note-ref-6" href="#note-6" aria-label="文末の注記6を読む">[注記6]</a></p>
      </section>
-     <section class="guide-next">
+          <section class="column-notes" id="notes" aria-labelledby="notes-title">
+      <h2 id="notes-title">注記</h2>
+      <ol>
+       <li id="note-1" tabindex="-1">特定の作品と同じ絵を再現する保証でも 参考元のすべての機能をそのまま移したという意味でもありません <a class="note-back" href="#note-ref-1" aria-label="注記1の本文へ戻る">本文へ戻る ↑</a></li>
+       <li id="note-2" tabindex="-1">ここで説明したのはBloomを理解するための流れであり ToonShader HQ全体の処理順をそのまま並べたものではありません <a class="note-back" href="#note-ref-2" aria-label="注記2の本文へ戻る">本文へ戻る ↑</a></li>
+       <li id="note-3" tabindex="-1">またこの数値はシェーダーの事前準備と重複する描画準備の削減を一緒に有効にした結果です 片方だけで約22%改善したという記録ではありません 現行配布版のベンチマークやすべてのMacに共通する性能値でもありません <a class="note-back" href="#note-ref-3" aria-label="注記3の本文へ戻る">本文へ戻る ↑</a></li>
+       <li id="note-4" tabindex="-1">これは陰影の一部を切り分けた診断です テクスチャや物理を含む完成映像全体の画質保証とは区別しています <a class="note-back" href="#note-ref-4" aria-label="注記4の本文へ戻る">本文へ戻る ↑</a></li>
+       <li id="note-5" tabindex="-1">すべての効果を最大にして必ず60 FPSで再生できるという話でも MMDやMMEとまったく同じ絵を保証する仕組みでもありません <a class="note-back" href="#note-ref-5" aria-label="注記5の本文へ戻る">本文へ戻る ↑</a></li>
+       <li id="note-6" tabindex="-1">参考元とVvfMの実装はそれぞれ独立したものであり 各プロジェクトや作品による公式の承認や互換性の保証を示すものではありません <a class="note-back" href="#note-ref-6" aria-label="注記6の本文へ戻る">本文へ戻る ↑</a></li>
+      </ol>
+     </section>
+<section class="guide-next">
       <h2>
        開発史を続けて読む
       </h2>
@@ -541,3 +550,4 @@
   </footer>
  </body>
 </html>
+
