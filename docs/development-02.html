@@ -31,6 +31,15 @@
       .term-ref{scroll-margin-top:100px}
       @media(max-width:800px){.column-glossary dl{grid-template-columns:1fr}}
       @media(max-width:650px){.column-glossary{margin-top:24px}.term-ref,.term-back{padding-block:4px}}
+    
+      /* 記事の補足は用語解説と分けて文末へ */
+      .column-notes{margin-top:32px;padding-top:20px;border-top:1px solid #d2d2d7}
+      .column-notes ol{margin:0;padding-left:1.6em}
+      .column-notes li{padding:8px 0;font-size:14px;line-height:1.7;overflow-wrap:anywhere;scroll-margin-top:100px}
+      .note-ref{white-space:nowrap;font-size:.8em;margin-inline:.25em;text-underline-offset:.2em;scroll-margin-top:100px}
+      .note-ref:focus-visible,.note-back:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      .note-back{display:inline-block;margin-left:8px;padding-block:4px;font-size:13px}
+      .column-notes li:target{background:#f5f5f7}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "第2回 20体のVMD再生がなぜ途中から遅くなるのか｜VvfM開発史", "description": "20体のPMXモデルを再生すると途中から遅くなる 画面収録とCodexとの対話を出発点に 仮説 計測 対照実験を重ね 実用上の解決へ進んだ開発記録", "url": "https://opopoposiop.github.io/VvfM/development-02.html", "datePublished": "2026-11-17", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}, "dateModified": "2026-11-18", "image": "https://opopoposiop.github.io/VvfM/images/columns/story-02-handdrawn.webp"}</script>
   </head>
@@ -84,6 +93,7 @@
               <li><a href="#resolution">実用上の解決と 原因の確定は分けておく</a></li>
               <li><a href="#vibe">バイブコーディングで 人が手放さなかったもの</a></li>
               <li><a href="#glossary">用語解説</a></li>
+            <li><a href="#notes">注記</a></li>
             </ol>
           </nav>
         </aside>
@@ -118,7 +128,7 @@
             <p>当時の解析では しきい値<a class="term-ref" id="term-ref-8" href="#term-8" aria-label="しきい値とカウンタの注釈8を読む">[注8]</a>や更新周期の候補から約23.33秒という時間が計算されました 観測していた約24秒後の変化に近い数字です ただ 近いからといって 原因が確定するわけではありません</p>
             <p>そこで 実際のGPU負荷に関係なくSECounterの累積が原因だと結論づけてよいのかを問い直しました 答えは その時点では断定できないというものでした</p>
             <p>一定の負荷条件を満たす間だけ値が増える仕組みでも 同じ条件なら似た時間に変化が起きます 時間の再現性だけでは 負荷に無関係なタイマーと 負荷に依存する制御を区別できません</p>
-            <p>実行中のSECounter値や その入力を直接読み取ったわけではありません Appleの公式情報から内部仕様を確定できたわけでもありません 本稿の「SECounter問題」は調査中の呼び名であり Appleが公式に認定した不具合名ではありません</p>
+            <p>解析の位置づけと「SECounter問題」という呼び名については文末に補足しています<a class="note-ref" id="note-ref-1" href="#note-1" aria-label="文末の注記1を読む">[注記1]</a></p>
           </section>
           <section id="trials">
             <h2>提案された方法を試し 効かなければ戻る</h2>
@@ -132,7 +142,7 @@
             <p>突破口になった試行では 追加処理なし 空のコマンドバッファ<a class="term-ref" id="term-ref-10" href="#term-10" aria-label="コマンドバッファと補助computeの注釈10を読む">[注10]</a> 有限の補助computeという三つを比較しました computeはGPUに計算を実行させる処理です</p>
             <p>この補助computeは モデルや映像の内容を増やすためではなく 性能状態への影響を調べるために追加したものでした 空のコマンドバッファを送るだけでは改善しなかった一方 再生開始時から補助computeを動かした試行では 90秒間 対象の状態への移行を観測しませんでした</p>
             <p>始めるタイミングにも違いがありました 計測記録で「SE選択」と呼んでいる状態への移行が起きた後に補助computeを始めても その状態は解除できませんでした 少なくともこの条件では 低下を防ぐことと 起きた低下を戻すことは同じではなかったのです</p>
-            <p>ただし カウンタの増加が止まったことを直接証明したわけではありません 確認できたのは 追加処理の有無と開始時点によって 観測される性能や状態が変わったという結果です</p>
+            <p>確認できたのは 追加処理の有無と開始時点によって 観測される性能や状態が変わったという結果です<a class="note-ref" id="note-ref-2" href="#note-2" aria-label="文末の注記2を読む">[注記2]</a></p>
           </section>
           <section id="comparison">
             <h2>同じビルドで OFFとONを入れ替えてみる</h2>
@@ -152,14 +162,14 @@
             </div>
             <p>「姿勢年齢<a class="term-ref" id="term-ref-12" href="#term-12" aria-label="姿勢年齢とp95とmsの注釈12を読む">[注12]</a>」は 表示に使うモデルの姿勢がどれほど遅れているかを見るための指標です p95は測定値の95％がその値以下に収まる水準を示します GPU処理時間とFPSは別の指標なので 単純な逆数としては扱いません</p>
             <p>OFFの2試行では約23〜24秒後にSE選択が観測され ONの2試行では90秒の範囲で観測されませんでした 対策の効果を 同じビルドの切り替えで確かめられたことが大きな前進でした</p>
-            <p>これは当時の特定条件での少数の比較です 全Apple Silicon機や すべてのモデル構成で同じ結果になるとはいえません 当時の記録では600秒の耐久確認なども未確認として残しています</p>
+            <p>ここで示すのは 当時の特定条件で行った90秒の比較結果です<a class="note-ref" id="note-ref-3" href="#note-3" aria-label="文末の注記3を読む">[注記3]</a></p>
           </section>
           <section id="power">
             <h2>速さが戻っても 電力と熱は無視できない</h2>
             <p>追加の計算にはコストがあります 同じ比較で記録されたGPUモデル電力<a class="term-ref" id="term-ref-13" href="#term-13" aria-label="GPUモデル電力とWの注釈13を読む">[注13]</a>は OFF時の約4.2〜4.8 Wに対し ON時は約15.6〜15.8 Wでした</p>
             <p>これはMac全体の消費電力ではありません 補助computeそのものの電力と 高い性能状態を維持したことによる電力も この測定だけでは分離できません それでも 性能と電力の変化は一緒に見る必要がありました</p>
             <p>そこで熱状態がfair<a class="term-ref" id="term-ref-14" href="#term-14" aria-label="熱状態と状態注入テストの注釈14を読む">[注14]</a>までは継続し seriousになったら補助computeを止めるよう変更を依頼しました 続くbuild 371では nominalとfairで継続 seriousとcriticalで停止する動作になっています</p>
-            <p>熱状態の遷移は状態を注入するテストで確認しました 実機を意図的に加熱してすべての境界を確かめた試験ではありません また ここで紹介するのは当時の実装であり 現行版の全仕様を説明するものではありません</p>
+            <p>熱状態の遷移は 各状態を模擬するテストで確認しました<a class="note-ref" id="note-ref-4" href="#note-4" aria-label="文末の注記4を読む">[注記4]</a></p>
             <p>どこまで性能維持を優先するか どの状態で追加処理を止めるか 採否と許容範囲を決める場面には 人間の判断が残りました</p>
           </section>
           <section id="resolution">
@@ -167,7 +177,7 @@
             <p>その後もCPU側の先行準備などを組み合わせ 調査結果を論文として整理しました 査読では 元データと説明を照合し 観測された現象の時間関係を修正した箇所もあります</p>
             <p>一度効果が出た対策でも 理由の説明まで正しいとは限りません Codexの回答や以前の報告を結論として固定せず データに戻って見直しました</p>
             <p>現在 開発者としては この問題は実用上解決していると評価しています 一方で SECounterの内部仕様や 性能状態の変化を生む機構について 公式情報による確定的な説明が得られたわけではありません</p>
-            <p>当時の90秒比較が示す効果と その後の利用上の評価は分けて記録しておきます 公開されているSustained Execution Mode<a class="term-ref" id="term-ref-15" href="#term-15" aria-label="Sustained Execution Modeの注釈15を読む">[注15]</a>と 内部SECounterや計測上のSE選択が同じものだとも断定していません</p>
+            <p>当時の90秒比較が示す効果と その後の利用上の評価は分けて記録しておきます<a class="note-ref" id="note-ref-5" href="#note-5" aria-label="文末の注記5を読む">[注記5]</a></p>
           </section>
           <section id="vibe">
             <h2>バイブコーディングで 人が手放さなかったもの</h2>
@@ -246,7 +256,17 @@
               </div>
             </dl>
           </section>
-          <section class="guide-next">
+               <section class="column-notes" id="notes" aria-labelledby="notes-title">
+      <h2 id="notes-title">注記</h2>
+      <ol>
+       <li id="note-1" tabindex="-1">実行中のSECounter値や その入力を直接読み取ったわけではありません Appleの公式情報から内部仕様を確定できたわけでもありません 本稿の「SECounter問題」は調査中の呼び名であり Appleが公式に認定した不具合名ではありません <a class="note-back" href="#note-ref-1" aria-label="注記1の本文へ戻る">本文へ戻る ↑</a></li>
+       <li id="note-2" tabindex="-1">ただし カウンタの増加が止まったことを直接証明したわけではありません 確認できたのは 追加処理の有無と開始時点によって 観測される性能や状態が変わったという結果です <a class="note-back" href="#note-ref-2" aria-label="注記2の本文へ戻る">本文へ戻る ↑</a></li>
+       <li id="note-3" tabindex="-1">これは当時の特定条件での少数の比較です 全Apple Silicon機や すべてのモデル構成で同じ結果になるとはいえません 当時の記録では600秒の耐久確認なども未確認として残しています <a class="note-back" href="#note-ref-3" aria-label="注記3の本文へ戻る">本文へ戻る ↑</a></li>
+       <li id="note-4" tabindex="-1">熱状態の遷移は状態を注入するテストで確認しました 実機を意図的に加熱してすべての境界を確かめた試験ではありません また ここで紹介するのは当時の実装であり 現行版の全仕様を説明するものではありません <a class="note-back" href="#note-ref-4" aria-label="注記4の本文へ戻る">本文へ戻る ↑</a></li>
+       <li id="note-5" tabindex="-1">当時の90秒比較が示す効果と その後の利用上の評価は分けて記録しておきます 公開されているSustained Execution Mode<a class="term-ref" id="term-ref-15" href="#term-15" aria-label="Sustained Execution Modeの注釈15を読む">[注15]</a>と 内部SECounterや計測上のSE選択が同じものだとも断定していません <a class="note-back" href="#note-ref-5" aria-label="注記5の本文へ戻る">本文へ戻る ↑</a></li>
+      </ol>
+     </section>
+<section class="guide-next">
             <h2>開発史を続けて読む</h2>
             <p><a href="development-01.html">第1回 GPUだけでは解決しなかった →</a></p>
             <p><a href="development-03.html">第3回 エフェクトを作る楽しさをMacにも →</a></p>
@@ -263,4 +283,5 @@
     </footer>
   </body>
 </html>
+
 
