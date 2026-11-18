@@ -12,10 +12,11 @@
     <meta content="第1回 GPUだけでは解決しなかった｜VvfM開発史" property="og:title"/>
     <meta content="MikuMikuDayoのエフェクト開発から生まれたVvfM 出先のMacでVMDを編集したいという思いと 初期の性能改善を振り返る開発コラム" property="og:description"/>
     <meta content="https://opopoposiop.github.io/VvfM/development-01.html" property="og:url"/>
-    <meta content="https://opopoposiop.github.io/VvfM/images/vvfm-eyecatch.jpg" property="og:image"/>
+    <meta content="https://opopoposiop.github.io/VvfM/images/columns/story-01.webp" property="og:image"/>
     <meta content="summary_large_image" name="twitter:card"/>
     <link href="style.css" rel="stylesheet"/>
     <link href="guide.css" rel="stylesheet"/>
+    <link href="column-visuals.css" rel="stylesheet"/>
     <style>.column-hero{background:#000;color:#f5f5f7}.column-hero .eyebrow,.column-hero .guide-note{color:#a1a1a6}.column-hero .lead{max-width:900px}.column-layout{padding-top:48px}.column-article p{margin-block:0 1.5em}.column-article h2{line-height:1.45}.column-layout .guide-toc li{padding-block:6px}.column-layout .guide-toc a{display:block;padding-block:0}.column-meta{font-size:14px;color:#a1a1a6}@media(max-width:650px){.column-layout{padding-top:24px}}.column-series{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:20px;font-size:14px}.column-series-title{font-weight:600}.column-series ol{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}.column-series a,.column-series [aria-disabled="true"]{display:block;padding:9px 14px;border-radius:10px;background:#f5f5f7}.column-series a[aria-current="page"]{font-weight:600}.column-series [aria-disabled="true"]{color:#76767b;cursor:default}
       /* 本文から読める用語注釈 */
       .term-ref{display:inline-block;margin-inline:.2em;font-size:.8em;line-height:1.5;text-decoration:underline;text-underline-offset:.2em}
@@ -31,7 +32,7 @@
       @media(max-width:800px){.column-glossary dl{grid-template-columns:1fr}}
       @media(max-width:650px){.column-glossary{margin-top:24px}.term-ref,.term-back{padding-block:4px}}
     </style>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "第1回 GPUだけでは解決しなかった｜VvfM開発史", "description": "MikuMikuDayoのエフェクト開発から生まれたVvfM 出先のMacでVMDを編集したいという思いと 初期の性能改善を振り返る開発コラム", "url": "https://opopoposiop.github.io/VvfM/development-01.html", "datePublished": "2026-11-17", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}, "dateModified": "2026-11-17"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "第1回 GPUだけでは解決しなかった｜VvfM開発史", "description": "MikuMikuDayoのエフェクト開発から生まれたVvfM 出先のMacでVMDを編集したいという思いと 初期の性能改善を振り返る開発コラム", "url": "https://opopoposiop.github.io/VvfM/development-01.html", "datePublished": "2026-11-17", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}, "dateModified": "2026-11-18", "image": "https://opopoposiop.github.io/VvfM/images/columns/story-01.webp"}</script>
   </head>
   <body class="guide-page">
     <a class="skip" href="#main">本文へ移動</a>
@@ -63,6 +64,10 @@
           <p class="lead">MacでMMDを軽快に動かすために<br/>何を測り 何を変えたのか</p>
           <p class="column-meta">VvfM開発史 第1回 · v0.1.0〜v0.13.0 · 2026年11月17日</p>
         </header>
+        <figure class="column-eyecatch wrap">
+          <img src="images/columns/story-01.webp" alt="必要な頂点を選びCPUとGPUの仕事を整理するイメージ" width="1672" height="941" fetchpriority="high"/>
+          <figcaption>コラムのテーマを表したイメージイラスト</figcaption>
+        </figure>
       </div>
       <div class="guide-layout wrap column-layout">
         <aside>
@@ -128,6 +133,12 @@
             <h2>毎回すべてを計算しなくてもよかった</h2>
             <p>v0.6.1 では IKやボーンの計算結果を再利用し 影響を受ける範囲の更新を見直しました タイムラインも すべてのキーを毎回扱う構造から 表示範囲を中心に描画する構造へ変更しています</p>
             <p>ここで一度立ち止まったのは <strong>毎回すべてを更新する必要があるのか</strong>という点でした 見えていないキーまで同じように扱っていないか 変わっていない計算を繰り返していないか 処理する量そのものを減らすことも 使い心地につながります</p>
+            <figure class="guide-figure column-app-screen">
+              <a href="https://raw.githubusercontent.com/opopoposiop/VvfM/fa0a7686e38b4c9454b383bd98eda5d47bba69a6/images/v0.58.4-build569/06-morph-timeline.png" aria-label="モーフの値とキーフレームを編集するタイムラインを拡大表示">
+                <img src="https://raw.githubusercontent.com/opopoposiop/VvfM/fa0a7686e38b4c9454b383bd98eda5d47bba69a6/images/v0.58.4-build569/06-morph-timeline.png" alt="モーフの値とキーフレームを編集するタイムライン" width="2926" height="1896" loading="lazy" decoding="async"/>
+              </a>
+              <figcaption>モーフ編集とタイムラインの実画面｜v0.58.4／build569 の公開済み画面を使用 本文で扱う初期バージョンの記録ではありません<br/>画像を選ぶと拡大表示できます</figcaption>
+            </figure>
           </section>
           <section id="measurement">
             <h2>19万頂点のうち 実際に変わっていたのは約3％</h2>
