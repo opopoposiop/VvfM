@@ -1,0 +1,14 @@
+/* Shared editorial images for published development stories */
+.column-eyecatch{max-width:1060px;padding:0 0 36px;margin-top:0;margin-bottom:0}
+.column-eyecatch img{display:block;width:100%;height:auto;max-height:560px;object-fit:cover;border-radius:20px;background:#f5f5f7}
+.column-eyecatch figcaption{margin-top:12px;color:#a1a1a6;font-size:12px;text-align:right}
+.column-app-screen{padding:12px;background:#f5f5f7;border-radius:18px}
+.column-app-screen a{display:block;border-radius:12px}
+.column-app-screen img{width:100%;height:auto;object-fit:contain}
+.column-app-screen figcaption{padding:0 6px 4px}
+#development-stories .cards{gap:28px;margin-top:30px;align-items:start}
+.story-thumbnail{display:block;margin-bottom:20px;overflow:hidden;border-radius:16px;background:#f5f5f7}
+.story-thumbnail img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .2s ease}
+.story-thumbnail:hover img{transform:scale(1.025)}
+@media(max-width:760px){.column-eyecatch{padding-bottom:24px}.column-eyecatch img{border-radius:12px}.column-app-screen{padding:8px}.column-eyecatch figcaption{text-align:left}#development-stories .cards{gap:38px}}
+@media(prefers-reduced-motion:reduce){.story-thumbnail img{transition:none}.story-thumbnail:hover img{transform:none}}

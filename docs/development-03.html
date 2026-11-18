@@ -12,10 +12,11 @@
     <meta content="第3回 エフェクトを作る楽しさをMacにも｜VvfM開発史" property="og:title"/>
     <meta content="ユーザーが自分でエフェクトを作る入口をMacにも .fxdayoの採用理由とHLSLからMSLへの変換 MotionBlurで原文実行を確かめた開発記録" property="og:description"/>
     <meta content="https://opopoposiop.github.io/VvfM/development-03.html" property="og:url"/>
-    <meta content="https://opopoposiop.github.io/VvfM/images/vvfm-eyecatch.jpg" property="og:image"/>
+    <meta content="https://opopoposiop.github.io/VvfM/images/columns/story-03.webp" property="og:image"/>
     <meta content="summary_large_image" name="twitter:card"/>
     <link href="style.css" rel="stylesheet"/>
     <link href="guide.css" rel="stylesheet"/>
+    <link href="column-visuals.css" rel="stylesheet"/>
     <style>.column-hero{background:#000;color:#f5f5f7}.column-hero .eyebrow,.column-hero .guide-note{color:#a1a1a6}.column-hero .lead{max-width:900px}.column-layout{padding-top:48px}.column-article p{margin-block:0 1.5em}.column-article h2{line-height:1.45}.column-layout .guide-toc li{padding-block:6px}.column-layout .guide-toc a{display:block;padding-block:0}.column-meta{font-size:14px;color:#a1a1a6}@media(max-width:650px){.column-layout{padding-top:24px}}.column-series{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:20px;font-size:14px}.column-series-title{font-weight:600}.column-series ol{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}.column-series a,.column-series [aria-disabled="true"]{display:block;padding:9px 14px;border-radius:10px;background:#f5f5f7}.column-series a[aria-current="page"]{font-weight:600}.column-series [aria-disabled="true"]{color:#76767b;cursor:default}.column-table-scroll{max-width:100%;overflow-x:auto;margin-block:24px}.column-table-scroll table{width:100%;border-collapse:collapse;font-size:14px;white-space:nowrap}.column-table-scroll caption{text-align:left;white-space:normal;color:#515154;padding-bottom:12px}.column-table-scroll th,.column-table-scroll td{padding:12px;border-bottom:1px solid #d2d2d7;text-align:right}.column-table-scroll th:first-child,.column-table-scroll td:nth-child(2){text-align:left}.column-table-scroll thead{background:#f5f5f7}.column-table-scroll:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
       /* 本文から読める用語注釈 */
       .term-ref{display:inline-block;margin-inline:.2em;font-size:.8em;line-height:1.5;text-decoration:underline;text-underline-offset:.2em}
@@ -33,7 +34,7 @@
       .column-pipeline{white-space:pre-wrap;overflow-wrap:anywhere;padding:24px;border-radius:16px;background:#f5f5f7;font-size:15px;line-height:1.8}
       .column-upcoming{color:#76767b}
     </style>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "第3回 エフェクトを作る楽しさをMacにも｜VvfM開発史", "description": "ユーザーが自分でエフェクトを作る入口をMacにも .fxdayoの採用理由とHLSLからMSLへの変換 MotionBlurで原文実行を確かめた開発記録", "url": "https://opopoposiop.github.io/VvfM/development-03.html", "datePublished": "2026-11-18", "dateModified": "2026-11-18", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "第3回 エフェクトを作る楽しさをMacにも｜VvfM開発史", "description": "ユーザーが自分でエフェクトを作る入口をMacにも .fxdayoの採用理由とHLSLからMSLへの変換 MotionBlurで原文実行を確かめた開発記録", "url": "https://opopoposiop.github.io/VvfM/development-03.html", "datePublished": "2026-11-18", "dateModified": "2026-11-18", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}, "image": "https://opopoposiop.github.io/VvfM/images/columns/story-03.webp"}</script>
   </head>
   <body class="guide-page">
     <a class="skip" href="#main">本文へ移動</a>
@@ -65,6 +66,10 @@
           <p class="lead">.fxdayoとMetalをつないだ理由</p>
           <p class="column-meta">VvfM開発史 第3回 · エフェクト制作の入口をひらく</p>
         </header>
+        <figure class="column-eyecatch wrap">
+          <img src="images/columns/story-03.webp" alt="エフェクトのコードがMacの映像表現へつながるイメージ" width="1672" height="941" fetchpriority="high"/>
+          <figcaption>コラムのテーマを表したイメージイラスト</figcaption>
+        </figure>
       </div>
       <div class="guide-layout wrap column-layout">
         <aside>
@@ -151,6 +156,12 @@ MacのGPUで描画</code></pre>
             <p>VvfM側にも <a href="https://github.com/opopoposiop/VvfM/blob/main/docs/fxdayo/examples/README.md">単純な露出調整やモーフ制御から始める教材</a>を用意しています 教材にも対象版と検証範囲があり 任意の原文やDayoとの画像一致を保証するものではありませんが 小さな変更とその結果を確かめる入口にはなります</p>
             <p>自分で少し変えてみる 欲しかった見た目に近づける その工夫を誰かの作品でも使ってもらう</p>
             <p>MMDで育ってきたその楽しさを Macで使うVvfMにもつなげたい .fxdayoの実行環境は そのために作り始めた仕組みです</p>
+            <figure class="guide-figure column-app-screen">
+              <a href="https://raw.githubusercontent.com/opopoposiop/VvfM/fa0a7686e38b4c9454b383bd98eda5d47bba69a6/images/v0.58.4-build569/11-dof-on.png" aria-label="DoFを有効にしたVvfMのビューポートを拡大表示">
+                <img src="https://raw.githubusercontent.com/opopoposiop/VvfM/fa0a7686e38b4c9454b383bd98eda5d47bba69a6/images/v0.58.4-build569/11-dof-on.png" alt="DoFを有効にしたVvfMのビューポート" width="2926" height="1896" loading="lazy" decoding="async"/>
+              </a>
+              <figcaption>映像表現の一例としてDoFを有効にした実画面｜v0.58.4／build569 の公開済み画面を使用 .fxdayoの変換やMotionBlur検証の結果を示すものではありません<br/>画像を選ぶと拡大表示できます</figcaption>
+            </figure>
           </section>
           <section class="column-glossary" id="glossary" aria-labelledby="glossary-title">
             <h2 id="glossary-title">用語解説</h2>

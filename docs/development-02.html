@@ -12,10 +12,11 @@
     <meta content="第2回 20体のVMD再生がなぜ途中から遅くなるのか｜VvfM開発史" property="og:title"/>
     <meta content="20体のPMXモデルをVMD再生すると途中から遅くなる 画面収録とCodexとの対話を出発点に 仮説 計測 対照実験を重ね 実用上の解決へ進んだ開発記録" property="og:description"/>
     <meta content="https://opopoposiop.github.io/VvfM/development-02.html" property="og:url"/>
-    <meta content="https://opopoposiop.github.io/VvfM/images/vvfm-eyecatch.jpg" property="og:image"/>
+    <meta content="https://opopoposiop.github.io/VvfM/images/columns/story-02.webp" property="og:image"/>
     <meta content="summary_large_image" name="twitter:card"/>
     <link href="style.css" rel="stylesheet"/>
     <link href="guide.css" rel="stylesheet"/>
+    <link href="column-visuals.css" rel="stylesheet"/>
     <style>.column-hero{background:#000;color:#f5f5f7}.column-hero .eyebrow,.column-hero .guide-note{color:#a1a1a6}.column-hero .lead{max-width:900px}.column-layout{padding-top:48px}.column-article p{margin-block:0 1.5em}.column-article h2{line-height:1.45}.column-layout .guide-toc li{padding-block:6px}.column-layout .guide-toc a{display:block;padding-block:0}.column-meta{font-size:14px;color:#a1a1a6}@media(max-width:650px){.column-layout{padding-top:24px}}.column-series{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:20px;font-size:14px}.column-series-title{font-weight:600}.column-series ol{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}.column-series a,.column-series [aria-disabled="true"]{display:block;padding:9px 14px;border-radius:10px;background:#f5f5f7}.column-series a[aria-current="page"]{font-weight:600}.column-series [aria-disabled="true"]{color:#76767b;cursor:default}.column-table-scroll{max-width:100%;overflow-x:auto;margin-block:24px}.column-table-scroll table{width:100%;border-collapse:collapse;font-size:14px;white-space:nowrap}.column-table-scroll caption{text-align:left;white-space:normal;color:#515154;padding-bottom:12px}.column-table-scroll th,.column-table-scroll td{padding:12px;border-bottom:1px solid #d2d2d7;text-align:right}.column-table-scroll th:first-child,.column-table-scroll td:nth-child(2){text-align:left}.column-table-scroll thead{background:#f5f5f7}.column-table-scroll:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
       /* 本文から読める用語注釈 */
       .term-ref{display:inline-block;margin-inline:.2em;font-size:.8em;line-height:1.5;text-decoration:underline;text-underline-offset:.2em}
@@ -31,7 +32,7 @@
       @media(max-width:800px){.column-glossary dl{grid-template-columns:1fr}}
       @media(max-width:650px){.column-glossary{margin-top:24px}.term-ref,.term-back{padding-block:4px}}
     </style>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "第2回 20体のVMD再生がなぜ途中から遅くなるのか｜VvfM開発史", "description": "20体のPMXモデルを再生すると途中から遅くなる 画面収録とCodexとの対話を出発点に 仮説 計測 対照実験を重ね 実用上の解決へ進んだ開発記録", "url": "https://opopoposiop.github.io/VvfM/development-02.html", "datePublished": "2026-11-17", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}, "dateModified": "2026-11-17"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "第2回 20体のVMD再生がなぜ途中から遅くなるのか｜VvfM開発史", "description": "20体のPMXモデルを再生すると途中から遅くなる 画面収録とCodexとの対話を出発点に 仮説 計測 対照実験を重ね 実用上の解決へ進んだ開発記録", "url": "https://opopoposiop.github.io/VvfM/development-02.html", "datePublished": "2026-11-17", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}, "dateModified": "2026-11-18", "image": "https://opopoposiop.github.io/VvfM/images/columns/story-02.webp"}</script>
   </head>
   <body class="guide-page">
     <a class="skip" href="#main">本文へ移動</a>
@@ -63,6 +64,10 @@
           <p class="lead">Codexと追ったSECounter問題と<br/>実用上の解決まで</p>
           <p class="column-meta">VvfM開発史 第2回 · 検証を振り返る</p>
         </header>
+        <figure class="column-eyecatch wrap">
+          <img src="images/columns/story-02.webp" alt="動画と計測から再生の変化を調べるイメージ" width="1672" height="941" fetchpriority="high"/>
+          <figcaption>コラムのテーマを表したイメージイラスト</figcaption>
+        </figure>
       </div>
       <div class="guide-layout wrap column-layout">
         <aside>
@@ -93,6 +98,12 @@
             <p>20体のPMXモデルを再生すると 最初は動いているのに 時間がたつにつれてFPS<a class="term-ref" id="term-ref-2" href="#term-2" aria-label="FPSとフレームの注釈2を読む">[注2]</a>が落ちていく この様子を画面収録にして Codexへ調査を依頼しました</p>
             <p>「重い」という言葉だけでは 同じ場面が常に重いのか 時間とともに悪くなるのかが伝わりません 動画に加えて 再現に使うプロジェクトも渡し まず改善計画を考えるところから始めました</p>
             <p>今回は この調査中に「SECounter問題<a class="term-ref" id="term-ref-3" href="#term-3" aria-label="SECounterとSE選択の注釈3を読む">[注3]</a>」と呼んでいた性能低下を題材に Codexと何を試し 何を確かめたのかを振り返ります</p>
+            <figure class="guide-figure column-app-screen">
+              <a href="https://raw.githubusercontent.com/opopoposiop/VvfM/fa0a7686e38b4c9454b383bd98eda5d47bba69a6/images/v0.58.4-build569/01-overview.png" aria-label="ビューポートとタイムラインおよび右上の性能表示を拡大表示">
+                <img src="https://raw.githubusercontent.com/opopoposiop/VvfM/fa0a7686e38b4c9454b383bd98eda5d47bba69a6/images/v0.58.4-build569/01-overview.png" alt="ビューポートとタイムラインおよび右上の性能表示" width="2926" height="1896" loading="lazy" decoding="async"/>
+              </a>
+              <figcaption>ビューポートと右上の性能表示の実画面｜v0.58.4／build569 の公開済み画面を使用 20体再生の検証動画やSECounterの測定結果ではありません<br/>画像を選ぶと拡大表示できます</figcaption>
+            </figure>
           </section>
           <section id="pause">
             <h2>一時停止すると回復する でもまた遅くなる</h2>
