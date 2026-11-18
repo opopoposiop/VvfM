@@ -143,11 +143,11 @@
             <h2>毎回すべてを計算しなくてもよかった</h2>
             <p>v0.6.1 では IKやボーンの計算結果を再利用し 影響を受ける範囲の更新を見直しました タイムラインも すべてのキーを毎回扱う構造から 表示範囲を中心に描画する構造へ変更しています</p>
             <p>ここで一度立ち止まったのは <strong>毎回すべてを更新する必要があるのか</strong>という点でした 見えていないキーまで同じように扱っていないか 変わっていない計算を繰り返していないか 処理する量そのものを減らすことも 使い心地につながります</p>
-            <figure class="guide-figure column-app-screen">
+            <figure class="guide-figure column-app-screen" id="app-screen" aria-describedby="note-4">
               <a href="https://raw.githubusercontent.com/opopoposiop/VvfM/fa0a7686e38b4c9454b383bd98eda5d47bba69a6/images/v0.58.4-build569/06-morph-timeline.png" aria-label="モーフの値とキーフレームを編集するタイムラインを拡大表示">
                 <img src="https://raw.githubusercontent.com/opopoposiop/VvfM/fa0a7686e38b4c9454b383bd98eda5d47bba69a6/images/v0.58.4-build569/06-morph-timeline.png" alt="モーフの値とキーフレームを編集するタイムライン" width="2926" height="1896" loading="lazy" decoding="async"/>
               </a>
-              <figcaption>モーフ編集とタイムラインの実画面｜v0.58.4／build569 の公開済み画面を使用 本文で扱う初期バージョンの記録ではありません<br/>画像を選ぶと拡大表示できます</figcaption>
+              
             </figure>
           </section>
           <section id="measurement">
@@ -235,6 +235,7 @@
        <li id="note-1" tabindex="-1">ここでMMDやnanoemと速さを競うつもりはありません MMDの内部処理の分担は 今回確認した公式資料だけでは判断できないからです 比べたいのは実装の考え方 そして VvfM自身のどこに待ち時間があったのかです <a class="note-back" href="#note-ref-1" aria-label="注記1の本文へ戻る">本文へ戻る ↑</a></li>
        <li id="note-2" tabindex="-1">なお GPU経路について「変更された頂点だけを計算する」とは限りません 変更範囲を絞る仕組みとして開発記録に明記されているのは CPU互換経路です <a class="note-back" href="#note-ref-2" aria-label="注記2の本文へ戻る">本文へ戻る ↑</a></li>
        <li id="note-3" tabindex="-1">描画FPSと再生更新FPSは別の指標です また 当時の記録には機種 解像度 反復回数など 比較に必要な条件がすべて記されているわけではありません この数字から 他のソフトとの優劣や 現在のすべてのMacでの性能を判断することはできません <a class="note-back" href="#note-ref-3" aria-label="注記3の本文へ戻る">本文へ戻る ↑</a></li>
+       <li id="note-4" tabindex="-1">実アプリ画面について：モーフ編集とタイムラインの実画面｜v0.58.4／build569 の公開済み画面を使用 本文で扱う初期バージョンの記録ではありません <a class="note-back" href="#app-screen" aria-label="注記4の画像へ戻る">画像へ戻る ↑</a></li>
       </ol>
      </section>
 <section class="guide-next">
