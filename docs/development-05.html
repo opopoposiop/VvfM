@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="J-O5AVknDOoGeZmMIt8It_xiSTIsqs5Ke5Kr5aalyoA" name="google-site-verification"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   第5回 見るための再生から 残すための動画へ｜VvfM開発史
+  </title>
+  <meta content="VMD viewer for Macの動画出力ができるまで ProResの透明背景で光が弱くなる問題から 人物マスクと深度を使った編集までを振り返ります" name="description"/>
+  <link href="https://opopoposiop.github.io/VvfM/development-05.html" rel="canonical"/>
+  <meta content="article" property="og:type"/>
+  <meta content="ja_JP" property="og:locale"/>
+  <meta content="第5回 見るための再生から 残すための動画へ｜VvfM開発史" property="og:title"/>
+  <meta content="VMD viewer for Macの動画出力ができるまで ProResの透明背景で光が弱くなる問題から 人物マスクと深度を使った編集までを振り返ります" property="og:description"/>
+  <meta content="https://opopoposiop.github.io/VvfM/development-05.html" property="og:url"/>
+  <meta content="https://opopoposiop.github.io/VvfM/images/columns/story-05-handdrawn.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <link href="style.css" rel="stylesheet"/>
+  <link href="guide.css" rel="stylesheet"/>
+  <link href="column-visuals.css" rel="stylesheet"/>
+  <style>
+   .column-hero{background:#000;color:#f5f5f7}.column-hero .eyebrow,.column-hero .guide-note{color:#a1a1a6}.column-hero .lead{max-width:900px}.column-layout{padding-top:48px}.column-article p{margin-block:0 1.5em}.column-article h2{line-height:1.45}.column-layout .guide-toc li{padding-block:6px}.column-layout .guide-toc a{display:block;padding-block:0}.column-meta{font-size:14px;color:#a1a1a6}@media(max-width:650px){.column-layout{padding-top:24px}}.column-series{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:20px;font-size:14px}.column-series-title{font-weight:600}.column-series ol{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}.column-series a,.column-series [aria-disabled="true"]{display:block;padding:9px 14px;border-radius:10px;background:#f5f5f7}.column-series a[aria-current="page"]{font-weight:600}.column-series [aria-disabled="true"]{color:#76767b;cursor:default}.column-table-scroll{max-width:100%;overflow-x:auto;margin-block:24px}.column-table-scroll table{width:100%;border-collapse:collapse;font-size:14px;white-space:nowrap}.column-table-scroll caption{text-align:left;white-space:normal;color:#515154;padding-bottom:12px}.column-table-scroll th,.column-table-scroll td{padding:12px;border-bottom:1px solid #d2d2d7;text-align:right}.column-table-scroll th:first-child,.column-table-scroll td:nth-child(2){text-align:left}.column-table-scroll thead{background:#f5f5f7}.column-table-scroll:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      /* 本文から読める用語注釈 */
+      .term-ref{display:inline-block;margin-inline:.2em;font-size:.8em;line-height:1.5;text-decoration:underline;text-underline-offset:.2em}
+      .term-ref:focus-visible,.term-back:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      .column-glossary{margin-top:32px;padding-top:20px;border-top:1px solid #d2d2d7}
+      .column-glossary dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:0}
+      .column-glossary .term-entry{padding-block:12px;border-bottom:1px solid #d2d2d7;scroll-margin-top:100px;overflow-wrap:anywhere}
+      .column-glossary dt{font-size:15px;font-weight:600;line-height:1.5}
+      .column-glossary dd{margin:5px 0 0;font-size:14px;line-height:1.7}
+      .column-glossary .term-entry:target{background:#f5f5f7;border-radius:8px}
+      .term-back{display:inline-block;margin-left:8px;min-height:24px;font-size:13px}
+      .term-ref{scroll-margin-top:100px}
+      @media(max-width:800px){.column-glossary dl{grid-template-columns:1fr}}
+      @media(max-width:650px){.column-glossary{margin-top:24px}.term-ref,.term-back{padding-block:4px}}
+      .column-pipeline{white-space:pre-wrap;overflow-wrap:anywhere;padding:24px;border-radius:16px;background:#f5f5f7;font-size:15px;line-height:1.8}
+      .column-upcoming{color:#76767b}
+  
+      /* 記事の補足は用語解説と分けて文末へ */
+      .column-notes{margin-top:32px;padding-top:20px;border-top:1px solid #d2d2d7}
+      .column-notes ol{margin:0;padding-left:1.6em}
+      .column-notes li{padding:8px 0;font-size:14px;line-height:1.7;overflow-wrap:anywhere;scroll-margin-top:100px}
+      .note-ref{white-space:nowrap;font-size:.8em;margin-inline:.25em;text-underline-offset:.2em;scroll-margin-top:100px}
+      .note-ref:focus-visible,.note-back:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      .note-back{display:inline-block;margin-left:8px;padding-block:4px;font-size:13px}
+      .column-notes li:target{background:#f5f5f7}
+    </style>
+  <script type="application/ld+json">
+   {"@context": "https://schema.org", "@type": "Article", "headline": "第5回 見るための再生から 残すための動画へ｜VvfM開発史", "description": "VMD viewer for Macの動画出力ができるまで ProResの透明背景で光が弱くなる問題から 人物マスクと深度を使った編集までを振り返ります", "url": "https://opopoposiop.github.io/VvfM/development-05.html", "datePublished": "2026-11-20", "dateModified": "2026-11-20", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}, "image": "https://opopoposiop.github.io/VvfM/images/columns/story-05-handdrawn.webp"}
+  </script>
+ </head>
+ <body class="guide-page">
+  <a class="skip" href="#main">
+   本文へ移動
+  </a>
+  <header class="header wrap">
+   <a aria-label="VvfM ホーム" class="brand" href="./">
+    VvfM
+    <span>
+     VMD Viewer for Mac
+    </span>
+   </a>
+   <nav aria-label="メインナビゲーション">
+    <a href="./#features">
+     できること
+    </a>
+    <a href="getting-started.html">
+     始め方
+    </a>
+    <a href="toonshader-hq.html">
+     HQエフェクト
+    </a>
+    <a href="video-export.html">
+     動画出力
+    </a>
+    <a href="./#faq">
+     FAQ
+    </a>
+    <a href="./#development-stories">
+     コラム
+    </a>
+    <a href="https://github.com/opopoposiop/VvfM">
+     GitHub ↗
+    </a>
+   </nav>
+  </header>
+  <main id="main">
+   <nav aria-label="開発史コラム" class="column-series wrap">
+    <span class="column-series-title">
+     開発史コラム
+    </span>
+    <ol>
+     <li>
+      <a href="development-01.html">
+       第1回 GPUだけでは解決しなかった
+      </a>
+     </li>
+     <li>
+      <a href="development-02.html">
+       第2回 20体のVMD再生がなぜ途中から遅くなるのか
+      </a>
+     </li>
+     <li>
+      <a href="development-03.html">
+       第3回 エフェクトを作る楽しさをMacにも
+      </a>
+     </li>
+     <li>
+      <a href="development-04.html">
+       第4回 あのアニメのような陰影をMacで
+      </a>
+     </li>
+          <li><a aria-current="page" href="development-05.html">第5回 見るための再生から 残すための動画へ</a></li>
+    </ol>
+   </nav>
+   <div class="column-hero">
+    <header class="guide-intro wrap">
+     <p class="eyebrow">DEVELOPMENT STORY · 05</p>
+     <h1>見るための再生から 残すための動画へ</h1>
+     <p class="lead">Macで整えた陰影やカメラを 一本の動画として残すまで</p>
+     <p class="column-meta">VvfM開発史 第5回</p>
+    </header>
+    <figure class="column-eyecatch wrap">
+     <img alt="Macで仕上げたダンス映像と 透明背景や人物マスクなどの素材を重ねたイメージイラスト" fetchpriority="high" width="1439" height="810" src="images/columns/story-05-handdrawn.webp"/>
+    </figure>
+   </div>
+   <div class="guide-layout wrap column-layout">
+    <aside>
+     <nav aria-label="このページの目次" class="guide-toc">
+      <strong>第5回の目次</strong>
+      <ol>
+       <li><a href="#origin">Macで作った この場面を残したい</a></li>
+       <li><a href="#timing">再生の速さとは別に 動画の時間を作る</a></li>
+       <li><a href="#camera-sound">カメラも 揺れも 音も 一緒に渡す</a></li>
+       <li><a href="#bloom">ペンライトは残っているのに 光が弱い</a></li>
+       <li><a href="#background">背景は 最後に足せばよいわけではなかった</a></li>
+       <li><a href="#validation">保存した後の映像まで確かめる</a></li>
+       <li><a href="#render-passes">一本の動画から もう一歩先の編集へ</a></li>
+       <li><a href="#conclusion">見せたい作品を Macの外へ</a></li>
+       <li><a href="#glossary">用語解説</a></li>
+       <li><a href="#notes">注記</a></li>
+       <li><a href="#related">関連ページ</a></li>
+      </ol>
+     </nav>
+    </aside>
+    <article class="guide-content column-article">
+     <section id="origin">
+      <h2>Macで作った この場面を残したい</h2>
+      <p>出先でモデルの貫通に気づいた<br/>
+      あのモーフを使えば もう少しいい表情になると思いついた<br/>
+      けれど手元にはMacしかなく リモートデスクトップもつながらない</p>
+      <p>VvfMの出発点には そんなMMD制作の困りごとがありました<br/>
+      MacでVMDを少し直せれば便利なのではないか<br/>
+      試作から始まったアプリに編集機能が増え 陰影や光も整えられるようになってきました</p>
+      <p>すると 調整した場面をそのまま誰かに見せたくなります<br/>
+      アプリを持っている人だけでなく 動画を開ける人へ届けたい<br/>
+      別の編集ソフトで音や字幕を重ねて 一本の作品に仕上げたい</p>
+      <p>第4回ではToonShader HQで絵を作る話をしました<br/>
+      今回は その絵を動画ファイルへ渡すまでの話です</p>
+     </section>
+     <section id="timing">
+      <h2>再生の速さとは別に 動画の時間を作る</h2>
+      <p>画面で再生できたら あとは録画すればよい<br/>
+      入口としては自然な考え方です<br/>
+      ただ 制作した映像を書き出すときには 画面表示の都合とは別に決めたいことがあります</p>
+      <p>どの場面からどの場面までを残すのか<br/>
+      一秒に何枚の絵を入れるのか<br/>
+      どの解像度で描くのか</p>
+      <p>動画出力では こうした設定に従って各時刻の状態を評価し 絵をファイルへ収めていきます<br/>
+      ライブ再生が一時的に重くなったからといって その表示の間隔をそのまま動画へ記録する仕組みではありません</p>
+      <p>ここで少し紛らわしいのが VMDのフレームと出力する動画のフレームです<br/>
+      VMDの時間の基準は30 fps<br/>
+      出力を60 fpsにしても モーションを倍速にするわけではありません<br/>
+      同じ長さの動きを より細かい時刻で描いて保存します</p>
+      <p>たとえば開始0から終了299までなら 30 fps出力で300枚の10秒です<br/>
+      同じ範囲を60 fpsで出力すると600枚になります<br/>
+      端数のレートもあるため 最後は書き出し画面の「概要」で長さと枚数を確かめます<a class="note-ref" id="note-ref-1" href="#note-1" aria-label="文末の注記1を読む">[注記1]</a></p>
+      <p>「何秒で書き出せたか」と「完成動画が何秒あるか」も別です<br/>
+      重い場面の計算に時間をかけても 出来上がる動画の時間は指定した設定に沿って進みます</p>
+     </section>
+     <section id="camera-sound">
+      <h2>カメラも 揺れも 音も 一緒に渡す</h2>
+      <p>映像の印象はモデルの動きだけでは決まりません<br/>
+      狙った瞬間にカメラが寄り 髪や衣装が揺れ 音が合っている<br/>
+      それらが揃って 初めて見せたかった場面になります</p>
+      <p>VvfMでは 書き出し側に「VMDカメラを使用」という選択があります<br/>
+      カメラVMDを読み込み この選択を有効にすれば その動きを使います<br/>
+      無効なら 書き出し開始時の構図で固定します<br/>
+      画面を眺めるときのカメラ表示と 書き出すカメラの選択は 別々に確認する必要があります</p>
+      <p>物理演算にも 再生画面とは異なる事情があります<br/>
+      編集では 気になった位置へすぐ移動したい<br/>
+      一方 動画では その位置へ至るまでの揺れの積み重ねが重要です</p>
+      <p>動画出力は指定範囲を順に計算し 物理を優先して評価します<br/>
+      編集用シークの「移動先で演算」は使いません<br/>
+      選んだBulletモードは書き出しにも使われますが 編集中に途中へ飛んで見た姿と同じになるとは限りません<a class="note-ref" id="note-ref-1-2" href="#note-1" aria-label="文末の注記1を読む">[注記1]</a></p>
+      <p>音声も 出力用の選択を持っています<br/>
+      WAVやM4Aを読み込み 「読み込んだ音声を含める」を確認します<br/>
+      アプリで試聴するときのミュートと 動画に音を入れる設定は別です</p>
+      <p>操作が分かれていることには 意図を明確にできる利点もあります<br/>
+      ただし作る側が思い込んでしまうと 欲しかった構図や音が抜けてしまいます<br/>
+      まず短い区間を出して確認することには こうした取り違えを早く見つける意味があります</p>
+     </section>
+     <section id="bloom">
+      <h2>ペンライトは残っているのに 光が弱い</h2>
+      <p>動画出力の開発では 保存形式の選択が見た目へ影響する問題にも向き合いました</p>
+      <p>アプリで見えていたペンライトの周囲の光が 書き出したMOVでは弱く見える<br/>
+      本体は残っているのに ふわっと広がっていた光の印象が違う</p>
+      <p>このとき調べた動画は ProRes 4444で書き出されていました<br/>
+      透明度を保存できる形式です<br/>
+      実際に保存された一枚を読み出してみると 背景には透明な画素が広く含まれていました<br/>
+      黒く見える場所でも 黒色が描かれているとは限りません<br/>
+      プレイヤーが透明な場所を黒く表示していることもあります</p>
+      <p>調査時のVvfMでは ProRes 4444を選ぶことと 背景を透明にして描くことが結び付いていました<br/>
+      アプリ側で背景色を決めていても 書き出し側では透明に置き換えられていたのです</p>
+      <p>さらにBloomの処理を追うと 光を広げても 元の場所の透明度を保つ扱いになっていました<br/>
+      ペンライトの外側が完全に透明なら そこへ広がった光も最終的に消えてしまう<br/>
+      不透明な背景の上では残る光が 透明な背景では同じようには残らない仕組みでした<a class="note-ref" id="note-ref-2" href="#note-2" aria-label="文末の注記2を読む">[注記2]</a></p>
+      <p>この発見で見るべきところが変わります<br/>
+      圧縮方式を高品質にすれば解決する問題ではありません<br/>
+      保存される前の段階で 光をどう描いているかを見直す必要がありました</p>
+     </section>
+     <section id="background">
+      <h2>背景は 最後に足せばよいわけではなかった</h2>
+      <p>それなら 保存した透明動画の後ろに黒を敷けばよいのでしょうか</p>
+      <p>この事例では すでに消えた光を後から戻すことはできません<br/>
+      対策は Bloomなどの仕上げ処理に入る前から 不透明な背景を含めて描くことでした</p>
+      <p>そこでv0.57.9では ProRes 4444と4444 XQに「透過／背景色を含める」という選択を加えました</p>
+      <p>透明度を保存できる形式を選ぶこと<br/>
+      今回の作品で背景を透明にしたいかを選ぶこと</p>
+      <p>この二つを分けたのです</p>
+      <p>編集用のProResを使いたいからといって 必ず背景まで透明にしたいとは限りません<br/>
+      背景と光を合わせた絵を残したいときには 背景色を含める<br/>
+      別の映像と合成するために人物を抜きたいときには 透過を選ぶ<br/>
+      作品の次の工程に合わせて決められるようにしました</p>
+      <p>変更後は 細い発光体の周囲の光や 背景色の変化を確認しました<br/>
+      実素材5モデルの特定フレームでは 物理を無効にした描画確認として両方式のMOVを保存して読み戻し 背景を含めた出力で元の透明な領域へ広がる光が残ることを確かめています<a class="note-ref" id="note-ref-3" href="#note-3" aria-label="文末の注記3を読む">[注記3]</a></p>
+      <p>ボタンを追加しただけに見える変更でも 裏側では背景を扱う条件を描画から保存まで揃える必要がありました</p>
+     </section>
+     <section id="validation">
+      <h2>保存した後の映像まで確かめる</h2>
+      <p>プログラムがファイルを作れたことと 見せたい映像が残ったことは同じ確認ではありません</p>
+      <p>書き出したMOVをもう一度読み出す<br/>
+      透明部分が意図した状態かを見る<br/>
+      カメラが動くか 音が入っているかを確かめる</p>
+      <p>この往復があって 初めて書き出しの問題を追えます<br/>
+      アプリ画面とプレイヤー画面の見た目を比べるだけでも 違和感を発見することはできます<br/>
+      そこから原因を絞るには 同じ時刻と同じ解像度であるか ぼけや輪郭の処理が揃っているかを確かめなければなりません</p>
+      <p>先ほどの光の事例でも 背景の扱いを直したことだけで プレビューと動画の完全一致を確認したわけではありません<br/>
+      比較に必要な条件を揃え どこまで確かめられたかを残すことが大切でした<a class="note-ref" id="note-ref-3-2" href="#note-3" aria-label="文末の注記3を読む">[注記3]</a></p>
+      <p>普段の制作でも 最初から全編を待つ必要はありません<br/>
+      表情が変わるところや 髪が大きく動くところ 光が目立つところを短く出してみる<br/>
+      完成したファイルを開いてから全編へ進む<br/>
+      そのひと手間が 長い書き出しのやり直しを減らしてくれます</p>
+     </section>
+     <section id="render-passes">
+      <h2>一本の動画から もう一歩先の編集へ</h2>
+      <p>完成した動画を書き出せるようになると 次はこんな調整をしたくなります</p>
+      <p>この人物だけ もう少し明るくしたい<br/>
+      奥の方にだけ 霞を足したい</p>
+      <p>完成映像だけでは 人物や奥行きを編集ソフトへ伝えにくい場面があります<br/>
+      そこでv0.58.20以降には 人物マスクと深度を動画と一緒に出す機能も加わっています</p>
+      <p>人物マスクは その人物が見えている範囲を白黒の画像で示したものです<br/>
+      人物ごとに明るさや色を調整するための手がかりになります<br/>
+      深度は 手前から奥へどれだけ離れているかを表す情報で 奥行きに沿った処理に使えます</p>
+      <p>この出力はToonShader HQを選び 「4回積分・180度」をオフにした条件が対象です<br/>
+      完成映像のMOVに加え 人物別の16 bitグレースケールPNG連番と 深度のEXR連番などを <code>.vmdpasses</code> フォルダーへまとめます<a class="note-ref" id="note-ref-4" href="#note-4" aria-label="文末の注記4を読む">[注記4]</a></p>
+      <p>ただし 人物マスクは光学効果を加える前の見える範囲を表します<br/>
+      Bloomの光や被写界深度のぼけは 輪郭の外へ広がることがあります<br/>
+      白黒の境界だけで完成映像の光までぴったり切り分けられる と考えないことが大切です</p>
+      <p>VvfMだけですべてを仕上げる使い方もあれば<br/>
+      Macで動きと絵を作り 編集ソフトで最後の味付けをする使い方もある<br/>
+      出力を増やすことは 作品を仕上げる場所の選択肢を増やすことでもあります</p>
+     </section>
+     <section id="conclusion">
+      <h2>見せたい作品を Macの外へ</h2>
+      <p>VvfMは 出先のMacで少し直したいという困りごとから育ってきました</p>
+      <p>その小さな修正を動画にして確認する<br/>
+      気に入った陰影と光を残す<br/>
+      別の編集ソフトへ持っていって 作品を仕上げる</p>
+      <p>再生できることの先には こうした制作の続きがあります</p>
+      <p>第1回から追ってきた計算の見直しや 描画とエフェクトの工夫も<br/>
+      最後に見せたい映像として届いてこそ 作品の中で役に立ちます</p>
+      <p>書き出しボタンを押したら終わりではなく 出来上がった映像を開いて確かめる<br/>
+      VvfMの動画出力も その最後の一枚までを見ながら育ててきた機能です</p>
+      <p>次回は再びアプリの画面へ戻り 再生中の引っ掛かりや操作への応答をどう改善してきたかをたどります</p>
+     </section>
+     <section id="glossary" class="column-glossary">
+      <h2>用語解説</h2>
+      <dl>
+       <div class="term-entry"><dt>fps</dt><dd>動画や表示の一秒あたりのフレーム数　出力レートとアプリの実際の表示速度は別の値</dd></div>
+       <div class="term-entry"><dt>コーデック／コンテナ</dt><dd>映像の圧縮方式／映像や音声をまとめるファイル形式　H.264とMP4はそれぞれ前者と後者</dd></div>
+       <div class="term-entry"><dt>アルファ</dt><dd>各画素の透明度を表す情報　対応形式でも必ず透明な映像になるわけではない</dd></div>
+       <div class="term-entry"><dt>Bloom</dt><dd>明るい部分の周囲へ光がにじむ表現</dd></div>
+       <div class="term-entry"><dt>復号</dt><dd>圧縮して保存した映像を 再び画像として読み出すこと</dd></div>
+       <div class="term-entry"><dt>マスク／深度</dt><dd>効果をかける範囲を示す画像／画面内の奥行きを表す情報</dd></div>
+       <div class="term-entry"><dt>PNG連番／EXR連番</dt><dd>時刻ごとの画像を順番に保存したもの　本稿ではPNGが人物マスク EXRが深度を担う</dd></div>
+      </dl>
+     </section>
+     <section id="notes" class="column-notes">
+      <h2>注記</h2>
+      <ol>
+       <li id="note-1" tabindex="-1">操作と対応範囲はv0.58.29 / build 656を参照した<a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md#動画出力">一般ユーザーマニュアルの動画出力</a>に基づきます　本稿の作成時に実アプリでの書き出しを再試験したものではありません　物理やエフェクトの全組み合わせでプレビューと一致する保証ではありません <a class="note-back" href="#note-ref-1" aria-label="注記1の本文 1へ戻る">本文 1へ戻る ↑</a> <a class="note-back" href="#note-ref-1-2" aria-label="注記1の本文 2へ戻る">本文 2へ戻る ↑</a></li>
+       <li id="note-2" tabindex="-1">これはv0.57.8時点の調査で確認したVvfMの描画処理の説明です　ProRes一般の欠陥や すべての透明映像でBloomが消えるという意味ではありません　当時の画面差には解像度やAAなどの比較条件も関係し得るため 差のすべてをアルファだけの影響とはしていません <a class="note-back" href="#note-ref-2" aria-label="注記2の本文へ戻る">本文へ戻る ↑</a></li>
+       <li id="note-3" tabindex="-1">v0.57.9 / build 470の開発記録に基づきます　実素材の確認は特定フレームかつ物理OFFであり 物理ONの同フレームは評価が120秒を超えて未完了でした　元作品の216秒全尺やライブ表示との完全一致 性能や10分耐久を確認した結果ではありません　透明出力そのものの光の扱いを変更した対策でもありません <a class="note-back" href="#note-ref-3" aria-label="注記3の本文 1へ戻る">本文 1へ戻る ↑</a> <a class="note-back" href="#note-ref-3-2" aria-label="注記3の本文 2へ戻る">本文 2へ戻る ↑</a></li>
+       <li id="note-4" tabindex="-1">人物マスクはカラーの人物別動画ではなく16 bitのグレースケール画像です　深度は最前面までの奥行きを表します　出力される <code>manifest.json</code> で人物と時刻の対応を確認できます　透明な背景を選んでも不透明な背景モデルが自動で消えるわけではありません　対応する形式や設定は<a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md#動画出力">マニュアル</a>で確認してください <a class="note-back" href="#note-ref-4" aria-label="注記4の本文へ戻る">本文へ戻る ↑</a></li>
+      </ol>
+     </section>
+     <section id="related" class="guide-next">
+      <h2>関連ページ</h2>
+      <ul>
+       <li><a href="development-04.html">第4回 あのアニメのような陰影をMacで</a></li>
+       <li><a href="video-export.html">動画出力の使い方</a></li>
+       <li><a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md">一般ユーザーマニュアル</a></li>
+       <li><a href="./#development-stories">トップページの開発史へ戻る</a></li>
+      </ul>
+     </section>
+    </article>
+   </div>
+  </main>
+  <footer class="wrap">
+   <p>
+    <strong>
+     VMD Viewer for Mac / VvfM
+    </strong>
+   </p>
+   <p>
+    <a href="./">
+     ホーム
+    </a>
+    ·
+    <a href="https://github.com/opopoposiop/VvfM">
+     GitHub
+    </a>
+   </p>
+  </footer>
+ </body>
+</html>
+
