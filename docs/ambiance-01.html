@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ambiance 1 浅草みどりをどう撮るか 『シネマ』で振り返るMMDカメラ作り</title>
+  <meta name="description" content="MMD作品『シネマ』の作品ノート お気に入りの2秒を手がかりに 寄る・止める・引くと音ハメで浅草みどりの振りや表情をどう見せたかを振り返ります">
+  <link rel="canonical" href="https://opopoposiop.github.io/VvfM/ambiance-01.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="ambiance 1 浅草みどりをどう撮るか 『シネマ』で振り返るMMDカメラ作り">
+  <meta property="og:description" content="MMD作品『シネマ』の作品ノート お気に入りの2秒を手がかりに 寄る・止める・引くと音ハメで浅草みどりの振りや表情をどう見せたかを振り返ります">
+  <meta property="og:url" content="https://opopoposiop.github.io/VvfM/ambiance-01.html">
+  <meta property="og:image" content="https://opopoposiop.github.io/VvfM/images/columns/ambiance-01-cinema.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="guide.css">
+  <link rel="stylesheet" href="column-visuals.css">
+  <style>
+    .column-hero{background:#000;color:#f5f5f7}
+    .column-hero .eyebrow{color:#a1a1a6}
+    .column-hero .column-eyecatch img{aspect-ratio:auto;height:auto;max-height:none;object-fit:contain}
+    .column-layout{padding-top:48px}
+    .column-article p{margin-block:0 1.5em}
+    .column-article h2{line-height:1.3}
+    .ambiance-player{width:100%;aspect-ratio:16/9;margin:1rem 0;border-radius:14px;overflow:hidden;background:#111}
+    .ambiance-player iframe{width:100%;height:100%;border:0;display:block}
+    .column-notes{margin-top:32px;padding-top:20px;border-top:1px solid #d2d2d7}
+    .column-notes li{margin-block:.5em;font-size:14px;line-height:1.7}
+  </style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ambiance 1 浅草みどりをどう撮るか 『シネマ』で振り返るMMDカメラ作り", "description": "MMD作品『シネマ』の作品ノート お気に入りの2秒を手がかりに 寄る・止める・引くと音ハメで浅草みどりの振りや表情をどう見せたかを振り返ります", "mainEntityOfPage": "https://opopoposiop.github.io/VvfM/ambiance-01.html", "image": "https://opopoposiop.github.io/VvfM/images/columns/ambiance-01-cinema.png", "inLanguage": "ja"}</script>
+</head>
+<body class="guide-page">
+  <a class="skip" href="#main">
+   本文へ移動
+  </a>
+  <header class="header wrap">
+   <a aria-label="VvfM ホーム" class="brand" href="./">
+    VvfM
+    <span>
+     VMD Viewer for Mac
+    </span>
+   </a>
+   <nav aria-label="メインナビゲーション">
+    <a href="./#features">
+     できること
+    </a>
+    <a href="getting-started.html">
+     始め方
+    </a>
+    <a href="toonshader-hq.html">
+     HQエフェクト
+    </a>
+    <a href="video-export.html">
+     動画出力
+    </a>
+    <a href="./#faq">
+     FAQ
+    </a>
+    <a href="./#development-stories">
+     コラム
+    </a>
+    <a href="https://github.com/opopoposiop/VvfM">
+     GitHub ↗
+    </a>
+   </nav>
+  </header>
+  <main id="main">
+    <div class="column-hero">
+      <header class="guide-intro wrap">
+        <p class="eyebrow">作品ノート</p>
+        <h1>ambiance 1 浅草みどりをどう撮るか 『シネマ』で振り返るMMDカメラ作り</h1>
+      </header>
+      <figure class="column-eyecatch wrap">
+        <img alt="ステージの光を背に手を差し出す浅草みどり 『シネマ』より" fetchpriority="high" width="2048" height="1330" src="images/columns/ambiance-01-cinema.png">
+      </figure>
+    </div>
+    <div class="guide-layout wrap column-layout">
+      <aside>
+        <nav aria-label="このページの目次" class="guide-toc">
+          <strong>作品ノートの目次</strong>
+          <ol>
+        <li><a href="#original">『シネマ』 元投稿</a></li>
+        <li><a href="#close-up">寄る　浅草氏の顔が上がる前に切る</a></li>
+        <li><a href="#hold">止める　カメラの代わりに手と目が動く</a></li>
+        <li><a href="#wide">引く　歌詞に重なる振りをまるごと見せる</a></li>
+        <li><a href="#sync">音ハメ　伸ばした手はつないで 低音で画を切る</a></li>
+        <li><a href="#roll">やらないほうがよいこと　Z軸回転を多用する</a></li>
+        <li><a href="#conclusion">寄るか 止めるか 引くか</a></li>
+        <li><a href="#alternate">フレームレート変更版で見返す</a></li>
+        <li><a href="#notes">注記</a></li>
+          </ol>
+        </nav>
+      </aside>
+      <article class="guide-content column-article">
+      <p>今回は VvfMの開発コラムではなく MMD作品『シネマ』の制作を振り返る作品ノートです　浅草みどりの表情や振りをどう見せるか カメラを作る側の視点でお話しします</p>
+      <p>『シネマ』でいちばん気に入っているのは 3分13秒から15秒のカットです</p>
+      <p>クレジットが流れるなか 客席を背にした浅草みどりが身体を沈めます　画が正面に切り替わっても まだ目は伏せたまま　顔が上がって目が開くのを待つと 今度は腕の振りが見えてきます</p>
+      <p>MMDのカメラを作るときは まず振りを通して見ます　そのモーションらしい動きはどこか　歌詞が振りに現れるのはどこか　それから このキャラクターのどんな顔を見せたいかを考えます</p>
+      <p>そこで使い分けるのが <strong>寄る　止める　引く</strong> の三つです　音ハメは その画をいつ切り替えるかを考えるときの手がかりです</p>
+      
+      <section id="original">
+        <h2>『シネマ』 元投稿</h2>
+        <p>まずは 3:13〜3:15 を見てみてください</p>
+        <div class="ambiance-player"><iframe src="https://embed.nicovideo.jp/watch/sm41029628" title="『シネマ』元投稿 ニコニコ動画プレーヤー" width="640" height="360" loading="lazy" allowfullscreen>
+        </iframe></div>
+        <p><a href="https://www.nicovideo.jp/watch/sm41029628">元投稿をニコニコ動画で見る</a></p>
+      </section>
+      
+      <section id="close-up">
+        <h2>寄る　浅草氏の顔が上がる前に切る</h2>
+        <p>3:13.53で斜め後ろの全身から正面のアップへ切り替えます　画が切り替わった瞬間の浅草氏は まだうつむき気味です　先にカメラを寄せておくと 見る側は顔が上がるのを待つことになります　目が開く時には もうその顔を見ています</p>
+        <p>顔のアップで見せたいのは 顔の大きさよりも表情の変化です　目を開けた顔を一枚だけ見せるのと 伏せた目から見せるのとでは 同じ顔でも印象が違います　このカットでは うつむいたまま一度画面に迎えてから 顔が上がる短い間ごと見せています</p>
+        <p>VMDでは切り替えで画角が20°から11°になり そのあとも約0.6秒かけて少し寄ります　カットで一度に近づくところと 同じショットのなかでもう少し近づくところを分けています</p>
+      </section>
+      
+      <section id="hold">
+        <h2>止める　カメラの代わりに手と目が動く</h2>
+        <p>0:38.17から 斜めから浅草氏の顔を大きく捉えます　手が目元のそばを通り 目を閉じるまで カメラの位置も角度も画角も約0.73秒変わりません　3:13台では寄りながら目が開くのを待ちますが こちらはカメラを止めて 手と目に動きを任せています</p>
+        <p>0:38.93で全身に切り替わると さっき顔のそばにあった手が 腕と足運びを含む振りの一部だったと分かります　アップの中で一度小さな動きに目を向けておくと 引いた画でもその振りを追いやすくなります</p>
+      </section>
+      
+      <section id="wide">
+        <h2>引く　歌詞に重なる振りをまるごと見せる</h2>
+        <p>歌詞に合わせた振りを強く見せたいときは その振りの特徴が分かる範囲を大きく切り取ります　顔のそばの手だけで伝わることもあれば 足を踏み出すところまで入って はじめて形が伝わることもあります　後者なら 全身の動きが読めるところまで引きます</p>
+        <p>0:35.57と2:04.17は 同じ歌詞の字幕が出る場面です　どちらも顔と肩の寄りから 手の振りと足運びが一緒に見える全身へ切り替えます　衣装は違いますが 切り替え先のカメラの位置・角度・距離・画角はVMD上で同じです　歌詞が戻ってきたところで 同じ振りをもう一度 同じ見せ方で拾っています</p>
+      </section>
+      
+      <section id="sync">
+        <h2>音ハメ　伸ばした手はつないで 低音で画を切る</h2>
+        <p>お気に入りの2秒に戻ります　3:14.17で腰上まで引くと 腕の振りが見えるようになります　左にはクレジットが流れ 浅草氏は右寄り　画面の左へ伸ばした手まで収まります</p>
+        <p>次に切る3:14.63では 手はすでに伸びています　切る前も切ったあとも 手は画面の左にある　変わるのはカメラの角度です　背景の手すりが斜めに走るので 振りを途中で止めなくても 画が変わったことはすぐに伝わります</p>
+        <p>動画の音声を波形で見ると この切り替えは低音が立ち上がる瞬間と 60 fpsの映像でほぼ1コマ以内に重なります　音ハメというと 振りが始まる瞬間に切りたくなりますが 振りの途中で切るほうが 動きのつながりと音の区切りが両方残ることがあります</p>
+      </section>
+      
+      <section id="roll">
+        <h2>やらないほうがよいこと　Z軸回転を多用する</h2>
+        <p>MMDのカメラでいうZ軸回転は 画面そのものを傾ける動きです　私はこれを普段のカメラワークではなるべく使いません　振りの途中で画面が何度も傾くと 身体の傾きとカメラの傾きが重なって 足運びや姿勢の変化を追いにくくなるからです　まず水平のまま 寄る・止める・引くだけで振りが伝わるかを見ます</p>
+        <p>『シネマ』の3:14.63では 例外としてカットの切り替えに傾きを使っています　伸ばした手は切る前後でつながっていて 背景の手すりが斜めに変わります　VMD上ではカットを境にZ軸回転がほぼ0°から約−20°へ変わり そのあとのショットで水平に戻っていきます　振りを見せるために回し続けるのではなく 視点が変わったことを一度だけはっきり見せる使い方です</p>
+      </section>
+      
+      <section id="conclusion">
+        <h2>寄るか 止めるか 引くか</h2>
+        <p>カメラを付ける前に 一度カメラを動かさずに振りを見ます　全身で見たい振りと 寄って見たい表情を見つけたら カットを置くのはその少し前か 動きの途中かを試します　迷ったら前後を短く再生します　一枚ずつではきれいに見えても つなげてみると目が開く前に次へ行ってしまったり 伸ばした手が飛んで見えたりするからです</p>
+        <p>もう一度 3:13から　全身の振りから顔に寄り 目が開くのを待って 腕が見えるところまで引く　最後は手の動きを残したまま 音で画を切る　この短い間に 浅草氏の表情も振りも それぞれを見せる時間があります</p>
+      </section>
+      
+      <section id="alternate">
+        <h2>フレームレート変更版で見返す</h2>
+        <div class="ambiance-player"><iframe src="https://embed.nicovideo.jp/watch/sm44610225" title="『シネマ』フレームレート変更版 ニコニコ動画プレーヤー" width="640" height="360" loading="lazy" allowfullscreen>
+        </iframe></div>
+        <p><a href="https://www.nicovideo.jp/watch/sm44610225">フレームレート変更版をニコニコ動画で見る</a></p>
+        <p><a href="https://bowlroll.net/file/284495">『シネマ』のカメラモーション配布ページ</a></p>
+      </section>
+      
+      <section id="notes" class="column-notes">
+        <h2>注記</h2>
+        <ul>
+        <li><p>本文の時刻は手元の映像（60 fps）とカメラVMD（30フレームで1秒）を照合したものです　VMDの406個のカメラキーは完成動画のカット数ではありません</p></li>
+        <li><p>3:14.63の比較では 動画の音声をモノラルに変換し 125 Hz以下の音量を10 ms単位で確認しています　低音の立ち上がりと画の切り替えの差は約13 msで 楽器までは特定していません</p></li>
+        <li><p>原曲：Ayase ／ 歌唱：みゃる ／ 振付：チャイナ ／ ダンスモーション：山野 ／ 浅草みどりモデル：<a href="https://nicocrayon.exblog.jp/23844271/">くれよん</a> ／ カメラ：塩むすび　その他の使用素材は動画内クレジット・元投稿の説明欄とコンテンツツリーをご覧ください</p></li>
+        </ul>
+      </section>
+        <p><a href="./#development-stories">コラム一覧へ戻る</a></p>
+      </article>
+    </div>
+  </main>
+  <footer class="wrap">
+   <p>
+    <strong>
+     VMD Viewer for Mac / VvfM
+    </strong>
+   </p>
+   <p>
+    <a href="./">
+     ホーム
+    </a>
+    ·
+    <a href="https://github.com/opopoposiop/VvfM">
+     GitHub
+    </a>
+   </p>
+  </footer>
+ </body>
+</html>
+
+
