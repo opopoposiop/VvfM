@@ -5,12 +5,12 @@
   <meta content="J-O5AVknDOoGeZmMIt8It_xiSTIsqs5Ke5Kr5aalyoA" name="google-site-verification"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   <title>第6回 FPSだけでは見えない引っかかり｜VvfM開発史</title>
-  <meta content="平均FPSだけでは分からない再生の引っかかりと操作の応答 VvfMの編集画面の更新や描画のタイミングを見直した検証と FPSオーバーレイの読み方を紹介します" name="description"/>
+  <meta content="タイムラインでフレームを探し 視点を回し モーフを直して再生する VvfMでその往復を使いやすくするための検証と FPSオーバーレイの読み方を紹介します" name="description"/>
   <link href="https://opopoposiop.github.io/VvfM/development-06.html" rel="canonical"/>
   <meta content="article" property="og:type"/>
   <meta content="ja_JP" property="og:locale"/>
   <meta content="第6回 FPSだけでは見えない引っかかり｜VvfM開発史" property="og:title"/>
-  <meta content="平均FPSだけでは分からない再生の引っかかりと操作の応答 VvfMの編集画面の更新や描画のタイミングを見直した検証と FPSオーバーレイの読み方を紹介します" property="og:description"/>
+  <meta content="タイムラインでフレームを探し 視点を回し モーフを直して再生する VvfMでその往復を使いやすくするための検証と FPSオーバーレイの読み方を紹介します" property="og:description"/>
   <meta content="https://opopoposiop.github.io/VvfM/development-06.html" property="og:url"/>
   <meta content="https://opopoposiop.github.io/VvfM/images/columns/story-06-handdrawn.webp" property="og:image"/>
   <meta content="summary_large_image" name="twitter:card"/>
@@ -47,7 +47,7 @@
       .screen-credits{font-size:14px;line-height:1.7;margin-top:20px}.overlay-group{margin-block:28px}.overlay-group h3{font-size:20px;line-height:1.5}.overlay-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:0}.overlay-fields>div{min-width:0;padding:12px 0;border-bottom:1px solid #d2d2d7;overflow-wrap:anywhere}.overlay-fields dt{font-size:15px;font-weight:600;line-height:1.5}.overlay-fields dd{margin:5px 0 0;font-size:14px;line-height:1.7}.column-app-screen{margin:24px 0}.column-app-screen a:focus-visible{outline:2px solid #0071e3;outline-offset:4px}.column-article li{line-height:1.8}.column-table-scroll th,.column-table-scroll td{white-space:normal}.column-table-scroll th:first-child{text-align:left}@media(max-width:800px){.overlay-fields{grid-template-columns:1fr}}
   </style>
   <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "Article", "headline": "第6回 FPSだけでは見えない引っかかり｜VvfM開発史", "description": "平均FPSだけでは分からない再生の引っかかりと操作の応答 VvfMの編集画面の更新や描画のタイミングを見直した検証と FPSオーバーレイの読み方を紹介します", "url": "https://opopoposiop.github.io/VvfM/development-06.html", "datePublished": "2026-11-21", "dateModified": "2026-11-21", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}, "image": "https://opopoposiop.github.io/VvfM/images/columns/story-06-handdrawn.webp"}
+{"@context": "https://schema.org", "@type": "Article", "headline": "第6回 FPSだけでは見えない引っかかり｜VvfM開発史", "description": "タイムラインでフレームを探し 視点を回し モーフを直して再生する VvfMでその往復を使いやすくするための検証と FPSオーバーレイの読み方を紹介します", "url": "https://opopoposiop.github.io/VvfM/development-06.html", "datePublished": "2026-11-21", "dateModified": "2026-11-21", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}, "image": "https://opopoposiop.github.io/VvfM/images/columns/story-06-handdrawn.webp"}
   </script>
  </head>
  <body class="guide-page">
@@ -120,7 +120,7 @@
     <header class="guide-intro wrap">
      <p class="eyebrow">DEVELOPMENT STORY · 06</p>
      <h1>FPSだけでは見えない引っかかり</h1>
-     <p class="lead">VvfMの操作応答と再生のなめらかさを磨く</p>
+     <p class="lead">止めて 回して 少し直す VvfMの操作性を磨く</p>
      <p class="column-meta">VvfM開発史 第6回</p>
     </header>
     
@@ -128,82 +128,77 @@
    </div>
    <div class="guide-layout wrap column-layout">
     <aside>
-     <nav aria-label="このページの目次" class="guide-toc"><strong>第6回の目次</strong><ol><li><a href="#origin">直したいのは ほんの一か所</a></li><li><a href="#interval">1　平均FPSより気になった 画面が止まる一瞬</a></li><li><a href="#ui-updates">2　再生するたびに モーフ一覧まで作り直していた</a></li><li><a href="#trials">3　処理を減らしても 速くならないことがある</a></li><li><a href="#responsiveness">4　再生がなめらかになることと マウスについてくること</a></li><li><a href="#overlay-reading">5　FPSオーバーレイは どの数字から見るか</a></li><li><a href="#conclusion">おわりに　直したい場所へ すぐ戻れるように</a></li><li><a href="#overlay-fields">FPSオーバーレイ 全項目の読み方</a></li><li><a href="#notes">注記</a></li><li><a href="#glossary">用語解説</a></li><li><a href="#related">関連ページ</a></li></ol></nav>
+     <nav aria-label="このページの目次" class="guide-toc"><strong>第6回の目次</strong><ol><li><a href="#origin">止めて 回して 少し直す</a></li><li><a href="#ui-updates">1　再生ヘッドを動かしても 編集欄を巻き込まない</a></li><li><a href="#responsiveness">2　ドラッグした先の視点が見えるか</a></li><li><a href="#interval">3　直した動きを 再生して確かめる</a></li><li><a href="#trials">4　モーフをいじる手が止まらないか</a></li><li><a href="#overlay-reading">5　FPSオーバーレイは どの数字から見るか</a></li><li><a href="#conclusion">おわりに　もう一度だけ試せる使い心地へ</a></li><li><a href="#overlay-fields">FPSオーバーレイ 全項目の読み方</a></li><li><a href="#notes">注記</a></li><li><a href="#glossary">用語解説</a></li><li><a href="#related">関連ページ</a></li></ol></nav>
     </aside>
     <article class="guide-content column-article">
      
      <section id="origin">
-      <h2>直したいのは ほんの一か所</h2>
-      <p>ボーンの貫通に気づく<br/>
-      あのモーフも使っておけばよかった<br/>
-      直したいのはほんの一か所なのに 出先にはMacしかない</p>
-      <p>そんなときのために作り始めたのが VMD viewer for Macです<br/>
-      目的のコマまで移動して 別の角度から見て モーフを少し直して また再生する<br/>
-      この往復で画面が一瞬止まるたびに 修正したいところから意識がそれてしまいます</p>
-      <p>第1回では モーフ計算で触らなくてよい頂点を見つけました<br/>
-      その後に見えてきたのは <strong>GPUで描く時間だけを縮めても 消えない引っかかりがある</strong>ということです</p>
+      <h2>止めて 回して 少し直す</h2>
+      <p>再生中にボーンの貫通を見つけたら まず止めて 気になったフレームに戻ります<br/>
+      モデルを横から見て 表情にも違和感があればモーフを少し調整する<br/>
+      直したところだけ もう一度再生して確かめる</p>
+      <p>出先にMacしかなくても このくらいの確認と手直しができたら<br/>
+      VvfMを作り始めたときに欲しかったのは そんな使い方です</p>
+      <p>第1回では GPUで描く前のモーフ計算を見直しました<br/>
+      今回追ったのは 編集中に手が止まる場面です<br/>
+      <strong>タイムラインで場所を探すとき 視点を回すとき 直した動きを再生するとき</strong>では 同じ「重い」でも調べる場所が違いました</p>
      </section>
 
-     
-     <section id="interval">
-      <h2>1　平均FPSより気になった 画面が止まる一瞬</h2>
-      <p>同じ平均FPSでも ほぼ等間隔に絵が届く再生と ときどき絵が途切れる再生は違って見えます<br/>
-      そこで開発中は 毎秒の枚数に加えて <strong>次の絵が表示されるまでに何ミリ秒空いたか</strong>を測りました</p>
-      <p>60 fpsで等間隔なら 画面は約16.7 msごとに更新されます<br/>
-      その条件で32 ms以上空いた区間を数えると 平均値に埋もれていた引っかかりが見えてきます<br/>
-      一方で30 fpsの等間隔は約33.3 msです<br/>
-      32 msは同じ条件の試行を比べるための目印で どんな再生にも通用する合否ラインではありません</p>
-      <p>画面の更新が増えても ダンスが早送りになるわけではありません<br/>
-      作品内の時間が正しく進んでいるかは <strong>VMD時計</strong>で 別に確かめます</p>
-     </section>
-
-     
      <section id="ui-updates">
-      <h2>2　再生するたびに モーフ一覧まで作り直していた</h2>
-      <p>モーフのウェイトは再生に合わせて変わります<br/>
-      でも モーフの名前や並び順まで 毎フレーム変わるわけではありません</p>
-      <p>診断用の短い区間では モーフ一覧の表示内容を組み立て直す処理が74回 行が選択されているかを調べる処理が30,340回ありました<br/>
-      v0.58.21では 変化するウェイトの編集欄と 普段は変化しない一覧を分けました<br/>
-      同じ診断区間で一覧の評価は0回になり 編集欄の更新は続きました<br/>
-      タイムラインも 再生ヘッドだけが動くなら 目盛りやモーフ名まで巻き込まないようにしました</p>
-      <p>M2 Maxで人物2体とステージを再生し 変更前後を比べた結果です</p>
-      <div class="column-table-scroll" role="region" aria-label="v0.58.21の変更前後の比較" tabindex="0"><table><caption>M2 Maxで人物2体とステージを再生した変更前後の比較</caption><thead><tr><th scope="col">見たもの</th><th scope="col">変更前</th><th scope="col">変更後</th></tr></thead><tbody><tr><th scope="row">実表示FPS</th><td>49.38</td><td>54.25</td></tr><tr><th scope="row">32 ms以上空いた表示間隔</th><td>152回</td><td>14回</td></tr><tr><th scope="row">VMD時計</th><td>30.00 frame/s</td><td>30.00 frame/s</td></tr></tbody></table></div>
-      <p>平均FPSの差よりも目を引くのは <strong>次の絵まで長く空いた回数が152回から14回に減った</strong>ことです<br/>
-      これはGPUそのものを速くした結果ではなく 編集画面の更新を含む複数の変更をまとめて比べた結果です<a class="note-ref" id="note-ref-2" href="#note-2" aria-label="文末の注記2を読む">[注記2]</a></p>
-      <p>続くv0.58.22では 横スクロールの位置を必要とする部品だけに通知するようにしました<br/>
-      v0.58.23では 次に表示する候補が使われると決まってから必要な確認を行い 使われずに置き換わる候補の確認を省きました<br/>
-      同じ50秒再生を4対比べた後者の試験では 32 ms以上空いた回数の中央値が19.5回から4.5回に減りました</p>
+      <h2>1　再生ヘッドを動かしても 編集欄を巻き込まない</h2>
+      <p>気になったフレームを探して タイムラインを左右に動かす<br/>
+      場所が見つかったら モーフ一覧から項目を選んでウェイトを調整する<br/>
+      見直したのは この一連の操作で 関係のない欄にまで仕事が増えるところでした</p>
+      <p>再生中に変わるのはモーフのウェイトで 名前や並び順は毎フレーム変わりません<br/>
+      それでも短い診断区間で 一覧の表示内容を組み立て直す処理が74回 各行が選択中かを調べる処理が30,340回ありました</p>
+      <p>v0.58.21では <strong>動くウェイトの編集欄と 普段は変わらない一覧を分けました</strong><br/>
+      同じ診断区間で一覧の評価は0回になり ウェイトの表示は更新され続けました<br/>
+      タイムラインでも 再生ヘッドだけが動くときに目盛りやモーフ名を更新する必要はありません<br/>
+      続くv0.58.22では 横スクロールの位置も その情報が必要な部品だけに伝えるようにしました</p>
      </section>
 
-     
-     <section id="trials">
-      <h2>3　処理を減らしても 速くならないことがある</h2>
-      <p>手を入れた案が すべて採用になったわけではありません</p>
-      <p>v0.58.26のモーフ編集の試作は 比較した5対のうち4対で短くなりました<br/>
-      ただし短縮の中央値は3.36 msで 同じ版を測り直したときの揺れは7.65 ms<br/>
-      この試験だけでは短縮を変更の効果と判断できませんでした</p>
-      <p>別の試作では モーフ配列の検査をまとめたところ 逆に長く空く表示間隔が5対すべてで増えました<br/>
-      こうした案は見送りました<br/>
-      減らした処理の数だけで判断せず 同じ作品を動かして 操作と画面表示を確かめるようにしています</p>
-     </section>
-
-     
      <section id="responsiveness">
-      <h2>4　再生がなめらかになることと マウスについてくること</h2>
-      <p>v0.58.27では 特定の反射エフェクトを使う場面で 次の絵をGPUに渡すタイミングを見直しました<br/>
-      前の絵の表示を待つ間も 反射とモデルに必要な情報が同じフレームでそろっていれば 次の描画を先に提出できます</p>
-      <p>静止キーフレーム中心のシーンでは 実表示FPSの中央値が39.25から60.00に上がりました<br/>
-      一方で 人物2体が動く別条件の追加試験では57.87から57.94 fpsでした<br/>
-      60 fpsに届いた数値は 対象とした静止中心のシーンの結果です<a class="note-ref" id="note-ref-3" href="#note-3" aria-label="文末の注記3を読む">[注記3]</a></p>
-      <p>ビューポートを連続で回した試験では また別のことが分かりました<br/>
-      <strong>すべての表示を数えると38.89から47.20 fps</strong><br/>
-      しかし <strong>新しいマウス入力を反映した視点が表示された回数は 毎秒38.40から38.56回</strong>でした</p>
-      <p>絵が出る回数は増えましたが 操作した先の視点が届く回数はほぼ同じです<br/>
-      同じ視点をもう一度描いた絵も 全体のFPSには入ります<br/>
-      だから再生のなめらかさを測る試験とは別に マウスを動かした先の視点がどれだけ届くかも測っています</p>
+      <h2>2　ドラッグした先の視点が見えるか</h2>
+      <p>袖の貫通を横から見たいときは ビューポートをドラッグして角度を探します<br/>
+      そのとき見たいのは ドラッグする前と同じ絵が何枚も出ることより <strong>動かした先の角度が画面に出ること</strong>です</p>
+      <p>v0.58.27の連続ドラッグ試験では 全体の実表示は38.89から47.20 fpsに増えました<br/>
+      ところが <strong>新しいマウス入力を反映した視点が表示された回数は 毎秒38.40から38.56回</strong>で ほぼ変わりませんでした<br/>
+      同じ視点をもう一度描いた絵も 全体のFPSには含まれます</p>
+      <p>この結果から 視点が以前より手についてくるとは言えません<br/>
+      新しい視点が届いた回数と ドラッグしてからその視点が出るまでの待ち時間も別です<br/>
+      再生のFPSだけを見ていると この違いを見落とします</p>
      </section>
 
-     
+     <section id="interval">
+      <h2>3　直した動きを 再生して確かめる</h2>
+      <p>修正した振り付けを短く再生するとき 途中で絵が一拍止まると 動きのクセなのか 表示が途切れたのか判断しづらくなります<br/>
+      そこで毎秒の表示枚数に加えて <strong>次の絵まで長く空いた回数</strong>も数えました</p>
+      <div class="column-table-scroll" role="region" aria-label="v0.58.21の変更前後の比較" tabindex="0"><table><caption>M2 Maxで人物2体とステージを再生した変更前後の比較</caption><thead><tr><th scope="col">見たもの</th><th scope="col">変更前</th><th scope="col">変更後</th></tr></thead><tbody><tr><th scope="row">実表示FPS</th><td>49.38</td><td>54.25</td></tr><tr><th scope="row">32 ms以上空いた表示間隔</th><td>152回</td><td>14回</td></tr><tr><th scope="row">VMD時計</th><td>30.00 frame/s</td><td>30.00 frame/s</td></tr></tbody></table></div>
+      <p>M2 Maxでのv0.58.21の比較では 長く空いた区間が152回から14回に減りました<br/>
+      VMD時計はどちらも30.00 frame/sで 作品が早送りになったわけではありません<br/>
+      編集画面の更新を含む複数の変更の結果で 一覧の見直しだけの効果ではありません<a class="note-ref" id="note-ref-2" href="#note-2" aria-label="文末の注記2を読む">[注記2]</a></p>
+      <p>v0.58.23では 次の表示に使わず置き換わる候補にまで確認をかけないようにしました<br/>
+      同じ50秒の再生を4対比べると 長く空いた回数の中央値は19.5回から4.5回に減りました<br/>
+      ここで用いた32 msは 同じ条件で比較するための目印です<br/>
+      30 fpsで等間隔に表示すれば一コマは約33.3 msなので どんな再生にも使える合否ラインではありません</p>
+      <p>反射を使うv0.58.27の試験では 次の絵をGPUへ渡すタイミングも見直しました<br/>
+      静止キーフレーム中心では実表示の中央値が39.25から60.00 fpsへ上がった一方 人物2体が動く別条件では57.87から57.94 fpsでした<br/>
+      自分の作品で直したところを見返すときも 効果はシーン次第です<a class="note-ref" id="note-ref-3" href="#note-3" aria-label="文末の注記3を読む">[注記3]</a></p>
+     </section>
+
+     <section id="trials">
+      <h2>4　モーフをいじる手が止まらないか</h2>
+      <p>モーフのウェイトを少し動かしたら 顔を見て もう少し戻す<br/>
+      こうした操作の改善は 再生テストとは別に モーフ編集そのものを繰り返して判断しました</p>
+      <p>v0.58.26の試作では 5対のうち4対で処理時間が短くなりました<br/>
+      ただし 短縮の中央値は3.36 msで 同じ版を測り直したときの揺れは7.65 msでした<br/>
+      この差では 操作の手応えが改善したと判断できません<br/>
+      別案ではモーフ配列の検査をまとめたところ 逆に長く空く表示間隔が5対すべてで増えました<br/>
+      どちらの案も採用しませんでした</p>
+      <p>編集の確認では速さだけでなく 停止して一コマ進めたときにモデルと投影動画が要求どおりのフレームにそろうか 保存したVMDを開き直して編集結果が残るかも確かめました<br/>
+      操作にすぐ反応しても 別のコマの絵を見ていたら 手直しの判断を間違えてしまいます</p>
+     </section>
+
      <section id="overlay-reading">
       <h2>5　FPSオーバーレイは どの数字から見るか</h2>
       
@@ -219,11 +214,11 @@
 
      
      <section id="conclusion">
-      <h2>おわりに　直したい場所へ すぐ戻れるように</h2>
-      <p>再生が速くても 停止して一コマ進めたときにモデルが別々の時刻を向いていたら 編集には使いにくいままです<br/>
-      高速化とあわせて 要求したフレームにモデルと投影動画がそろうことや 保存したVMDを読み直して編集結果が残っていることも確かめてきました</p>
-      <p>貫通が気になった場所を探して モーフを少し調整し 別の角度でもう一度見る<br/>
-      その小さな往復を途切れさせないことが VvfMで応答性を磨いてきた理由です</p>
+      <h2>おわりに　もう一度だけ試せる使い心地へ</h2>
+      <p>止めて 角度を変えて 少し直して 再生する<br/>
+      気になるところが残っていたら 同じ場所に戻って もう一度だけ試す</p>
+      <p>VvfMの応答性を磨いてきたのは その往復を続けやすくしたかったからです<br/>
+      平均FPSが上がったかだけでなく <strong>操作した結果を見て 次の一手を決められるか</strong>を基準にしています</p>
      </section>
 
      
