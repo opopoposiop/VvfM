@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="J-O5AVknDOoGeZmMIt8It_xiSTIsqs5Ke5Kr5aalyoA" name="google-site-verification"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>第6回 FPSだけでは見えない引っかかり｜VvfM開発史</title>
+  <meta content="平均FPSだけでは分からない再生の引っかかりと操作の応答 VvfMの編集画面の更新や描画のタイミングを見直した検証と FPSオーバーレイの読み方を紹介します" name="description"/>
+  <link href="https://opopoposiop.github.io/VvfM/development-06.html" rel="canonical"/>
+  <meta content="article" property="og:type"/>
+  <meta content="ja_JP" property="og:locale"/>
+  <meta content="第6回 FPSだけでは見えない引っかかり｜VvfM開発史" property="og:title"/>
+  <meta content="平均FPSだけでは分からない再生の引っかかりと操作の応答 VvfMの編集画面の更新や描画のタイミングを見直した検証と FPSオーバーレイの読み方を紹介します" property="og:description"/>
+  <meta content="https://opopoposiop.github.io/VvfM/development-06.html" property="og:url"/>
+  <meta content="https://opopoposiop.github.io/VvfM/images/columns/story-06-handdrawn.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <link href="style.css" rel="stylesheet"/>
+  <link href="guide.css" rel="stylesheet"/>
+  <link href="column-visuals.css" rel="stylesheet"/>
+  <style>
+   .column-hero{background:#000;color:#f5f5f7}.column-hero .eyebrow,.column-hero .guide-note{color:#a1a1a6}.column-hero .lead{max-width:900px}.column-layout{padding-top:48px}.column-article p{margin-block:0 1.5em}.column-article h2{line-height:1.45}.column-layout .guide-toc li{padding-block:6px}.column-layout .guide-toc a{display:block;padding-block:0}.column-meta{font-size:14px;color:#a1a1a6}@media(max-width:650px){.column-layout{padding-top:24px}}.column-series{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:20px;font-size:14px}.column-series-title{font-weight:600}.column-series ol{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}.column-series a,.column-series [aria-disabled="true"]{display:block;padding:9px 14px;border-radius:10px;background:#f5f5f7}.column-series a[aria-current="page"]{font-weight:600}.column-series [aria-disabled="true"]{color:#76767b;cursor:default}.column-table-scroll{max-width:100%;overflow-x:auto;margin-block:24px}.column-table-scroll table{width:100%;border-collapse:collapse;font-size:14px;white-space:nowrap}.column-table-scroll caption{text-align:left;white-space:normal;color:#515154;padding-bottom:12px}.column-table-scroll th,.column-table-scroll td{padding:12px;border-bottom:1px solid #d2d2d7;text-align:right}.column-table-scroll th:first-child,.column-table-scroll td:nth-child(2){text-align:left}.column-table-scroll thead{background:#f5f5f7}.column-table-scroll:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      /* 本文から読める用語注釈 */
+      .term-ref{display:inline-block;margin-inline:.2em;font-size:.8em;line-height:1.5;text-decoration:underline;text-underline-offset:.2em}
+      .term-ref:focus-visible,.term-back:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      .column-glossary{margin-top:32px;padding-top:20px;border-top:1px solid #d2d2d7}
+      .column-glossary dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:0}
+      .column-glossary .term-entry{padding-block:12px;border-bottom:1px solid #d2d2d7;scroll-margin-top:100px;overflow-wrap:anywhere}
+      .column-glossary dt{font-size:15px;font-weight:600;line-height:1.5}
+      .column-glossary dd{margin:5px 0 0;font-size:14px;line-height:1.7}
+      .column-glossary .term-entry:target{background:#f5f5f7;border-radius:8px}
+      .term-back{display:inline-block;margin-left:8px;min-height:24px;font-size:13px}
+      .term-ref{scroll-margin-top:100px}
+      @media(max-width:800px){.column-glossary dl{grid-template-columns:1fr}}
+      @media(max-width:650px){.column-glossary{margin-top:24px}.term-ref,.term-back{padding-block:4px}}
+      .column-pipeline{white-space:pre-wrap;overflow-wrap:anywhere;padding:24px;border-radius:16px;background:#f5f5f7;font-size:15px;line-height:1.8}
+      .column-upcoming{color:#76767b}
+  
+      /* 記事の補足は用語解説と分けて文末へ */
+      .column-notes{margin-top:32px;padding-top:20px;border-top:1px solid #d2d2d7}
+      .column-notes ol{margin:0;padding-left:1.6em}
+      .column-notes li{padding:8px 0;font-size:14px;line-height:1.7;overflow-wrap:anywhere;scroll-margin-top:100px}
+      .note-ref{white-space:nowrap;font-size:.8em;margin-inline:.25em;text-underline-offset:.2em;scroll-margin-top:100px}
+      .note-ref:focus-visible,.note-back:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      .note-back{display:inline-block;margin-left:8px;padding-block:4px;font-size:13px}
+      .column-notes li:target{background:#f5f5f7}
+    
+      .screen-credits{font-size:14px;line-height:1.7;margin-top:20px}.overlay-group{margin-block:28px}.overlay-group h3{font-size:20px;line-height:1.5}.overlay-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:0}.overlay-fields>div{min-width:0;padding:12px 0;border-bottom:1px solid #d2d2d7;overflow-wrap:anywhere}.overlay-fields dt{font-size:15px;font-weight:600;line-height:1.5}.overlay-fields dd{margin:5px 0 0;font-size:14px;line-height:1.7}.column-app-screen{margin:24px 0}.column-app-screen a:focus-visible{outline:2px solid #0071e3;outline-offset:4px}.column-article li{line-height:1.8}.column-table-scroll th,.column-table-scroll td{white-space:normal}.column-table-scroll th:first-child{text-align:left}@media(max-width:800px){.overlay-fields{grid-template-columns:1fr}}
+  </style>
+  <script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Article", "headline": "第6回 FPSだけでは見えない引っかかり｜VvfM開発史", "description": "平均FPSだけでは分からない再生の引っかかりと操作の応答 VvfMの編集画面の更新や描画のタイミングを見直した検証と FPSオーバーレイの読み方を紹介します", "url": "https://opopoposiop.github.io/VvfM/development-06.html", "datePublished": "2026-11-21", "dateModified": "2026-11-21", "inLanguage": "ja", "isPartOf": {"@type": "WebSite", "name": "VMD Viewer for Mac", "url": "https://opopoposiop.github.io/VvfM/"}, "image": "https://opopoposiop.github.io/VvfM/images/columns/story-06-handdrawn.webp"}
+  </script>
+ </head>
+ <body class="guide-page">
+  <a class="skip" href="#main">
+   本文へ移動
+  </a>
+  <header class="header wrap">
+   <a aria-label="VvfM ホーム" class="brand" href="./">
+    VvfM
+    <span>
+     VMD Viewer for Mac
+    </span>
+   </a>
+   <nav aria-label="メインナビゲーション">
+    <a href="./#features">
+     できること
+    </a>
+    <a href="getting-started.html">
+     始め方
+    </a>
+    <a href="toonshader-hq.html">
+     HQエフェクト
+    </a>
+    <a href="video-export.html">
+     動画出力
+    </a>
+    <a href="./#faq">
+     FAQ
+    </a>
+    <a href="./#development-stories">
+     コラム
+    </a>
+    <a href="https://github.com/opopoposiop/VvfM">
+     GitHub ↗
+    </a>
+   </nav>
+  </header>
+  <main id="main">
+   <nav aria-label="開発史コラム" class="column-series wrap">
+    <span class="column-series-title">
+     開発史コラム
+    </span>
+    <ol>
+     <li>
+      <a href="development-01.html">
+       第1回 GPUだけでは解決しなかった
+      </a>
+     </li>
+     <li>
+      <a href="development-02.html">
+       第2回 20体のVMD再生がなぜ途中から遅くなるのか
+      </a>
+     </li>
+     <li>
+      <a href="development-03.html">
+       第3回 エフェクトを作る楽しさをMacにも
+      </a>
+     </li>
+     <li>
+      <a href="development-04.html">
+       第4回 あのアニメのような陰影をMacで
+      </a>
+     </li>
+          <li><a href="development-05.html">第5回 見るための再生から 残すための動画へ</a></li>
+          <li><a aria-current="page" href="development-06.html">第6回 FPSだけでは見えない引っかかり</a></li>
+          <li><a href="ambiance-01.html">作品ノート 『シネマ』のMMDカメラワーク</a></li>
+    </ol>
+   </nav>
+   <div class="column-hero">
+    <header class="guide-intro wrap">
+     <p class="eyebrow">DEVELOPMENT STORY · 06</p>
+     <h1>FPSだけでは見えない引っかかり</h1>
+     <p class="lead">VvfMの操作応答と再生のなめらかさを磨く</p>
+     <p class="column-meta">VvfM開発史 第6回</p>
+    </header>
+    
+    <figure class="column-eyecatch wrap"><img width="1672" height="941" src="images/columns/story-06-handdrawn.webp" alt="コマを並べた机で 間の空いた一か所を鉛筆で指して確かめる制作者の手描きイラスト" fetchpriority="high"/></figure>
+   </div>
+   <div class="guide-layout wrap column-layout">
+    <aside>
+     <nav aria-label="このページの目次" class="guide-toc"><strong>第6回の目次</strong><ol><li><a href="#origin">直したいのは ほんの一か所</a></li><li><a href="#interval">1　平均FPSより気になった 画面が止まる一瞬</a></li><li><a href="#ui-updates">2　再生するたびに モーフ一覧まで作り直していた</a></li><li><a href="#trials">3　処理を減らしても 速くならないことがある</a></li><li><a href="#responsiveness">4　再生がなめらかになることと マウスについてくること</a></li><li><a href="#overlay-reading">5　FPSオーバーレイは どの数字から見るか</a></li><li><a href="#conclusion">おわりに　直したい場所へ すぐ戻れるように</a></li><li><a href="#overlay-fields">FPSオーバーレイ 全項目の読み方</a></li><li><a href="#notes">注記</a></li><li><a href="#glossary">用語解説</a></li><li><a href="#related">関連ページ</a></li></ol></nav>
+    </aside>
+    <article class="guide-content column-article">
+     
+     <section id="origin">
+      <h2>直したいのは ほんの一か所</h2>
+      <p>ボーンの貫通に気づく<br/>
+      あのモーフも使っておけばよかった<br/>
+      直したいのはほんの一か所なのに 出先にはMacしかない</p>
+      <p>そんなときのために作り始めたのが VMD viewer for Macです<br/>
+      目的のコマまで移動して 別の角度から見て モーフを少し直して また再生する<br/>
+      この往復で画面が一瞬止まるたびに 修正したいところから意識がそれてしまいます</p>
+      <p>第1回では モーフ計算で触らなくてよい頂点を見つけました<br/>
+      その後に見えてきたのは <strong>GPUで描く時間だけを縮めても 消えない引っかかりがある</strong>ということです</p>
+     </section>
+
+     
+     <section id="interval">
+      <h2>1　平均FPSより気になった 画面が止まる一瞬</h2>
+      <p>同じ平均FPSでも ほぼ等間隔に絵が届く再生と ときどき絵が途切れる再生は違って見えます<br/>
+      そこで開発中は 毎秒の枚数に加えて <strong>次の絵が表示されるまでに何ミリ秒空いたか</strong>を測りました</p>
+      <p>60 fpsで等間隔なら 画面は約16.7 msごとに更新されます<br/>
+      その条件で32 ms以上空いた区間を数えると 平均値に埋もれていた引っかかりが見えてきます<br/>
+      一方で30 fpsの等間隔は約33.3 msです<br/>
+      32 msは同じ条件の試行を比べるための目印で どんな再生にも通用する合否ラインではありません</p>
+      <p>画面の更新が増えても ダンスが早送りになるわけではありません<br/>
+      作品内の時間が正しく進んでいるかは <strong>VMD時計</strong>で 別に確かめます</p>
+     </section>
+
+     
+     <section id="ui-updates">
+      <h2>2　再生するたびに モーフ一覧まで作り直していた</h2>
+      <p>モーフのウェイトは再生に合わせて変わります<br/>
+      でも モーフの名前や並び順まで 毎フレーム変わるわけではありません</p>
+      <p>診断用の短い区間では モーフ一覧の表示内容を組み立て直す処理が74回 行が選択されているかを調べる処理が30,340回ありました<br/>
+      v0.58.21では 変化するウェイトの編集欄と 普段は変化しない一覧を分けました<br/>
+      同じ診断区間で一覧の評価は0回になり 編集欄の更新は続きました<br/>
+      タイムラインも 再生ヘッドだけが動くなら 目盛りやモーフ名まで巻き込まないようにしました</p>
+      <p>M2 Maxで人物2体とステージを再生し 変更前後を比べた結果です</p>
+      <div class="column-table-scroll" role="region" aria-label="v0.58.21の変更前後の比較" tabindex="0"><table><caption>M2 Maxで人物2体とステージを再生した変更前後の比較</caption><thead><tr><th scope="col">見たもの</th><th scope="col">変更前</th><th scope="col">変更後</th></tr></thead><tbody><tr><th scope="row">実表示FPS</th><td>49.38</td><td>54.25</td></tr><tr><th scope="row">32 ms以上空いた表示間隔</th><td>152回</td><td>14回</td></tr><tr><th scope="row">VMD時計</th><td>30.00 frame/s</td><td>30.00 frame/s</td></tr></tbody></table></div>
+      <p>平均FPSの差よりも目を引くのは <strong>次の絵まで長く空いた回数が152回から14回に減った</strong>ことです<br/>
+      これはGPUそのものを速くした結果ではなく 編集画面の更新を含む複数の変更をまとめて比べた結果です<a class="note-ref" id="note-ref-2" href="#note-2" aria-label="文末の注記2を読む">[注記2]</a></p>
+      <p>続くv0.58.22では 横スクロールの位置を必要とする部品だけに通知するようにしました<br/>
+      v0.58.23では 次に表示する候補が使われると決まってから必要な確認を行い 使われずに置き換わる候補の確認を省きました<br/>
+      同じ50秒再生を4対比べた後者の試験では 32 ms以上空いた回数の中央値が19.5回から4.5回に減りました</p>
+     </section>
+
+     
+     <section id="trials">
+      <h2>3　処理を減らしても 速くならないことがある</h2>
+      <p>手を入れた案が すべて採用になったわけではありません</p>
+      <p>v0.58.26のモーフ編集の試作は 比較した5対のうち4対で短くなりました<br/>
+      ただし短縮の中央値は3.36 msで 同じ版を測り直したときの揺れは7.65 ms<br/>
+      この試験だけでは短縮を変更の効果と判断できませんでした</p>
+      <p>別の試作では モーフ配列の検査をまとめたところ 逆に長く空く表示間隔が5対すべてで増えました<br/>
+      こうした案は見送りました<br/>
+      減らした処理の数だけで判断せず 同じ作品を動かして 操作と画面表示を確かめるようにしています</p>
+     </section>
+
+     
+     <section id="responsiveness">
+      <h2>4　再生がなめらかになることと マウスについてくること</h2>
+      <p>v0.58.27では 特定の反射エフェクトを使う場面で 次の絵をGPUに渡すタイミングを見直しました<br/>
+      前の絵の表示を待つ間も 反射とモデルに必要な情報が同じフレームでそろっていれば 次の描画を先に提出できます</p>
+      <p>静止キーフレーム中心のシーンでは 実表示FPSの中央値が39.25から60.00に上がりました<br/>
+      一方で 人物2体が動く別条件の追加試験では57.87から57.94 fpsでした<br/>
+      60 fpsに届いた数値は 対象とした静止中心のシーンの結果です<a class="note-ref" id="note-ref-3" href="#note-3" aria-label="文末の注記3を読む">[注記3]</a></p>
+      <p>ビューポートを連続で回した試験では また別のことが分かりました<br/>
+      <strong>すべての表示を数えると38.89から47.20 fps</strong><br/>
+      しかし <strong>新しいマウス入力を反映した視点が表示された回数は 毎秒38.40から38.56回</strong>でした</p>
+      <p>絵が出る回数は増えましたが 操作した先の視点が届く回数はほぼ同じです<br/>
+      同じ視点をもう一度描いた絵も 全体のFPSには入ります<br/>
+      だから再生のなめらかさを測る試験とは別に マウスを動かした先の視点がどれだけ届くかも測っています</p>
+     </section>
+
+     
+     <section id="overlay-reading">
+      <h2>5　FPSオーバーレイは どの数字から見るか</h2>
+      
+      <figure class="column-app-screen"><a href="images/columns/fps-overlay-06.webp" aria-label="FPSオーバーレイの画面例を拡大して見る"><img width="2048" height="1330" src="images/columns/fps-overlay-06.webp" alt="VvfMの再生画面 実表示33.4 fps callback 102.3 fps VMD時計30.0 frame/sを示すFPSオーバーレイ" loading="lazy" decoding="async"/></a></figure>
+      <p><a href="images/columns/fps-overlay-06-detail.webp">FPSオーバーレイを拡大</a></p>
+      <p>再生中に気になったのが画面の引っかかりなら <strong>実表示fps → 表示間隔 p95 → submit間隔</strong>の順が読みやすいです</p>
+      <ul><li><strong>実表示fps</strong>：画面に実際に届いた枚数の目安です　ある画面では callbackが102.3 fpsでも 描画と実表示はどちらも33.4 fpsでした　描画処理が呼ばれた回数を 表示された枚数と混同しないのが最初のポイントです</li><li><strong>表示間隔 p95／p99</strong>：遅い側の間隔を見ます　例ではp50が29.17 msで p95とp99は41.67 msでした　p95が41.67 msなら 測った間隔の約95％がその値以下という読み方です　最長が41.67 msという意味ではありません</li><li><strong>submit間隔・Encode・GPU時間</strong>：提出の間隔がすでに空くなら 描画を渡す前も調べます　例ではEncode平均3.2 ms GPU平均13.7 msでしたが これらを足しても画面の表示間隔にはなりません　工程は並行して動き 待ちも別にあるためです</li><li><strong>VMD時計</strong>：作品の時間が正しく進んでいるかの目安です　実表示33.4 fpsとVMD時計30.0 frame/sが同時に出ても矛盾しません</li><li><strong>姿勢公開 min・age p95</strong>：複数モデルのうち 更新頻度が最も低いモデルや 表示に使える姿勢が作品内の時刻からどれだけ遅れているかを見ます　絵が更新されていても モデルの姿勢まで新しいとは限りません</li></ul>
+      <p>編集で「ドラッグしたのに絵がついてこない」と感じたら 再生のFPSより <strong>入力→姿勢</strong>と<strong>姿勢→表示</strong>を見ます<br/>
+      入力が新しい姿勢に反映される前と その姿勢が画面へ届くまでを分けて考えられます</p>
+      <p>以上はオーバーレイの読み方の例で 本文の性能比較とは別の計測です<a class="note-ref" id="note-ref-1" href="#note-1" aria-label="文末の注記1を読む">[注記1]</a><br/>
+      各行の意味は巻末にまとめました</p>
+     </section>
+
+     
+     <section id="conclusion">
+      <h2>おわりに　直したい場所へ すぐ戻れるように</h2>
+      <p>再生が速くても 停止して一コマ進めたときにモデルが別々の時刻を向いていたら 編集には使いにくいままです<br/>
+      高速化とあわせて 要求したフレームにモデルと投影動画がそろうことや 保存したVMDを読み直して編集結果が残っていることも確かめてきました</p>
+      <p>貫通が気になった場所を探して モーフを少し調整し 別の角度でもう一度見る<br/>
+      その小さな往復を途切れさせないことが VvfMで応答性を磨いてきた理由です</p>
+     </section>
+
+     
+     <section id="overlay-fields"><h2>FPSオーバーレイ 全項目の読み方</h2><p>表示は再生や操作の状態に応じて変わります<br/>
+      常に全項目が並ぶわけではありません<a class="note-ref" id="note-ref-1-2" href="#note-1" aria-label="文末の注記1を読む">[注記1]</a></p>
+     
+     <section class="overlay-group"><h3>描画と準備</h3>
+      <dl class="overlay-fields">
+       <div><dt>描画</dt><dd>描画フレームを提出した頻度（fps）</dd></div>
+
+       <div><dt>callback</dt><dd>描画処理を呼ばれた頻度（fps）　表示された枚数とは別</dd></div>
+
+       <div><dt>VMD時計</dt><dd>実時間1秒にVMDが何フレーム進んだか（frame/s）　通常速度の基準は30</dd></div>
+
+       <div><dt>Scene準備</dt><dd>描画に使うシーン情報を準備する時間（ms）</dd></div>
+
+       <div><dt>姿勢</dt><dd>モデルの姿勢に関わる処理の時間（ms）　細かな内訳は次の表</dd></div>
+
+       <div><dt>MetalFX</dt><dd>MetalFXの準備状態と生成・失敗の記録　生成と失敗は件数でFPSではない</dd></div>
+</dl>
+</section>
+
+     
+     <section class="overlay-group"><h3>姿勢の仕事がどこで待つか</h3>
+      <dl class="overlay-fields">
+       <div><dt>enqueue→dequeue</dt><dd>姿勢の仕事を待ち行列に入れてから取り出すまで（ms）</dd></div>
+
+       <div><dt>dequeue→CPU</dt><dd>取り出してからCPU実行に入るまで（ms）</dd></div>
+
+       <div><dt>評価</dt><dd>新しい姿勢を計算する時間（ms）</dd></div>
+
+       <div><dt>評価完了→MainActor</dt><dd>姿勢の評価終了からメイン側で結果を扱うまで（ms）</dd></div>
+
+       <div><dt>完了</dt><dd>姿勢タスクの完了までの計測（ms）</dd></div>
+
+       <div><dt>公開（時間の行）</dt><dd>計算結果を描画側で使える状態として公開するまでの計測（ms）</dd></div>
+
+       <div><dt>task／公開（件数の行）</dt><dd>姿勢の作業数と 描画側に結果が公開された数</dd></div>
+
+       <div><dt>stale／rev／resource（件数の行）</dt><dd>古くなった作業・処理時点の更新番号との不一致・リソース条件に関する件数　理由別の値は重複する場合がある</dd></div>
+
+       <div><dt>backlog（taskの行）</dt><dd>まだ終わっていない姿勢作業の積み残し</dd></div>
+</dl>
+</section>
+
+     
+     <section class="overlay-group"><h3>描画に使った姿勢とモデル別の内訳</h3>
+      <dl class="overlay-fields">
+       <div><dt>姿勢公開 min</dt><dd>対象モデルの中で最も低い姿勢の公開頻度（回／秒）</dd></div>
+
+       <div><dt>age／age p95</dt><dd>今のVMDフレームと公開済み姿勢のフレームの差（フレーム）　p95で遅い側を見る</dd></div>
+
+       <div><dt>skew</dt><dd>モデル同士の姿勢公開世代番号の差（gen）　秒数やVMDフレーム数ではない</dd></div>
+
+       <div><dt>stale（姿勢状態の行）</dt><dd>同じ姿勢を連続で描画に使った回数の最大値</dd></div>
+
+       <div><dt>backlog（姿勢状態の行）</dt><dd>対象の姿勢処理に残る積み残しの目安</dd></div>
+
+       <div><dt>モデル名</dt><dd>どのモデルの値か　個別表示は先頭4モデルまでなので全体のminと照合するときは注意</dd></div>
+
+       <div><dt>P</dt><dd>姿勢の公開頻度（回／秒）</dd></div>
+
+       <div><dt>E</dt><dd>姿勢の評価時間（ms）</dd></div>
+
+       <div><dt>Q</dt><dd>姿勢の仕事の待ち時間（ms）</dd></div>
+
+       <div><dt>B</dt><dd>物理計算の積み残し</dd></div>
+
+       <div><dt>F</dt><dd>完了したフレーム／要求したフレーム</dd></div>
+
+       <div><dt>A</dt><dd>未完了の作業が継続している時間（ms）</dd></div>
+</dl>
+</section>
+
+     
+     <section class="overlay-group"><h3>GPU・メモリ・画面に届くまで</h3>
+      <dl class="overlay-fields">
+       <div><dt>Encode</dt><dd>CPUが描画命令を準備する時間（ms）</dd></div>
+
+       <div><dt>GPU時間</dt><dd>GPUで計測対象の命令を実行する時間（ms）　表示間隔そのものではない</dd></div>
+
+       <div><dt>待機D／S</dt><dd>描画経路内の2種類の待機の内訳（ms）　操作から画面に届くまでの総時間ではない</dd></div>
+
+       <div><dt>モーフ</dt><dd>その時点で使われているモーフ処理方式</dd></div>
+
+       <div><dt>GPU割当量</dt><dd>Metal側が確保しているメモリ量</dd></div>
+
+       <div><dt>RSS</dt><dd>アプリ全体で物理メモリに載っている領域の大きさ　GPU割当量と単純に足さない</dd></div>
+
+       <div><dt>実表示fps</dt><dd>実際の表示時刻の間隔から求めた毎秒の表示頻度</dd></div>
+
+       <div><dt>表示間隔 p50／p95／p99</dt><dd>表示から次の表示まで（ms）の中央値と遅い側の値　p99も最大値とは別</dd></div>
+
+       <div><dt>submit間隔</dt><dd>描画を提出してから次を提出するまでの間隔（ms）</dd></div>
+
+       <div><dt>drop</dt><dd>無効な表示時刻として集計された件数　0はあらゆるコマ落ちがないという意味ではない</dd></div>
+
+       <div><dt>Main停止</dt><dd>メイン側の定期確認が予定からどれだけ遅れたか（ms）　個々の操作の総遅延ではない</dd></div>
+
+       <div><dt>tick</dt><dd>再生時計の更新間隔（ms）　画面が更新された間隔とは別</dd></div>
+</dl>
+</section>
+
+     
+     <section class="overlay-group"><h3>編集や特定の状態で表示される項目</h3>
+      <dl class="overlay-fields">
+       <div><dt>編集更新</dt><dd>操作で生じた編集更新の計測　通常の再生頻度とは分けて見る</dd></div>
+
+       <div><dt>オンデマンド描画</dt><dd>編集など 必要になったときに要求した描画の計測</dd></div>
+
+       <div><dt>入力→姿勢</dt><dd>編集入力から対象の姿勢までの時間（ms）</dd></div>
+
+       <div><dt>姿勢→GPU完了</dt><dd>姿勢から対象の描画処理をGPUで完了するまで（ms）</dd></div>
+
+       <div><dt>姿勢→表示</dt><dd>姿勢から対象の絵が表示されるまで（ms）</dd></div>
+
+       <div><dt>物理追従</dt><dd>物理計算が要求された進行に追いついているかを見る項目</dd></div>
+
+       <div><dt>計測区間に姿勢完了なし</dt><dd>その区間に完了試料がなかったという表示　0 msで終わったという意味ではない</dd></div>
+</dl>
+</section>
+
+     </section>
+
+     
+     <section id="notes" class="column-notes"><h2>注記</h2><ol>
+     
+       <li id="note-1" tabindex="-1">オーバーレイの定義は開発版 v0.58.30（build 657）で確認したものです　再生画面の例は画像から版を特定できず 本文の性能比較と同一条件ではありません <a class="note-back" href="#note-ref-1" aria-label="注記1の参照箇所1へ戻る">本文 1へ戻る ↑</a> <a class="note-back" href="#note-ref-1-2" aria-label="注記1の参照箇所2へ戻る">本文 2へ戻る ↑</a></li>
+     
+       <li id="note-2" tabindex="-1">v0.58.21の比較はM2 Maxで人物2体とステージ・1080p・HQ Toon・アンチエイリアスなし　50秒再生の中央47.8秒を測った各1走行です　build 626／627の複数の変更をまとめた比較で 個別の寄与は分離していません <a class="note-back" href="#note-ref-2" aria-label="注記2の参照箇所1へ戻る">本文へ戻る ↑</a></li>
+     
+       <li id="note-3" tabindex="-1">v0.58.27の60 fpsはM2 Max・内蔵120 Hz画面・Stage07の静止版ペンライト・単独のMMDayo SSR・1080p・HQ Toon・AA／物理OFF・60 fps上限での5走行の中央値です　動く人物の追加試験は各1走行で 他の作品や書き出しへは一般化できません <a class="note-back" href="#note-ref-3" aria-label="注記3の参照箇所1へ戻る">本文へ戻る ↑</a></li>
+     </ol><p class="screen-credits">画面例の使用素材<br/>
+モデル くれよん（<a href="https://www.nicovideo.jp/watch/sm36384153">浅草みどり</a> ／ <a href="https://www.nicovideo.jp/watch/sm36519353">水崎ツバメ</a>）<br/>
+楽曲・ダンスモーション <a href="https://youtu.be/J66gqneY518">HIMEHINA『フランケンシュタインの怪物』</a><br/>
+ステージ・観客 <a href="https://bowlroll.net/file/364221">しおむすび</a></p></section>
+
+     
+     <section id="glossary" class="column-glossary"><h2>用語解説</h2>
+      <dl>
+     
+       <div class="term-entry"><dt>FPS</dt><dd>1秒あたりのフレーム数　描画提出と実表示では数え方が異なる</dd></div>
+
+     
+       <div class="term-entry"><dt>GPU</dt><dd>画面の描画や大量の並列計算を担当する処理装置</dd></div>
+
+     
+       <div class="term-entry"><dt>ミリ秒／ms</dt><dd>1秒の1,000分の1　32msは0.032秒</dd></div>
+
+     
+       <div class="term-entry"><dt>評価／再評価</dt><dd>表示に必要な情報や画面構成を組み立て直す処理　実描画とは別</dd></div>
+
+     
+       <div class="term-entry"><dt>アンチエイリアス</dt><dd>輪郭のギザギザを目立ちにくくする処理</dd></div>
+
+     
+       <div class="term-entry"><dt>SSR</dt><dd>画面内の情報を使う反射表現の方式　本文の性能値はVvfMの対象実装と条件に限る</dd></div>
+
+     
+       <div class="term-entry"><dt>中央値</dt><dd>数値を順に並べたとき中央に来る値　平均値とは異なる</dd></div>
+
+     
+       <div class="term-entry"><dt>p95／p99</dt><dd>測定値の約95％／99％がその値以下になる境目</dd></div>
+
+     
+       <div class="term-entry"><dt>MainActor</dt><dd>主に画面や操作に関する処理を扱う実行場所</dd></div>
+
+     </dl>
+</section>
+
+     
+     <section id="related" class="guide-next"><h2>関連ページ</h2><ul><li><a href="development-05.html">第5回 見るための再生から 残すための動画へ</a></li><li><a href="development-01.html">第1回 GPUだけでは解決しなかった</a></li><li><a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md">一般ユーザーマニュアル</a></li><li><a href="./#development-stories">トップページの開発史へ戻る</a></li></ul></section>
+
+    </article>
+   </div>
+  </main>
+  <footer class="wrap">
+   <p>
+    <strong>
+     VMD Viewer for Mac / VvfM
+    </strong>
+   </p>
+   <p>
+    <a href="./">
+     ホーム
+    </a>
+    ·
+    <a href="https://github.com/opopoposiop/VvfM">
+     GitHub
+    </a>
+   </p>
+  </footer>
+ </body>
+</html>
+
+
