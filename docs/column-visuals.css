@@ -18,3 +18,16 @@
 .usage-illustration{display:block;width:100%;height:auto;aspect-ratio:1672/941;object-fit:contain;margin:0 0 20px;border-radius:16px;background:#faf6ef}
 #features .usage-illustration-note{font-size:12px;color:var(--muted);margin:18px 0 0;text-align:right}
 @media(max-width:760px){#features .cards{gap:36px}.usage-illustration{margin-bottom:16px;border-radius:12px}#features .usage-illustration-note{text-align:left}}
+
+/* Match each column heading to its data and align wrapped cells at the top. */
+.column-table-scroll th,
+.column-table-scroll td {
+  vertical-align: top;
+  text-align: right;
+}
+.column-table-scroll th:first-child,
+.column-table-scroll td:first-child,
+.column-table-scroll .column-table-text-second th:nth-child(2),
+.column-table-scroll .column-table-text-second td:nth-child(2) {
+  text-align: left;
+}
