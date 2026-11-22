@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第7回 あの表情をもう一度 VvfMのタイムラインで一瞬を直す｜VvfM開発史</title>
+  <meta name="description" content="VMD再生に合わせて流れるタイムラインと WAV波形を目印にするDTMソフトのような操作性 赤い再生ヘッドの中央固定と スクロール改善の開発過程を紹介します">
+  <link rel="canonical" href="https://opopoposiop.github.io/VvfM/development-07.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="第7回 あの表情をもう一度 VvfMのタイムラインで一瞬を直す｜VvfM開発史">
+  <meta property="og:description" content="VMD再生に合わせて流れるタイムラインと WAV波形を目印にするDTMソフトのような操作性 赤い再生ヘッドの中央固定と スクロール改善の開発過程を紹介します">
+  <meta property="og:url" content="https://opopoposiop.github.io/VvfM/development-07.html">
+  <meta property="og:image" content="https://opopoposiop.github.io/VvfM/images/columns/VvfM-07-morph-timeline-build569.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="guide.css">
+  <link href="column-visuals.css?v=f1804a3" rel="stylesheet"/>
+  <style>
+   .column-hero{background:#000;color:#f5f5f7}.column-hero .eyebrow,.column-hero .guide-note{color:#a1a1a6}.column-hero .lead{max-width:900px}.column-layout{padding-top:48px}.column-article p{margin-block:0 1.5em}.column-article h2{line-height:1.45}.column-layout .guide-toc li{padding-block:6px}.column-layout .guide-toc a{display:block;padding-block:0}.column-meta{font-size:14px;color:#a1a1a6}@media(max-width:650px){.column-layout{padding-top:24px}}.column-series{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:20px;font-size:14px}.column-series-title{font-weight:600}.column-series ol{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}.column-series a,.column-series [aria-disabled="true"]{display:block;padding:9px 14px;border-radius:10px;background:#f5f5f7}.column-series a[aria-current="page"]{font-weight:600}.column-series [aria-disabled="true"]{color:#76767b;cursor:default}.column-table-scroll{max-width:100%;overflow-x:auto;margin-block:24px}.column-table-scroll table{width:100%;border-collapse:collapse;font-size:14px;white-space:nowrap}.column-table-scroll caption{text-align:left;white-space:normal;color:#515154;padding-bottom:12px}.column-table-scroll th,.column-table-scroll td{padding:12px;border-bottom:1px solid #d2d2d7}.column-table-scroll thead{background:#f5f5f7}.column-table-scroll:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      /* 本文から読める用語注釈 */
+      .term-ref{display:inline-block;margin-inline:.2em;font-size:.8em;line-height:1.5;text-decoration:underline;text-underline-offset:.2em}
+      .term-ref:focus-visible,.term-back:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      .column-glossary{margin-top:32px;padding-top:20px;border-top:1px solid #d2d2d7}
+      .column-glossary dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:0}
+      .column-glossary .term-entry{padding-block:12px;border-bottom:1px solid #d2d2d7;scroll-margin-top:100px;overflow-wrap:anywhere}
+      .column-glossary dt{font-size:15px;font-weight:600;line-height:1.5}
+      .column-glossary dd{margin:5px 0 0;font-size:14px;line-height:1.7}
+      .column-glossary .term-entry:target{background:#f5f5f7;border-radius:8px}
+      .term-back{display:inline-block;margin-left:8px;min-height:24px;font-size:13px}
+      .term-ref{scroll-margin-top:100px}
+      @media(max-width:800px){.column-glossary dl{grid-template-columns:1fr}}
+      @media(max-width:650px){.column-glossary{margin-top:24px}.term-ref,.term-back{padding-block:4px}}
+      .column-pipeline{white-space:pre-wrap;overflow-wrap:anywhere;padding:24px;border-radius:16px;background:#f5f5f7;font-size:15px;line-height:1.8}
+      .column-upcoming{color:#76767b}
+  
+      /* 記事の補足は用語解説と分けて文末へ */
+      .column-notes{margin-top:32px;padding-top:20px;border-top:1px solid #d2d2d7}
+      .column-notes ol{margin:0;padding-left:1.6em}
+      .column-notes li{padding:8px 0;font-size:14px;line-height:1.7;overflow-wrap:anywhere;scroll-margin-top:100px}
+      .note-ref{white-space:nowrap;font-size:.8em;margin-inline:.25em;text-underline-offset:.2em;scroll-margin-top:100px}
+      .note-ref:focus-visible,.note-back:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      .note-back{display:inline-block;margin-left:8px;padding-block:4px;font-size:13px}
+      .column-notes li:target{background:#f5f5f7}
+    
+      .screen-credits{font-size:14px;line-height:1.7;margin-top:20px}.overlay-group{margin-block:28px}.overlay-group h3{font-size:20px;line-height:1.5}.overlay-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:0}.overlay-fields>div{min-width:0;padding:12px 0;border-bottom:1px solid #d2d2d7;overflow-wrap:anywhere}.overlay-fields dt{font-size:15px;font-weight:600;line-height:1.5}.overlay-fields dd{margin:5px 0 0;font-size:14px;line-height:1.7}.column-app-screen{margin:24px 0}.column-app-screen a:focus-visible{outline:2px solid #0071e3;outline-offset:4px}.column-article li{line-height:1.8}.column-table-scroll th,.column-table-scroll td{white-space:normal}@media(max-width:800px){.overlay-fields{grid-template-columns:1fr}}
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"第7回 あの表情をもう一度 VvfMのタイムラインで一瞬を直す","description":"VMD再生に合わせて流れるタイムラインと WAV波形を目印にするDTMソフトのような操作性 赤い再生ヘッドの中央固定と スクロール改善の開発過程を紹介します","url":"https://opopoposiop.github.io/VvfM/development-07.html","datePublished":"2026-11-23","dateModified":"2026-11-23","inLanguage":"ja","isPartOf":{"@type":"WebSite","name":"VMD Viewer for Mac","url":"https://opopoposiop.github.io/VvfM/"},"image":"https://opopoposiop.github.io/VvfM/images/columns/VvfM-07-morph-timeline-build569.jpg"}</script>
+</head>
+ <body class="guide-page">
+  <a class="skip" href="#main">
+   本文へ移動
+  </a>
+  <header class="header wrap">
+   <a aria-label="VvfM ホーム" class="brand" href="./">
+    VvfM
+    <span>
+     VMD Viewer for Mac
+    </span>
+   </a>
+   <nav aria-label="メインナビゲーション">
+    <a href="./#features">
+     できること
+    </a>
+    <a href="getting-started.html">
+     始め方
+    </a>
+    <a href="toonshader-hq.html">
+     HQエフェクト
+    </a>
+    <a href="video-export.html">
+     動画出力
+    </a>
+    <a href="./#faq">
+     FAQ
+    </a>
+    <a href="./#development-stories">
+     コラム
+    </a>
+    <a href="https://github.com/opopoposiop/VvfM">
+     GitHub ↗
+    </a>
+   </nav>
+  </header>
+  <main id="main">
+   <nav aria-label="開発史コラム" class="column-series wrap">
+    <span class="column-series-title">
+     開発史コラム
+    </span>
+    <ol>
+     <li>
+      <a href="development-01.html">
+       第1回 GPUだけでは解決しなかった
+      </a>
+     </li>
+     <li>
+      <a href="development-02.html">
+       第2回 20体のVMD再生がなぜ途中から遅くなるのか
+      </a>
+     </li>
+     <li>
+      <a href="development-03.html">
+       第3回 エフェクトを作る楽しさをMacにも
+      </a>
+     </li>
+     <li>
+      <a href="development-04.html">
+       第4回 あのアニメのような陰影をMacで
+      </a>
+     </li>
+          <li><a href="development-05.html">第5回 見るための再生から 残すための動画へ</a></li>
+          <li><a href="ambiance-01.html">作品ノート 『シネマ』のMMDカメラワーク</a></li>
+          <li><a href="development-06.html">第6回 FPSだけでは見えない引っかかり</a></li>
+          <li><a href="development-07.html" aria-current="page">第7回 あの表情をもう一度</a></li>
+    </ol>
+   </nav>
+    <div class="column-hero">
+      <header class="guide-intro wrap">
+        <p class="eyebrow">DEVELOPMENT STORY · 07</p>
+        <h1>あの表情をもう一度</h1>
+        <p class="lead">VvfMのタイムラインで一瞬を直す</p>
+        <p class="column-meta">VvfM開発史 第7回</p>
+      </header>
+    </div>
+    <div class="guide-layout wrap column-layout">
+      <aside>
+        <nav class="guide-toc" aria-label="このページの目次">
+          <strong>第7回の目次</strong>
+          <ol>
+            <li><a href="#origin">あのモーフを使えばよかった</a></li>
+            <li><a href="#waveform">波形を見ながら 動きの位置を探す</a></li>
+            <li><a href="#centered-playhead">赤線を追う代わりに 赤線の下で時間を送る</a></li>
+            <li><a href="#scroll-performance">更新を増やす前に スクロールで何が動くかを調べた</a></li>
+            <li><a href="#morph-edit">笑顔の強さと 出るタイミングを分けて直す</a></li>
+            <li><a href="#glossary">用語解説</a></li>
+            <li><a href="#notes">注記</a></li>
+            <li><a href="#related">関連ページ</a></li>
+          </ol>
+        </nav>
+      </aside>
+      <article class="guide-content column-article">
+    <section id="origin">
+      <p>「あのモーフを使えばよかった！」</p>
+      <p>たとえば ダンスの途中でふっと笑うカット 止めて見ると悪くないのに 通して見ると笑顔が少し早い 直したいのはほんの数コマ でも出先で手元にはMacしかない そんなときにその場で手を入れられるようにしたいというのが VMD Viewer for Mac（VvfM）の出発点のひとつでした</p>
+      <p>第6回では フレームを送ったときや視点を動かしたときの手応えを取り上げました 今回は画面の下にあるタイムラインです モデルが踊っている間に 今の動きが時間軸のどこにあるかをどう見せるか そこから数コマ戻って直す操作を どうつなげるか 開発中は 赤い線が落ち着かないという違和感が 大きな見直しのきっかけになりました</p>
+    </section>
+
+    <section id="waveform">
+      <h2>波形を見ながら 動きの位置を探す</h2>
+      <p>操作を考えるうえで意識したのは DTMソフトで曲を編集するときの感覚です 音を聴きながら波形を目で追い 気になるところで止めて 少し戻す 同じ数秒を繰り返せると 音に対して動きが早いのか遅いのかを考えやすくなります</p>
+      <p>v0.3.0のモーフタイムラインには フレームの目盛りとモーフ名を見失わない表示や WAV波形との位置合わせ 再生に合わせた横スクロールが入りました 菱形はキーがある時刻を示し グラフの高さはモーフの値を表します 波形の山が目印になれば 同じ軸の上で「この音のすぐあとに表情を出したい」と考えられます 縮小して全体を眺めることも いま見ているコマを基準に拡大して隣のキーを探すこともできます</p>
+      <p>DTMソフトから取り入れたかったのは 音と動きを同じ時間軸に置いて <strong>再生した流れのまま編集する場所を見つけられること</strong>でした</p>
+      <figure class="column-app-screen">
+        <a href="images/columns/VvfM-07-morph-timeline-build569.jpg" aria-label="実アプリ画面を拡大して見る"><img src="images/columns/VvfM-07-morph-timeline-build569.jpg" alt="人物のプレビューと まばたき・笑いのモーフキー WAV波形 赤い再生ヘッドが見えるVvfMのタイムライン" width="1600" height="1036" loading="lazy" decoding="async"></a>
+        <figcaption>v0.58.4／build 569　モーフのキーとWAV波形を同じ軸で見られる公開ガイドの実画面</figcaption>
+      </figure>
+    </section>
+
+    <section id="centered-playhead">
+      <h2>赤線を追う代わりに 赤線の下で時間を送る</h2>
+      <p>開発中の要望には VMD再生中にボーン・モーフ・カメラの赤線が振動するように見えるので一定の位置に固定したい というものがありました 当時の方式では 線が表示範囲の端へ近づいてから画面が追いかけていたため 線と目盛りの両方に目を配る必要がありました</p>
+      <p>そこで <strong>再生中はグラフの中央を目印にして その下を目盛り・キー・波形が流れる</strong>方式へ 見たい時刻がいつも同じ場所に来るので 目線を大きく横へ振らずにビューポートと見比べられます 開発チャットでフレーム表示とWAV波形の赤線をそろえるよう依頼し v0.47.0で波形側の別タイマーと別の赤線をなくしていましたが 中央固定ではさらに 赤線とスクロールの位置を同じ再生時刻から求めました</p>
+      <p>試作では 手で操作したあとに少し待ってから自動追従へ戻す案も試しました 次のビルドでは 再生中にカメラやタイムラインを触っていても追従を続け 停止中に手で動かした位置はそのままにしました <strong>流れを見ている間は自動で送り 止めて探す間は勝手に動かさない</strong> 再生と編集で 手に委ねる範囲を分けたところが転機でした</p>
+      <figure class="column-app-screen">
+        <a href="images/columns/VvfM-07-playhead-follow-build468.jpg" aria-label="実アプリ画面を拡大して見る"><img src="images/columns/VvfM-07-playhead-follow-build468.jpg" alt="VMDを再生中のVvfMで 赤い再生ヘッドがタイムラインの中央にあり 下段にWAV波形が見える画面" width="1600" height="972" loading="lazy" decoding="async"></a>
+        <figcaption>v0.57.7／build 468　VMD再生中に赤線が中央にある開発時の画面　上の図とは別のビルド</figcaption>
+      </figure>
+    </section>
+
+    <section id="scroll-performance">
+      <h2>更新を増やす前に スクロールで何が動くかを調べた</h2>
+      <p>中央で追えるようになっても ときどき表示が詰まると流れは途切れます v0.56.5では ディスプレイの更新に合わせて赤線とスクロールを動かす候補を試しました 編集画面の再評価は減ったものの 更新の間隔が長くなる側ではむしろ悪化 v0.56.7の追加試験でも タイムライン上の位置のずれが小さくなる一方で 長い更新待ちが残りました 位置が合うだけでは滑らかになったとは言えないため この方式は既定にしませんでした</p>
+      <p>このあと開発チャットでは 「再生スクロールを滑らかにする」ことと 「現在フレームを中心に拡大できるようにする」ことを別々に挙げています v0.56.49では後者を採用しました 音に合わせたいコマを見つけたら そこを基準に拡大して前後のキーを探せます 一方 スクロールの試験では長い更新待ちにばらつきが残り この版では従来の表示方式を維持しました</p>
+      <p>その後のCodexとのやり取りでは build 627の50秒再生で残った <strong>32 ms以上の表示間隔14回</strong>と 自動スクロール中の再生ヘッド更新との関係を調べました 横に送っているだけなのに 横位置の変更がモーフ編集画面全体に伝わり 同じ一覧を表示するための処理まで繰り返していたからです</p>
+      <p>v0.58.22では 横位置の通知先をスクロールバー側に絞りました 横位置は引き続き動きますが 編集画面本体はその通知だけでは組み立て直しません 詳細ログを取った比較の1組では <strong>モーフ編集画面本体を再評価した回数が1,254回から0回に</strong> 同じM2 Max・同じ作品を50秒ずつ再生した通常条件の3組でも 32 ms以上空いたビューポートの表示間隔は22→12回・9→8回・19→18回と減りました 回数の減り方は試行ごとに違いましたが 横スクロールに不要な処理を切り離せたことは確認できました</p>
+      <p>検証では性能とは別に 操作のつながりも見ました たとえば フレームバーをドラッグ後に同じ位置でマウスボタンを離し すぐ拡大すると 縮尺が変わったためにもう一度シークして時間軸が逆戻りすることがありました 最後に置いたポインターが同じ位置なら 移動済みの操作を重ねて送らないようにしました ドラッグ直後のズームや短いループなど <strong>作品を直すときの操作を続けて行っても 見ていた場所を失わないこと</strong>を確かめたのも この版のポイントです</p>
+    </section>
+
+    <section id="morph-edit">
+      <h2>笑顔の強さと 出るタイミングを分けて直す</h2>
+      <p>冒頭の笑顔に戻ります 再生を止め モーフモードで触りたい行を表示します 笑顔が強く見えたコマに ちょうどキーがあるとは限りません 前後のキーの間で表情が変わっている途中かもしれないので 顔を見ながら数コマ戻し 菱形にポインターを重ねて登録値を読みます</p>
+      <p>笑顔が強すぎるなら キーのフレームで値を少し下げて試します 画面で試した値をキーに残すには「キー更新」で確定します 同じカットの表情を見比べたいなら カメラもフレームもそのままです</p>
+      <p>一方 表情はそのままで笑い始めが早いなら 値を戻して 菱形を右へ少し移します グラフは <strong>横がフレーム 縦がモーフの値</strong>です 斜めに動かせば値も変わり得るので 移動後に登録値を確認します そのあと短くリピートして 顔が上がる動きと笑顔がどこで重なるかを見ます</p>
+      <p>波形を目印に探す 止めてひとつ直す 少し戻して同じ音からもう一度見る タイムラインを滑らかに送りたかったのは この行き来を途中で途切れさせたくなかったからです</p>
+    </section>
+    <section id="glossary" class="column-glossary">
+      <h2>用語解説</h2>
+      <dl>
+        <div class="term-entry"><dt>DTMソフト（DAW）</dt><dd>録音や音楽編集のためのソフト ここでは音声波形と再生位置を同じ時間軸で見ながら編集する操作を指す</dd></div>
+        <div class="term-entry"><dt>ビューポート</dt><dd>モデルやステージを表示する作業画面</dd></div>
+      </dl>
+    </section>
+    <section id="notes" class="column-notes">
+      <h2>注記</h2>
+      <ol>
+        <li>笑顔は操作を説明するための例で 特定の公開作品で実際に行った修正ではありません モーフキーのドラッグ操作はv0.58.25以降を前提としています 比較では移動先に同じモーフのキーがないフレームを使います</li>
+        <li>中央固定と追従の試作は開発ビルド229／230の記録に基づきます 229は未公開の検証ビルドです 表示更新の上限はタイムラインの描画側の話で v0.56.2以降の当時の変更ではVMD・音声・物理・書き出しの時計とは分けています</li>
+        <li>再評価回数はモーフ編集画面本体の表示内容を組み立て直す処理の計数で 総描画回数ではありません 表示間隔は一作品のビューポート実測であり 横スクロールの更新頻度や全環境での滑らかさを測ったものではありません</li>
+        <li>操作の詳細：<a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md#タイムラインの基本">VvfM ガイド「タイムラインの基本」</a> ／ <a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md#モーフタイムラインの見方">モーフタイムラインの見方</a></li>
+        <li>掲載画像は別ビルドの静止画です 連続した2コマの比較やスクロール速度の実測ではありません</li>
+        <li>画像の素材：浅草みどり・水崎ツバメモデル <a href="https://www.nicovideo.jp/watch/sm36384153">くれよん</a> ／ ステージ・観客 しおむすび ／ 楽曲・ダンスモーション HIMEHINA『フランケンシュタインの怪物』 その他の素材は<a href="https://www.nicovideo.jp/watch/sm47023510">作例動画のクレジット</a>をご覧ください</li>
+      </ol>
+    </section>
+    <section id="related" class="guide-next">
+      <h2>関連ページ</h2>
+      <ul>
+        <li><a href="development-06.html">第6回 FPSだけでは見えない引っかかり</a></li>
+        <li><a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md">一般ユーザーマニュアル</a></li>
+        <li><a href="./#development-stories">トップページの開発史へ戻る</a></li>
+      </ul>
+    </section>
+      </article>
+    </div>
+    </main>
+  <footer class="wrap">
+   <p>
+    <strong>
+     VMD Viewer for Mac / VvfM
+    </strong>
+   </p>
+   <p>
+    <a href="./">
+     ホーム
+    </a>
+    ·
+    <a href="https://github.com/opopoposiop/VvfM">
+     GitHub
+    </a>
+   </p>
+  </footer>
+ </body>
+</html>
