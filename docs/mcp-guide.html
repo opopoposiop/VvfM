@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- Google Tag Manager -->
+<script>
+(function (w, d, container) {
+  w.dataLayer = w.dataLayer || [];
+  w.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+  var tag = d.createElement('script');
+  tag.async = true;
+  tag.src = 'https://www.googletagmanager.com/gtm.js?id=' + container;
+  d.head.appendChild(tag);
+})(window, document, 'GTM-W75JZ67D');
+</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8">
+<meta name="google-site-verification" content="J-O5AVknDOoGeZmMIt8It_xiSTIsqs5Ke5Kr5aalyoA" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VMD Viewer for Mac MCP はじめての操作マニュアル</title>
+<meta name="description" content="VvfM v0.59.19のCodex連携ガイド 同じMacでの接続から プレビュー 表情キーの登録と取り消しまで">
+<link rel="canonical" href="https://opopoposiop.github.io/VvfM/mcp-guide.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="VMD Viewer for Mac MCP はじめての操作マニュアル">
+<meta property="og:description" content="VvfM v0.59.19のCodex連携ガイド 同じMacでの接続から プレビュー 表情キーの登録と取り消しまで">
+<meta property="og:url" content="https://opopoposiop.github.io/VvfM/mcp-guide.html">
+<meta property="og:image" content="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/vvfm-eyecatch.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="guide.css">
+
+<style>
+.mcp-manual pre{padding:16px 20px;border-radius:12px;background:#f5f5f7;overflow-wrap:anywhere;white-space:pre-wrap;line-height:1.6}
+.mcp-manual .mcp-table{overflow:auto;max-width:100%;margin:18px 0}
+.mcp-manual table{width:100%;border-collapse:collapse;font-size:15px}
+.mcp-manual th,.mcp-manual td{padding:12px 10px;border-bottom:1px solid #d2d2d7;text-align:left;vertical-align:top;line-height:1.7}
+.mcp-manual thead th{background:#f5f5f7}
+.mcp-manual blockquote{margin-inline:0}
+</style>
+</head>
+<body class="guide-page">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W75JZ67D" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<a class="skip" href="#main">本文へ移動</a>
+<header class="header wrap">
+      <a class="brand" href="./" aria-label="VvfM ホーム">VvfM<span>VMD Viewer for Mac</span></a>
+      <nav aria-label="メインナビゲーション">
+        <a href="./#features">できること</a>
+        <a href="getting-started.html">始め方</a>
+        <a href="toonshader-hq.html">HQエフェクト</a>
+        <a href="video-export.html">動画出力</a>
+        <a href="./#faq">FAQ</a>
+        <a href="./#development-stories">コラム</a>
+        <a href="https://github.com/opopoposiop/VvfM">GitHub ↗</a>
+      </nav>
+    </header>
+<main id="main">
+<header class="guide-intro wrap">
+<p class="eyebrow">CODEX INTEGRATION</p>
+<h1>VMD Viewer for Mac MCP はじめての操作マニュアル</h1>
+<p><strong>対象：公開版 <a href="https://github.com/opopoposiop/VvfM/releases/tag/v0.59.19">v0.59.19</a></strong><br><strong>必要なもの：M2以降のMac・macOS 14以降・同じMacで動くCodex CLI</strong></p>
+<p>MCPは、Codexが起動中のVMD Viewer for Mac（VvfM）に作品の状態を問い合わせるための接続です。「120Fの顔を見せて」「このカットだけカメラを少し引いたらどうなる？」と日本語で頼めます。まずは作品を変えずに見て、気に入った変更だけを登録します。</p>
+<a class="button" href="#connect">接続手順へ ↓</a>
+</header>
+<div class="guide-layout wrap">
+<aside><nav class="guide-toc" aria-label="このページの目次"><strong>目次</strong><ol><li><a href="#connect">Macで接続する</a></li><li><a href="#inspect">作品を変更せずに見る</a></li><li><a href="#edit">笑顔を試して 確認後に登録する</a></li><li><a href="#examples">目的別の頼み方と許可</a></li><li><a href="#trouble">つながらない・登録できないとき</a></li></ol></nav></aside>
+<article class="guide-content mcp-manual">
+<section id="connect"><h2>1. Macで接続する</h2>
+<ol>
+<li>VvfM v0.59.19を「アプリケーション」フォルダに入れて起動します。練習用の作品を開き、再生を止め、モデルを1体選択します。</li>
+<li>VvfMの <strong>設定 → 一般 → 外部連携 → Codexとの共有</strong> をONにします。初回はポーズ・カメラ・材質の変更許可をすべてOFFにしておきます。</li>
+<li>同じMac・同じmacOSログインユーザーで「ターミナル」を開き、Codex CLIに次の接続先を登録します。</li>
+</ol>
+<pre><code>codex mcp add vmd-viewer -- &quot;/Applications/VMD Viewer.app/Contents/Helpers/vmd-viewer-mcp&quot;</code></pre>
+<p>アプリを別の場所に置いた場合は、引用符の中を実際のヘルパーの絶対パスに変更します。Codexをすでに開いている場合は、登録後に起動し直します。この接続手順はMac上で動くCodex CLI用です。Windows・Web・リモート環境から直接接続する手順ではありません。</p>
+<p><strong>共有前に</strong>：アプリへの接続自体は同じMac内に限られますが、取得したモデル名などの表示情報やプレビュー画像はCodexのモデル処理に渡る場合があります。初回は公開可能な練習用素材を使ってください。</p>
+</section>
+<section id="inspect"><h2>2. 作品を変更せずに見る</h2>
+<p>Codexに次のどれかを貼り付けます。最初の依頼で、返ってきたモデルとコマがVvfMの画面と合っていれば接続できています。</p>
+<div class="mcp-table" tabindex="0" role="region" aria-label="やりたいこと・Codexへの依頼例"><table><thead><tr><th scope="col">やりたいこと</th><th scope="col">Codexへの依頼例</th></tr></thead><tbody>
+<tr><th scope="row">接続を確かめる</th><td>VvfMのMCPで、選択中のモデルと現在のシーンフレームを教えて。編集・保存はしないで。</td></tr>
+<tr><th scope="row">指定のコマを見る</th><td>シーンの120Fを、選択中のVMDカメラで1枚見せて。カメラモーションがなければ現在の構図で。再生位置は変えないで。</td></tr>
+<tr><th scope="row">書き出しの設定を点検する</th><td>動画書き出し画面に入力した設定を調べて。開始できない理由と注意点を分けて。実際には出力しないで。</td></tr>
+</tbody></table></div>
+<p>シーンFは作品全体の時刻です。VMDの30F/秒を基準にするため、120Fは4秒です。動画を60fpsで書き出す設定でも、この指定は変わりません。作品が短いときは範囲内のコマを選びます。単独コマのプレビューでは、前のフレームの描画結果を使う効果の見え方が連続再生と異なることがあります。</p>
+<p>書き出しの点検は、画面を開いていれば入力中の設定を確認します。点検で警告がなくても、保存先への書き込みや動画変換の成功までは確かめられません。</p>
+</section>
+<section id="edit"><h2>3. 笑顔を試して 確認後に登録する</h2>
+<p>練習では作品を別名で保存してから始めます。笑顔のモーフがあるモデルを選び、再生を止めます。モーフ名が分からないときは、先に「選択中のモデルにある笑顔のモーフ名を確認して」と頼みます。</p>
+<h3>候補を作る</h3>
+<blockquote class="guide-callout"><p>選択中のモデルで、シーン120Fから笑い始め、126Fで笑顔を70%、138Fで元の表情に戻る候補を作って。顔の拡大で編集前と候補を並べて、追加・更新するキーも教えて。まだ登録・保存はしないで。</p></blockquote>
+<p>実際のモーフ名やコマに置き換えます。開始と終了はそれぞれのコマの元の表情が基準です。区間内に別のキーがある場合はそのまま残るので、ピークだけでなく前後の表情も確認します。</p>
+<h3>採用する</h3>
+<ol>
+<li>対象モデル・モーフ名・コマ番号・画像を確認します。変更したいときは候補を作り直し、もう一度見比べます。</li>
+<li>採用するときだけ、VvfMで <strong>ポーズのキー登録を許可</strong> をONにします。</li>
+<li>Codexに「いま確認した候補だけ登録して。保存はしないで」と依頼します。</li>
+<li>VvfMで前後を再生します。この表情の登録は1回のUndoで戻せます。残す場合はVvfMの画面から保存します。</li>
+</ol>
+<p>別の練習例として、すでにあるまばたきのキーを使って「100〜108Fのまばたきキーを、重みと間隔を保って2F早める候補を見せて」と頼めます。移動先に別のキーがある場合は、時刻を見直します。</p>
+</section>
+<section id="examples"><h2>4. 目的別の頼み方と許可</h2>
+<div class="mcp-table" tabindex="0" role="region" aria-label="目的・依頼例・採用時に使う設定"><table><thead><tr><th scope="col">目的</th><th scope="col">依頼例</th><th scope="col">採用時に使う設定</th></tr></thead><tbody>
+<tr><th scope="row">上半身のポーズ</th><td>135Fで本人の右肘を少し上げた候補を、元と見比べたい</td><td>ポーズのキー登録を許可</td></tr>
+<tr><th scope="row">足滑りの補正</th><td>15〜35Fで左足が滑るか調べて。補正候補があれば足元の前後を並べて</td><td>ポーズのキー登録を許可</td></tr>
+<tr><th scope="row">カメラ構図の調整</th><td>120Fで手が切れないようカメラを少し引いて、元の構図と比べて</td><td>カメラのキー登録を許可</td></tr>
+<tr><th scope="row">材質の表示切替</th><td>前髪と髪飾りを非表示にした候補を、同じコマで見比べたい</td><td>材質の表示変更を許可</td></tr>
+</tbody></table></div>
+<p><strong>候補を見るだけなら、表の許可はOFFのままです。</strong> 足のターンは意図した動きでも滑りの候補になる場合があります。カメラの余白も骨の位置を基準に調べるため、指先や髪先まで入っているかは画像で確認します。材質の表示を採用しても、元のPMXファイルは書き換えず、そのモデル個体のプロジェクト設定を変更します。</p>
+</section>
+<section id="trouble"><h2>5. つながらない・登録できないとき</h2>
+<ul>
+<li><strong>「Codexとの共有」が見つからない</strong>：VvfMのバージョンを確認します。公開版v0.58.29にはこの機能はありません。</li>
+<li><strong>「接続先が見つからない」</strong>：VvfMが起動中か、共有がONか、Codexが同じMac・同じログインユーザーで動いているかを確認します。アプリの移動や改名後は登録時のパスも確認します。</li>
+<li><strong>複数のViewerが見つかる</strong>：まず対象のVvfMだけで共有をONにします。</li>
+<li><strong>モデルやコマが違う</strong>：作品を切り替えたときは現在の作品から照会し直します。同名のモデルが複数あれば、VvfMで対象を選択してから依頼します。</li>
+<li><strong>候補を登録できない</strong>：再生を止め、目的に合う許可を確認します。プレビュー後に作品や編集状態を変えた場合は、候補を作り直して比較してから登録します。</li>
+</ul>
+<p><strong>作業の終わり</strong>：必要な変更をVvfMの画面で保存し、「Codexとの共有」をOFFにするか、VvfMを終了します。編集許可は共有終了・次回起動時にOFFに戻ります。</p>
+<p><a href="https://github.com/opopoposiop/VvfM/releases/tag/v0.59.19">配布と更新内容</a> · <a href="https://opopoposiop.github.io/VvfM/getting-started.html">VvfM導入ガイド</a> · <a href="https://opopoposiop.github.io/VvfM/video-export.html">動画出力ガイド</a></p>
+</section>
+</article>
+</div>
+</main>
+<footer class="wrap"><nav class="social-links" aria-label="作者のSNSと投稿動画" style="display:flex;flex-wrap:wrap;gap:12px 24px;margin:24px 0"><a href="https://x.com/opoposio1" style="display:inline-flex;align-items:center;gap:9px;min-height:44px;color:#1d1d1f;font-size:14px"><img src="data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+WDwvdGl0bGU+PHBhdGggZD0iTTE0LjIzNCAxMC4xNjIgMjIuOTc3IDBoLTIuMDcybC03LjU5MSA4LjgyNEw3LjI1MSAwSC4yNThsOS4xNjggMTMuMzQzTC4yNTggMjRIMi4zM2w4LjAxNi05LjMxOEwxNi43NDkgMjRoNi45OTN6bS0yLjgzNyAzLjI5OS0uOTI5LTEuMzI5TDMuMDc2IDEuNTZoMy4xODJsNS45NjUgOC41MzIuOTI5IDEuMzI5IDcuNzU0IDExLjA5aC0zLjE4MnoiLz48L3N2Zz4=" width="20" height="20" alt="" aria-hidden="true">X（@opoposio1）</a><a href="https://www.nicovideo.jp/user/617712/video" style="display:inline-flex;align-items:center;gap:9px;min-height:44px;color:#1d1d1f;font-size:14px"><img src="data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+bmljb25pY288L3RpdGxlPjxwYXRoIGQ9Ik0uNDc4NyA3LjUzNHYxMi4xMjc5QTIuMDIxMyAyLjAyMTMgMCAwIDAgMi41IDIxLjY4MzJoMi4zODg4bDEuMzIzIDIuMDk0OGEuNDc3OC40Nzc4IDAgMCAwIC40MDQzLjIyMDUuNDc3OC40Nzc4IDAgMCAwIC40NDEtLjIyMDVsMS4zMjMtMi4wOTQ4aDYuOTgyOGwxLjMyMyAyLjA5NDhhLjQ3NzguNDc3OCAwIDAgMCAuNDQxLjIyMDVjLjE4MzggMCAuMzMwOC0uMDczNS40MDQzLS4yMjA1bDEuMzIzLTIuMDk0OGgyLjY0NjJhMi4wMjEzIDIuMDIxMyAwIDAgMCAyLjAyMTMtMi4wMjEzVjcuNTMzOWEyLjAyMTMgMi4wMjEzIDAgMCAwLTIuMDIxMy0xLjk4NDVoLTcuNjgxbDQuNDQ2OC00LjQ0NjlMMTcuMTYzNyAwbC01LjE0NTIgNS4xNDUyTDYuOCAwIDUuNjk3MyAxLjEwMjVsNC40MTAyIDQuNDEwMkgyLjUzNjdhMi4wMjEzIDIuMDIxMyAwIDAgMC0yLjA1OCAyLjA1OHoiLz48L3N2Zz4=" width="24" height="24" alt="" aria-hidden="true">ニコニコ動画の投稿一覧</a></nav><p><strong>VMD Viewer for Mac / VvfM</strong><br>Apple Silicon Mac向けMMD動画制作アプリ</p><div><a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md">マニュアル</a><a href="https://github.com/opopoposiop/VvfM/blob/main/CHANGELOG.md">更新履歴</a><a href="https://github.com/opopoposiop/VvfM/blob/main/LICENSING.md">ライセンス</a><a href="https://github.com/opopoposiop/VvfM/blob/main/Licenses/VMDViewer-EULA-ja.md">EULA</a></div><p class="small">このページは公開ドキュメントの案内です 配布物の条件は各リリースとライセンス文書をご確認ください</p></footer>
+</body></html>
