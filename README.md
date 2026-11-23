@@ -2,7 +2,7 @@
 
 # MacでMMD動画制作｜VMD Viewer for Mac（VvfM）
 
-[アプリをダウンロード（ZIP）](https://github.com/opopoposiop/VvfM/releases/download/v0.58.29/VMD.Viewer.app.zip)｜[リリース詳細](https://github.com/opopoposiop/VvfM/releases/tag/v0.58.29)｜[導入・初回起動](GUIDE.md#導入と起動)｜[スペックシート](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)
+[アプリをダウンロード（ZIP）](https://github.com/opopoposiop/VvfM/releases/download/v0.59.19/VMD.Viewer.app.zip)｜[リリース詳細](https://github.com/opopoposiop/VvfM/releases/tag/v0.59.19)｜[導入・初回起動](GUIDE.md#導入と起動)｜[スペックシート](docs/spec-sheet/VMDViewer_SpecSheet_ja.md)
 
 [EULA 日本語原本](Licenses/VMDViewer-EULA-ja.md)｜[English](Licenses/VMDViewer-EULA-en.md)
 
@@ -20,12 +20,12 @@
 
 ![VvfM v0.58.4／build569のメイン画面](images/v0.58.4-build569/01-overview.png)
 
-## v0.58.29の更新内容
+## v0.59.19の更新内容
 
-- **固定24／30 fpsの再生**　通常再生の表示間隔を整えました。一時停止からの再開も速くなり、再開を待つ間にウインドウ幅を変えても再生を続けられます。固定24 fpsの短いループ向けの追加設定は既定でオフです。
-- **床反射の再生**　ToonShader HQでMMDayo SSRを単独使用し、AAオフ・全モデル物理オフ・60 fps上限にした場合の描画を改善しました。M2 Maxの内蔵120 Hz画面でStage07を1080p再生した比較では、実表示が約39 fpsから60 fpsになりました。
-- **編集と材質調整**　HQエフェクトにキーがある作品でもコマ送りを反映し、停止中の視点操作は表示中のカメラ位置から始まります。大型PMXでは複数材質へのノード一括適用の待ち時間を短縮しました。
-- **保存と読み込み**　未保存の作品から別の作品を開くときに、保存・破棄・キャンセルを選べます。VMDの保存エラーには原因のトラック・フレーム・項目が表示されます。PMXのテクスチャ再読込や大規模なロープの物理演算も修正しました。
+- **Codexとモーションを編集**　同じMacのCodexに「右腕を上げて」「足が滑る区間を探して」などと依頼できます。元の動きと候補を同じ構図で見比べ、採用するキーをまとめて登録できます。[Codexとの接続・操作例](GUIDE.md#codexとモーションを編集する)
+- **材質の表示切替**　モデル行の右クリックから、前髪やアクセサリーだけを隠せます。表示状態はモデルごとに作品に保存されます。
+- **操作ガイドと合成素材**　ビューポート左下で現在のモードの操作を確認できます。人物マスクと深度を同時に出力するときは、完成動画をMOVに固定し、保存先に拡張子 `.vmdpasses` を表示します。
+- **編集と再生の応答**　コマ送り、大型VMDのモーフ編集、等倍MetalFXのウインドウ再生を改善しました。無制限再生では、自動ループの先頭が映ると次の姿勢の描画を始めます。
 
 [版ごとの更新履歴](CHANGELOG.md)
 
@@ -43,7 +43,7 @@
 
 macOS 14以降のMetal対応Mac(M2以降)が必要です。Intel CPU搭載のMacでは動作しません。
 
-配布アプリは [ZIP](https://github.com/opopoposiop/VvfM/releases/download/v0.58.29/VMD.Viewer.app.zip) からダウンロードできます。ZIPを展開してアプリを取り出し、[GUIDEの「導入と起動」](GUIDE.md#導入と起動) に従って起動してください。配布ファイル名は `VMD.Viewer.app.zip` です。過去の版やリリース情報は [Releases](https://github.com/opopoposiop/VvfM/releases) を参照してください。
+配布アプリは [ZIP](https://github.com/opopoposiop/VvfM/releases/download/v0.59.19/VMD.Viewer.app.zip) からダウンロードできます。ZIPを展開してアプリを取り出し、[GUIDEの「導入と起動」](GUIDE.md#導入と起動) に従って起動してください。配布ファイル名は `VMD.Viewer.app.zip` です。過去の版やリリース情報は [Releases](https://github.com/opopoposiop/VvfM/releases) を参照してください。
 
 モデル・モーション・音源は、利用許諾を確認したものを別途用意します。
 
