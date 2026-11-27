@@ -15,15 +15,15 @@
 <!-- End Google Tag Manager -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>第8回 なぜ ベルトが折れ すねがずれたのか ボーン・IK・物理をつなぎ直したVvfMの開発記録｜VvfM開発史</title>
+  <title>第8回 剛体とIK謎解き ボーン・IK・物理をつなぎ直したVvfMの開発記録｜VvfM開発史</title>
   <meta name="description" content="MMDモデルのベルトの折れとすねの変形を手がかりに VvfMのボーン・IK・物理演算をどう検証し直したかを紹介します">
   <link rel="canonical" href="https://opopoposiop.github.io/VvfM/development-08.html">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="ja_JP">
-  <meta property="og:title" content="第8回 なぜ ベルトが折れ すねがずれたのか ボーン・IK・物理をつなぎ直したVvfMの開発記録｜VvfM開発史">
+  <meta property="og:title" content="第8回 剛体とIK謎解き ボーン・IK・物理をつなぎ直したVvfMの開発記録｜VvfM開発史">
   <meta property="og:description" content="MMDモデルのベルトの折れとすねの変形を手がかりに VvfMのボーン・IK・物理演算をどう検証し直したかを紹介します">
   <meta property="og:url" content="https://opopoposiop.github.io/VvfM/development-08.html">
-  <meta property="og:image" content="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/vvfm-eyecatch.jpg">
+  <meta property="og:image" content="https://opopoposiop.github.io/VvfM/images/columns/story-08-handdrawn.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="guide.css">
@@ -57,7 +57,7 @@
     
       .screen-credits{font-size:14px;line-height:1.7;margin-top:20px}.overlay-group{margin-block:28px}.overlay-group h3{font-size:20px;line-height:1.5}.overlay-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:0}.overlay-fields>div{min-width:0;padding:12px 0;border-bottom:1px solid #d2d2d7;overflow-wrap:anywhere}.overlay-fields dt{font-size:15px;font-weight:600;line-height:1.5}.overlay-fields dd{margin:5px 0 0;font-size:14px;line-height:1.7}.column-app-screen{margin:24px 0}.column-app-screen a:focus-visible{outline:2px solid #0071e3;outline-offset:4px}.column-article li{line-height:1.8}.column-table-scroll th,.column-table-scroll td{white-space:normal}@media(max-width:800px){.overlay-fields{grid-template-columns:1fr}}
   </style>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"第8回 なぜ ベルトが折れ すねがずれたのか","description":"MMDモデルのベルトの折れとすねの変形を手がかりに VvfMのボーン・IK・物理演算をどう検証し直したかを紹介します","url":"https://opopoposiop.github.io/VvfM/development-08.html","datePublished":"2026-11-27","dateModified":"2026-11-27","inLanguage":"ja","isPartOf":{"@type":"WebSite","name":"VMD Viewer for Mac","url":"https://opopoposiop.github.io/VvfM/"},"image":"https://opopoposiop.github.io/VvfM/images/columns/story-08-bones.svg"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"第8回 剛体とIK謎解き","description":"MMDモデルのベルトの折れとすねの変形を手がかりに VvfMのボーン・IK・物理演算をどう検証し直したかを紹介します","url":"https://opopoposiop.github.io/VvfM/development-08.html","datePublished":"2026-11-27","dateModified":"2026-11-27","inLanguage":"ja","isPartOf":{"@type":"WebSite","name":"VMD Viewer for Mac","url":"https://opopoposiop.github.io/VvfM/"},"image":"https://opopoposiop.github.io/VvfM/images/columns/story-08-handdrawn.jpg"}</script>
 </head>
  <body class="guide-page">
 <!-- Google Tag Manager (noscript) -->
@@ -127,17 +127,17 @@
           <li><a href="ambiance-01.html">作品ノート 『シネマ』のMMDカメラワーク</a></li>
           <li><a href="development-06.html">第6回 FPSだけでは見えない引っかかり</a></li>
           <li><a href="development-07.html">第7回 あの表情をもう一度</a></li>
-          <li><a href="development-08.html" aria-current="page">第8回 なぜ ベルトが折れ すねがずれたのか</a></li>
+          <li><a href="development-08.html" aria-current="page">第8回 剛体とIK謎解き</a></li>
     </ol>
    </nav>
     <div class="column-hero">
       <header class="guide-intro wrap">
         <p class="eyebrow">DEVELOPMENT STORY · 08</p>
-        <h1>なぜ ベルトが折れ すねがずれたのか</h1>
+        <h1>剛体とIK謎解き</h1>
         <p class="lead">ボーン・IK・物理をつなぎ直したVvfMの開発記録</p>
         <p class="column-meta">VvfM開発史 第8回</p>
       </header>
-      <figure class="column-eyecatch wrap"><img src="images/columns/story-08-bones.svg" alt="衣装のベルトの付け根と 脚のボーンのつながりを描いた模式イラスト" width="1600" height="900" fetchpriority="high" decoding="async"></figure>
+      <figure class="column-eyecatch wrap"><img src="images/columns/story-08-handdrawn.jpg" alt="手描きアニメ調のダンサーと ベルトの結び目や脚のボーンを描いたスケッチ" width="1672" height="941" fetchpriority="high" decoding="async"></figure>
     </div>
     <div class="guide-layout wrap column-layout">
       <aside>
