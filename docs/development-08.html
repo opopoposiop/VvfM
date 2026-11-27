@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- Google Tag Manager -->
+<script>
+(function (w, d, container) {
+  w.dataLayer = w.dataLayer || [];
+  w.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+  var tag = d.createElement('script');
+  tag.async = true;
+  tag.src = 'https://www.googletagmanager.com/gtm.js?id=' + container;
+  d.head.appendChild(tag);
+})(window, document, 'GTM-W75JZ67D');
+</script>
+<!-- End Google Tag Manager -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第8回 なぜ ベルトが折れ すねがずれたのか ボーン・IK・物理をつなぎ直したVvfMの開発記録｜VvfM開発史</title>
+  <meta name="description" content="MMDモデルのベルトの折れとすねの変形を手がかりに VvfMのボーン・IK・物理演算をどう検証し直したかを紹介します">
+  <link rel="canonical" href="https://opopoposiop.github.io/VvfM/development-08.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="第8回 なぜ ベルトが折れ すねがずれたのか ボーン・IK・物理をつなぎ直したVvfMの開発記録｜VvfM開発史">
+  <meta property="og:description" content="MMDモデルのベルトの折れとすねの変形を手がかりに VvfMのボーン・IK・物理演算をどう検証し直したかを紹介します">
+  <meta property="og:url" content="https://opopoposiop.github.io/VvfM/development-08.html">
+  <meta property="og:image" content="https://raw.githubusercontent.com/opopoposiop/VvfM/main/images/vvfm-eyecatch.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="guide.css">
+  <link href="column-visuals.css?v=f1804a3" rel="stylesheet"/>
+  <style>
+   .column-hero{background:#000;color:#f5f5f7}.column-hero .eyebrow,.column-hero .guide-note{color:#a1a1a6}.column-hero .lead{max-width:900px}.column-layout{padding-top:48px}.column-article p{margin-block:0 1.5em}.column-article h2{line-height:1.45}.column-layout .guide-toc li{padding-block:6px}.column-layout .guide-toc a{display:block;padding-block:0}.column-meta{font-size:14px;color:#a1a1a6}@media(max-width:650px){.column-layout{padding-top:24px}}.column-series{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:20px;font-size:14px}.column-series-title{font-weight:600}.column-series ol{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}.column-series a,.column-series [aria-disabled="true"]{display:block;padding:9px 14px;border-radius:10px;background:#f5f5f7}.column-series a[aria-current="page"]{font-weight:600}.column-series [aria-disabled="true"]{color:#76767b;cursor:default}.column-table-scroll{max-width:100%;overflow-x:auto;margin-block:24px}.column-table-scroll table{width:100%;border-collapse:collapse;font-size:14px;white-space:nowrap}.column-table-scroll caption{text-align:left;white-space:normal;color:#515154;padding-bottom:12px}.column-table-scroll th,.column-table-scroll td{padding:12px;border-bottom:1px solid #d2d2d7}.column-table-scroll thead{background:#f5f5f7}.column-table-scroll:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      /* 本文から読める用語注釈 */
+      .term-ref{display:inline-block;margin-inline:.2em;font-size:.8em;line-height:1.5;text-decoration:underline;text-underline-offset:.2em}
+      .term-ref:focus-visible,.term-back:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      .column-glossary{margin-top:32px;padding-top:20px;border-top:1px solid #d2d2d7}
+      .column-glossary dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:0}
+      .column-glossary .term-entry{padding-block:12px;border-bottom:1px solid #d2d2d7;scroll-margin-top:100px;overflow-wrap:anywhere}
+      .column-glossary dt{font-size:15px;font-weight:600;line-height:1.5}
+      .column-glossary dd{margin:5px 0 0;font-size:14px;line-height:1.7}
+      .column-glossary .term-entry:target{background:#f5f5f7;border-radius:8px}
+      .term-back{display:inline-block;margin-left:8px;min-height:24px;font-size:13px}
+      .term-ref{scroll-margin-top:100px}
+      @media(max-width:800px){.column-glossary dl{grid-template-columns:1fr}}
+      @media(max-width:650px){.column-glossary{margin-top:24px}.term-ref,.term-back{padding-block:4px}}
+      .column-pipeline{white-space:pre-wrap;overflow-wrap:anywhere;padding:24px;border-radius:16px;background:#f5f5f7;font-size:15px;line-height:1.8}
+      .column-upcoming{color:#76767b}
+  
+      /* 記事の補足は用語解説と分けて文末へ */
+      .column-notes{margin-top:32px;padding-top:20px;border-top:1px solid #d2d2d7}
+      .column-notes ol{margin:0;padding-left:1.6em}
+      .column-notes li{padding:8px 0;font-size:14px;line-height:1.7;overflow-wrap:anywhere;scroll-margin-top:100px}
+      .note-ref{white-space:nowrap;font-size:.8em;margin-inline:.25em;text-underline-offset:.2em;scroll-margin-top:100px}
+      .note-ref:focus-visible,.note-back:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      .note-back{display:inline-block;margin-left:8px;padding-block:4px;font-size:13px}
+      .column-notes li:target{background:#f5f5f7}
+    
+      .screen-credits{font-size:14px;line-height:1.7;margin-top:20px}.overlay-group{margin-block:28px}.overlay-group h3{font-size:20px;line-height:1.5}.overlay-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:0}.overlay-fields>div{min-width:0;padding:12px 0;border-bottom:1px solid #d2d2d7;overflow-wrap:anywhere}.overlay-fields dt{font-size:15px;font-weight:600;line-height:1.5}.overlay-fields dd{margin:5px 0 0;font-size:14px;line-height:1.7}.column-app-screen{margin:24px 0}.column-app-screen a:focus-visible{outline:2px solid #0071e3;outline-offset:4px}.column-article li{line-height:1.8}.column-table-scroll th,.column-table-scroll td{white-space:normal}@media(max-width:800px){.overlay-fields{grid-template-columns:1fr}}
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"第8回 なぜ ベルトが折れ すねがずれたのか","description":"MMDモデルのベルトの折れとすねの変形を手がかりに VvfMのボーン・IK・物理演算をどう検証し直したかを紹介します","url":"https://opopoposiop.github.io/VvfM/development-08.html","datePublished":"2026-11-27","dateModified":"2026-11-27","inLanguage":"ja","isPartOf":{"@type":"WebSite","name":"VMD Viewer for Mac","url":"https://opopoposiop.github.io/VvfM/"},"image":"https://opopoposiop.github.io/VvfM/images/columns/story-08-bones.svg"}</script>
+</head>
+ <body class="guide-page">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W75JZ67D" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <a class="skip" href="#main">
+   本文へ移動
+  </a>
+  <header class="header wrap">
+   <a aria-label="VvfM ホーム" class="brand" href="./">
+    VvfM
+    <span>
+     VMD Viewer for Mac
+    </span>
+   </a>
+   <nav aria-label="メインナビゲーション">
+    <a href="./#features">
+     できること
+    </a>
+    <a href="getting-started.html">
+     始め方
+    </a>
+    <a href="toonshader-hq.html">
+     HQエフェクト
+    </a>
+    <a href="video-export.html">
+     動画出力
+    </a>
+    <a href="./#faq">
+     FAQ
+    </a>
+    <a href="./#development-stories">
+     コラム
+    </a>
+    <a href="https://github.com/opopoposiop/VvfM">
+     GitHub ↗
+    </a>
+   </nav>
+  </header>
+  <main id="main">
+   <nav aria-label="開発史コラム" class="column-series wrap">
+    <span class="column-series-title">
+     開発史コラム
+    </span>
+    <ol>
+     <li>
+      <a href="development-01.html">
+       第1回 GPUだけでは解決しなかった
+      </a>
+     </li>
+     <li>
+      <a href="development-02.html">
+       第2回 20体のVMD再生がなぜ途中から遅くなるのか
+      </a>
+     </li>
+     <li>
+      <a href="development-03.html">
+       第3回 エフェクトを作る楽しさをMacにも
+      </a>
+     </li>
+     <li>
+      <a href="development-04.html">
+       第4回 あのアニメのような陰影をMacで
+      </a>
+     </li>
+          <li><a href="development-05.html">第5回 見るための再生から 残すための動画へ</a></li>
+          <li><a href="ambiance-01.html">作品ノート 『シネマ』のMMDカメラワーク</a></li>
+          <li><a href="development-06.html">第6回 FPSだけでは見えない引っかかり</a></li>
+          <li><a href="development-07.html">第7回 あの表情をもう一度</a></li>
+          <li><a href="development-08.html" aria-current="page">第8回 なぜ ベルトが折れ すねがずれたのか</a></li>
+    </ol>
+   </nav>
+    <div class="column-hero">
+      <header class="guide-intro wrap">
+        <p class="eyebrow">DEVELOPMENT STORY · 08</p>
+        <h1>なぜ ベルトが折れ すねがずれたのか</h1>
+        <p class="lead">ボーン・IK・物理をつなぎ直したVvfMの開発記録</p>
+        <p class="column-meta">VvfM開発史 第8回</p>
+      </header>
+      <figure class="column-eyecatch wrap"><img src="images/columns/story-08-bones.svg" alt="衣装のベルトの付け根と 脚のボーンのつながりを描いた模式イラスト" width="1600" height="900" fetchpriority="high" decoding="async"></figure>
+    </div>
+    <div class="guide-layout wrap column-layout">
+      <aside>
+        <nav class="guide-toc" aria-label="このページの目次">
+          <strong>第8回の目次</strong>
+          <ol>
+            <li><a href="#origin">物理を切ると ベルトが元に戻った</a></li>
+            <li><a href="#pose">VMDを読んだ先で 姿勢を組み立てる</a></li>
+            <li><a href="#belt">ベルトは 回転順を直しただけでは戻らなかった</a></li>
+            <li><a href="#shin">すねIKは 足IKの結果を待つ必要があった</a></li>
+            <li><a href="#verify">比べる前に 同じ姿勢を渡したか</a></li>
+            <li><a href="#glossary">用語解説</a></li>
+            <li><a href="#notes">注記</a></li>
+            <li><a href="#related">関連ページ</a></li>
+          </ol>
+        </nav>
+      </aside>
+      <article class="guide-content column-article">
+    <section id="origin">
+      <h2>物理を切ると ベルトが元に戻った</h2>
+      <p>浅草みどりのスカートを見ていると ベルトが付け根の近くで鋭く折れ曲がっていました まだ再生していない 0フレームのことです モデルもモーションもカメラもそのまま VMD Viewer for Mac（VvfM）で物理を切ると元に戻る 入れるとまた折れる もう一度切ると元に戻る</p>
+      <p>第7回では 気になった動きをタイムラインでどう見つけて直すかを書きました 今回はその一コマの中の話です 同じモーションを読んでいるのに なぜベルトが折れたり すねの形が崩れたりするのか 調べていくと どちらも「いま計算した姿勢を 次の処理がちゃんと受け取っているか」という問題につながりました</p>
+    </section>
+
+    <section id="pose">
+      <h2>VMDを読んだ先で 姿勢を組み立てる</h2>
+      <p>先に v0.5.0で VMDから姿勢を組み立てる処理に 付与とIKを組み込みました v0.19.0では その姿勢をBulletに渡し 物理で動いた結果をボーンに戻して 物理後のIKまでつなぎました VMDのキーを読んだだけでは 画面に出る形はまだ決まりません たとえば足IKは 足先の目標位置から膝や脚の曲がり方を求めます 髪や衣装はボーンの動きに追従しながら揺れ 物理で動いた結果がまたボーンに戻ります</p>
+      <p>MMD向けのモデルには 別のボーンの回転などを受け取る「付与」もあります 物理の前に決める姿勢と 物理の結果を受け取ったあとに決める姿勢があり その途中で参照するボーンも変わります 同じPMXとVMDを開いても どの段階の姿勢を渡すかで 最後の見え方が変わるわけです</p>
+    </section>
+
+    <section id="belt">
+      <h2>ベルトは 回転順を直しただけでは戻らなかった</h2>
+      <p>最初に手を入れたのは 剛体の初期回転を組み立てる順序です 3Dでは同じ角度でも 回す軸の順番が違えば向きが変わります ところが ベルトの付け根12か所を測ると 最大の位置ずれは <strong>0.733 → 0.741</strong> ほとんど変わりませんでした そこで 角度とは別に「どこからベルトがぶら下がるか」を追いました</p>
+      <p>ベルトがつながっている先は スカート側の親ボーンです その親も物理で動くのに ベルトの付け根を求めるときに 物理で動いたあとの親の姿勢を使っていませんでした これでは ベルトの向きが合っていても スカートと一緒に付け根が動きません</p>
+      <p>v0.56.9では ベルトの回転に物理の結果を使いつつ 付け根の位置は物理計算後の親ボーンを基準に求め直しました 回転順の修正と組み合わせると 12か所で測った位置ずれは <strong>0</strong> に 実際の画面でも 物理を入れたまま鋭い折れが消えました</p>
+      <figure class="guide-callout">
+        <figcaption><strong>ベルトの付け根12か所のうち 最大の位置ずれ</strong></figcaption>
+        <div class="column-table-scroll" tabindex="0" aria-label="ベルトの計測値">
+          <table>
+            <thead><tr><th scope="col">計測時の修正</th><th scope="col">最大のずれ（PMX単位）</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">修正前</th><td>0.733</td></tr>
+              <tr><th scope="row">回転順のみ</th><td>0.741</td></tr>
+              <tr><th scope="row">回転順と付け根の位置</th><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>VvfMの0フレーム・停止1秒後・120 Hzで計測</p>
+      </figure>
+    </section>
+
+    <section id="shin">
+      <h2>すねIKは 足IKの結果を待つ必要があった</h2>
+      <p>別のモデルでは 足を動かしたときにすねの形が崩れました すねや靴の頂点がどのボーンに追従するかを調べても 本件を説明できるような異常は見つかりませんでした そこで見直したのが 脚のボーンに動きを伝える順番です</p>
+      <p>当時のVvfMでは 付与の計算をまとめて済ませてからIKを解いていました すると 足IKで脚が動いたあとも Dボーンにはその結果がまだ反映されず すねIKはひとつ前の段階の姿勢を見てしまいます すべてのIKを解いたあとで付与をやり直しても すねIKがすでに計算を終えているので間に合いません</p>
+      <p>v0.57.38では MikuDanceStudioの実装を参考に このモデルの脚で必要な順序を <strong>足IK → 結果をDボーンに反映 → すねIK</strong> としました あわせて 再生・停止・書き出しで異なっていたIKの反復条件も PMXの設定を基準にそろえました</p>
+      <figure class="guide-callout">
+        <figcaption><strong>すねIKに 足IKの結果が届くまで</strong></figcaption>
+        <ol>
+          <li>足IKで 足先の目標に合わせて脚の姿勢を求める</li>
+          <li>足IKの結果をDボーンに反映する</li>
+          <li>更新された姿勢から すねIKを解く</li>
+        </ol>
+      </figure>
+    </section>
+
+    <section id="verify">
+      <h2>比べる前に 同じ姿勢を渡したか</h2>
+      <p>すねの検証では 直したコードだけでなく 比較の仕方にも見直しが必要でした 最初のテストでは 比較側がVMDのキーの間を独自に補間していて VvfMが受け取った姿勢とわずかに違っていました 入口が違えば 出口の差だけを見ても どこでずれたのかは分かりません</p>
+      <p>そこで VvfMがVMDから取り出した同じ入力を VvfM自身と MikuDanceStudioのソースを組み込んだ独立の検証プログラムの両方に渡しました 判定の許容差は変えず 60姿勢で各26,118頂点を比較すると 最大の位置差は約 <strong>0.00000287 PMX単位</strong> でした これで 少なくとも今回そろえた入力に対しては 姿勢の計算結果がどこまで近づいたかを確認できました</p>
+      <p>ベルトでは 回転順を直しても付け根が合わず すねでは 足を解いてもその結果が次のIKに届いていませんでした 画面で見えた違和感から どの姿勢を いつ 次に渡したかをたどる モーションを読み込んだ先で VvfMが一コマをどう組み立てるかを見直した二つの例です</p>
+    </section>
+
+    <section id="glossary" class="column-glossary">
+      <h2>用語解説</h2>
+      <dl>
+        <div class="term-entry"><dt>付与</dt><dd>あるボーンの回転や移動の全部または一部を 別のボーンにも反映する仕組み</dd></div>
+        <div class="term-entry"><dt>剛体</dt><dd>物理演算で 衝突や揺れを計算するために使う形 画面に描かれるモデルそのものとは別</dd></div>
+        <div class="term-entry"><dt>PMX単位</dt><dd>モデル内の座標の単位 本稿の数値は画面上のピクセル数ではありません</dd></div>
+      </dl>
+    </section>
+
+    <section id="notes" class="column-notes">
+      <h2>注記</h2>
+      <ol>
+        <li>ベルトの数値は Bullet 3.25のネイティブモードで 0フレームに停止して1秒後の付け根12か所の最大ずれです（120 Hz） 親の位置の修正だけを入れた比較は行っていません 実画面の修正確認はVvfM内の60 Hzと120 Hzで行いました 調査のきっかけとなったMMDの画像はカメラ条件が異なり 同一条件での比較ではありません</li>
+        <li>すねの比較は <a href="https://github.com/jstzwj/MikuDanceStudio/tree/fa8914a4dbb69d5cdbb1666105925c817325ae23">MikuDanceStudio 10.17の固定版ソース</a>を使った独立のC++検証プログラムによるものです Windows版MMDの実行結果や 最終画像・物理挙動・すべてのモデルでの一致を検証したものではありません</li>
+        <li>参考：<a href="https://github.com/opopoposiop/VvfM/blob/v0.59.19/VvfM_Technical_Note.md#L602-L606">VvfM 技術ノート「ボーン モーフ 物理は同じ時刻の姿勢を共有する」</a></li>
+      </ol>
+    </section>
+
+    <section id="related" class="guide-next">
+      <h2>関連ページ</h2>
+      <ul>
+        <li><a href="development-07.html">第7回 あの表情をもう一度</a></li>
+        <li><a href="getting-started.html">MacでMMDを始める方法</a></li>
+        <li><a href="./#development-stories">トップページの開発史へ戻る</a></li>
+      </ul>
+    </section>
+      </article>
+    </div>
+  </main>
+  <footer class="wrap">
+   <p>
+    <strong>
+     VMD Viewer for Mac / VvfM
+    </strong>
+   </p>
+   <p>
+    <a href="./">
+     ホーム
+    </a>
+    ·
+    <a href="https://github.com/opopoposiop/VvfM">
+     GitHub
+    </a>
+   </p>
+  </footer>
+ </body>
+</html>
