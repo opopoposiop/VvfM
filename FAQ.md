@@ -12,7 +12,7 @@
 
 ### どのファイルをダウンロードすればよいですか？
 
-[GitHub Releases](https://github.com/opopoposiop/VvfM/releases)で使いたい版を開き、配布ファイル `VMD.Viewer.app.zip` を選びます。ZIPを展開し、中の「VMD Viewer.app」を「アプリケーション」フォルダに移して開きます。[導入と起動](GUIDE.md#導入と起動)
+2026年11月28日現在、Mac版のアプリZIPは配布を停止しています。 [v0.59.19の配布状況](https://github.com/opopoposiop/VvfM/releases/tag/v0.59.19)をご確認ください。公式ZIPをお持ちの方は[導入と起動](GUIDE.md#導入と起動)へ進んでください。
 
 ## モデルとモーション
 

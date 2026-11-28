@@ -4,14 +4,14 @@
 
 PMXモデルとVMDモーションを読み込み、ボーン・表情・カメラを編集して、音声付きの動画を書き出せるMac用アプリです。Codexを接続すると、編集中の作品でポーズや構図の候補を比較できます。
 
-[配布版をダウンロード](https://github.com/opopoposiop/VvfM/releases/download/v0.59.19/VMD.Viewer.app.zip) ｜ [リリース詳細](https://github.com/opopoposiop/VvfM/releases/tag/v0.59.19) ｜ [PDF版](VMDViewer_SpecSheet_ja.pdf)
+**Mac版アプリ配布停止中** ｜ [配布状況・リリース詳細](https://github.com/opopoposiop/VvfM/releases/tag/v0.59.19) ｜ [PDF版](VMDViewer_SpecSheet_ja.pdf)
 
 ## 1. 製品・動作環境
 
 | 項目 | 仕様 |
 | --- | --- |
 | 製品 | VMD Viewer for Mac（アプリ表示名: VMD Viewer） |
-| 対象版 | v0.59.19／build695。GitHub Releasesで配布するVMD.Viewer.app.zipを展開して使用。ソースコードは非公開。 |
+| 対象版 | v0.59.19／build695。2026年11月28日現在、Mac版のアプリZIPは配布停止中。ソースコードは非公開。 |
 | OS・Mac | macOS 14以降、M2以降のMetal対応Mac。アプリ本体と同梱のMCPヘルパーはarm64。 |
 | GPU | Metalを使用。MetalFXは機器の対応判定後に利用。利用できない場合はTAA／FXAAへ切り替える。 |
 | メモリ・空き容量 | 最低・推奨容量は未規定。モデル、テクスチャ、物理、動画、出力解像度・尺によって必要量が変わる。 |

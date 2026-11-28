@@ -117,7 +117,7 @@ THE SOFTWARE.
 ## Holographic / ikHolographic
 
 - 原エフェクト: ikeno（@ikeno_mmd）。使用・改変・再配布の許可は同梱の `Sources/VMDViewer/Resources/BuiltinEffects/Holographic/original_readme.txt`（CP932）を参照。配布appでは `VMDViewerForMac_VMDViewer.bundle/BuiltinEffects/Holographic/` に収容する。
-- `.fxdayo`の定義とMetalへの移植は、非公開のMMDayo_Holographic開発資料（記録ID `d4b8960db2d27d49ff1b856a783231e969ceac63`）を基にしています。原エフェクトをViewerの描画へ接続した近似で、MME全体の互換を保証しません。
+- `.fxdayo`の定義とMetalへの移植は、非公開のMMDayo_Holographic開発資料を基にしています。原エフェクトをViewerの描画へ接続した近似で、MME全体の互換を保証しません。
 - `Sources/VMDViewer/Effects/IkHolographicContract.generated.swift`、Holographic関連実装・テスト素材は同開発資料の移植patchを基に現行Viewerへ統合・修正。原作者のREADMEを変更せず保持する。
 
 ## Rhinestone
