@@ -23,7 +23,9 @@
   <meta property="og:title" content="第9回 再生は進むのに 髪が揺れない｜VvfM開発史">
   <meta property="og:description" content="再生優先モードで物理の揺れが戻らなかった理由と 物理演算を省かず実表示FPSを上げたVvfMの開発記録">
   <meta property="og:url" content="https://opopoposiop.github.io/VvfM/development-09.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://opopoposiop.github.io/VvfM/images/columns/story-09-handdrawn.jpg">
+  <meta property="og:image:alt" content="髪が垂れた下絵と リボンと髪が弧を描く姿を重ねた手描きアニメ調のイラスト">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="guide.css">
   <link href="column-visuals.css?v=f1804a3" rel="stylesheet"/>
@@ -56,7 +58,7 @@
     
       .screen-credits{font-size:14px;line-height:1.7;margin-top:20px}.overlay-group{margin-block:28px}.overlay-group h3{font-size:20px;line-height:1.5}.overlay-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:0}.overlay-fields>div{min-width:0;padding:12px 0;border-bottom:1px solid #d2d2d7;overflow-wrap:anywhere}.overlay-fields dt{font-size:15px;font-weight:600;line-height:1.5}.overlay-fields dd{margin:5px 0 0;font-size:14px;line-height:1.7}.column-app-screen{margin:24px 0}.column-app-screen a:focus-visible{outline:2px solid #0071e3;outline-offset:4px}.column-article li{line-height:1.8}.column-table-scroll th,.column-table-scroll td{white-space:normal}@media(max-width:800px){.overlay-fields{grid-template-columns:1fr}}
   </style>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"第9回 再生は進むのに 髪が揺れない","description":"再生優先モードで物理の揺れが戻らなかった理由と 物理演算を省かず実表示FPSを上げたVvfMの開発記録","url":"https://opopoposiop.github.io/VvfM/development-09.html","datePublished":"2026-11-28","dateModified":"2026-11-28","inLanguage":"ja","isPartOf":{"@type":"WebSite","name":"VMD Viewer for Mac","url":"https://opopoposiop.github.io/VvfM/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"第9回 再生は進むのに 髪が揺れない","description":"再生優先モードで物理の揺れが戻らなかった理由と 物理演算を省かず実表示FPSを上げたVvfMの開発記録","url":"https://opopoposiop.github.io/VvfM/development-09.html","datePublished":"2026-11-28","dateModified":"2026-11-28","inLanguage":"ja","isPartOf":{"@type":"WebSite","name":"VMD Viewer for Mac","url":"https://opopoposiop.github.io/VvfM/"},"image":"https://opopoposiop.github.io/VvfM/images/columns/story-09-handdrawn.jpg"}</script>
 </head>
  <body class="guide-page">
 <!-- Google Tag Manager (noscript) -->
@@ -137,7 +139,7 @@
         <p class="lead">物理エンジンと 再生優先モードの試行錯誤</p>
         <p class="column-meta">VvfM開発史 第9回</p>
       </header>
-      <figure class="column-eyecatch wrap"><img src="images/columns/story-09-physics-timeline.svg" alt="再生時計 裏で進む物理演算 実際の表示を3段に並べた模式図" width="1600" height="900" fetchpriority="high" decoding="async"></figure>
+      <figure class="column-eyecatch wrap"><img src="images/columns/story-09-handdrawn.jpg" alt="髪が垂れた下絵と リボンと髪が弧を描く姿を重ねた手描きアニメ調のイラスト" width="1672" height="941" fetchpriority="high" decoding="async"></figure>
     </div>
     <div class="guide-layout wrap column-layout">
       <aside>
@@ -174,7 +176,9 @@
 <p>v0.52.0で試したのは 画面と物理を別々に進める方法です 当時の設定名は「再生優先モード」 物理の結果を待たずにVMDの姿勢を先に描き その裏でBulletの計算を進めます 物理が追いついたら シーン全体を物理を反映した姿勢へ切り替える設計でした</p>
 <p>ところが 重い場面では切り替える前に 再生時計が次のフレームへ進んでしまいます 複数モデルの物理を反映した姿勢を同じフレームで揃えようとしても 揃うころには対象のフレームが古くなっている 次のフレームでまた揃え直す その繰り返しで 踊りは進むのに揺れが画面へ戻ってこなくなりました</p>
 <p>録画の「0 Hz」が示していたのは 物理を反映した姿勢が表示へ届いていないことです そこからBulletの計算自体が止まったとは判断できません 別の診断では 物理を反映した姿勢の表示頻度が0 Hzでも裏で物理の計算が進んでいることを確認しました</p>
-<figure class="guide-callout"><figcaption>模式図：再生時計が進んでも 物理を反映した姿勢が表示へ届かないことがある</figcaption><ul><li>再生時計は次のフレームへ進む</li><li>裏では必要な物理演算を続ける</li><li>物理の結果が同じフレームで揃うまでは VMDの姿勢を先に表示する</li></ul></figure>
+<figure class="guide-callout"><figcaption>模式図：再生時計が進んでも 物理を反映した姿勢が表示へ届かないことがある</figcaption>
+  <img src="images/columns/story-09-physics-timeline.svg" alt="再生時計 裏で進む物理演算 実際の表示を3段に並べた模式図" width="1600" height="900" loading="lazy" decoding="async" style="display:block;max-width:100%;height:auto;margin:12px 0">
+<ul><li>再生時計は次のフレームへ進む</li><li>裏では必要な物理演算を続ける</li><li>物理の結果が同じフレームで揃うまでは VMDの姿勢を先に表示する</li></ul></figure>
 </section>
 
 <section id="recovery">
