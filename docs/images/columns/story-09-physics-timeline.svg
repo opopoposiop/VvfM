@@ -1,11 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">再生時計と物理演算と表示</title><desc id="desc">再生時計と物理演算は進むが 画面に物理を反映できるタイミングは異なる</desc>
-<rect width="1600" height="900" fill="#ede5d9"/><rect x="105" y="100" width="1390" height="700" rx="50" fill="#fcf8ef" stroke="#252a37" stroke-width="6"/>
-<g fill="none" stroke="#bdb3a4" stroke-width="3" stroke-dasharray="9 11"><path d="M420 170v560M625 170v560M830 170v560M1035 170v560M1240 170v560"/></g>
-<g font-family="Hiragino Sans,Noto Sans JP,sans-serif" font-size="42" font-weight="700" fill="#252a37"><text x="165" y="258">再生時計</text><text x="165" y="465">物理演算</text><text x="165" y="680">画面表示</text></g>
-<g stroke="#252a37" stroke-width="5" fill="none" stroke-linecap="round"><path d="M420 245h930l-25-17m25 17-25 17M420 452h930M420 667h930"/></g>
-<g fill="#466b86"><circle cx="420" cy="245" r="20"/><circle cx="625" cy="245" r="20"/><circle cx="830" cy="245" r="20"/><circle cx="1035" cy="245" r="20"/><circle cx="1240" cy="245" r="20"/></g>
-<path d="M420 452q30-50 60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0" fill="none" stroke="#40837a" stroke-width="12" stroke-linecap="round"/>
-<g stroke="#252a37" stroke-width="4"><rect x="390" y="637" width="60" height="60" rx="12" fill="#e4bd79"/><rect x="595" y="637" width="60" height="60" rx="12" fill="#e4bd79"/><rect x="800" y="637" width="60" height="60" rx="12" fill="#e4bd79"/><rect x="1005" y="637" width="60" height="60" rx="12" fill="#e4bd79"/><rect x="1210" y="637" width="60" height="60" rx="12" fill="#69aa99"/></g>
-<path d="M1240 499v98l-14-18m14 18 14-18" fill="none" stroke="#40837a" stroke-width="7" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="986" viewBox="0 0 720 986" role="img" aria-labelledby="title desc">
+  <title id="title">再生は進むのに なぜ揺れが戻らなかったのか</title>
+  <desc id="desc">当時の再生優先モードの概念図。再生時計が次のフレームへ進む間も裏では物理演算を続ける。全モデルの結果が揃う前に復帰対象が更新されると、画面はVMDの姿勢だけを表示し続ける。修正後は復帰対象を保持して物理を反映した姿勢を実際に表示してから次の対象へ進む。</desc>
+  <defs>
+    <style>
+      text{font-family:system-ui,-apple-system,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif;fill:#24243b}
+      .top{font-size:40px;font-weight:750;letter-spacing:-.05em}
+      .section{font-size:31px;font-weight:750}
+      .label{font-size:29px;font-weight:750}
+      .body{font-size:29px;font-weight:510}
+      .foot{font-size:26px;fill:#52516a}
+    </style>
+  </defs>
+  <rect width="720" height="986" rx="26" fill="#f7f5f1"/>
+  <text class="top" x="30" y="63">なぜ揺れが戻らなかったのか</text>
+  <text class="foot" x="32" y="108">当時の「再生優先モード」の概念図</text>
+
+  <rect x="23" y="142" width="674" height="440" rx="23" fill="#fff" stroke="#ded9e6" stroke-width="2"/>
+  <text class="section" x="45" y="192">修正前｜復帰対象が先へ進む</text>
+
+  <rect x="43" y="216" width="634" height="82" rx="12" fill="#e9eff9"/>
+  <text class="label" x="60" y="265">再生時計</text>
+  <text class="body" x="235" y="265">フレーム N → 次のフレーム</text>
+
+  <rect x="43" y="310" width="634" height="106" rx="12" fill="#e6f2ed"/>
+  <text class="label" x="60" y="372">物理演算</text>
+  <text class="body" x="235" y="353">裏で計算は進む</text>
+  <text class="body" x="235" y="389">全モデルの結果はまだ揃わない</text>
+
+  <rect x="43" y="428" width="634" height="82" rx="12" fill="#f9eddf"/>
+  <text class="label" x="60" y="478">画面表示</text>
+  <text class="body" x="235" y="478">物理反映前のVMD姿勢が続く</text>
+
+  <text class="foot" x="48" y="553">結果が揃う前に 復帰対象が何度も更新される</text>
+
+  <rect x="23" y="604" width="674" height="290" rx="23" fill="#efedf8" stroke="#dcd7ed" stroke-width="2"/>
+  <text class="section" x="45" y="653">修正後｜復帰対象を保持する</text>
+  <path d="M72 708v130" stroke="#9b8abb" stroke-width="4"/>
+  <g fill="#5e4d7e">
+    <circle cx="72" cy="712" r="17"/><circle cx="72" cy="775" r="17"/><circle cx="72" cy="838" r="17"/>
+  </g>
+  <g font-size="23" font-weight="750" text-anchor="middle">
+    <text x="72" y="720" style="fill:#fff">1</text><text x="72" y="783" style="fill:#fff">2</text><text x="72" y="846" style="fill:#fff">3</text>
+  </g>
+  <text class="body" x="107" y="722">復帰に使うフレームを保持</text>
+  <text class="body" x="107" y="785">全モデルの物理結果を同じ時点で揃える</text>
+  <text class="body" x="107" y="848">実際に画面へ出してから 次の対象へ</text>
+
+  <text class="foot" x="31" y="935">保持するのは復帰対象で 再生時計は止めない</text>
+  <text class="foot" x="31" y="967">図の間隔は実測値ではありません</text>
 </svg>
