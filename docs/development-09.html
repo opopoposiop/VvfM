@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- Google Tag Manager -->
+<script>
+(function (w, d, container) {
+  w.dataLayer = w.dataLayer || [];
+  w.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+  var tag = d.createElement('script');
+  tag.async = true;
+  tag.src = 'https://www.googletagmanager.com/gtm.js?id=' + container;
+  d.head.appendChild(tag);
+})(window, document, 'GTM-W75JZ67D');
+</script>
+<!-- End Google Tag Manager -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第9回 再生は進むのに 髪が揺れない｜VvfM開発史</title>
+  <meta name="description" content="再生優先モードで物理の揺れが戻らなかった理由と 物理演算を省かず実表示FPSを上げたVvfMの開発記録">
+  <link rel="canonical" href="https://opopoposiop.github.io/VvfM/development-09.html">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="第9回 再生は進むのに 髪が揺れない｜VvfM開発史">
+  <meta property="og:description" content="再生優先モードで物理の揺れが戻らなかった理由と 物理演算を省かず実表示FPSを上げたVvfMの開発記録">
+  <meta property="og:url" content="https://opopoposiop.github.io/VvfM/development-09.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="guide.css">
+  <link href="column-visuals.css?v=f1804a3" rel="stylesheet"/>
+  <style>
+   .column-hero{background:#000;color:#f5f5f7}.column-hero .eyebrow,.column-hero .guide-note{color:#a1a1a6}.column-hero .lead{max-width:900px}.column-layout{padding-top:48px}.column-article p{margin-block:0 1.5em}.column-article h2{line-height:1.45}.column-layout .guide-toc li{padding-block:6px}.column-layout .guide-toc a{display:block;padding-block:0}.column-meta{font-size:14px;color:#a1a1a6}@media(max-width:650px){.column-layout{padding-top:24px}}.column-series{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:20px;font-size:14px}.column-series-title{font-weight:600}.column-series ol{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}.column-series a,.column-series [aria-disabled="true"]{display:block;padding:9px 14px;border-radius:10px;background:#f5f5f7}.column-series a[aria-current="page"]{font-weight:600}.column-series [aria-disabled="true"]{color:#76767b;cursor:default}.column-table-scroll{max-width:100%;overflow-x:auto;margin-block:24px}.column-table-scroll table{width:100%;border-collapse:collapse;font-size:14px;white-space:nowrap}.column-table-scroll caption{text-align:left;white-space:normal;color:#515154;padding-bottom:12px}.column-table-scroll th,.column-table-scroll td{padding:12px;border-bottom:1px solid #d2d2d7}.column-table-scroll thead{background:#f5f5f7}.column-table-scroll:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      /* 本文から読める用語注釈 */
+      .term-ref{display:inline-block;margin-inline:.2em;font-size:.8em;line-height:1.5;text-decoration:underline;text-underline-offset:.2em}
+      .term-ref:focus-visible,.term-back:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      .column-glossary{margin-top:32px;padding-top:20px;border-top:1px solid #d2d2d7}
+      .column-glossary dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:0}
+      .column-glossary .term-entry{padding-block:12px;border-bottom:1px solid #d2d2d7;scroll-margin-top:100px;overflow-wrap:anywhere}
+      .column-glossary dt{font-size:15px;font-weight:600;line-height:1.5}
+      .column-glossary dd{margin:5px 0 0;font-size:14px;line-height:1.7}
+      .column-glossary .term-entry:target{background:#f5f5f7;border-radius:8px}
+      .term-back{display:inline-block;margin-left:8px;min-height:24px;font-size:13px}
+      .term-ref{scroll-margin-top:100px}
+      @media(max-width:800px){.column-glossary dl{grid-template-columns:1fr}}
+      @media(max-width:650px){.column-glossary{margin-top:24px}.term-ref,.term-back{padding-block:4px}}
+      .column-pipeline{white-space:pre-wrap;overflow-wrap:anywhere;padding:24px;border-radius:16px;background:#f5f5f7;font-size:15px;line-height:1.8}
+      .column-upcoming{color:#76767b}
+  
+      /* 記事の補足は用語解説と分けて文末へ */
+      .column-notes{margin-top:32px;padding-top:20px;border-top:1px solid #d2d2d7}
+      .column-notes ol{margin:0;padding-left:1.6em}
+      .column-notes li{padding:8px 0;font-size:14px;line-height:1.7;overflow-wrap:anywhere;scroll-margin-top:100px}
+      .note-ref{white-space:nowrap;font-size:.8em;margin-inline:.25em;text-underline-offset:.2em;scroll-margin-top:100px}
+      .note-ref:focus-visible,.note-back:focus-visible{outline:2px solid #0071e3;outline-offset:3px}
+      .note-back{display:inline-block;margin-left:8px;padding-block:4px;font-size:13px}
+      .column-notes li:target{background:#f5f5f7}
+    
+      .screen-credits{font-size:14px;line-height:1.7;margin-top:20px}.overlay-group{margin-block:28px}.overlay-group h3{font-size:20px;line-height:1.5}.overlay-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:0}.overlay-fields>div{min-width:0;padding:12px 0;border-bottom:1px solid #d2d2d7;overflow-wrap:anywhere}.overlay-fields dt{font-size:15px;font-weight:600;line-height:1.5}.overlay-fields dd{margin:5px 0 0;font-size:14px;line-height:1.7}.column-app-screen{margin:24px 0}.column-app-screen a:focus-visible{outline:2px solid #0071e3;outline-offset:4px}.column-article li{line-height:1.8}.column-table-scroll th,.column-table-scroll td{white-space:normal}@media(max-width:800px){.overlay-fields{grid-template-columns:1fr}}
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"第9回 再生は進むのに 髪が揺れない","description":"再生優先モードで物理の揺れが戻らなかった理由と 物理演算を省かず実表示FPSを上げたVvfMの開発記録","url":"https://opopoposiop.github.io/VvfM/development-09.html","datePublished":"2026-11-28","dateModified":"2026-11-28","inLanguage":"ja","isPartOf":{"@type":"WebSite","name":"VMD Viewer for Mac","url":"https://opopoposiop.github.io/VvfM/"}}</script>
+</head>
+ <body class="guide-page">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W75JZ67D" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <a class="skip" href="#main">
+   本文へ移動
+  </a>
+  <header class="header wrap">
+   <a aria-label="VvfM ホーム" class="brand" href="./">
+    VvfM
+    <span>
+     VMD Viewer for Mac
+    </span>
+   </a>
+   <nav aria-label="メインナビゲーション">
+    <a href="./#features">
+     できること
+    </a>
+    <a href="getting-started.html">
+     始め方
+    </a>
+    <a href="toonshader-hq.html">
+     HQエフェクト
+    </a>
+    <a href="video-export.html">
+     動画出力
+    </a>
+    <a href="./#faq">
+     FAQ
+    </a>
+    <a href="./#development-stories">
+     コラム
+    </a>
+    <a href="https://github.com/opopoposiop/VvfM">
+     GitHub ↗
+    </a>
+   </nav>
+  </header>
+  <main id="main">
+   <nav aria-label="開発史コラム" class="column-series wrap">
+    <span class="column-series-title">
+     開発史コラム
+    </span>
+    <ol>
+     <li>
+      <a href="development-01.html">
+       第1回 GPUだけでは解決しなかった
+      </a>
+     </li>
+     <li>
+      <a href="development-02.html">
+       第2回 20体のVMD再生がなぜ途中から遅くなるのか
+      </a>
+     </li>
+     <li>
+      <a href="development-03.html">
+       第3回 エフェクトを作る楽しさをMacにも
+      </a>
+     </li>
+     <li>
+      <a href="development-04.html">
+       第4回 あのアニメのような陰影をMacで
+      </a>
+     </li>
+          <li><a href="development-05.html">第5回 見るための再生から 残すための動画へ</a></li>
+          <li><a href="ambiance-01.html">作品ノート 『シネマ』のMMDカメラワーク</a></li>
+          <li><a href="development-06.html">第6回 FPSだけでは見えない引っかかり</a></li>
+          <li><a href="development-07.html">第7回 あの表情をもう一度</a></li>
+          <li><a href="development-08.html">第8回 剛体とIK謎解き</a></li>
+          <li><a href="development-09.html" aria-current="page">第9回 再生は進むのに 髪が揺れない</a></li>
+    </ol>
+   </nav>
+    <div class="column-hero">
+      <header class="guide-intro wrap">
+        <p class="eyebrow">DEVELOPMENT STORY · 09</p>
+        <h1>再生は進むのに 髪が揺れない</h1>
+        <p class="lead">物理エンジンと 再生優先モードの試行錯誤</p>
+        <p class="column-meta">VvfM開発史 第9回</p>
+      </header>
+      <figure class="column-eyecatch wrap"><img src="images/columns/story-09-physics-timeline.svg" alt="再生時計 裏で進む物理演算 実際の表示を3段に並べた模式図" width="1600" height="900" fetchpriority="high" decoding="async"></figure>
+    </div>
+    <div class="guide-layout wrap column-layout">
+      <aside>
+        <nav class="guide-toc" aria-label="このページの目次">
+          <strong>第9回の目次</strong>
+<ol>
+<li><a href="#steps">1　揺れには それまでの動きが残る</a></li>
+<li><a href="#preview">2　物理が追いつくまで 先に描けばいい？</a></li>
+<li><a href="#recovery">3　揺れは戻った でも滑らかさは別だった</a></li>
+<li><a href="#performance">4　物理優先でも FPSは上げられた</a></li>
+<li><a href="#settings">5　エンジンの選択と 表示の順番は別</a></li>
+<li><a href="#closing">おわりに　残したい揺れと 減らせる待ち</a></li>
+<li><a href="#notes">注記</a></li>
+<li><a href="#glossary">用語解説</a></li>
+<li><a href="#related">関連ページ</a></li>
+</ol>
+        </nav>
+      </aside>
+      <article class="guide-content column-article">
+<section id="origin">
+<p>VMDは再生されている モデルは踊っている 物理演算の設定もオン それなのに 髪や衣装に物理の揺れが出てこない</p>
+<p>当時の録画でFPSオーバーレイを見ると VMDの再生時計は毎秒30フレームで進んでいました 一方 物理を反映した姿勢の表示頻度は0 Hz 再生ボタンを押して動き出すことと 物理まで反映した姿勢が画面に出ることは 別の出来事でした</p>
+<p>第8回では ベルトや脚の変形を手がかりに 剛体やIKの計算を見直しました 今回は その計算結果をいつ画面に出すか 先に描けば滑らかになると思って試した 再生優先モードの話です</p>
+</section>
+
+<section id="steps">
+<h2>1　揺れには それまでの動きが残る</h2>
+<p>VvfMにBullet 3.25を組み込んだのはv0.19.0です VMDからその時点のボーンの姿勢を求め 髪や衣装の剛体に対して物理演算を行い その結果をボーンに反映します</p>
+<p>揺れ方は いまの姿勢だけでは決まりません 同じ姿勢で立っていても 動きを止めた直後と しばらく静止していたときでは 髪の動きが違います 物理は直前の位置や速度を引き継いで 決まった時間刻みで進みます 画面の更新が遅れたからといって その計算まで飛ばしてしまうと 次に見える揺れ方が変わり得ます</p>
+</section>
+
+<section id="preview">
+<h2>2　物理が追いつくまで 先に描けばいい？</h2>
+<p>v0.52.0で試したのは 画面と物理を別々に進める方法です 当時の設定名は「再生優先モード」 物理の結果を待たずにVMDの姿勢を先に描き その裏でBulletの計算を進めます 物理が追いついたら シーン全体を物理を反映した姿勢へ切り替える設計でした</p>
+<p>ところが 重い場面では切り替える前に 再生時計が次のフレームへ進んでしまいます 複数モデルの物理を反映した姿勢を同じフレームで揃えようとしても 揃うころには対象のフレームが古くなっている 次のフレームでまた揃え直す その繰り返しで 踊りは進むのに揺れが画面へ戻ってこなくなりました</p>
+<p>録画の「0 Hz」が示していたのは 物理を反映した姿勢が表示へ届いていないことです そこからBulletの計算自体が止まったとは判断できません 別の診断では 物理を反映した姿勢の表示頻度が0 Hzでも裏で物理の計算が進んでいることを確認しました</p>
+<figure class="guide-callout"><figcaption>模式図：再生時計が進んでも 物理を反映した姿勢が表示へ届かないことがある</figcaption><ul><li>再生時計は次のフレームへ進む</li><li>裏では必要な物理演算を続ける</li><li>物理の結果が同じフレームで揃うまでは VMDの姿勢を先に表示する</li></ul></figure>
+</section>
+
+<section id="recovery">
+<h2>3　揺れは戻った でも滑らかさは別だった</h2>
+<p>最初の修正候補では 30秒の確認で物理を反映した姿勢が画面に出たのは1回だけでした 計算結果が用意できることと それが実際に画面に出ることを分けて確認し この候補は採りませんでした</p>
+<p>v0.52.4では 戻すと決めた時点とモデルの組を 画面に出せるまで保持するようにしました 5モデルの60秒診断で 必要な固定ステップを欠かさず 物理を反映した姿勢へ戻せることを確認 一方 モーフ欄を開いた通常画面の別の試験では 実表示FPSの中央値は約22 fpsでした 揺れは戻った けれど 編集しながらの再生にはまだ余裕がありませんでした</p>
+</section>
+
+<section id="performance">
+<h2>4　物理優先でも FPSは上げられた</h2>
+<p>標準の物理優先モードでは 物理を反映した姿勢を用意してから表示します この経路で速くするために見直したのは 物理の計算回数よりも 描画を出す直前に何を待っているかでした</p>
+<p>前のフレームの描画が進んでいる間に 次のフレームで使うデータの確認や整理をCPU側で先に済ませる いったん内容を検証した姿勢データは 管理用の印だけが変わったときに中身をすべて調べ直さない 新しいデータはこれまでどおり確認します</p>
+<p>v0.57.30では 同じビルドの物理優先経路で先行準備の有無を比較しました 11モデル 物理演算120 Hz 40秒の比較を5対 実表示FPSの中央値は 先行準備なしの <strong>23.0 fps</strong> から ありの <strong>28.0 fps</strong> へ 計測した固定ステップに欠落はありませんでした 同じビルド内の比較なので 「再生優先から物理優先に切り替えると速くなる」という数字ではありません 物理を反映する経路でも 描画前の待ちを減らせばFPSを上げられる その手応えが得られた比較です</p>
+</section>
+
+<section id="settings">
+<h2>5　エンジンの選択と 表示の順番は別</h2>
+<p>v0.56.1で加えた「Bullet 2.75互換／3.25ネイティブ」は 物理の解き方を選ぶ設定です 2.75互換は別のエンジンを載せたものではなく 同梱の3.25で既知の挙動差を吸収する方式です</p>
+<p>一方 「物理優先モード／再生優先モード」は結果をどの順番で画面に出すかの選択でした v0.56.14で再生優先度の設定欄は非表示になりましたが 内部処理と以前の保存値は残されています 標準のライブ再生と動画書き出しは物理優先です</p>
+</section>
+
+<section id="closing">
+<h2>おわりに　残したい揺れと 減らせる待ち</h2>
+<p>タイムラインで1フレーム進めて すぐ戻る 制作中は そんな小さな往復を何度も繰り返します 後のv0.58.6では 後ろへ戻ったときに保存済みの物理状態をうまく扱えず 先頭から計算し直していた問題も直しました ある再現条件では その往復で不要になった再計算は19,416ステップでした</p>
+<p>先に画面を動かせば軽く見えると思って始めた試みでした 最後に効いたのは 揺れを省くことではなく 揺れを画面に出す直前の待ちと すでに済ませた仕事のやり直しを減らすことでした</p>
+</section>
+
+<section id="notes" class="column-notes">
+<h2>注記</h2>
+<ol><li>冒頭の0 Hzは物理を反映した姿勢の表示頻度です 録画時にBullet自体が止まったかは確認できていません</li>
+<li>v0.57.30の数値は固定したシーンの比較です FPSの差は同一ビルドでの先行準備の有無 重複検証の削減は先行準備を有効にした別ビルド間での準備時間・遅延の比較で確認しました すべてのシーンでの改善や60 fps達成を示すものではありません</li>
+<li>Bullet 2.75互換は Windows版MMDや全モデルでの完全一致を意味しません 後方シークの19,416ステップは物理演算120 Hzでの特定の再現条件で省けた再計算です</li></ol>
+</section>
+
+<section id="glossary" class="column-glossary">
+<h2>用語解説</h2>
+<dl><div class="term-entry"><dt>Bullet</dt><dd>剛体の動きや衝突 ばねなどを計算する物理エンジン</dd></div>
+<div class="term-entry"><dt>固定ステップ</dt><dd>物理の時間を決まった幅で進めること 120 Hzなら1秒を120回に分けて計算します</dd></div>
+<div class="term-entry"><dt>実表示FPS</dt><dd>描画を頼んだ回数ではなく 実際に画面に出たフレームの数を1秒あたりで表したもの</dd></div></dl>
+</section>
+
+<section id="related" class="guide-next">
+<h2>関連ページ</h2>
+<ul><li><a href="development-06.html">第6回 FPSだけでは見えない引っかかり</a></li>
+<li><a href="development-08.html">第8回 剛体とIK謎解き</a></li>
+<li><a href="https://github.com/opopoposiop/VvfM/blob/main/GUIDE.md">VvfM 一般ユーザーガイド</a></li><li><a href="./#development-stories">トップページの開発史へ戻る</a></li></ul>
+</section>
+</article>
+    </div>
+  </main>
+  <footer class="wrap">
+   <p>
+    <strong>
+     VMD Viewer for Mac / VvfM
+    </strong>
+   </p>
+   <p>
+    <a href="./">
+     ホーム
+    </a>
+    ·
+    <a href="https://github.com/opopoposiop/VvfM">
+     GitHub
+    </a>
+   </p>
+  </footer>
+ </body>
+</html>

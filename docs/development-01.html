@@ -85,6 +85,7 @@
           <li><a href="development-06.html">第6回 FPSだけでは見えない引っかかり</a></li>
           <li><a href="development-07.html">第7回 あの表情をもう一度</a></li>
           <li><a href="development-08.html">第8回 剛体とIK謎解き</a></li>
+          <li><a href="development-09.html">第9回 再生は進むのに 髪が揺れない</a></li>
         </ol>
       </nav>
       <div class="column-hero">
@@ -116,7 +117,7 @@
                 <a href="#timeline">毎回すべてを計算しなくてもよかった</a>
               </li>
               <li>
-                <a href="#measurement">19万頂点のうち 実際に変わっていたのは約3％</a>
+                <a href="#measurement">19万頂点のうち 実際に変わっていたのは約3%</a>
               </li>
               <li>
                 <a href="#paths">GPUとCPU それぞれに経路を用意する</a>
@@ -171,9 +172,9 @@
             </figure>
           </section>
           <section id="measurement">
-            <h2>19万頂点のうち 実際に変わっていたのは約3％</h2>
+            <h2>19万頂点のうち 実際に変わっていたのは約3%</h2>
             <p>「あのモーフを使えばよかった」と思ったときに すぐ試せるようにしたい 表情などを変えるモーフは VvfMで扱いたかった大切な機能のひとつです v0.12.1 では その処理にどれだけ時間がかかっているかを測りました</p>
-            <p>開発記録によると 196,740頂点のデータでモーフが変化するフレームでは 全頂点の再構築に平均 <strong>29.14ミリ秒</strong>かかっていました 一方 実際に変更対象となったのは平均 <strong>6,423頂点</strong> 全体の約 <strong>3.3％</strong>でした</p>
+            <p>開発記録によると 196,740頂点のデータでモーフが変化するフレームでは 全頂点の再構築に平均 <strong>29.14ミリ秒</strong>かかっていました 一方 実際に変更対象となったのは平均 <strong>6,423頂点</strong> 全体の約 <strong>3.3%</strong>でした</p>
             <p>動かしたいのは一部なのに 変化していない多くの頂点も毎回処理していました この数字を見ると 調べるべき場所がはっきりしてきます GPUの性能だけを気にする前に データの準備と更新の方法を変えられそうだったのです</p>
           </section>
           <section id="paths">
@@ -185,7 +186,7 @@
           </section>
           <section id="results">
             <h2>数字が示すものと まだ示せないもの</h2>
-            <p>v0.13.0 の記録では 196,740頂点・1,132モーフキーのデータを使い 自動GPU経路で描画 <strong>51.1〜56.7 FPS</strong> 再生更新 <strong>42.6〜47.0 FPS</strong>が記録されています CPU疎更新経路では それぞれ <strong>49.0 FPS</strong> <strong>36.4 FPS</strong>でした</p>
+            <p>v0.13.0 の記録では 196,740頂点・1,132モーフキーのデータを使い 自動GPU経路で描画 <strong>51.1〜56.7 fps</strong> 再生更新 <strong>42.6〜47.0 fps</strong>が記録されています CPU疎更新経路では それぞれ <strong>49.0 fps</strong> <strong>36.4 fps</strong>でした</p>
             <p>描画FPSと再生更新FPSは別の指標です 数字は当時の検証条件で得た記録として読みます<a class="note-ref" id="note-ref-3" href="#note-3" aria-label="文末の注記3を読む">[注記3]</a></p>
             <p>この初期開発で得た手がかりは <strong>重さを感じたら 何を どれだけ どの頻度で処理しているかを測る</strong>ことでした UI<a class="term-ref" id="term-ref-12" href="#term-12" aria-label="UIの注釈12を読む">[注12]</a> CPU GPUの役割とデータの流れを少しずつ見直す その積み重ねが Macで気軽に編集するための土台になっています</p>
           </section>

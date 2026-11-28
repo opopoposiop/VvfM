@@ -87,6 +87,7 @@
           <li><a href="development-06.html">第6回 FPSだけでは見えない引っかかり</a></li>
           <li><a href="development-07.html">第7回 あの表情をもう一度</a></li>
           <li><a href="development-08.html">第8回 剛体とIK謎解き</a></li>
+          <li><a href="development-09.html">第9回 再生は進むのに 髪が揺れない</a></li>
         </ol>
       </nav>
       <div class="column-hero">
@@ -181,7 +182,7 @@ MacのGPUで描画</code></pre>
           <section id="scope">
             <h2>できる範囲を伝えながら広げていく</h2>
             <p>最初の原文実行には かなり厳しい条件がありました ToonShader HQの指定構成や不透明材質などを対象にし AAやDoFなどは無効にして検証しています MotionBlurの元の計算には端の余り領域を扱うための条件が足りず 当時の実装では1920×1080や3840×2160を拒否していました これはv0.56.16時点の記録であり 現在の全エフェクトの解像度制限を示すものではありません</p>
-            <p>その後も 原文を扱う範囲や コントローラーや処理順の扱いは拡張されています 一方で 任意のMME用.fxや すべての.fxdayoをそのまま使えると案内する段階ではありません 現在の条件は <a href="https://github.com/opopoposiop/VvfM/blob/main/docs/fxdayo/README.md">VvfMの.fxdayo開発者向け資料</a>と アプリの読込状況で確認する形にしています</p>
+            <p>その後も 原文を扱う範囲や コントローラーや処理順の扱いは拡張されています 一方で 任意のMME用.fxや すべての.fxdayoをそのまま使えると案内する段階ではありません 現在の条件は <a href="https://github.com/opopoposiop/VvfM/blob/main/docs/fxdayo/README.md">VvfMの.fxdayo開発者向け資料</a>と アプリの読み込み状況で確認する形にしています</p>
             <p>エフェクトを作って試す人にとって 使える範囲がわかることは大切です 動かなかったときに 原文の問題なのか まだVvfMで扱えない機能なのかを切り分けられれば 次に試すことを決めやすくなります</p>
             <p>VvfM側にも <a href="https://github.com/opopoposiop/VvfM/blob/main/docs/fxdayo/examples/README.md">単純な露出調整やモーフ制御から始める教材</a>を用意しています 小さな変更とその結果を確かめる入口になります<a class="note-ref" id="note-ref-3" href="#note-3" aria-label="文末の注記3を読む">[注記3]</a></p>
             <p>自分で少し変えてみる 欲しかった見た目に近づける その工夫を誰かの作品でも使ってもらう</p>

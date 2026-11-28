@@ -131,6 +131,7 @@
           <li><a aria-current="page" href="development-06.html">第6回 FPSだけでは見えない引っかかり</a></li>
           <li><a href="development-07.html">第7回 あの表情をもう一度</a></li>
           <li><a href="development-08.html">第8回 剛体とIK謎解き</a></li>
+          <li><a href="development-09.html">第9回 再生は進むのに 髪が揺れない</a></li>
     </ol>
    </nav>
    <div class="column-hero">
@@ -197,7 +198,7 @@
       <p>v0.58.23では 次の表示に使わず置き換わる候補にまで確認をかけないようにしました<br/>
       同じ50秒の再生を4対比べると 長く空いた回数の中央値は19.5回から4.5回に減りました<br/>
       ここで用いた32 msは 同じ条件で比較するための目印です<br/>
-      30 fpsで等間隔に表示すれば一コマは約33.3 msなので どんな再生にも使える合否ラインではありません</p>
+      30 fpsで等間隔に表示すれば1フレームは約33.3 msなので どんな再生にも使える合否ラインではありません</p>
       <p>反射を使うv0.58.27の試験では 次の絵をGPUへ渡すタイミングも見直しました<br/>
       静止キーフレーム中心では実表示の中央値が39.25から60.00 fpsへ上がった一方 人物2体が動く別条件では57.87から57.94 fpsでした<br/>
       自分の作品で直したところを見返すときも 効果はシーン次第です<a class="note-ref" id="note-ref-3" href="#note-3" aria-label="文末の注記3を読む">[注記3]</a></p>
@@ -212,8 +213,8 @@
       この差では 操作の手応えが改善したと判断できません<br/>
       別案ではモーフ配列の検査をまとめたところ 逆に長く空く表示間隔が5対すべてで増えました<br/>
       どちらの案も採用しませんでした</p>
-      <p>編集の確認では速さだけでなく 停止して一コマ進めたときにモデルと投影動画が要求どおりのフレームにそろうか 保存したVMDを開き直して編集結果が残るかも確かめました<br/>
-      操作にすぐ反応しても 別のコマの絵を見ていたら 手直しの判断を間違えてしまいます</p>
+      <p>編集の確認では速さだけでなく 停止して1フレーム進めたときにモデルと投影動画が要求どおりのフレームにそろうか 保存したVMDを開き直して編集結果が残るかも確かめました<br/>
+      操作にすぐ反応しても 別のフレームの絵を見ていたら 手直しの判断を間違えてしまいます</p>
      </section>
 
      <section id="overlay-reading">
@@ -222,7 +223,7 @@
       <figure class="column-app-screen"><a href="images/columns/fps-overlay-06.webp" aria-label="FPSオーバーレイの画面例を拡大して見る"><img width="2048" height="1330" src="images/columns/fps-overlay-06.webp" alt="VvfMの再生画面 実表示33.4 fps callback 102.3 fps VMD時計30.0 frame/sを示すFPSオーバーレイ" loading="lazy" decoding="async"/></a></figure>
       <p><a href="images/columns/fps-overlay-06-detail.webp">FPSオーバーレイを拡大</a></p>
       <p>再生中に気になったのが画面の引っかかりなら <strong>実表示fps → 表示間隔 p95 → submit間隔</strong>の順が読みやすいです</p>
-      <ul><li><strong>実表示fps</strong>：画面に実際に届いた枚数の目安です　ある画面では callbackが102.3 fpsでも 描画と実表示はどちらも33.4 fpsでした　描画処理が呼ばれた回数を 表示された枚数と混同しないのが最初のポイントです</li><li><strong>表示間隔 p95／p99</strong>：遅い側の間隔を見ます　例ではp50が29.17 msで p95とp99は41.67 msでした　p95が41.67 msなら 測った間隔の約95％がその値以下という読み方です　最長が41.67 msという意味ではありません</li><li><strong>submit間隔・Encode・GPU時間</strong>：提出の間隔がすでに空くなら 描画を渡す前も調べます　例ではEncode平均3.2 ms GPU平均13.7 msでしたが これらを足しても画面の表示間隔にはなりません　工程は並行して動き 待ちも別にあるためです</li><li><strong>VMD時計</strong>：作品の時間が正しく進んでいるかの目安です　実表示33.4 fpsとVMD時計30.0 frame/sが同時に出ても矛盾しません</li><li><strong>姿勢公開 min・age p95</strong>：複数モデルのうち 更新頻度が最も低いモデルや 表示に使える姿勢が作品内の時刻からどれだけ遅れているかを見ます　絵が更新されていても モデルの姿勢まで新しいとは限りません</li></ul>
+      <ul><li><strong>実表示fps</strong>：画面に実際に届いた枚数の目安です　ある画面では callbackが102.3 fpsでも 描画と実表示はどちらも33.4 fpsでした　描画処理が呼ばれた回数を 表示された枚数と混同しないのが最初のポイントです</li><li><strong>表示間隔 p95／p99</strong>：遅い側の間隔を見ます　例ではp50が29.17 msで p95とp99は41.67 msでした　p95が41.67 msなら 測った間隔の約95%がその値以下という読み方です　最長が41.67 msという意味ではありません</li><li><strong>submit間隔・Encode・GPU時間</strong>：提出の間隔がすでに空くなら 描画を渡す前も調べます　例ではEncode平均3.2 ms GPU平均13.7 msでしたが これらを足しても画面の表示間隔にはなりません　工程は並行して動き 待ちも別にあるためです</li><li><strong>VMD時計</strong>：作品の時間が正しく進んでいるかの目安です　実表示33.4 fpsとVMD時計30.0 frame/sが同時に出ても矛盾しません</li><li><strong>姿勢公開 min・age p95</strong>：複数モデルのうち 更新頻度が最も低いモデルや 表示に使える姿勢が作品内の時刻からどれだけ遅れているかを見ます　絵が更新されていても モデルの姿勢まで新しいとは限りません</li></ul>
       <p>編集で「ドラッグしたのに絵がついてこない」と感じたら 再生のFPSより <strong>入力→姿勢</strong>と<strong>姿勢→表示</strong>を見ます<br/>
       入力が新しい姿勢に反映される前と その姿勢が画面へ届くまでを分けて考えられます</p>
       <p>以上はオーバーレイの読み方の例で 本文の性能比較とは別の計測です<a class="note-ref" id="note-ref-1" href="#note-1" aria-label="文末の注記1を読む">[注記1]</a><br/>
@@ -365,9 +366,9 @@
      
        <li id="note-1" tabindex="-1">オーバーレイの定義は開発版 v0.58.30（build 657）で確認したものです　再生画面の例は画像から版を特定できず 本文の性能比較と同一条件ではありません <a class="note-back" href="#note-ref-1" aria-label="注記1の参照箇所1へ戻る">本文 1へ戻る ↑</a> <a class="note-back" href="#note-ref-1-2" aria-label="注記1の参照箇所2へ戻る">本文 2へ戻る ↑</a></li>
      
-       <li id="note-2" tabindex="-1">v0.58.21の比較はM2 Maxで人物2体とステージ・1080p・HQ Toon・アンチエイリアスなし　50秒再生の中央47.8秒を測った各1走行です　build 626／627の複数の変更をまとめた比較で 個別の寄与は分離していません <a class="note-back" href="#note-ref-2" aria-label="注記2の参照箇所1へ戻る">本文へ戻る ↑</a></li>
+       <li id="note-2" tabindex="-1">v0.58.21の比較はM2 Maxで人物2体とステージ・1080p・ToonShader HQ・アンチエイリアスなし　50秒再生の中央47.8秒を測った各1走行です　build 626／627の複数の変更をまとめた比較で 個別の寄与は分離していません <a class="note-back" href="#note-ref-2" aria-label="注記2の参照箇所1へ戻る">本文へ戻る ↑</a></li>
      
-       <li id="note-3" tabindex="-1">v0.58.27の60 fpsはM2 Max・内蔵120 Hz画面・Stage07の静止版ペンライト・単独のMMDayo SSR・1080p・HQ Toon・AA／物理OFF・60 fps上限での5走行の中央値です　動く人物の追加試験は各1走行で 他の作品や書き出しへは一般化できません <a class="note-back" href="#note-ref-3" aria-label="注記3の参照箇所1へ戻る">本文へ戻る ↑</a></li>
+       <li id="note-3" tabindex="-1">v0.58.27の60 fpsはM2 Max・内蔵120 Hz画面・Stage07の静止版ペンライト・単独のMMDayo SSR・1080p・ToonShader HQ・AA／物理OFF・60 fps上限での5走行の中央値です　動く人物の追加試験は各1走行で 他の作品や書き出しへは一般化できません <a class="note-back" href="#note-ref-3" aria-label="注記3の参照箇所1へ戻る">本文へ戻る ↑</a></li>
      </ol><p class="screen-credits">画面例の使用素材<br/>
 モデル くれよん（<a href="https://www.nicovideo.jp/watch/sm36384153">浅草みどり</a> ／ <a href="https://www.nicovideo.jp/watch/sm36519353">水崎ツバメ</a>）<br/>
 楽曲・ダンスモーション <a href="https://youtu.be/J66gqneY518">HIMEHINA『フランケンシュタインの怪物』</a><br/>
@@ -383,7 +384,7 @@
        <div class="term-entry"><dt>GPU</dt><dd>画面の描画や大量の並列計算を担当する処理装置</dd></div>
 
      
-       <div class="term-entry"><dt>ミリ秒／ms</dt><dd>1秒の1,000分の1　32msは0.032秒</dd></div>
+       <div class="term-entry"><dt>ミリ秒／ms</dt><dd>1秒の1,000分の1　32 msは0.032秒</dd></div>
 
      
        <div class="term-entry"><dt>評価／再評価</dt><dd>表示に必要な情報や画面構成を組み立て直す処理　実描画とは別</dd></div>
@@ -398,7 +399,7 @@
        <div class="term-entry"><dt>中央値</dt><dd>数値を順に並べたとき中央に来る値　平均値とは異なる</dd></div>
 
      
-       <div class="term-entry"><dt>p95／p99</dt><dd>測定値の約95％／99％がその値以下になる境目</dd></div>
+       <div class="term-entry"><dt>p95／p99</dt><dd>測定値の約95%／99%がその値以下になる境目</dd></div>
 
      
        <div class="term-entry"><dt>MainActor</dt><dd>主に画面や操作に関する処理を扱う実行場所</dd></div>
